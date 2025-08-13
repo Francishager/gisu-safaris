@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Kibale National Park Safari - Chimpanzee Tracking | Gisu Safaris</title>
+    <meta name="description" content="Explore Kibale National Park, the primate capital of the world. Chimpanzee tracking, forest walks, bird watching in Uganda's premier primate destination. Expert guides and luxury accommodation included.">
+    <meta name="keywords" content="Kibale National Park, chimpanzee tracking Uganda, primates Uganda, forest walk, Bigodi wetlands, Uganda birding, primate capital">
+    <meta name="author" content="Gisu Safaris - Uganda Primate Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kibale National Park Safari - Chimpanzee Tracking">
+    <meta property="og:description" content="Explore the primate capital of the world with chimpanzee tracking and forest adventures in Kibale National Park.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/uganda-kibale-national-park.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kibale National Park - Primate Capital Safari">
+    <meta name="twitter:description" content="Chimpanzee tracking and forest adventures in Uganda's premier primate destination.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/uganda-kibale-national-park.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .itinerary-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 20px !important;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            position: relative;
+        }
+        
+        .itinerary-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important;
+        }
+        
+        .itinerary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
+            z-index: 1;
+        }
+        
+        .day-number {
+            font-size: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .icon-wrapper {
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .itinerary-card:hover .icon-wrapper {
+            transform: scale(1.1) rotateY(360deg);
+        }
+        
+        .card-header {
+            border-radius: 20px 20px 0 0 !important;
+            position: relative;
+        }
+        
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid inherit;
+        }
+        
+        .timeline-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+        }
+        
+        .activity-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-left: 4px solid #667eea;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .activity-item:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(8px);
+        }
+        
+        .activity-item:hover i {
+            color: white !important;
+        }
+        
+        .card-body {
+            border-radius: 0 0 20px 20px !important;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../contact.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="uganda.html" class="text-white-50">Uganda Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Kibale National Park</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Kibale National Park Safari
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                3 Days in the Primate Capital of the World - Chimpanzee tracking and forest adventures
+                            </p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-success fs-6 px-3 py-2">3 Days</span>
+                                <span class="badge bg-primary fs-6 px-3 py-2">13 Primate Species</span>
+                                <span class="badge bg-warning text-dark fs-6 px-3 py-2">375+ Bird Species</span>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book This Safari
+                                </a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-map-marked-alt me-2"></i>View Itinerary
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Discover the <span class="text-primary">Primate Capital</span></h2>
+                        <p class="lead mb-4">Embark on an extraordinary 3-day primate adventure in Kibale National Park, home to Uganda's largest population of chimpanzees and 12 other primate species. Experience intimate encounters with our closest relatives in their natural forest habitat.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-paw fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Chimpanzee Tracking</h5>
+                                    <p class="small text-muted">Track habituated chimpanzee families with expert guides in their natural rainforest habitat</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-binoculars fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Bigodi Wetlands</h5>
+                                    <p class="small text-muted">Explore rich wetland ecosystem with over 200 bird species and 8 primate species</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-tree fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Forest Walks</h5>
+                                    <p class="small text-muted">Guided nature walks through pristine tropical rainforest with diverse flora and fauna</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$699</div>
+                                    <p class="text-muted">per person (2 people sharing)</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(89 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 3 Days / 2 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Group Size:</strong> Max 6 people</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Time:</strong> Year-round</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Difficulty:</strong> Easy to Moderate</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Age Limit:</strong> 12 years+</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../contact.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                    <a href="https://wa.me/256780950555" class="btn btn-outline-success">
+                                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section id="itinerary" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <h2 class="display-5 fw-bold">Day-by-Day <span class="text-primary">Itinerary</span></h2>
+                    <p class="lead">Your complete 3-day primate adventure</p>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Day 1 -->
+                    <div class="col-lg-4">
+                        <div class="itinerary-card card border-0 shadow-lg h-100 fade-in">
+                            <div class="card-header bg-gradient text-white text-center py-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <div class="day-number display-5 fw-bold mb-1">01</div>
+                                <h5 class="mb-0 opacity-90">Arrival Day</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-4">
+                                    <div class="icon-wrapper bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-map-marked-alt fa-lg text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Journey to Kibale</h5>
+                                    <span class="badge bg-light text-dark mb-3">Kampala to Forest</span>
+                                </div>
+                                
+                                <div class="activities-list">
+                                    <div class="activity-item">
+                                        <i class="fas fa-clock text-primary me-2"></i>
+                                        <small><strong>6:00 AM:</strong> Departure from Kampala</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-car text-primary me-2"></i>
+                                        <small><strong>11:00 AM:</strong> Scenic 5-hour drive</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-bed text-primary me-2"></i>
+                                        <small><strong>1:00 PM:</strong> Lodge check-in & lunch</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-chalkboard-teacher text-primary me-2"></i>
+                                        <small><strong>3:00 PM:</strong> Tracking briefing</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-walking text-primary me-2"></i>
+                                        <small><strong>5:00 PM:</strong> Evening nature walk</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-utensils text-primary me-2"></i>
+                                        <small><strong>7:00 PM:</strong> Dinner & overnight</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 2 -->
+                    <div class="col-lg-4">
+                        <div class="itinerary-card card border-0 shadow-lg h-100 fade-in">
+                            <div class="card-header bg-gradient text-white text-center py-4" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <div class="day-number display-5 fw-bold mb-1">02</div>
+                                <h5 class="mb-0 opacity-90">Tracking Day</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-4">
+                                    <div class="icon-wrapper bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-paw fa-lg text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Chimpanzee Encounter</h5>
+                                    <span class="badge bg-success text-white mb-3">Main Experience</span>
+                                </div>
+                                
+                                <div class="activities-list">
+                                    <div class="activity-item">
+                                        <i class="fas fa-sun text-success me-2"></i>
+                                        <small><strong>6:00 AM:</strong> Early breakfast</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-hiking text-success me-2"></i>
+                                        <small><strong>7:00 AM:</strong> Chimp tracking begins</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-camera text-success me-2"></i>
+                                        <small><strong>9:00 AM:</strong> 1 hour with chimps</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-utensils text-success me-2"></i>
+                                        <small><strong>12:00 PM:</strong> Lunch at lodge</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-binoculars text-success me-2"></i>
+                                        <small><strong>2:00 PM:</strong> Bigodi swamp walk</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-feather text-success me-2"></i>
+                                        <small><strong>4:00 PM:</strong> Bird watching</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 p-2 bg-info bg-opacity-10 rounded">
+                                    <small class="text-info"><i class="fas fa-info-circle me-1"></i> Permits ($200) included</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 3 -->
+                    <div class="col-lg-4">
+                        <div class="itinerary-card card border-0 shadow-lg h-100 fade-in">
+                            <div class="card-header bg-gradient text-white text-center py-4" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <div class="day-number display-5 fw-bold mb-1">03</div>
+                                <h5 class="mb-0 opacity-90">Departure</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-4">
+                                    <div class="icon-wrapper bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-leaf fa-lg text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Forest Walk & Return</h5>
+                                    <span class="badge bg-info text-white mb-3">Final Adventure</span>
+                                </div>
+                                
+                                <div class="activities-list">
+                                    <div class="activity-item">
+                                        <i class="fas fa-coffee text-info me-2"></i>
+                                        <small><strong>7:00 AM:</strong> Early breakfast</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-tree text-info me-2"></i>
+                                        <small><strong>8:00 AM:</strong> Forest nature walk</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-users text-info me-2"></i>
+                                        <small><strong>10:00 AM:</strong> Community visit</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-utensils text-info me-2"></i>
+                                        <small><strong>12:00 PM:</strong> Lunch & check-out</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-shopping-bag text-info me-2"></i>
+                                        <small><strong>2:00 PM:</strong> Craft market visit</small>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-home text-info me-2"></i>
+                                        <small><strong>7:00 PM:</strong> Arrive Kampala</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wildlife Highlights -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <h2 class="display-5 fw-bold">Wildlife <span class="text-primary">Highlights</span></h2>
+                    <p class="lead">Incredible biodiversity in Kibale National Park</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-paw fa-2x text-white"></i>
+                                </div>
+                                <h5 class="fw-bold">1,500+ Chimpanzees</h5>
+                                <p class="card-text">Uganda's largest chimpanzee population with 13 habituated communities for tracking</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-monkey fa-2x text-white"></i>
+                                </div>
+                                <h5 class="fw-bold">13 Primate Species</h5>
+                                <p class="card-text">Including red colobus, L'Hoest's, blue, red-tailed, and vervet monkeys</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-dove fa-2x text-white"></i>
+                                </div>
+                                <h5 class="fw-bold">375+ Bird Species</h5>
+                                <p class="card-text">Including 6 endemic species and rare forest specialties for birding enthusiasts</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-seedling fa-2x text-white"></i>
+                                </div>
+                                <h5 class="fw-bold">250+ Tree Species</h5>
+                                <p class="card-text">Diverse tropical rainforest with giant mahogany and fig trees over 55m tall</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="mb-0"><i class="fas fa-check-circle me-2"></i>What's Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Chimpanzee tracking permits ($200 value per person)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mid-range forest lodge accommodation (2 nights)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All meals as specified in itinerary</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional English-speaking guide</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>4WD safari vehicle with fuel</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bigodi Wetland Sanctuary visit</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Nature walks and forest exploration</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Community project visits</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Park entry fees and government taxes</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bottled water during safari</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0"><i class="fas fa-times-circle me-2"></i>What's Not Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International flights to/from Uganda</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Uganda visa fees ($50 for most nationalities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Travel insurance (highly recommended)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal expenses and shopping</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Alcoholic beverages and soft drinks</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tips for guides and lodge staff</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Laundry services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Optional activities not mentioned</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Phone calls and internet charges</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Items of personal nature</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for Your Primate Adventure?</h2>
+                    <p class="lead">Book now or get a custom quote for your Kibale National Park experience</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Country</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Travel Date</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Number of Travelers</label>
+                                            <select class="form-select">
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5+">5+ People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Special Requirements or Questions</label>
+                                            <textarea class="form-control" rows="3" placeholder="Tell us about your interests, fitness level, or any special requests..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                            <a href="tel:+256780950555" class="btn btn-outline-primary btn-lg">
+                                                <i class="fas fa-phone me-2"></i>Call Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p class="mb-3">Uganda's premier primate safari specialists offering unforgettable chimpanzee tracking experiences in Kibale National Park.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Quick Links</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                                <li class="mb-2"><a href="uganda.html" class="text-light text-decoration-none">Uganda Safaris</a></li>
+                                <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                                <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Other Packages</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="uganda-gorilla-trekking.html" class="text-light text-decoration-none">Gorilla Trekking</a></li>
+                                <li class="mb-2"><a href="uganda-big-five.html" class="text-light text-decoration-none">Big Five Safari</a></li>
+                                <li class="mb-2"><a href="uganda-murchison-falls.html" class="text-light text-decoration-none">Murchison Falls</a></li>
+                                <li class="mb-2"><a href="uganda-queen-elizabeth.html" class="text-light text-decoration-none">Queen Elizabeth</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Connect With Us</h6>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-facebook fa-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </a>
+                                <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/256780950555?text=Hi! I'm interested in the Kibale National Park Safari." 
+           target="_blank" 
+           class="whatsapp-btn btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
