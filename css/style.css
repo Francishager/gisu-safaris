@@ -514,8 +514,17 @@ footer a:hover {
     background: white;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow: hidden;
+}
+
+.whatsapp-chat.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
 }
 
 .chat-header {
@@ -660,27 +669,7 @@ footer a:hover {
     outline: none;
 }
 
-/* WhatsApp Chat Input */
-.whatsapp-chat {
-    position: absolute;
-    bottom: 80px;
-    right: 0;
-    width: 300px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px) scale(0.8);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    overflow: hidden;
-}
-
-.whatsapp-chat.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
+/* WhatsApp Chat Input - Consolidated rules */
 
 .whatsapp-chat-header {
     background: #25D366;

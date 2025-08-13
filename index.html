@@ -778,15 +778,30 @@
     <script>
     // WhatsApp Chat Widget Functionality
     function toggleWhatsAppChat() {
+        console.log('Toggle WhatsApp chat clicked'); // Debug log
         const chatWidget = document.getElementById('whatsappChat');
+        if (!chatWidget) {
+            console.error('WhatsApp chat widget not found!');
+            return;
+        }
+        
+        console.log('Chat widget found, toggling active class');
         chatWidget.classList.toggle('active');
         
         // Focus on input when chat opens
         if (chatWidget.classList.contains('active')) {
+            console.log('Chat opened, focusing input');
             setTimeout(() => {
                 const input = document.getElementById('whatsappMessage');
-                if (input) input.focus();
+                if (input) {
+                    input.focus();
+                    console.log('Input focused');
+                } else {
+                    console.error('WhatsApp input not found!');
+                }
             }, 300);
+        } else {
+            console.log('Chat closed');
         }
     }
     

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Widget Test</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <h1>WhatsApp Widget Test</h1>
+    <p>Click the WhatsApp button in the bottom right to test functionality.</p>
+    
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <!-- Chat Window -->
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>👋 Hello! Test message!</p>
+                    <p>This is a test of the WhatsApp widget functionality.</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+    // WhatsApp Chat Widget Functionality
+    function toggleWhatsAppChat() {
+        console.log('Toggle WhatsApp chat clicked'); // Debug log
+        const chatWidget = document.getElementById('whatsappChat');
+        if (!chatWidget) {
+            console.error('WhatsApp chat widget not found!');
+            return;
+        }
+        
+        console.log('Chat widget found, toggling active class');
+        console.log('Current classes:', chatWidget.classList.toString());
+        chatWidget.classList.toggle('active');
+        console.log('New classes:', chatWidget.classList.toString());
+        
+        // Focus on input when chat opens
+        if (chatWidget.classList.contains('active')) {
+            console.log('Chat opened, focusing input');
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) {
+                    input.focus();
+                    console.log('Input focused');
+                } else {
+                    console.error('WhatsApp input not found!');
+                }
+            }, 300);
+        } else {
+            console.log('Chat closed');
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        console.log('Send message clicked');
+        const messageInput = document.getElementById('whatsappMessage');
+        if (!messageInput) {
+            console.error('Message input not found');
+            return;
+        }
+        
+        const message = messageInput.value.trim();
+        console.log('Message:', message);
+        
+        if (message === '') {
+            messageInput.focus();
+            return;
+        }
+        
+        // Create WhatsApp URL with the message
+        const phoneNumber = '256780950555';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        console.log('WhatsApp URL:', whatsappUrl);
+        
+        // Open WhatsApp with the message
+        window.open(whatsappUrl, '_blank');
+        
+        // Clear the input and close the chat
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    
+    // Handle Enter key press and other interactions
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded');
+        const messageInput = document.getElementById('whatsappMessage');
+        const chatWidget = document.getElementById('whatsappChat');
+        const whatsappWidget = document.querySelector('.whatsapp-widget');
+        
+        console.log('Elements found:', {
+            messageInput: !!messageInput,
+            chatWidget: !!chatWidget,
+            whatsappWidget: !!whatsappWidget
+        });
+        
+        if (messageInput) {
+            messageInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendWhatsAppMessage();
+                }
+            });
+            
+            // Enable/disable send button based on input
+            messageInput.addEventListener('input', function() {
+                const sendBtn = document.querySelector('.whatsapp-send-btn');
+                if (sendBtn) {
+                    sendBtn.disabled = this.value.trim() === '';
+                }
+            });
+        }
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', function(event) {
+            if (chatWidget && chatWidget.classList.contains('active') && 
+                whatsappWidget && !whatsappWidget.contains(event.target)) {
+                chatWidget.classList.remove('active');
+            }
+        });
+        
+        // Prevent chat from closing when clicking inside it
+        if (chatWidget) {
+            chatWidget.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        }
+    });
+    </script>
+</body>
+</html>
