@@ -596,13 +596,30 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <div class="floating-whatsapp">
-        <a href="https://wa.me/256780950555?text=Hi! I'm interested in booking a safari with Gisu Safaris." 
-           target="_blank" 
-           class="whatsapp-btn btn">
+    <!-- Floating WhatsApp Widget -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-toggle">
             <i class="fab fa-whatsapp"></i>
-        </a>
+        </div>
+        <div class="whatsapp-chat" id="whatsappChat">
+            <div class="chat-header">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris" class="chat-avatar">
+                <div class="chat-info">
+                    <h6>Gisu Safaris</h6>
+                    <span>Typically replies within minutes</span>
+                </div>
+                <button class="close-chat">&times;</button>
+            </div>
+            <div class="chat-body">
+                <div class="message">
+                    <p>📞 Hello! Need help with your safari booking? Send us a message and we'll assist you right away!</p>
+                </div>
+                <div class="message-input">
+                    <input type="text" id="messageInput" placeholder="Type your message here...">
+                    <button id="sendMessage" disabled>Send</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
@@ -675,6 +692,56 @@
                     
                 }, 2000);
             });
+        });
+        
+        // WhatsApp Widget functionality
+        const whatsappToggle = document.querySelector('.whatsapp-toggle');
+        const whatsappChat = document.querySelector('.whatsapp-chat');
+        const closeChat = document.querySelector('.close-chat');
+        const messageInput = document.getElementById('messageInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const phoneNumber = '256780950555';
+        const defaultMessage = '📞 Hi! I\'m interested in booking a safari with Gisu Safaris. Could you please provide more information about your packages and availability?';
+        
+        // Toggle chat visibility
+        whatsappToggle.addEventListener('click', () => {
+            whatsappChat.style.display = whatsappChat.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        closeChat.addEventListener('click', () => {
+            whatsappChat.style.display = 'none';
+        });
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!whatsappToggle.contains(e.target) && !whatsappChat.contains(e.target)) {
+                whatsappChat.style.display = 'none';
+            }
+        });
+        
+        // Enable/disable send button based on input
+        messageInput.addEventListener('input', () => {
+            sendMessage.disabled = messageInput.value.trim() === '';
+        });
+        
+        // Send message functionality
+        function sendWhatsAppMessage() {
+            const userMessage = messageInput.value.trim();
+            const finalMessage = userMessage || defaultMessage;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            whatsappChat.style.display = 'none';
+            messageInput.value = '';
+            sendMessage.disabled = true;
+        }
+        
+        sendMessage.addEventListener('click', sendWhatsAppMessage);
+        
+        // Send message on Enter key press
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !sendMessage.disabled) {
+                sendWhatsAppMessage();
+            }
         });
     </script>
 </body>

@@ -780,14 +780,125 @@
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Chat Widget -->
     <div class="floating-whatsapp">
-        <a href="https://wa.me/256780950555?text=Hi! I'm interested in Big Five Adventure safari." target="_blank" class="whatsapp-btn btn">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+        <div class="whatsapp-widget">
+            <!-- Chat Window -->
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>🦁 Hello! Welcome to Gisu Safaris!</p>
+                    <p>Interested in the Big Five Adventure safari? How can we help you plan your perfect wildlife experience?</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
+    
+    <!-- WhatsApp Widget JavaScript -->
+    <script>
+        let isWhatsAppChatOpen = false;
+        
+        function toggleWhatsAppChat() {
+            const chatWindow = document.getElementById('whatsappChat');
+            isWhatsAppChatOpen = !isWhatsAppChatOpen;
+            
+            if (isWhatsAppChatOpen) {
+                chatWindow.style.display = 'block';
+                chatWindow.style.animation = 'slideInUp 0.3s ease';
+                setTimeout(() => {
+                    document.getElementById('whatsappMessage').focus();
+                }, 300);
+            } else {
+                chatWindow.style.animation = 'slideOutDown 0.3s ease';
+                setTimeout(() => {
+                    chatWindow.style.display = 'none';
+                }, 300);
+                document.getElementById('whatsappMessage').value = '';
+                updateSendButton();
+            }
+        }
+        
+        function sendWhatsAppMessage() {
+            const message = document.getElementById('whatsappMessage').value.trim();
+            const defaultMessage = "Hi! I'm interested in the Big Five Adventure safari from your website.";
+            const finalMessage = message || defaultMessage;
+            const phoneNumber = "256780950555";
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            toggleWhatsAppChat();
+        }
+        
+        function updateSendButton() {
+            const input = document.getElementById('whatsappMessage');
+            const sendBtn = document.querySelector('.whatsapp-send-btn');
+            
+            if (input && sendBtn) {
+                if (input.value.trim()) {
+                    sendBtn.style.opacity = '1';
+                    sendBtn.disabled = false;
+                } else {
+                    sendBtn.style.opacity = '0.6';
+                    sendBtn.disabled = true;
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageInput = document.getElementById('whatsappMessage');
+            
+            if (messageInput) {
+                messageInput.addEventListener('input', updateSendButton);
+                
+                messageInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        if (messageInput.value.trim()) {
+                            sendWhatsAppMessage();
+                        }
+                    }
+                });
+            }
+            
+            document.addEventListener('click', function(e) {
+                const widget = document.querySelector('.whatsapp-widget');
+                
+                if (isWhatsAppChatOpen && widget && !widget.contains(e.target)) {
+                    toggleWhatsAppChat();
+                }
+            });
+            
+            updateSendButton();
+        });
+    </script>
     <script>
         // Hero carousel functionality
         const slides = document.querySelectorAll('.hero-slide');
