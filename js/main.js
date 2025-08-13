@@ -334,11 +334,11 @@
             let currentSlide = 0;
             let autoRotateInterval;
             
-            // Auto-rotate images every 3 seconds
+            // Auto-rotate images every 2 seconds
             function startAutoRotate() {
                 autoRotateInterval = setInterval(() => {
                     showNextSlide();
-                }, 3000);
+                }, 2000);
             }
             
             // Stop auto-rotation
@@ -434,7 +434,7 @@
             carousel.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
-                setTimeout(startAutoRotate, 3000);
+                setTimeout(startAutoRotate, 2000);
             });
             
             function handleSwipe() {
