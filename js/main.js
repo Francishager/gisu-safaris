@@ -1,0 +1,673 @@
+// ==========================================
+// GISU SAFARIS - MAIN JAVASCRIPT FILE
+// Enhanced Safari Website Functionality
+// ==========================================
+
+(function() {
+    'use strict';
+
+    // === NAVBAR SCROLL EFFECT ===
+    function initNavbarScroll() {
+        const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+
+        function updateNavbar() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Initial check
+        updateNavbar();
+        
+        // Add scroll listener with throttling
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    // === HERO SLIDER FUNCTIONALITY ===
+    function initHeroSlider() {
+        const slides = document.querySelectorAll('.hero-slide');
+        if (!slides.length) return;
+
+        let currentSlide = 0;
+        let slideInterval;
+        let isTransitioning = false;
+
+        function showSlide(index) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            // Remove active from current slide
+            slides[currentSlide].classList.remove('active');
+            
+            // Update current slide index
+            currentSlide = index >= slides.length ? 0 : (index < 0 ? slides.length - 1 : index);
+            
+            // Add active to new slide
+            setTimeout(() => {
+                slides[currentSlide].classList.add('active');
+                isTransitioning = false;
+            }, 50);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 2000); // 2 seconds as requested
+        }
+
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+
+        // Initialize slider
+        startSlider();
+
+        // Pause on hover
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', stopSlider);
+            heroSection.addEventListener('mouseleave', startSlider);
+        }
+
+        // Pause when page is not visible
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopSlider();
+            } else {
+                startSlider();
+            }
+        });
+
+        return {
+            next: nextSlide,
+            show: showSlide,
+            start: startSlider,
+            stop: stopSlider
+        };
+    }
+
+    // === SMOOTH SCROLL FOR ANCHOR LINKS ===
+    function initSmoothScroll() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const headerHeight = document.querySelector('.navbar')?.offsetHeight || 70;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+
+    // === COMPREHENSIVE FADE-UP ANIMATIONS ON SCROLL ===
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add fade-in class for smooth animation
+                    entry.target.classList.add('fade-in');
+                    
+                    // Add additional animations based on element type
+                    if (entry.target.classList.contains('safari-package-card')) {
+                        setTimeout(() => {
+                            entry.target.style.transform = 'translateY(0)';
+                            entry.target.style.opacity = '1';
+                        }, 100);
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade elements
+        const fadeElements = document.querySelectorAll('.fade-element');
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Also observe cards and sections for legacy support
+        const animatedElements = document.querySelectorAll(
+            '.safari-package-card, .attraction-card, section'
+        );
+        
+        animatedElements.forEach(el => {
+            if (!el.classList.contains('fade-element')) {
+                observer.observe(el);
+            }
+        });
+    }
+
+    // === LAZY LOADING FOR IMAGES ===
+    function initLazyLoading() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.remove('loading');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            const images = document.querySelectorAll('img[data-src], img.loading');
+            images.forEach(img => imageObserver.observe(img));
+        }
+    }
+
+    // === FORM ENHANCEMENTS ===
+    function initFormEnhancements() {
+        // Newsletter form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                
+                if (email) {
+                    // Show success message (replace with actual implementation)
+                    showNotification('Thank you! We\'ll send you safari tips and exclusive offers.', 'success');
+                    this.reset();
+                }
+            });
+        }
+
+        // Contact forms validation
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('is-invalid');
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid && !form.classList.contains('newsletter-form')) {
+                    e.preventDefault();
+                    showNotification('Please fill in all required fields.', 'error');
+                }
+            });
+        });
+    }
+
+    // === NOTIFICATION SYSTEM ===
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} alert-dismissible fade show`;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1060;
+            min-width: 300px;
+            max-width: 500px;
+        `;
+        
+        notification.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        
+        document.body.appendChild(notification);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 150);
+            }
+        }, 5000);
+    }
+
+    // === WHATSAPP BUTTON ANIMATION ===
+    function initWhatsAppButton() {
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+        if (!whatsappBtn) return;
+
+        // Add pulse animation
+        whatsappBtn.style.animation = 'pulse 2s infinite';
+
+        // Add CSS for pulse animation if not already present
+        if (!document.querySelector('#whatsapp-animation')) {
+            const style = document.createElement('style');
+            style.id = 'whatsapp-animation';
+            style.textContent = `
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+                    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // === PERFORMANCE OPTIMIZATIONS ===
+    function optimizePerformance() {
+        // Preload critical images
+        const criticalImages = [
+            'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5', // Gorilla image
+            'https://images.unsplash.com/photo-1557804506-669a67965ba0'   // Safari image
+        ];
+
+        criticalImages.forEach(src => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            document.head.appendChild(link);
+        });
+    }
+
+    // === ACCESSIBILITY ENHANCEMENTS ===
+    function initAccessibility() {
+        // Add keyboard navigation for dropdowns
+        const dropdowns = document.querySelectorAll('.dropdown-toggle');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Improve focus visibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    }
+
+    // === SAFARI PACKAGE CARD CAROUSEL FUNCTIONALITY ===
+    function initCardCarousels() {
+        const carousels = document.querySelectorAll('.card-image-carousel');
+        
+        carousels.forEach((carousel, carouselIndex) => {
+            const images = carousel.querySelectorAll('.carousel-img');
+            const indicators = carousel.querySelectorAll('.indicator');
+            let currentSlide = 0;
+            let autoRotateInterval;
+            
+            // Auto-rotate images every 3 seconds
+            function startAutoRotate() {
+                autoRotateInterval = setInterval(() => {
+                    showNextSlide();
+                }, 3000);
+            }
+            
+            // Stop auto-rotation
+            function stopAutoRotate() {
+                clearInterval(autoRotateInterval);
+            }
+            
+            // Show specific slide
+            function showSlide(index) {
+                // Hide all images
+                images.forEach(img => {
+                    img.classList.remove('active');
+                    img.style.opacity = '0';
+                    img.style.transform = 'scale(1)';
+                });
+                
+                // Remove active class from all indicators
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                
+                // Show current image
+                if (images[index]) {
+                    images[index].classList.add('active');
+                    images[index].style.opacity = '1';
+                    images[index].style.transform = 'scale(1)';
+                }
+                
+                // Activate current indicator
+                if (indicators[index]) {
+                    indicators[index].classList.add('active');
+                }
+                
+                currentSlide = index;
+            }
+            
+            // Show next slide
+            function showNextSlide() {
+                const nextIndex = (currentSlide + 1) % images.length;
+                showSlide(nextIndex);
+            }
+            
+            // Add click handlers to indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showSlide(index);
+                    stopAutoRotate();
+                    // Restart auto-rotation after manual interaction
+                    setTimeout(startAutoRotate, 5000);
+                });
+                
+                indicator.addEventListener('mouseenter', () => {
+                    indicator.style.transform = 'scale(1.2)';
+                });
+                
+                indicator.addEventListener('mouseleave', () => {
+                    if (!indicator.classList.contains('active')) {
+                        indicator.style.transform = 'scale(1)';
+                    }
+                });
+            });
+            
+            // Pause auto-rotation on carousel hover
+            carousel.addEventListener('mouseenter', () => {
+                stopAutoRotate();
+                // Add subtle zoom effect to active image
+                const activeImg = carousel.querySelector('.carousel-img.active');
+                if (activeImg) {
+                    activeImg.style.transform = 'scale(1.05)';
+                }
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startAutoRotate();
+                // Remove zoom effect
+                const activeImg = carousel.querySelector('.carousel-img.active');
+                if (activeImg) {
+                    activeImg.style.transform = 'scale(1)';
+                }
+            });
+            
+            // Touch/swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoRotate();
+            });
+            
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                setTimeout(startAutoRotate, 3000);
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swiped left - next slide
+                        showNextSlide();
+                    } else {
+                        // Swiped right - previous slide
+                        const prevIndex = (currentSlide - 1 + images.length) % images.length;
+                        showSlide(prevIndex);
+                    }
+                }
+            }
+            
+            // Initialize carousel
+            if (images.length > 0) {
+                showSlide(0);
+                if (images.length > 1) {
+                    startAutoRotate();
+                }
+            }
+        });
+    }
+
+    // === ENHANCED SAFARI FEATURES ===
+    function initSafariFeatures() {
+        // Initialize carousels first
+        initCardCarousels();
+        
+        // Enhanced hover effects for all interactive elements
+        const interactiveElements = document.querySelectorAll('.hover-card, .hover-button, .hover-image');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            });
+        });
+
+        // Safari card enhanced interactions
+        const safariCards = document.querySelectorAll('.safari-package-card');
+        safariCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                // Add glow effect
+                this.style.boxShadow = '0 25px 50px rgba(46, 125, 50, 0.15)';
+                
+                // Animate price highlighting
+                const price = this.querySelector('.text-primary');
+                if (price) {
+                    price.style.transform = 'scale(1.1)';
+                    price.style.transition = 'transform 0.3s ease';
+                }
+                
+                // Enhance carousel indicators visibility
+                const indicators = this.querySelectorAll('.indicator');
+                indicators.forEach(indicator => {
+                    indicator.style.opacity = '1';
+                    indicator.style.transform = indicator.classList.contains('active') ? 'scale(1.2)' : 'scale(1.1)';
+                });
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 8px 30px rgba(0,0,0,0.08)';
+                
+                const price = this.querySelector('.text-primary');
+                if (price) {
+                    price.style.transform = 'scale(1)';
+                }
+                
+                // Reset indicators
+                const indicators = this.querySelectorAll('.indicator');
+                indicators.forEach(indicator => {
+                    indicator.style.transform = indicator.classList.contains('active') ? 'scale(1.2)' : 'scale(1)';
+                });
+            });
+        });
+
+        // Western client-focused features
+        initWesternClientFeatures();
+
+        // Add click tracking for analytics (placeholder)
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('[data-track]');
+            if (target) {
+                const action = target.dataset.track;
+                // Replace with actual analytics tracking (Google Analytics, etc.)
+                console.log('Tracking action:', action);
+                
+                // Example: gtag('event', 'click', { action: action });
+            }
+        });
+    }
+
+    // === WESTERN CLIENT OPTIMIZATION ===
+    function initWesternClientFeatures() {
+        // Currency display based on user location (placeholder)
+        const priceElements = document.querySelectorAll('[data-price]');
+        priceElements.forEach(element => {
+            // Could implement currency conversion here
+            // const userCurrency = detectUserCurrency();
+            // convertPriceTo(element, userCurrency);
+        });
+
+        // Add testimonials rotation for social proof
+        rotateSocialProof();
+
+        // Initialize trust indicators
+        showTrustIndicators();
+    }
+
+    // === SOCIAL PROOF ROTATION ===
+    function rotateSocialProof() {
+        const testimonials = [
+            { text: "Amazing gorilla trekking experience!", author: "Sarah M., USA" },
+            { text: "Best safari company in East Africa!", author: "James R., UK" },
+            { text: "Professional guides, luxury accommodations!", author: "Emma L., Canada" },
+            { text: "Unforgettable wildlife encounters!", author: "Michael B., Australia" }
+        ];
+
+        // Rotate testimonials every 5 seconds
+        let currentTestimonial = 0;
+        const testimonialElement = document.querySelector('.rotating-testimonial');
+        
+        if (testimonialElement) {
+            setInterval(() => {
+                testimonialElement.style.opacity = '0';
+                setTimeout(() => {
+                    testimonialElement.innerHTML = `
+                        <p>"${testimonials[currentTestimonial].text}"</p>
+                        <small>- ${testimonials[currentTestimonial].author}</small>
+                    `;
+                    testimonialElement.style.opacity = '1';
+                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                }, 300);
+            }, 5000);
+        }
+    }
+
+    // === TRUST INDICATORS ===
+    function showTrustIndicators() {
+        // Add trust badges animation
+        const trustBadges = document.querySelectorAll('.trust-badge');
+        trustBadges.forEach((badge, index) => {
+            setTimeout(() => {
+                badge.classList.add('fade-in');
+            }, index * 200);
+        });
+    }
+
+    // === INITIALIZATION ===
+    function init() {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+            return;
+        }
+
+        // Initialize all features
+        try {
+            initNavbarScroll();
+            initHeroSlider();
+            initSmoothScroll();
+            initScrollAnimations();
+            initLazyLoading();
+            initFormEnhancements();
+            initWhatsAppButton();
+            initAccessibility();
+            initSafariFeatures();
+            optimizePerformance();
+
+            console.log('Gisu Safaris website initialized successfully!');
+        } catch (error) {
+            console.error('Error initializing website:', error);
+        }
+    }
+
+    // === WINDOW LOAD OPTIMIZATIONS ===
+    window.addEventListener('load', function() {
+        // Remove any loading classes
+        document.body.classList.remove('loading');
+        
+        // Initialize additional features that need full page load
+        setTimeout(() => {
+            // Any additional animations or features
+        }, 100);
+    });
+
+    // === ERROR HANDLING ===
+    window.addEventListener('error', function(e) {
+        console.error('JavaScript error:', e.error);
+        // Optionally send to error tracking service
+    });
+
+    // Start initialization
+    init();
+
+    // === UTILITY FUNCTIONS ===
+    window.GisuSafaris = {
+        showNotification: showNotification,
+        utils: {
+            debounce: function(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+            throttle: function(func, delay) {
+                let timeoutId;
+                let lastExecTime = 0;
+                return function (...args) {
+                    const currentTime = Date.now();
+                    
+                    if (currentTime - lastExecTime > delay) {
+                        func.apply(this, args);
+                        lastExecTime = currentTime;
+                    } else {
+                        clearTimeout(timeoutId);
+                        timeoutId = setTimeout(() => {
+                            func.apply(this, args);
+                            lastExecTime = Date.now();
+                        }, delay - (currentTime - lastExecTime));
+                    }
+                };
+            }
+        }
+    };
+
+})();
