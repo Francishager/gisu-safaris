@@ -514,17 +514,20 @@ footer a:hover {
     background: white;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px) scale(0.8);
+    display: none; /* Initially hidden */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow: hidden;
 }
 
-.whatsapp-chat.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
+/* When displayed, show immediately with proper styles */
+.whatsapp-chat[style*="display: block"] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1) !important;
 }
 
 .chat-header {

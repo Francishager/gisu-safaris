@@ -705,80 +705,52 @@
     
     <!-- WhatsApp Widget JavaScript -->
     <script>
-        let isWhatsAppChatOpen = false;
+        // WhatsApp Widget functionality
+        let whatsappChatVisible = false;
+        const phoneNumber = '256780950555';
+        const defaultMessage = '🐵 Hi! I\'m interested in the chimpanzee tracking safari. Could you please provide more information about availability and pricing?';
         
         function toggleWhatsAppChat() {
-            const chatWindow = document.getElementById('whatsappChat');
-            isWhatsAppChatOpen = !isWhatsAppChatOpen;
+            const whatsappChat = document.getElementById('whatsappChat');
+            const messageInput = document.getElementById('whatsappMessage');
             
-            if (isWhatsAppChatOpen) {
-                chatWindow.style.display = 'block';
-                chatWindow.style.animation = 'slideInUp 0.3s ease';
-                setTimeout(() => {
-                    document.getElementById('whatsappMessage').focus();
-                }, 300);
+            if (whatsappChatVisible) {
+                whatsappChat.style.display = 'none';
+                whatsappChatVisible = false;
+                messageInput.disabled = true;
             } else {
-                chatWindow.style.animation = 'slideOutDown 0.3s ease';
-                setTimeout(() => {
-                    chatWindow.style.display = 'none';
-                }, 300);
-                document.getElementById('whatsappMessage').value = '';
-                updateSendButton();
+                whatsappChat.style.display = 'block';
+                whatsappChatVisible = true;
+                messageInput.disabled = false;
+                messageInput.focus();
             }
         }
         
         function sendWhatsAppMessage() {
-            const message = document.getElementById('whatsappMessage').value.trim();
-            const defaultMessage = "Hi! I'm interested in chimpanzee tracking safari from your website.";
-            const finalMessage = message || defaultMessage;
-            const phoneNumber = "256780950555";
-            
+            const messageInput = document.getElementById('whatsappMessage');
+            const userMessage = messageInput.value.trim();
+            const finalMessage = userMessage || defaultMessage;
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
             window.open(whatsappUrl, '_blank');
             
+            // Reset and hide chat
+            messageInput.value = '';
             toggleWhatsAppChat();
         }
         
-        function updateSendButton() {
-            const input = document.getElementById('whatsappMessage');
-            const sendBtn = document.querySelector('.whatsapp-send-btn');
-            
-            if (input && sendBtn) {
-                if (input.value.trim()) {
-                    sendBtn.style.opacity = '1';
-                    sendBtn.disabled = false;
-                } else {
-                    sendBtn.style.opacity = '0.6';
-                    sendBtn.disabled = true;
-                }
+        // Enable Enter key to send message
+        document.getElementById('whatsappMessage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendWhatsAppMessage();
             }
-        }
+        });
         
-        document.addEventListener('DOMContentLoaded', function() {
-            const messageInput = document.getElementById('whatsappMessage');
-            
-            if (messageInput) {
-                messageInput.addEventListener('input', updateSendButton);
-                
-                messageInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        if (messageInput.value.trim()) {
-                            sendWhatsAppMessage();
-                        }
-                    }
-                });
+        // Close chat when clicking outside
+        document.addEventListener('click', function(e) {
+            const whatsappWidget = document.querySelector('.whatsapp-widget');
+            if (!whatsappWidget.contains(e.target) && whatsappChatVisible) {
+                toggleWhatsAppChat();
             }
-            
-            document.addEventListener('click', function(e) {
-                const widget = document.querySelector('.whatsapp-widget');
-                
-                if (isWhatsAppChatOpen && widget && !widget.contains(e.target)) {
-                    toggleWhatsAppChat();
-                }
-            });
-            
-            updateSendButton();
         });
     </script>
     <script>
