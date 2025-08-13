@@ -927,28 +927,32 @@ footer a:hover {
         margin-bottom: 2rem;
     }
     
-    /* WhatsApp widget adjustments for mobile */
+    /* WhatsApp widget adjustments for mobile - FIXED POSITIONING */
     .floating-whatsapp {
-        bottom: 15px;
-        right: 15px;
+        bottom: 20px !important;
+        right: 15px !important;
     }
     
     .whatsapp-widget {
-        bottom: 15px;
-        right: 15px;
+        bottom: 20px !important;
+        right: 15px !important;
+        position: fixed !important;
     }
     
-    .whatsapp-toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 1.4rem;
+    .whatsapp-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.3rem !important;
     }
     
     .whatsapp-chat {
-        width: calc(100vw - 40px);
-        max-width: 300px;
-        bottom: 65px;
-        right: -10px;
+        width: calc(100vw - 30px) !important;
+        max-width: 350px !important;
+        bottom: 75px !important;
+        right: 0 !important;
+        left: auto !important;
+        position: absolute !important;
+        z-index: 1001 !important;
     }
     
     /* Ensure send button is visible and properly sized on mobile */
@@ -972,6 +976,16 @@ footer a:hover {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+    
+    .whatsapp-input-group {
+        display: flex !important;
+        gap: 8px !important;
+    }
+    
+    .whatsapp-input {
+        flex: 1 !important;
+        min-width: 0 !important;
     }
     
     /* Best Time to Visit section adjustments for mobile */
