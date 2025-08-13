@@ -706,11 +706,43 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp Chat Widget -->
     <div class="floating-whatsapp">
-        <a href="https://wa.me/256780950555?text=Hi! I'm interested in the Kibale National Park Safari." 
-           target="_blank" 
-           class="whatsapp-btn btn">
-            <i class="fab fa-whatsapp"></i>
+        <div class="whatsapp-widget">
+            <!-- Chat Window -->
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>🐒 Hello! Interested in Kibale Chimpanzee Trekking?</p>
+                    <p>Discover the primates of Kibale National Park and enjoy unforgettable chimpanzee encounters in Uganda's primate capital!</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
         </a>
     </div>
 
