@@ -293,35 +293,31 @@ $$ language 'plpgsql';
 -- Apply triggers to tables that need automatic updated_at updates
 CREATE TRIGGER update_admin_users_updated_at 
     BEFORE UPDATE ON admin_users 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_contact_submissions_updated_at 
     BEFORE UPDATE ON contact_submissions 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_safari_bookings_updated_at 
     BEFORE UPDATE ON safari_bookings 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_general_enquiries_updated_at 
     BEFORE UPDATE ON general_enquiries 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_quote_requests_updated_at 
     BEFORE UPDATE ON quote_requests 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
-
-CREATE TRIGGER update_multi_country_bookings_updated_at 
-    BEFORE UPDATE ON multi_country_bookings 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_newsletter_subscriptions_updated_at 
     BEFORE UPDATE ON newsletter_subscriptions 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_email_templates_updated_at 
     BEFORE UPDATE ON email_templates 
-    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- =============================================
 -- INITIAL DATA INSERTION
