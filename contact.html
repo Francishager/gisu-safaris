@@ -570,9 +570,9 @@
                     </div>
                     <div class="newsletter">
                         <h6>Newsletter</h6>
-                        <form class="newsletter-form">
+                        <form class="newsletter-form" id="footerNewsletterForm">
                             <div class="input-group mb-2">
-                                <input type="email" class="form-control" placeholder="Your email" required>
+                                <input type="email" class="form-control" name="email" placeholder="Your email" required>
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-paper-plane"></i>
                                 </button>
@@ -679,30 +679,70 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
                 submitBtn.disabled = true;
                 
-                // Simulate API call
-                setTimeout(() => {
-                    // Show success message
-                    if (window.GisuSafaris && window.GisuSafaris.showNotification) {
-                        window.GisuSafaris.showNotification(
-                            'Thank you for your safari inquiry! We\'ll get back to you within 24 hours with a personalized itinerary.',
-                            'success'
-                        );
-                    } else {
-                        alert('Thank you for your safari inquiry! We\'ll get back to you within 24 hours.');
+                // Send data to backend API
+                fetch('/backend/api/contact.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    
-                    // Reset form
-                    form.reset();
-                    form.classList.remove('was-validated');
+                    return response.json();
+                })
+                .then(result => {
+                    // Show success message
+                    if (result.success) {
+                        if (window.GisuSafaris && window.GisuSafaris.showNotification) {
+                            window.GisuSafaris.showNotification(
+                                result.message || 'Thank you for your safari inquiry! We\'ll get back to you within 24 hours.',
+                                'success'
+                            );
+                        } else {
+                            alert(result.message || 'Thank you for your safari inquiry! We\'ll get back to you within 24 hours.');
+                        }
+                        
+                        // Reset form
+                        form.reset();
+                        form.classList.remove('was-validated');
+                        
+                    } else {
+                        // Show error message
+                        if (window.GisuSafaris && window.GisuSafaris.showNotification) {
+                            window.GisuSafaris.showNotification(
+                                result.message || 'There was an error submitting your request. Please try again.',
+                                'error'
+                            );
+                        } else {
+                            alert(result.message || 'There was an error submitting your request. Please try again.');
+                        }
+                    }
                     
                     // Reset button
                     submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send My Safari Request';
                     submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
                     
-                    // Log data (replace with actual API call)
-                    console.log('Safari inquiry submitted:', data);
+                    // Show error message
+                    if (window.GisuSafaris && window.GisuSafaris.showNotification) {
+                        window.GisuSafaris.showNotification(
+                            'Unable to submit your request. Please check your connection and try again.',
+                            'error'
+                        );
+                    } else {
+                        alert('Unable to submit your request. Please check your connection and try again.');
+                    }
                     
-                }, 2000);
+                    // Reset button
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send My Safari Request';
+                    submitBtn.disabled = false;
+                });
             });
         });
     </script>
@@ -787,6 +827,82 @@
         if (chatWidget) {
             chatWidget.addEventListener('click', function(event) {
                 event.stopPropagation();
+            });
+        }
+    });
+    </script>
+    
+    <!-- Newsletter Form JavaScript -->
+    <script>
+    // Newsletter form integration
+    document.addEventListener('DOMContentLoaded', function() {
+        const newsletterForm = document.getElementById('footerNewsletterForm');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const emailInput = newsletterForm.querySelector('input[name="email"]');
+                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+                const email = emailInput.value.trim();
+                
+                if (!email) {
+                    alert('Please enter your email address');
+                    return;
+                }
+                
+                // Basic email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Change button state
+                const originalContent = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                submitBtn.disabled = true;
+                
+                // Send to newsletter API
+                fetch('/backend/api/newsletter.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        source: 'footer'
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    if (result.success) {
+                        // Success message
+                        alert(result.message || 'Thank you for subscribing to our newsletter!');
+                        newsletterForm.reset();
+                    } else {
+                        // Error message
+                        alert(result.message || 'Error subscribing to newsletter. Please try again.');
+                    }
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Newsletter subscription error:', error);
+                    alert('Unable to subscribe. Please check your connection and try again.');
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                });
             });
         }
     });
