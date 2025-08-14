@@ -631,4 +631,71 @@ function generateAdminNotificationEmail($data, $contact_id) {
         <p><em>Please follow up with this customer within 24 hours.</em></p>
     ";
 }
+
+/**
+ * Send email to multiple admin addresses for booking notifications
+ * This function sends the same email to all admin email addresses defined in ADMIN_EMAIL_LIST
+ */
+function sendMultipleAdminEmails($subject, $body, $template_data = []) {
+    $success_count = 0;
+    $failed_count = 0;
+    $admin_emails = ADMIN_EMAIL_LIST;
+    $results = [];
+    
+    foreach ($admin_emails as $admin_email) {
+        try {
+            if (sendEmail($admin_email, $subject, $body, $template_data)) {
+                $success_count++;
+                $results[$admin_email] = 'success';
+                
+                // Log successful send
+                logEvent('info', "Admin notification email sent successfully to: $admin_email", [
+                    'subject' => $subject,
+                    'recipient' => $admin_email,
+                    'type' => 'admin_notification'
+                ]);
+            } else {
+                $failed_count++;
+                $results[$admin_email] = 'failed';
+                
+                // Log failure
+                logEvent('warning', "Failed to send admin email to $admin_email - sendEmail returned false", [
+                    'subject' => $subject,
+                    'recipient' => $admin_email
+                ]);
+            }
+        } catch (Exception $e) {
+            $failed_count++;
+            $results[$admin_email] = 'error: ' . $e->getMessage();
+            
+            // Log exception
+            logEvent('error', "Exception while sending admin email to $admin_email: " . $e->getMessage(), [
+                'subject' => $subject,
+                'recipient' => $admin_email,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+        }
+    }
+    
+    // Log summary
+    logEvent('info', 'Multi-admin email send completed', [
+        'total_recipients' => count($admin_emails),
+        'successful_sends' => $success_count,
+        'failed_sends' => $failed_count,
+        'results' => $results,
+        'subject' => $subject
+    ]);
+    
+    // Return true if at least one email was sent successfully
+    return $success_count > 0;
+}
+
+/**
+ * Send admin notification for any booking submission
+ * Uses the multiple admin email function to notify all configured admin addresses
+ */
+function sendBookingNotificationToAdmins($subject, $body, $template_data = []) {
+    return sendMultipleAdminEmails($subject, $body, $template_data);
+}
 ?>

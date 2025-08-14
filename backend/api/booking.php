@@ -184,23 +184,29 @@ try {
         ]);
     }
     
-    // Send notification email to admin
+    // Send notification emails to all admin addresses
     try {
         $admin_subject = "New Safari Booking - {$data['package_name']} - {$data['first_name']} {$data['last_name']}";
         $admin_message = generateBookingAdminNotificationEmail($data, $booking_id);
         
-        sendEmail(
-            BOOKING_NOTIFICATION_EMAIL,
-            'Gisu Safaris Bookings',
+        $admin_sent = sendMultipleAdminEmails(
             $admin_subject,
-            $admin_message,
-            strip_tags($admin_message)
+            $admin_message
         );
         
-        logEvent('info', 'Admin booking notification email sent', ['booking_id' => $booking_id]);
+        if ($admin_sent) {
+            logEvent('info', 'Admin booking notification emails sent', [
+                'booking_id' => $booking_id,
+                'recipients' => ADMIN_EMAIL_LIST
+            ]);
+        } else {
+            logEvent('warning', 'Failed to send admin booking notification emails', [
+                'booking_id' => $booking_id
+            ]);
+        }
         
     } catch (Exception $e) {
-        logEvent('error', 'Failed to send booking admin notification email', [
+        logEvent('error', 'Exception while sending admin booking notification emails', [
             'booking_id' => $booking_id,
             'error' => $e->getMessage()
         ]);

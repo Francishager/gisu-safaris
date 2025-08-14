@@ -164,23 +164,29 @@ try {
         ]);
     }
     
-    // Send notification email to admin
+    // Send notification emails to all admin addresses
     try {
         $admin_subject = "New Enquiry - {$data['subject']} - {$data['first_name']} {$data['last_name']}";
         $admin_message = generateEnquiryAdminNotificationEmail($data, $enquiry_id);
         
-        sendEmail(
-            CONTACT_NOTIFICATION_EMAIL,
-            'Gisu Safaris Info',
+        $admin_sent = sendMultipleAdminEmails(
             $admin_subject,
-            $admin_message,
-            strip_tags($admin_message)
+            $admin_message
         );
         
-        logEvent('info', 'Admin enquiry notification email sent', ['enquiry_id' => $enquiry_id]);
+        if ($admin_sent) {
+            logEvent('info', 'Admin enquiry notification emails sent', [
+                'enquiry_id' => $enquiry_id,
+                'recipients' => ADMIN_EMAIL_LIST
+            ]);
+        } else {
+            logEvent('warning', 'Failed to send admin enquiry notification emails', [
+                'enquiry_id' => $enquiry_id
+            ]);
+        }
         
     } catch (Exception $e) {
-        logEvent('error', 'Failed to send enquiry admin notification email', [
+        logEvent('error', 'Exception while sending admin enquiry notification emails', [
             'enquiry_id' => $enquiry_id,
             'error' => $e->getMessage()
         ]);

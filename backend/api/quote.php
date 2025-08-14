@@ -198,23 +198,29 @@ try {
         ]);
     }
     
-    // Send notification email to admin
+    // Send notification emails to all admin addresses
     try {
         $admin_subject = "New Quote Request - {$data['destination']} - {$data['first_name']} {$data['last_name']}";
         $admin_message = generateQuoteAdminNotificationEmail($data, $quote_id);
         
-        sendEmail(
-            BOOKING_NOTIFICATION_EMAIL,
-            'Gisu Safaris Quotes',
+        $admin_sent = sendMultipleAdminEmails(
             $admin_subject,
-            $admin_message,
-            strip_tags($admin_message)
+            $admin_message
         );
         
-        logEvent('info', 'Admin quote notification email sent', ['quote_id' => $quote_id]);
+        if ($admin_sent) {
+            logEvent('info', 'Admin quote notification emails sent', [
+                'quote_id' => $quote_id,
+                'recipients' => ADMIN_EMAIL_LIST
+            ]);
+        } else {
+            logEvent('warning', 'Failed to send admin quote notification emails', [
+                'quote_id' => $quote_id
+            ]);
+        }
         
     } catch (Exception $e) {
-        logEvent('error', 'Failed to send quote admin notification email', [
+        logEvent('error', 'Exception while sending admin quote notification emails', [
             'quote_id' => $quote_id,
             'error' => $e->getMessage()
         ]);

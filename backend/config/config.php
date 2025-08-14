@@ -63,6 +63,14 @@ define('ADMIN_EMAIL', 'admin@gisusafaris.com');
 define('BOOKING_NOTIFICATION_EMAIL', 'bookings@gisusafaris.com');
 define('CONTACT_NOTIFICATION_EMAIL', 'info@gisusafaris.com');
 
+// Additional admin email addresses for all booking notifications
+define('ADMIN_EMAIL_LIST', [
+    'gisusafaris@gmail.com',
+    'rmagomu@yahoo.com',
+    'admin@gisusafaris.com',
+    'bookings@gisusafaris.com'
+]);
+
 // CORS Configuration
 define('CORS_ORIGINS', [
     'https://gisusafaris.com',

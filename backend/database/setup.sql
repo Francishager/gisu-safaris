@@ -138,7 +138,42 @@ CREATE TABLE IF NOT EXISTS quote_requests (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- 6. Newsletter Subscriptions (newsletter.php API)
+-- 6. Multi-Country Tour Bookings (multi-country.php API)
+CREATE TABLE IF NOT EXISTS multi_country_bookings (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    booking_id VARCHAR(50) UNIQUE NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50),
+    country VARCHAR(100) NOT NULL,
+    tour_combination VARCHAR(100) NOT NULL,
+    duration VARCHAR(50),
+    group_size VARCHAR(20) NOT NULL,
+    travel_date DATE,
+    budget_range VARCHAR(50),
+    accommodation_level VARCHAR(50) DEFAULT 'mid-range',
+    countries_included VARCHAR(255) NOT NULL,
+    primary_interests JSONB DEFAULT '[]',
+    special_requirements TEXT,
+    dietary_requirements TEXT,
+    mobility_requirements TEXT,
+    gorilla_permit_required BOOLEAN DEFAULT false,
+    message TEXT,
+    newsletter_opt_in BOOLEAN DEFAULT false,
+    booking_status VARCHAR(20) DEFAULT 'pending',
+    payment_status VARCHAR(20) DEFAULT 'pending',
+    total_amount DECIMAL(12,2),
+    currency VARCHAR(3) DEFAULT 'USD',
+    confirmed_at TIMESTAMP WITH TIME ZONE,
+    ip_address INET,
+    user_agent TEXT,
+    referrer_url TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 7. Newsletter Subscriptions (newsletter.php API)
 CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -219,6 +254,14 @@ CREATE INDEX IF NOT EXISTS idx_quote_requests_created_at ON quote_requests(creat
 CREATE INDEX IF NOT EXISTS idx_quote_requests_status ON quote_requests(quote_status);
 CREATE INDEX IF NOT EXISTS idx_quote_requests_destination ON quote_requests(destination);
 
+-- Multi-country bookings indexes
+CREATE INDEX IF NOT EXISTS idx_multi_country_bookings_email ON multi_country_bookings(email);
+CREATE INDEX IF NOT EXISTS idx_multi_country_bookings_booking_id ON multi_country_bookings(booking_id);
+CREATE INDEX IF NOT EXISTS idx_multi_country_bookings_created_at ON multi_country_bookings(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_multi_country_bookings_status ON multi_country_bookings(booking_status);
+CREATE INDEX IF NOT EXISTS idx_multi_country_bookings_combination ON multi_country_bookings(tour_combination);
+CREATE INDEX IF NOT EXISTS idx_multi_country_bookings_travel_date ON multi_country_bookings(travel_date);
+
 -- Newsletter subscriptions indexes
 CREATE INDEX IF NOT EXISTS idx_newsletter_subscriptions_email ON newsletter_subscriptions(email);
 CREATE INDEX IF NOT EXISTS idx_newsletter_subscriptions_status ON newsletter_subscriptions(status);
@@ -250,31 +293,35 @@ $$ language 'plpgsql';
 -- Apply triggers to tables that need automatic updated_at updates
 CREATE TRIGGER update_admin_users_updated_at 
     BEFORE UPDATE ON admin_users 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 CREATE TRIGGER update_contact_submissions_updated_at 
     BEFORE UPDATE ON contact_submissions 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 CREATE TRIGGER update_safari_bookings_updated_at 
     BEFORE UPDATE ON safari_bookings 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 CREATE TRIGGER update_general_enquiries_updated_at 
     BEFORE UPDATE ON general_enquiries 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 CREATE TRIGGER update_quote_requests_updated_at 
     BEFORE UPDATE ON quote_requests 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+
+CREATE TRIGGER update_multi_country_bookings_updated_at 
+    BEFORE UPDATE ON multi_country_bookings 
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 CREATE TRIGGER update_newsletter_subscriptions_updated_at 
     BEFORE UPDATE ON newsletter_subscriptions 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 CREATE TRIGGER update_email_templates_updated_at 
     BEFORE UPDATE ON email_templates 
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 -- =============================================
 -- INITIAL DATA INSERTION
@@ -317,6 +364,18 @@ VALUES
     'Quote Request Received - {{destination}} Safari - Quote #{{quote_id}}',
     '<h2>Quote Request Received</h2><p>Dear {{first_name}},</p><p>Thank you for requesting a custom quote for your {{destination}} safari.</p>',
     'Dear {{first_name}}, Thank you for requesting a custom quote for your {{destination}} safari.'
+),
+(
+    'multi_country_booking_confirmation',
+    'Multi-Country Safari Booking Received - {{tour_combination}} - Booking #{{booking_id}}',
+    '<h2>Multi-Country Safari Booking Confirmation</h2><p>Dear {{first_name}} {{last_name}},</p><p>Thank you for booking your {{tour_combination}} adventure with Gisu Safaris!</p><p><strong>Booking Details:</strong></p><ul><li>Booking ID: {{booking_id}}</li><li>Countries: {{countries_included}}</li><li>Duration: {{duration}}</li><li>Group Size: {{group_size}}</li><li>Travel Date: {{travel_date}}</li><li>Accommodation Level: {{accommodation_level}}</li></ul><p>Our team will contact you within 24 hours to discuss your multi-country safari itinerary and next steps.</p>',
+    'Dear {{first_name}} {{last_name}}, Thank you for booking your {{tour_combination}} with Gisu Safaris! Booking ID: {{booking_id}}. Countries: {{countries_included}}. We will contact you within 24 hours.'
+),
+(
+    'multi_country_booking_admin',
+    'New Multi-Country Booking - {{tour_combination}} - {{booking_id}}',
+    '<h2>New Multi-Country Safari Booking</h2><p><strong>Customer Details:</strong></p><ul><li>Name: {{first_name}} {{last_name}}</li><li>Email: {{email}}</li><li>Phone: {{phone}}</li><li>Country: {{country}}</li></ul><p><strong>Tour Details:</strong></p><ul><li>Combination: {{tour_combination}}</li><li>Countries: {{countries_included}}</li><li>Duration: {{duration}}</li><li>Group Size: {{group_size}}</li><li>Travel Date: {{travel_date}}</li><li>Budget Range: {{budget_range}}</li><li>Special Requirements: {{special_requirements}}</li></ul><p><a href="{{booking_url}}">View Full Booking Details</a></p>',
+    'New multi-country booking: {{first_name}} {{last_name}} ({{email}}) - {{tour_combination}} - {{countries_included}} - {{travel_date}}'
 )
 ON CONFLICT (name) DO NOTHING;
 

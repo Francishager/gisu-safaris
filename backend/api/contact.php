@@ -168,23 +168,29 @@ try {
         ]);
     }
     
-    // Send notification email to admin
+    // Send notification emails to all admin addresses
     try {
         $admin_subject = "New Safari Inquiry - {$data['destination']} - {$data['first_name']} {$data['last_name']}";
         $admin_message = generateAdminNotificationEmail($data, $contact_id);
         
-        sendEmail(
-            CONTACT_NOTIFICATION_EMAIL,
-            'Gisu Safaris Admin',
+        $admin_sent = sendMultipleAdminEmails(
             $admin_subject,
-            $admin_message,
-            $admin_message // Plain text version
+            $admin_message
         );
         
-        logEvent('info', 'Admin notification email sent for contact form', ['contact_id' => $contact_id]);
+        if ($admin_sent) {
+            logEvent('info', 'Admin notification emails sent for contact form', [
+                'contact_id' => $contact_id,
+                'recipients' => ADMIN_EMAIL_LIST
+            ]);
+        } else {
+            logEvent('warning', 'Failed to send admin notification emails for contact form', [
+                'contact_id' => $contact_id
+            ]);
+        }
         
     } catch (Exception $e) {
-        logEvent('error', 'Failed to send admin notification email', [
+        logEvent('error', 'Exception while sending admin notification emails', [
             'contact_id' => $contact_id,
             'error' => $e->getMessage()
         ]);
