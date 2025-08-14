@@ -199,47 +199,405 @@
         </section>
 
         <!-- Detailed Itinerary -->
-        <section id="itinerary" class="py-5 bg-light">
-            <div class="container">
+        <section id="itinerary" class="py-5 bg-light position-relative">
+            <!-- Safari pattern background -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath d=%22M15 15L20 5L25 15M75 15L80 5L85 15M15 85L20 95L25 85M75 85L80 95L85 85%22 stroke=%22%23f44336%22 stroke-width=%221%22 fill=%22none%22/%3E%3C/svg%3E') center/150px;"></div>
+            
+            <div class="container position-relative">
                 <div class="text-center mb-5 fade-element">
-                    <h2 class="display-5 fw-bold">Day-by-Day <span class="text-primary">Itinerary</span></h2>
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-danger fs-6 px-3 py-2 mb-2 d-inline-block">🦁 SAFARI ADVENTURE</span>
+                        <h2 class="display-5 fw-bold">Day-by-Day <span class="text-primary position-relative">
+                            Itinerary
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#f44336" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
                     <p class="lead">Your complete 6-day Masai Mara Big Five adventure</p>
                 </div>
                 
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <!-- Day 1 -->
-                        <div class="row mb-5 fade-element">
-                            <div class="col-md-3 text-center">
-                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                    <span class="display-6 fw-bold">1</span>
-                                </div>
-                                <h5 class="mt-3 fw-bold">Day 1</h5>
-                                <small class="text-muted">Arrival</small>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body p-4">
-                                        <h4 class="card-title fw-bold text-primary">Arrival in Nairobi & Flight to Masai Mara</h4>
-                                        <p class="card-text">Welcome to Kenya! Upon arrival at Jomo Kenyatta International Airport, you'll be met by our representative and transferred to Wilson Airport for your scenic flight to Masai Mara (45 minutes). Enjoy aerial views of the Great Rift Valley and arrive at the airstrip where your safari guide awaits. Transfer to your luxury safari lodge for check-in and lunch. Afternoon game drive to start your Big Five adventure, with excellent chances of spotting lions, elephants, and other wildlife. Return for sundowner drinks and dinner.</p>
-                                        
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
-                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> Lunch, Dinner</small>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <small class="text-muted"><i class="fas fa-bed me-1"></i> Luxury Safari Lodge</small>
-                                            </div>
+                <!-- Itinerary timeline with enhanced styling -->
+                <div class="position-relative itinerary-timeline mx-auto" style="max-width: 1000px;">
+                    <!-- Vertical timeline line -->
+                    <div class="position-absolute start-50 translate-middle-x" style="top: 0; bottom: 0; width: 4px; background-color: rgba(0,0,0,0.1); z-index: 0;"></div>
+                    
+                    <!-- Day 1 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-plane-arrival"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-primary mb-0">Arrival in Nairobi & Flight to Masai Mara</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Welcome to Kenya! Upon arrival at Jomo Kenyatta International Airport, you'll be met by our representative and transferred to Wilson Airport for your scenic flight to Masai Mara (45 minutes). Enjoy aerial views of the Great Rift Valley and arrive at the airstrip where your safari guide awaits.</p>
+                                    
+                                    <!-- Itinerary highlights -->
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">🚙 <span class="text-dark fw-medium">Private airport transfer & scenic flight</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">🦓 <span class="text-dark fw-medium">Afternoon game drive - Big Five encounter</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">🥂 <span class="text-dark fw-medium">Sundowner drinks with Mara sunset views</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Trip essentials -->
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-danger me-2"></i>
+                                            <small class="fw-medium">Lunch & Dinner</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-bed text-success me-2"></i>
+                                            <small class="fw-medium">Luxury Safari Lodge</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Additional days follow similar pattern... -->
-                        <!-- Day 2-6 truncated for space -->
                         
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <!-- Day number with enhanced styling -->
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">1</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 1</h5>
+                            <div class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
+                                <i class="fas fa-map-marker-alt me-1"></i>Arrival Day
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <!-- Day 1 image -->
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Masai Mara Arrival">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Masai Mara National Reserve</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Day 2 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-danger opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-danger text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-sun"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-danger mb-0">Full Day Big Five Safari</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Early morning game drive when predators are most active. Visit the Mara River for hippos and crocodiles. Afternoon drive focuses on the Big Five - lions, leopards, elephants, buffalo, and rhinos. The Masai Mara offers the best wildlife viewing in Africa.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-danger">
+                                            <small class="text-muted d-block">🦁 <span class="text-dark fw-medium">Big cats hunting & pride interactions</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">🐘 <span class="text-dark fw-medium">Elephant herds at Mara River</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">📸 <span class="text-dark fw-medium">Professional photography opportunities</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-danger me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-paw text-danger me-2"></i>
+                                            <small class="fw-medium">Big Five Focus</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">2</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 2</h5>
+                            <div class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill">
+                                <i class="fas fa-paw me-1"></i>Big Five Safari
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1549366021-9f761d040ed6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Masai Mara Lions">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Big Five Wildlife</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-success opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-running"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-success mb-0">Great Migration Experience</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Witness the world's greatest wildlife spectacle - the Great Migration. Watch millions of wildebeest and zebras crossing the Mara River, with predators following. This natural phenomenon occurs July-October and is truly breathtaking.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">🦓 <span class="text-dark fw-medium">Wildebeest river crossings</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">🐊 <span class="text-dark fw-medium">Crocodile predation drama</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">📷 <span class="text-dark fw-medium">World-class photography</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-success me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-water text-info me-2"></i>
+                                            <small class="fw-medium">River Experience</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">3</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 3</h5>
+                            <div class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
+                                <i class="fas fa-running me-1"></i>Migration
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Great Migration">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Great Migration</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 4 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-warning opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-warning text-dark rounded-circle p-2 me-3">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-warning mb-0">Masai Cultural Experience</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Visit a traditional Masai village (manyatta) and experience authentic warrior culture. Learn traditional dances, see colorful dress and jewelry, and understand their harmonious relationship with wildlife and nature.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">👥 <span class="text-dark fw-medium">Traditional warrior ceremonies</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">🎭 <span class="text-dark fw-medium">Cultural dances & music</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">🏠 <span class="text-dark fw-medium">Village life experience</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-warning me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-users text-warning me-2"></i>
+                                            <small class="fw-medium">Cultural Visit</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">4</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 4</h5>
+                            <div class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill">
+                                <i class="fas fa-users me-1"></i>Culture
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Masai Culture">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Masai Cultural Experience</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-info opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-info text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-info mb-0">Photography & Hot Air Balloon</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Optional hot air balloon safari at sunrise (additional cost) for spectacular aerial views of the Mara ecosystem. Full day dedicated to photography with your professional guide's assistance to capture the perfect wildlife shots.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-info">
+                                            <small class="text-muted d-block">🎈 <span class="text-dark fw-medium">Hot air balloon at sunrise (optional)</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">📸 <span class="text-dark fw-medium">Professional photography guidance</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">🦎 <span class="text-dark fw-medium">Unique wildlife encounters</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-info me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-camera text-info me-2"></i>
+                                            <small class="fw-medium">Photography Focus</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">5</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 5</h5>
+                            <div class="badge bg-info-subtle text-info px-3 py-2 rounded-pill">
+                                <i class="fas fa-camera me-1"></i>Photography
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1516098851283-d0d46b4e14c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Hot Air Balloon">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Balloon Safari & Photography</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 6 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-secondary text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-plane-departure"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-secondary mb-0">Final Game Drive & Departure</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Final early morning game drive to capture any last wildlife sightings. Return to lodge for breakfast and check out. Flight back to Nairobi with incredible memories of your Masai Mara Big Five adventure.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-secondary">
+                                            <small class="text-muted d-block">🌅 <span class="text-dark fw-medium">Final sunrise game drive</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">✈️ <span class="text-dark fw-medium">Scenic flight back to Nairobi</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">🎁 <span class="text-dark fw-medium">Lifetime memories & photos</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-secondary me-2"></i>
+                                            <small class="fw-medium">Breakfast Only</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-plane text-secondary me-2"></i>
+                                            <small class="fw-medium">Flight to Nairobi</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">6</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 6</h5>
+                            <div class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill">
+                                <i class="fas fa-plane-departure me-1"></i>Departure
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Safari Memories">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Unforgettable Memories</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- View full itinerary button -->
+                <div class="text-center mt-5">
+                    <a href="#booking" class="btn btn-lg btn-primary rounded-pill shadow px-5">
+                        <i class="fas fa-calendar-check me-2"></i>Book This Safari Now
+                    </a>
                 </div>
             </div>
         </section>
