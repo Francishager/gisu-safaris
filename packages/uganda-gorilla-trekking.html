@@ -605,53 +605,96 @@
     
     <!-- WhatsApp Widget JavaScript -->
     <script>
-        // WhatsApp Widget functionality
-        let whatsappChatVisible = false;
+    // WhatsApp Chat Widget Functionality
+    function toggleWhatsAppChat() {
+        console.log('Toggle WhatsApp chat clicked'); // Debug log
+        const chatWidget = document.getElementById('whatsappChat');
+        if (!chatWidget) {
+            console.error('WhatsApp chat widget not found!');
+            return;
+        }
+        
+        console.log('Chat widget found, toggling active class');
+        chatWidget.classList.toggle('active');
+        
+        // Focus on input when chat opens
+        if (chatWidget.classList.contains('active')) {
+            console.log('Chat opened, focusing input');
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) {
+                    input.focus();
+                    console.log('Input focused');
+                } else {
+                    console.error('WhatsApp input not found!');
+                }
+            }, 300);
+        } else {
+            console.log('Chat closed');
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        
+        if (message === '') {
+            messageInput.focus();
+            return;
+        }
+        
+        // Create WhatsApp URL with the message
         const phoneNumber = '256780950555';
-        const defaultMessage = '🦍 Hi! I\'m interested in the Ultimate Gorilla Trekking Safari. Could you please provide more information about permits and availability?';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         
-        function toggleWhatsAppChat() {
-            const whatsappChat = document.getElementById('whatsappChat');
-            const messageInput = document.getElementById('whatsappMessage');
+        // Open WhatsApp with the message
+        window.open(whatsappUrl, '_blank');
+        
+        // Clear the input and close the chat
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    
+    // Handle Enter key press in the input field
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageInput = document.getElementById('whatsappMessage');
+        if (messageInput) {
+            messageInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendWhatsAppMessage();
+                }
+            });
             
-            if (whatsappChatVisible) {
-                whatsappChat.style.display = 'none';
-                whatsappChatVisible = false;
-                messageInput.disabled = true;
-            } else {
-                whatsappChat.style.display = 'block';
-                whatsappChatVisible = true;
-                messageInput.disabled = false;
-                messageInput.focus();
-            }
+            // Enable/disable send button based on input
+            messageInput.addEventListener('input', function() {
+                const sendBtn = document.querySelector('.whatsapp-send-btn');
+                if (sendBtn) {
+                    sendBtn.disabled = this.value.trim() === '';
+                }
+            });
         }
-        
-        function sendWhatsAppMessage() {
-            const messageInput = document.getElementById('whatsappMessage');
-            const userMessage = messageInput.value.trim();
-            const finalMessage = userMessage || defaultMessage;
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // Reset and hide chat
-            messageInput.value = '';
-            toggleWhatsAppChat();
-        }
-        
-        // Enable Enter key to send message
-        document.getElementById('whatsappMessage').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendWhatsAppMessage();
-            }
-        });
         
         // Close chat when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function(event) {
+            const chatWidget = document.getElementById('whatsappChat');
             const whatsappWidget = document.querySelector('.whatsapp-widget');
-            if (!whatsappWidget.contains(e.target) && whatsappChatVisible) {
-                toggleWhatsAppChat();
+            
+            if (chatWidget && chatWidget.classList.contains('active') && 
+                !whatsappWidget.contains(event.target)) {
+                chatWidget.classList.remove('active');
             }
         });
+        
+        // Prevent chat from closing when clicking inside it
+        const chatWidget = document.getElementById('whatsappChat');
+        if (chatWidget) {
+            chatWidget.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        }
+    });
     </script>
 </body>
 </html>
