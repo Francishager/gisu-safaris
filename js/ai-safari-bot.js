@@ -336,8 +336,8 @@ class SafariAIBot {
                 padding: 1px 10px;
                 font-size: 14px;
                 outline: none;
-                margin-right: 37px;
-                margin-left: -15px;
+                margin-right: 27px;
+               
             }
 
             #aiUserInput:focus {
