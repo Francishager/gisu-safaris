@@ -336,7 +336,7 @@ class SafariAIBot {
                 padding: 1px 10px;
                 font-size: 14px;
                 outline: none;
-                margin-right: 33px;
+                margin-right: 37px;
                
             }
 
