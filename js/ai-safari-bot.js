@@ -417,7 +417,7 @@ class SafariAIBot {
             /* Mobile Responsive */
             @media (max-width: 768px) {
                 #ai-safari-bot {
-                    left: 10px;
+                    left: 15px;
                     bottom: 90px;
                 }
                 
