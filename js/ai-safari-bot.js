@@ -333,7 +333,7 @@ class SafariAIBot {
                 flex: 1;
                 border: 1px solid #ddd;
                 border-radius: 20px;
-                padding: 1px 10px;
+                /* padding: 1px 10px; */
                 font-size: 14px;
                 outline: none;
                 margin-right: 37px;
