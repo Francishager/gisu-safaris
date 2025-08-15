@@ -337,6 +337,7 @@ class SafariAIBot {
                 font-size: 14px;
                 outline: none;
                 margin-right: 37px;
+                margin-left: -15px;
             }
 
             #aiUserInput:focus {
@@ -355,6 +356,7 @@ class SafariAIBot {
                 align-items: center;
                 justify-content: center;
                 transition: all 0.2s ease;
+                margin-left: -15px;
             }
 
             #aiSendBtn:hover {
