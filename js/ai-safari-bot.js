@@ -356,7 +356,7 @@ class SafariAIBot {
                 align-items: center;
                 justify-content: center;
                 transition: all 0.2s ease;
-                margin-left: 15px;
+               
             }
 
             #aiSendBtn:hover {
