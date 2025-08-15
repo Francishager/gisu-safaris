@@ -323,10 +323,10 @@ class SafariAIBot {
             }
 
             .ai-input-area {
-                padding: 20px;
+                padding: 9px;
                 border-top: 1px solid #eee;
                 display: flex;
-                gap: 10px;
+                gap: 8px;
             }
 
             #aiUserInput {
