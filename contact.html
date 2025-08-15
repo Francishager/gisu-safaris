@@ -834,7 +834,6 @@
     
     <!-- Newsletter Form JavaScript -->
     <script>
-    // Newsletter form integration
     document.addEventListener('DOMContentLoaded', function() {
         const newsletterForm = document.getElementById('footerNewsletterForm');
         
@@ -851,7 +850,6 @@
                     return;
                 }
                 
-                // Basic email validation
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     alert('Please enter a valid email address');
@@ -863,7 +861,6 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
                 submitBtn.disabled = true;
                 
-                // Send to newsletter API
                 fetch('/backend/api/newsletter.php', {
                     method: 'POST',
                     headers: {
@@ -883,11 +880,9 @@
                 })
                 .then(result => {
                     if (result.success) {
-                        // Success message
                         alert(result.message || 'Thank you for subscribing to our newsletter!');
                         newsletterForm.reset();
                     } else {
-                        // Error message
                         alert(result.message || 'Error subscribing to newsletter. Please try again.');
                     }
                     
@@ -907,7 +902,7 @@
         }
     });
     </script>
-    <!-- AI Safari Bot -->
+
     <script src="js/ai-safari-bot.js"></script>
 
 </body>

@@ -225,7 +225,7 @@ class SafariAIBot {
             .ai-chat-header {
                 background: linear-gradient(135deg, #2E7D32, #4CAF50);
                 color: white;
-                padding: 15px;
+                padding: 5px;
                 display: flex;
                 align-items: center;
                 gap: 10px;
@@ -298,7 +298,7 @@ class SafariAIBot {
             }
 
             .ai-quick-actions {
-                padding: 10px 15px;
+                padding: -1px 15px;
                 border-top: 1px solid #eee;
                 display: flex;
                 flex-wrap: wrap;
