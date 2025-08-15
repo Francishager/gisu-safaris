@@ -346,7 +346,7 @@ class SafariAIBot {
 
             #aiSendBtn {
                 width: 40px;
-                height: 33px;
+                height: 40px;
                 border-radius: 50%;
                 background: #FF6B35;
                 border: none;
