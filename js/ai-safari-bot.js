@@ -417,7 +417,7 @@ class SafariAIBot {
             /* Mobile Responsive */
             @media (max-width: 768px) {
                 #ai-safari-bot {
-                    left: 15px;
+                    left: 10px;
                     bottom: 90px;
                 }
                 
@@ -967,7 +967,6 @@ class SafariAIBot {
     }
 
     bindEvents() {
-        // Enter key support
         document.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('aiUserInput');
             if (input) {
@@ -981,5 +980,4 @@ class SafariAIBot {
     }
 }
 
-// Initialize the Safari AI Bot
 const safariBot = new SafariAIBot();
