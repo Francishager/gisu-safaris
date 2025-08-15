@@ -327,7 +327,7 @@ class SafariAIBot {
                 border-top: 1px solid #eee;
                 display: flex;
                 gap: 8px;
-                margin-right: 17px;
+                margin-right: 109px;
             }
 
             #aiUserInput {
