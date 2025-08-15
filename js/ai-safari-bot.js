@@ -109,7 +109,7 @@ class SafariAIBot {
                     </div>
                     
                     <div class="ai-input-area">
-                        <input type="text" id="aiUserInput" placeholder="Type your message or use buttons above..." maxlength="200">
+                        <input type="text" id="aiUserInput" placeholder="Type your message..." maxlength="200">
                         <button id="aiSendBtn" onclick="safariBot.sendMessage()">
                             <i class="fas fa-paper-plane"></i>
                         </button>
