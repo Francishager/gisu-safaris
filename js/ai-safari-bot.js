@@ -109,7 +109,7 @@ class SafariAIBot {
                     </div>
                     
                     <div class="ai-input-area">
-                        <input type="text" id="aiUserInput" placeholder="Type your message..." maxlength="20">
+                        <input type="text" id="aiUserInput" placeholder="Type your message..." maxlength="200">
                         <button id="aiSendBtn" onclick="safariBot.sendMessage()">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -323,7 +323,7 @@ class SafariAIBot {
             }
 
             .ai-input-area {
-                padding: 20px;
+                padding: 10px;
                 border-top: 1px solid #eee;
                 display: flex;
                 gap: 10px;
@@ -333,7 +333,7 @@ class SafariAIBot {
                 flex: 1;
                 border: 1px solid #ddd;
                 border-radius: 20px;
-                padding: 10px 15px;
+                padding: 1px 10px;
                 font-size: 14px;
                 outline: none;
             }
