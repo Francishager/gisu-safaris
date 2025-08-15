@@ -434,6 +434,11 @@ class SafariAIBot {
                 .ai-bot-icon {
                     font-size: 20px;
                 }
+
+                .ai-input-area {
+                    
+                    padding-right: 26px;
+                }
             }
         `;
         document.head.appendChild(styles);
