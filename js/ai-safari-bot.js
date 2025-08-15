@@ -327,7 +327,7 @@ class SafariAIBot {
                 border-top: 1px solid #eee;
                 display: flex;
                 gap: 8px;
-                margin-right: 182px;
+                padding-right: 26px;
             }
 
             #aiUserInput {
@@ -967,6 +967,7 @@ class SafariAIBot {
     }
 
     bindEvents() {
+        // Enter key support
         document.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('aiUserInput');
             if (input) {
