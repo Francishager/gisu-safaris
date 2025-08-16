@@ -149,13 +149,15 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Destinations
+                            Services
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./destinations/uganda.html">Uganda</a></li>
-                            <li><a class="dropdown-item" href="./destinations/kenya.html">Kenya</a></li>
-                            <li><a class="dropdown-item" href="./destinations/tanzania.html">Tanzania</a></li>
-                            <li><a class="dropdown-item" href="./destinations/rwanda.html">Rwanda</a></li>
+                            <li><a class="dropdown-item" href="./services/hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item" href="./services/travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="./services/air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="./services/car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="./services/safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="./services/visa.html">Visa</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -438,9 +440,8 @@
                                 </div>
                                 <div class="rating mb-2">
                                     <span class="text-warning">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <div class="powr-product-reviews" id="c101f06e_1755357819"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
                                     </span>
-                                    <small class="text-muted ms-1">(67 reviews)</small>
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent">
@@ -453,9 +454,40 @@
                 </div>
 
                 <div class="text-center mt-5 fade-element">
-                    <a href="./packages/index.html" class="btn btn-outline-primary btn-lg hover-button">
-                        <i class="fas fa-binoculars me-2"></i>View All Safari Packages
-                    </a>
+                    <button id="viewAllPackagesBtn" class="btn btn-outline-primary btn-lg hover-button" onclick="toggleAllPackages()">
+                        <i class="fas fa-binoculars me-2"></i><span id="btnText">View All Safari Packages</span>
+                    </button>
+                </div>
+                
+                <div id="allPackagesContainer" class="mt-5" style="display: none;">
+                    <div class="text-center mb-4">
+                        <h3 class="display-6 fw-bold text-primary">Complete Safari Packages Collection</h3>
+                        <p class="lead">Explore all our carefully crafted safari adventures across East Africa</p>
+                    </div>
+                    
+                    <div class="text-center mb-4">
+                        <div class="btn-group" role="group" aria-label="Package filters">
+                            <button type="button" class="btn btn-outline-primary active" onclick="filterPackages('all')">All Packages</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('uganda')">Uganda</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('kenya')">Kenya</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('tanzania')">Tanzania</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('rwanda')">Rwanda</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('multi-country')">Multi-Country</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Loading Indicator -->
+                    <div id="packagesLoading" class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading packages...</span>
+                        </div>
+                        <p class="mt-3">Loading safari packages...</p>
+                    </div>
+                    
+                    <!-- Packages Grid -->
+                    <div id="allPackagesGrid" class="row g-4">
+                        <!-- Packages will be dynamically loaded here -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -480,7 +512,7 @@
                                 <div class="flex-grow-1 ms-3">
                                     <h4 class="fw-bold">Mountain Gorilla Trekking</h4>
                                     <p>Experience face-to-face encounters with endangered mountain gorillas in Uganda's Bwindi Forest and Rwanda's Volcanoes National Park. These gentle giants share 98% of their DNA with humans.</p>
-                                    <a href="./destinations/uganda.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                                    <a href="./packages/uganda.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -497,7 +529,7 @@
                                 <div class="flex-grow-1 ms-3">
                                     <h4 class="fw-bold">Great Migration</h4>
                                     <p>Witness over 2 million wildebeest, zebras, and gazelles during their annual migration between Kenya's Masai Mara and Tanzania's Serengeti - nature's greatest spectacle.</p>
-                                    <a href="./destinations/kenya.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                                    <a href="./packages/kenya.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -514,7 +546,7 @@
                                 <div class="flex-grow-1 ms-3">
                                     <h4 class="fw-bold">Mount Kilimanjaro</h4>
                                     <p>Conquer Africa's highest peak at 5,895 meters. Multiple routes available from Marangu to Machame trails for climbers of all experience levels.</p>
-                                    <a href="./destinations/tanzania.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                                    <a href="./packages/tanzania.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -531,7 +563,7 @@
                                 <div class="flex-grow-1 ms-3">
                                     <h4 class="fw-bold">Cultural Experiences</h4>
                                     <p>Immerse yourself in authentic East African cultures through Maasai villages, Batwa communities, and traditional ceremonies.</p>
-                                    <a href="./destinations/rwanda.html" class="btn btn-sm btn-outline-primary">Learn More</a>
+                                    <a href="./packages/rwanda.html" class="btn btn-sm btn-outline-primary">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -594,6 +626,10 @@
                         </p>
                         <p class="mb-2">
                             <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
                             <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
                         </p>
                         <p class="mb-0">
@@ -618,22 +654,22 @@
                     <h6 class="mb-3">Safari Destinations</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="./destinations/uganda.html" class="text-light text-decoration-none">
+                            <a href="./packages/uganda.html" class="text-light text-decoration-none">
                                 <i class="fas fa-leaf me-2"></i>Uganda Safaris
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="./destinations/kenya.html" class="text-light text-decoration-none">
+                            <a href="./packages/kenya.html" class="text-light text-decoration-none">
                                 <i class="fas fa-paw me-2"></i>Kenya Safaris
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="./destinations/tanzania.html" class="text-light text-decoration-none">
+                            <a href="./packages/tanzania.html" class="text-light text-decoration-none">
                                 <i class="fas fa-mountain me-2"></i>Tanzania Safaris
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="./destinations/rwanda.html" class="text-light text-decoration-none">
+                            <a href="./packages/rwanda.html" class="text-light text-decoration-none">
                                 <i class="fas fa-users me-2"></i>Rwanda Safaris
                             </a>
                         </li>
@@ -649,10 +685,10 @@
                         <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
                             <i class="fab fa-instagram fa-lg"></i>
                         </a>
-                        <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank">
+                        <a href="#https://x.com/GisuSafaris" class="text-light me-3" target="_blank">
                             <i class="fab fa-x fa-lg"></i>
                         </a>
-                        <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
+                        <a href="#https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
                             <i class="fab fa-youtube fa-lg"></i>
                         </a>
                         <a href="https://wa.me/61470133869" class="text-light" target="_blank">
@@ -753,7 +789,7 @@
     <script>
     // WhatsApp Chat Widget Functionality
     function toggleWhatsAppChat() {
-        console.log('Toggle WhatsApp chat clicked'); // Debug log
+        console.log('Toggle WhatsApp chat clicked');
         const chatWidget = document.getElementById('whatsappChat');
         if (!chatWidget) {
             console.error('WhatsApp chat widget not found!');
@@ -842,5 +878,8 @@
         }
     });
     </script>
+    
+    <!-- Safari Packages Loader Script -->
+    <script src="js/safari-packages-loader.js"></script>
 </body>
 </html>
