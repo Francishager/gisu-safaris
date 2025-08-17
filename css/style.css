@@ -1636,6 +1636,7 @@ img, video, svg {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  z-index: 100000; /* ensure above other UI */
   overflow: hidden;
   transform: translateY(10px);
   opacity: 0;
@@ -1702,6 +1703,7 @@ img, video, svg {
     min-width: 280px !important;
     right: 12px !important;
     bottom: 68px !important;
+    z-index: 100000 !important; /* guarantee top-layer on mobile */
     border-radius: 12px !important;
     box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
   }
