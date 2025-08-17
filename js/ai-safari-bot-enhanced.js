@@ -16,12 +16,15 @@ class SafariAIBotEnhanced {
         
         // Human handoff configuration
         this.humanHandoff = {
-            whatsappNumber: '256780950555',
+            whatsappNumber: '61478914106',
             phoneNumber: '+256780950555',
             emailAddresses: ['rmagomu@yahoo.com', 'gisusafaris@gmail.com'],
-            inactivityTimeout: 300000, // 5 minutes
+            inactivityTimeout: 60000, // 1 minute
             lastActivityTime: Date.now()
         };
+
+        // Visitor info and consent
+        this.visitor = this.loadVisitorFromStorage();
         
         // API Configuration
         this.apiConfig = {
@@ -341,6 +344,28 @@ class SafariAIBotEnhanced {
                         </button>
                     </div>
                     
+                    <!-- Pre-chat modal -->
+                    <div class="ai-prechat-modal" id="aiPrechatModal" style="display:none;">
+                        <div class="prechat-card">
+                            <h4>Let’s personalize your chat</h4>
+                            <div class="prechat-row">
+                                <input type="text" id="aiVisitorName" placeholder="Your name (required)" maxlength="60" />
+                            </div>
+                            <div class="prechat-row">
+                                <input type="email" id="aiVisitorEmail" placeholder="Email for itinerary & transcript (required)" maxlength="120" />
+                            </div>
+                            <label class="prechat-consent">
+                                <input type="checkbox" id="aiConsent" />
+                                <span>I agree to receive my chat transcript and follow-up about my safari. I can opt out anytime.</span>
+                            </label>
+                            <div class="prechat-actions">
+                                <button id="aiStartChatBtn" disabled>Start Chat</button>
+                                <button id="aiForgetMeBtn" class="link-btn">Forget me</button>
+                            </div>
+                            <small class="prechat-privacy">We respect your privacy. Data is used to assist your inquiry and stored locally on your device.</small>
+                        </div>
+                    </div>
+
                     <div class="ai-chat-messages" id="aiChatMessages">
                         <!-- Messages will be populated here -->
                     </div>
@@ -361,6 +386,7 @@ class SafariAIBotEnhanced {
 
         document.body.appendChild(aiWidget);
         this.addAIStyles();
+        // If no visitor consent captured, show prechat when opening later
     }
 
     addAIStyles() {
@@ -462,6 +488,18 @@ class SafariAIBotEnhanced {
             .ai-chat-window.active {
                 display: flex;
             }
+
+            /* Pre-chat styles */
+            .ai-prechat-modal { padding: 12px; border-bottom: 1px solid #eee; background:#fff; }
+            .prechat-card { background:#f8f9fa; border:1px solid #e9ecef; border-radius:12px; padding:12px; }
+            .prechat-card h4 { margin: 0 0 8px 0; font-size: 15px; color:#2E7D32; }
+            .prechat-row { margin:6px 0; }
+            .prechat-row input { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #ddd; border-radius:8px; font-size:13px; }
+            .prechat-consent { display:flex; gap:8px; align-items:flex-start; font-size:12px; color:#495057; margin-top:6px; }
+            .prechat-actions { display:flex; gap:8px; margin-top:10px; }
+            #aiStartChatBtn { background:#2E7D32; color:#fff; border:none; padding:8px 12px; border-radius:8px; font-size:13px; cursor:pointer; }
+            .link-btn { background:transparent; border:none; color:#6c757d; cursor:pointer; font-size:12px; text-decoration:underline; }
+            .prechat-privacy { display:block; color:#6c757d; font-size:11px; margin-top:8px; }
 
             .ai-chat-header {
                 background: linear-gradient(135deg, #2E7D32, #4CAF50);
@@ -889,6 +927,17 @@ class SafariAIBotEnhanced {
                     font-size: 14px;
                 }
             }
+            /* Pre-chat validation styles */
+            .prechat-actions #aiStartChatBtn[disabled] {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+            .prechat-row input.invalid {
+                border-color: #dc3545 !important;
+            }
+            .prechat-consent.invalid span {
+                color: #dc3545;
+            }
         `;
         document.head.appendChild(styles);
     }
@@ -903,7 +952,16 @@ class SafariAIBotEnhanced {
         } else {
             chatWindow.classList.add('active');
             this.isActive = true;
-            this.startConversation();
+            const prechat = document.getElementById('aiPrechatModal');
+            const v = this.visitor || {};
+            const hasName = !!(v.name && v.name.trim().length > 0);
+            const hasEmail = !!(v.email && /.+@.+\..+/.test(v.email));
+            if (!v.consent || !hasName || !hasEmail) {
+                prechat.style.display = 'block';
+            } else {
+                prechat.style.display = 'none';
+                this.startConversation();
+            }
         }
     }
 
@@ -976,7 +1034,7 @@ class SafariAIBotEnhanced {
         
         // Handle human handoff quick actions
         if (['Talk to Human', 'Continue with AI', 'Get Phone Number', 'Send Email Summary', 
-             'Book Consultation Call', 'Contact WhatsApp', 'More Details', 'Start Over'].includes(action)) {
+             'Book Consultation Call', 'Contact WhatsApp', 'More Details', 'Start Over', 'Start Guided Booking'].includes(action)) {
             this.handleSpecialQuickActions(action);
             return;
         }
@@ -987,6 +1045,15 @@ class SafariAIBotEnhanced {
                 break;
             case 'duration':
                 this.handleDurationResponse(action);
+                break;
+            case 'collect_destination':
+                this.handleDestinationChoice(action);
+                break;
+            case 'collect_group':
+                this.handleGroupSizeChoice(action);
+                break;
+            case 'collect_date':
+                this.handleTravelDateChoice(action);
                 break;
             case 'interests':
                 this.handleInterestsResponse(action);
@@ -1061,8 +1128,8 @@ class SafariAIBotEnhanced {
         });
 
         setTimeout(() => {
-            this.addBotMessage("Would you like more details about any of these packages, or shall I help you book a FREE consultation call?");
-            this.showQuickActions(['Book Consultation Call', 'More Details', 'Start Over', 'Contact WhatsApp']);
+            this.addBotMessage("Would you like more details about any of these packages, start a guided booking, or book a FREE consultation call?");
+            this.showQuickActions(['Start Guided Booking', 'Book Consultation Call', 'More Details', 'Start Over', 'Contact WhatsApp']);
             this.conversationState = 'final';
         }, (recommendations.length + 1) * 1000);
     }
@@ -1176,6 +1243,21 @@ class SafariAIBotEnhanced {
     }
 
     async handleFreeTextMessage(message) {
+        // Early capture for guided lead email
+        if (this.conversationState === 'awaiting_email_for_lead') {
+            const email = (message || '').trim();
+            if (/.+@.+\..+/.test(email)) {
+                this.visitor = { ...(this.visitor||{}), email, consent: true };
+                this.saveVisitorToStorage();
+                this.addBotMessage('👍 Thanks! Using that email to submit your lead.');
+                return this.submitGuidedLead();
+            } else {
+                this.addBotMessage('That does not look like a valid email. Please try again, or tap Contact WhatsApp.');
+                this.showQuickActions(['Contact WhatsApp', 'Get Phone Number']);
+                return;
+            }
+        }
+
         const lowerMessage = message.toLowerCase();
         
         if (lowerMessage.includes('exchange') || lowerMessage.includes('rate') || lowerMessage.includes('dollar') || lowerMessage.includes('usd')) {
@@ -1442,6 +1524,8 @@ class SafariAIBotEnhanced {
         
         setTimeout(() => {
             this.addBotMessage(`<div class="handoff-options-card">\n<h4>📞 Contact Options</h4>\n<div class="handoff-options">\n<button onclick="safariBot.handleHumanHandoff('whatsapp')" class="handoff-option-btn whatsapp">\n<i class="fab fa-whatsapp"></i>\n<span>WhatsApp Chat</span>\n<small>Continue conversation</small>\n</button>\n<button onclick="safariBot.handleHumanHandoff('phone')" class="handoff-option-btn phone">\n<i class="fas fa-phone"></i>\n<span>Direct Call</span>\n<small>Speak immediately</small>\n</button>\n</div>\n</div>`);
+            
+            this.trackEvent('human_handoff', 'options_displayed');
         }, 500);
     }
 
@@ -1459,6 +1543,9 @@ class SafariAIBotEnhanced {
                 break;
             case 'Book Consultation Call':
                 this.bookConsultationCall();
+                break;
+            case 'Start Guided Booking':
+                this.startGuidedBooking();
                 break;
             case 'Continue with AI':
                 this.continueWithAI();
@@ -1567,7 +1654,63 @@ class SafariAIBotEnhanced {
         
         if (timeSinceLastActivity > this.humanHandoff.inactivityTimeout && this.isActive) {
             this.handleInactiveUser();
+            // Also send transcript on inactivity
+            this.sendTranscript({ reason: 'inactivity_timeout' });
         }
+    }
+
+    // Visitor storage helpers
+    loadVisitorFromStorage() {
+        try {
+            const raw = localStorage.getItem('ai_visitor');
+            return raw ? JSON.parse(raw) : null;
+        } catch { return null; }
+    }
+    saveVisitorToStorage() {
+        try { localStorage.setItem('ai_visitor', JSON.stringify(this.visitor || null)); } catch {}
+    }
+    clearVisitorFromStorage() {
+        try { localStorage.removeItem('ai_visitor'); } catch {}
+    }
+
+    // Transcript formatting and sending
+    formatTranscriptPayload(extra = {}) {
+        return {
+            visitor: this.visitor || {},
+            sessionStart: this.sessionStartTime?.toISOString?.() || new Date().toISOString(),
+            sessionEnd: new Date().toISOString(),
+            history: this.conversationHistory,
+            preferences: this.userPreferences,
+            meta: {
+                page: window.location.href,
+                userAgent: navigator.userAgent,
+                timezoneOffset: new Date().getTimezoneOffset(),
+                ...extra
+            }
+        };
+    }
+
+    sendTranscript(extra = {}, useBeacon = false) {
+        const payload = this.formatTranscriptPayload(extra);
+        const url = '/backend/api/chat_transcript.php';
+
+        try {
+            const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+            if (useBeacon && navigator.sendBeacon) {
+                navigator.sendBeacon(url, blob);
+                return true;
+            }
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-API-Key': 'gisu_safaris_api_key_2024' },
+                body: JSON.stringify(payload),
+                keepalive: true
+            }).catch(() => {});
+        } catch (e) {
+            console.warn('Failed to send transcript', e);
+        }
+        return false;
     }
 
     handleInactiveUser() {
@@ -1579,6 +1722,119 @@ class SafariAIBotEnhanced {
         this.sendEmailNotification('user_inactive');
         
         this.trackEvent('user_inactivity', 'timeout_reached');
+    }
+
+    // Guided Booking Flow
+    startGuidedBooking() {
+        this.addBotMessage("🧭 Great! Let's capture a few details to create your booking lead.");
+        setTimeout(() => {
+            this.addBotMessage("Which destination are you most interested in?");
+            this.showQuickActions(['Uganda', 'Kenya', 'Tanzania', 'Rwanda', 'Multi-Country']);
+            this.conversationState = 'collect_destination';
+        }, 600);
+    }
+    handleDestinationChoice(choice) {
+        this.userPreferences.country = choice;
+        setTimeout(() => {
+            this.addBotMessage("How many travelers are in your party?");
+            this.showQuickActions(['1', '2', '3-4', '5-7', '8+']);
+            this.conversationState = 'collect_group';
+        }, 400);
+    }
+    handleGroupSizeChoice(choice) {
+        this.userPreferences.groupSize = choice;
+        setTimeout(() => {
+            this.addBotMessage("When do you plan to travel? You can pick a general window.");
+            this.showQuickActions(['This Month', '1-3 Months', '3-6 Months', '6-12 Months', 'Flexible']);
+            this.conversationState = 'collect_date';
+        }, 400);
+    }
+    handleTravelDateChoice(choice) {
+        this.userPreferences.travelWindow = choice;
+        // Try submit lead
+        this.submitGuidedLead();
+    }
+
+    async submitGuidedLead() {
+        // Ensure we have an email to submit the lead
+        const v = this.visitor || {};
+        const email = (v.email || '').trim();
+        if (!email || !/.+@.+\..+/.test(email)) {
+            this.addBotMessage("📧 To submit your lead to our team, please provide your email. Type it below and press Enter.");
+            this.conversationState = 'awaiting_email_for_lead';
+            return;
+        }
+
+        const [firstName, ...rest] = (v.name || 'AI Visitor').trim().split(' ');
+        const lastName = rest.join(' ');
+
+        const payload = {
+            firstName: firstName || 'AI',
+            lastName: lastName || 'Visitor',
+            email: email,
+            phone: '',
+            country: this.userPreferences.country || 'Uganda',
+            packageName: 'AI Guided Booking Lead',
+            packageType: 'ai-bot',
+            duration: this.userPreferences.duration || '',
+            groupSize: (this.userPreferences.groupSize || '').toString(),
+            travelDate: '',
+            budget: this.userPreferences.budget || '',
+            accommodationLevel: '',
+            specialRequirements: '',
+            message: this.formatConversationForHandoff()
+        };
+
+        try {
+            this.addBotMessage('📝 Submitting your lead to our safari experts...');
+            await fetch('/backend/api/booking.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(r => r.json()).catch(() => ({}));
+
+            this.addBotMessage('✅ Lead submitted! Our team will reach out within 24 hours. Would you also like to chat on WhatsApp now?');
+            this.showQuickActions(['Contact WhatsApp', 'Book Consultation Call', 'Continue with AI']);
+
+            // Show operator dashboard stub
+            this.showOperatorDashboardStub();
+
+        } catch (e) {
+            this.addBotMessage('⚠️ Sorry, I could not submit your lead right now. You can still reach us on WhatsApp.');
+            this.showQuickActions(['Contact WhatsApp', 'Get Phone Number']);
+        }
+    }
+
+    handleFreeTextMessage(message) {
+        const lowerMessage = message.toLowerCase();
+        if (this.conversationState === 'awaiting_email_for_lead') {
+            const email = message.trim();
+            if (/.+@.+\..+/.test(email)) {
+                this.visitor = { ...(this.visitor||{}), email, consent: true };
+                this.saveVisitorToStorage();
+                this.addBotMessage('👍 Thanks! Using that email to submit your lead.');
+                return this.submitGuidedLead();
+            } else {
+                this.addBotMessage('That does not look like a valid email. Please try again, or tap Contact WhatsApp.');
+                this.showQuickActions(['Contact WhatsApp', 'Get Phone Number']);
+                return;
+            }
+        }
+        // fall through to existing logic
+        // ... rest of the function remains the same ...
+    }
+
+    // Operator dashboard stub showing summary + WhatsApp deep link
+    showOperatorDashboardStub() {
+        const wa = this.generateWhatsAppLink();
+        const summary = this.formatConversationForHandoff();
+        this.addBotMessage(`
+<div class="handoff-dashboard">
+  <h4>Operator Handoff Summary</h4>
+  <pre style="white-space:pre-wrap;background:#f8f9fa;border:1px solid #eee;padding:8px;border-radius:8px;max-height:180px;overflow:auto;">${summary}</pre>
+  <a href="${wa}" target="_blank" class="whatsapp-handoff-btn"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
+  <p style="margin-top:6px;color:#6c757d;font-size:12px;">This is a preview for operators. A real dashboard will include assignment and SLA tracking.</p>
+</div>`);
     }
 
     // Geographic and Information Handlers
@@ -1806,12 +2062,87 @@ class SafariAIBotEnhanced {
                     }
                 });
             }
+
+            // Pre-chat handlers
+            const startBtn = document.getElementById('aiStartChatBtn');
+            const forgetBtn = document.getElementById('aiForgetMeBtn');
+            const nameInput = document.getElementById('aiVisitorName');
+            const emailInput = document.getElementById('aiVisitorEmail');
+            const consentInput = document.getElementById('aiConsent');
+
+            // Real-time validation for pre-chat
+            const validatePrechat = () => {
+                const name = (nameInput?.value || '').trim();
+                const email = (emailInput?.value || '').trim();
+                const consent = !!consentInput?.checked;
+                const emailValid = /.+@.+\..+/.test(email);
+
+                // Toggle invalid classes
+                if (nameInput) nameInput.classList.toggle('invalid', !name);
+                if (emailInput) emailInput.classList.toggle('invalid', !(email && emailValid));
+                const consentLabel = document.querySelector('label.prechat-consent');
+                if (consentLabel) consentLabel.classList.toggle('invalid', !consent);
+
+                // Enable/disable start button
+                if (startBtn) startBtn.disabled = !(name && emailValid && consent);
+            };
+
+            if (nameInput) nameInput.addEventListener('input', validatePrechat);
+            if (emailInput) emailInput.addEventListener('input', validatePrechat);
+            if (consentInput) consentInput.addEventListener('change', validatePrechat);
+            // Initialize state
+            validatePrechat();
+
+            if (startBtn) {
+                startBtn.addEventListener('click', () => {
+                    const name = (nameInput.value || '').trim();
+                    const email = (emailInput.value || '').trim();
+                    const consent = !!consentInput.checked;
+                    const emailValid = /.+@.+\..+/.test(email);
+
+                    // Basic validation
+                    let errors = [];
+                    if (!name) { errors.push('name'); }
+                    if (!emailValid) { errors.push('valid email'); }
+                    if (!consent) { errors.push('consent'); }
+
+                    if (errors.length > 0) {
+                        alert(`Please provide ${errors.join(', ')} to start the chat.`);
+                        if (!name) { nameInput.focus(); return; }
+                        if (!emailValid) { emailInput.focus(); return; }
+                        if (!consent) { consentInput.focus(); return; }
+                        return;
+                    }
+
+                    this.visitor = { name, email, consent, capturedAt: new Date().toISOString() };
+                    this.saveVisitorToStorage();
+                    document.getElementById('aiPrechatModal').style.display = 'none';
+                    this.addBotMessage(`👋 Hi ${name.split(' ')[0]}! Great to meet you.`);
+                    this.startConversation();
+                });
+            }
+            
+            if (forgetBtn) {
+                forgetBtn.addEventListener('click', () => {
+                    this.clearVisitorFromStorage();
+                    this.visitor = null;
+                    // Reset fields
+                    document.getElementById('aiVisitorName').value = '';
+                    document.getElementById('aiVisitorEmail').value = '';
+                    document.getElementById('aiConsent').checked = false;
+                });
+            }
         });
         
         // Set up inactivity checker
         setInterval(() => {
             this.checkInactivity();
         }, 60000); // Check every minute
+
+        // Send transcript on page unload (best-effort)
+        window.addEventListener('unload', () => {
+            try { this.sendTranscript({ reason: 'unload' }, true); } catch (e) { /* ignore */ }
+        });
     }
 }
 
