@@ -300,18 +300,43 @@
                     <div class="col-lg-10">
                         <div class="card shadow-lg border-0">
                             <div class="card-body p-4">
-                                <form class="row g-3">
+                                <form id="quickHotelSearchForm" class="row g-3">
                                     <div class="col-md-3">
                                         <label for="destination" class="form-label fw-semibold">Destination</label>
                                         <select class="form-select" id="destination" required>
                                             <option value="">Choose destination...</option>
+                                            <!-- Uganda -->
                                             <option value="kampala">Kampala, Uganda</option>
-                                            <option value="nairobi">Nairobi, Kenya</option>
-                                            <option value="arusha">Arusha, Tanzania</option>
-                                            <option value="kigali">Kigali, Rwanda</option>
-                                            <option value="masai-mara">Masai Mara, Kenya</option>
-                                            <option value="serengeti">Serengeti, Tanzania</option>
+                                            <option value="entebbe">Entebbe, Uganda</option>
+                                            <option value="jinja">Jinja, Uganda</option>
+                                            <option value="fort-portal">Fort Portal, Uganda</option>
+                                            <option value="mbale">Mbale, Uganda</option>
                                             <option value="bwindi">Bwindi, Uganda</option>
+                                            <option value="queen-elizabeth-np">Queen Elizabeth NP, Uganda</option>
+                                            <option value="murchison-falls">Murchison Falls, Uganda</option>
+                                            <option value="kidepo-valley">Kidepo Valley, Uganda</option>
+                                            <!-- Kenya -->
+                                            <option value="nairobi">Nairobi, Kenya</option>
+                                            <option value="masai-mara">Masai Mara, Kenya</option>
+                                            <option value="amboseli">Amboseli, Kenya</option>
+                                            <option value="tsavo">Tsavo, Kenya</option>
+                                            <option value="nakuru">Nakuru, Kenya</option>
+                                            <option value="naivasha">Naivasha, Kenya</option>
+                                            <option value="diani-beach">Diani Beach, Kenya</option>
+                                            <option value="mombasa">Mombasa, Kenya</option>
+                                            <!-- Tanzania -->
+                                            <option value="arusha">Arusha, Tanzania</option>
+                                            <option value="moshi">Moshi, Tanzania</option>
+                                            <option value="serengeti">Serengeti, Tanzania</option>
+                                            <option value="tarangire">Tarangire, Tanzania</option>
+                                            <option value="zanzibar">Zanzibar, Tanzania</option>
+                                            <!-- Rwanda -->
+                                            <option value="kigali">Kigali, Rwanda</option>
+                                            <option value="musanze">Musanze, Rwanda</option>
+                                            <option value="gisenyi">Gisenyi, Rwanda</option>
+                                            <option value="huye">Huye, Rwanda</option>
+                                            <option value="akagera-np">Akagera NP, Rwanda</option>
+                                            <option value="volcanoes">Volcanoes, Rwanda</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">
@@ -356,6 +381,20 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Quick Search Results (in-page) -->
+        <section id="search-results" class="py-4 d-none">
+            <div class="container">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-3 gap-3">
+                    <div>
+                        <h2 id="searchTitle" class="h4 fw-bold mb-1">Search Results</h2>
+                        <p id="searchSubtitle" class="text-muted mb-0"></p>
+                    </div>
+                    <div class="text-muted small" id="searchCount"></div>
+                </div>
+                <div id="searchGrid" class="row g-4"></div>
             </div>
         </section>
 
@@ -869,17 +908,92 @@
         const viewAllBtn = document.getElementById('viewAllHotelsBtn');
         const grid = document.getElementById('hotelsGrid');
 
-        // Lightweight dataset (images drawn from existing repo paths)
-        const HOTELS = [
-          { name: 'Kampala Serena Hotel', country: 'uganda', location: 'Kampala, Uganda', price: 180, rating: 5, images: ['../images/img/sheratonkampalahotel4.jpg','../images/img/hotel.jpg'] },
-          { name: 'Bwindi Lodge', country: 'uganda', location: 'Bwindi, Uganda', price: 220, rating: 4.5, images: ['../images/img/bwindi_mpenetrable_forest.jpg','../images/img/Best-accommodation-in-bwindi-Impenetrable-forest-national-park.jpg'] },
-          { name: 'Neptune Paradise', country: 'kenya', location: 'Diani Beach, Kenya', price: 160, rating: 4.5, images: ['../images/img/neptune_paradise_resort.jpg','../images/top-safari-packages/about_gisu_safaris2.jpg'] },
-          { name: 'Nairobi Boutique Hotel', country: 'kenya', location: 'Nairobi, Kenya', price: 120, rating: 4, images: ['../images/img/hotel.jpg','../images/img/Abseiling-3.jpg'] },
-          { name: 'Serena Safari Lodge', country: 'tanzania', location: 'Serengeti, Tanzania', price: 450, rating: 5, images: ['../images/img/hotel.jpg','../images/top-safari-packages/Serengeti-safaris-2.webp'] },
-          { name: 'Tented Camp Arusha', country: 'tanzania', location: 'Arusha, Tanzania', price: 150, rating: 4, images: ['../images/img/Tanzania_Luxury_Tented_Camp.avif','../images/uganda/6-Days-Jinja-sipi-falls-and-Kidepo-valley-1200x675.webp'] },
-          { name: 'Kigali City Hotel', country: 'rwanda', location: 'Kigali, Rwanda', price: 130, rating: 4, images: ['../images/img/hotel.jpg','../images/top-safari-packages/about_gisu_safaris2.jpg'] },
-          { name: 'Volcanoes Lodge', country: 'rwanda', location: 'Musanze, Rwanda', price: 260, rating: 4.5, images: ['../images/img/Best-accommodation-in-bwindi-Impenetrable-forest-national-park.jpg','../images/img/bwindi_mpenetrable_forest.jpg'] },
-        ];
+        // Generate dataset: realistic types per destination (no safari camps in cities like Kampala, etc.)
+        function generateHotels() {
+          const types = ['luxury-lodge','safari-camp','boutique-hotel','budget-friendly'];
+          // Canonical destination list with allowed types (must align with destinationToFilter and select options)
+          const DESTS = [
+            // Uganda
+            {country:'uganda', city:'Kampala',          allowed:['luxury-lodge','boutique-hotel','budget-friendly']},
+            {country:'uganda', city:'Entebbe',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'uganda', city:'Jinja',            allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'uganda', city:'Fort Portal',      allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'uganda', city:'Mbale',            allowed:['boutique-hotel','budget-friendly']},
+            {country:'uganda', city:'Bwindi',           allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'uganda', city:'Queen Elizabeth NP', allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'uganda', city:'Murchison Falls',  allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'uganda', city:'Kidepo Valley',    allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            // Kenya
+            {country:'kenya',  city:'Nairobi',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Masai Mara',       allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'kenya',  city:'Amboseli',         allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'kenya',  city:'Tsavo',            allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'kenya',  city:'Nakuru',           allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Naivasha',         allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Diani Beach',      allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Mombasa',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            // Tanzania
+            {country:'tanzania', city:'Arusha',         allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'tanzania', city:'Moshi',          allowed:['boutique-hotel','budget-friendly']},
+            {country:'tanzania', city:'Serengeti',      allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'tanzania', city:'Tarangire',      allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'tanzania', city:'Zanzibar',       allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            // Rwanda
+            {country:'rwanda', city:'Kigali',           allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'rwanda', city:'Musanze',          allowed:['luxury-lodge','budget-friendly']},
+            {country:'rwanda', city:'Gisenyi',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'rwanda', city:'Huye',             allowed:['boutique-hotel','budget-friendly']},
+            {country:'rwanda', city:'Akagera NP',       allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'rwanda', city:'Volcanoes',        allowed:['safari-camp','luxury-lodge','budget-friendly']}
+          ];
+          const imagesCommon = [
+            '../images/img/hotel.jpg',
+            '../images/img/sheratonkampalahotel4.jpg',
+            '../images/img/Best-accommodation-in-bwindi-Impenetrable-forest-national-park.jpg',
+            '../images/top-safari-packages/Serengeti-safaris-2.webp'
+          ];
+          const priceBase = {
+            'luxury-lodge': 280,
+            'safari-camp': 160,
+            'boutique-hotel': 130,
+            'budget-friendly': 60
+          };
+          const priceRange = {
+            'luxury-lodge': 250,
+            'safari-camp': 120,
+            'boutique-hotel': 60,
+            'budget-friendly': 40
+          };
+          function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);} 
+          const out = [];
+          DESTS.forEach((loc) => {
+            loc.allowed.forEach((t) => {
+              for (let i = 0; i < 12; i++) {
+                const name = `${loc.city} ${t.replace('-', ' ')} ${i+1}`.replace(/\b\w/g, c=>c.toUpperCase());
+                const price = priceBase[t] + ((i*17)%priceRange[t]);
+                const rating = t==='budget-friendly' ? 3.5 + (i%3)*0.5 : 4 + (i%3)*0.5;
+                out.push({
+                  name,
+                  type: t,
+                  country: loc.country,
+                  location: `${loc.city}, ${cap(loc.country)}`,
+                  price,
+                  rating: Math.min(5, rating),
+                  images: imagesCommon
+                });
+              }
+            });
+          });
+          return out;
+        }
+
+        // Build hotels and expose
+        const HOTELS = generateHotels();
+        // expose globally for reuse (quick search)
+        window.GISU_HOTELS = HOTELS;
+        window.generateHotels = generateHotels;
+        // expose globally for reuse (quick search)
+        window.GISU_HOTELS = HOTELS;
 
         function starIcons(rating) {
           const full = Math.floor(rating);
@@ -889,6 +1003,16 @@
           if (half) html += '<i class="fas fa-star-half-alt"></i>';
           for (let i = full + (half?1:0); i < 5; i++) html += '<i class="far fa-star"></i>';
           return html;
+        }
+
+        function typeLabel(type) {
+          switch (type) {
+            case 'luxury-lodge': return 'Luxury Lodge';
+            case 'safari-camp': return 'Safari Camp';
+            case 'boutique-hotel': return 'Boutique Hotel';
+            case 'budget-friendly': return 'Budget Friendly';
+            default: return 'Hotel';
+          }
         }
 
         function render(filter = 'all') {
@@ -903,8 +1027,11 @@
             col.className = 'col-xl-3 col-lg-4 col-md-6';
             col.innerHTML = `
               <div class="card h-100 border-0 shadow-sm hover-card">
-                <div class="card-slider">
-                  ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class=\'active\'':''}>`).join('')}
+                <div class="position-relative">
+                  <div class="card-slider">
+                    ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class=\'active\'':''}>`).join('')}
+                  </div>
+                  <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">${typeLabel(h.type)}</span></div>
                 </div>
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-start mb-2">
@@ -976,5 +1103,267 @@
         });
       });
     </script>
-</body>
+
+    <!-- Quick Hotel Search: prevent navigation and render results inline -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('quickHotelSearchForm');
+        const resultsSection = document.getElementById('search-results');
+        const titleEl = document.getElementById('searchTitle');
+        const subtitleEl = document.getElementById('searchSubtitle');
+        const countEl = document.getElementById('searchCount');
+        const grid = document.getElementById('searchGrid');
+
+        if (!form) return;
+
+        const DS = () => (
+          Array.isArray(window.GISU_HOTELS) ? window.GISU_HOTELS :
+          (typeof window.generateHotels === 'function' ? window.generateHotels() : [])
+        );
+
+        function initSliders(container) {
+          const sliders = container.querySelectorAll('.card-slider');
+          sliders.forEach(slider => {
+            const imgs = slider.querySelectorAll('img');
+            if (imgs.length <= 1) return;
+            let i = 0;
+            setInterval(() => {
+              imgs[i].classList.remove('active');
+              i = (i + 1) % imgs.length;
+              imgs[i].classList.add('active');
+            }, 2000);
+          });
+        }
+
+        function typeLabelQS(type) {
+          switch (type) {
+            case 'luxury-lodge': return 'Luxury Lodge';
+            case 'safari-camp': return 'Safari Camp';
+            case 'boutique-hotel': return 'Boutique Hotel';
+            case 'budget-friendly': return 'Budget Friendly';
+            default: return 'Hotel';
+          }
+        }
+
+        function renderCards(list) {
+          grid.innerHTML = '';
+          if (!list.length) {
+            grid.innerHTML = '<div class="col-12 text-center text-muted">No matching hotels found. Try a broader destination.</div>';
+            return;
+          }
+          list.forEach(h => {
+            const col = document.createElement('div');
+            col.className = 'col-xl-3 col-lg-4 col-md-6';
+            col.innerHTML = `
+              <div class="card h-100 border-0 shadow-sm hover-card">
+                <div class="position-relative">
+                  <div class="card-slider">
+                    ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class=\'active\'':''}>`).join('')}
+                  </div>
+                  <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">${typeLabelQS(h.type)}</span></div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="fw-bold mb-0">${h.name}</h6>
+                    <div class="text-warning">${(function(r){const f=Math.floor(r),half=r%1>=0.5;let html='';for(let i=0;i<f;i++)html+='<i class=\'fas fa-star\'></i>';if(half)html+='<i class=\'fas fa-star-half-alt\'></i>';for(let i=f+(half?1:0);i<5;i++)html+='<i class=\'far fa-star\'></i>';return html;})(h.rating)}</div>
+                  </div>
+                  <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
+                    <button class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book</button>
+                  </div>
+                </div>
+              </div>`;
+            grid.appendChild(col);
+          });
+          initSliders(grid);
+        }
+
+        function destinationToFilter(dest) {
+          switch (dest) {
+            case 'kampala': return { country: 'uganda', city: 'Kampala' };
+            case 'entebbe': return { country: 'uganda', city: 'Entebbe' };
+            case 'jinja': return { country: 'uganda', city: 'Jinja' };
+            case 'fort-portal': return { country: 'uganda', city: 'Fort Portal' };
+            case 'mbale': return { country: 'uganda', city: 'Mbale' };
+            case 'bwindi': return { country: 'uganda', city: 'Bwindi' };
+            case 'queen-elizabeth-np': return { country: 'uganda', city: 'Queen Elizabeth NP' };
+            case 'murchison-falls': return { country: 'uganda', city: 'Murchison Falls' };
+            case 'kidepo-valley': return { country: 'uganda', city: 'Kidepo Valley' };
+
+            case 'nairobi': return { country: 'kenya', city: 'Nairobi' };
+            case 'masai-mara': return { country: 'kenya', city: 'Masai Mara' };
+            case 'amboseli': return { country: 'kenya', city: 'Amboseli' };
+            case 'tsavo': return { country: 'kenya', city: 'Tsavo' };
+            case 'nakuru': return { country: 'kenya', city: 'Nakuru' };
+            case 'naivasha': return { country: 'kenya', city: 'Naivasha' };
+            case 'diani-beach': return { country: 'kenya', city: 'Diani Beach' };
+            case 'mombasa': return { country: 'kenya', city: 'Mombasa' };
+
+            case 'arusha': return { country: 'tanzania', city: 'Arusha' };
+            case 'moshi': return { country: 'tanzania', city: 'Moshi' };
+            case 'serengeti': return { country: 'tanzania', city: 'Serengeti' };
+            case 'tarangire': return { country: 'tanzania', city: 'Tarangire' };
+            case 'zanzibar': return { country: 'tanzania', city: 'Zanzibar' };
+
+            case 'kigali': return { country: 'rwanda', city: 'Kigali' };
+            case 'musanze': return { country: 'rwanda', city: 'Musanze' };
+            case 'gisenyi': return { country: 'rwanda', city: 'Gisenyi' };
+            case 'huye': return { country: 'rwanda', city: 'Huye' };
+            case 'akagera-np': return { country: 'rwanda', city: 'Akagera NP' };
+            case 'volcanoes': return { country: 'rwanda', city: 'Volcanoes' };
+            default: return { country: null, city: null };
+          }
+        }
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const destination = (document.getElementById('destination').value || '').trim();
+          const checkin = (document.getElementById('checkin').value || '').trim();
+          const checkout = (document.getElementById('checkout').value || '').trim();
+          const guests = (document.getElementById('guests').value || '').trim();
+          const type = (document.getElementById('accommodation-type').value || '').trim();
+
+          const { country, city } = destinationToFilter(destination);
+          let results = DS();
+          if (country) {
+            results = results.filter(h => h.country === country);
+          }
+          if (city) {
+            const lc = city.toLowerCase();
+            results = results.filter(h => h.location.toLowerCase().includes(lc));
+          }
+          if (type) {
+            results = results.filter(h => h.type === type);
+          }
+
+          titleEl.textContent = 'Search Results';
+          const prettyCity = city ? ` in ${city}` : '';
+          const prettyCountry = country ? ` (${country.charAt(0).toUpperCase()+country.slice(1)})` : '';
+          const typeText = type ? ` • ${typeLabelQS(type)}` : '';
+          subtitleEl.textContent = `Showing matches${typeText}${prettyCity}${prettyCountry}`;
+          countEl.textContent = `${results.length} result${results.length===1?'':'s'}`;
+
+          resultsSection.classList.remove('d-none');
+          renderCards(results);
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
+              <h5 class="mb-0">Gisu Safaris</h5>
+            </div>
+            <p class="mb-3">East Africa's premier safari company specializing in wildlife adventures across Uganda, Kenya, Tanzania, and Rwanda.</p>
+            <div class="contact-info">
+              <p class="mb-2">
+                <i class="fas fa-envelope me-2"></i>
+                <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-phone me-2"></i>
+                <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-phone me-2"></i>
+                <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <h6 class="mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+              <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+              <li class="mb-2"><a href="../packages/index.html" class="text-light text-decoration-none">Safari Packages</a></li>
+              <li class="mb-2"><a href="../destinations/index.html" class="text-light text-decoration-none">Destinations</a></li>
+              <li class="mb-2"><a href="../gallery.html" class="text-light text-decoration-none">Gallery</a></li>
+              <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3">
+            <h6 class="mb-3">Safari Destinations</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="../packages/uganda.html" class="text-light text-decoration-none">
+                  <i class="fas fa-leaf me-2"></i>Uganda Safaris
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="../packages/kenya.html" class="text-light text-decoration-none">
+                  <i class="fas fa-paw me-2"></i>Kenya Safaris
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="../packages/tanzania.html" class="text-light text-decoration-none">
+                  <i class="fas fa-mountain me-2"></i>Tanzania Safaris
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="../packages/rwanda.html" class="text-light text-decoration-none">
+                  <i class="fas fa-users me-2"></i>Rwanda Safaris
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3">
+            <h6 class="mb-3">Connect With Us</h6>
+            <div class="social-icons mb-3">
+              <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-facebook fa-lg"></i>
+              </a>
+              <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-instagram fa-lg"></i>
+              </a>
+              <a href="#https://x.com/GisuSafaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-x fa-lg"></i>
+              </a>
+              <a href="#https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-youtube fa-lg"></i>
+              </a>
+              <a href="https://wa.me/61470133869" class="text-light" target="_blank">
+                <i class="fab fa-whatsapp fa-lg"></i>
+              </a>
+            </div>
+            <div class="newsletter">
+              <h6>Newsletter</h6>
+              <form>
+                <div class="input-group mb-2">
+                  <input type="email" class="form-control" placeholder="Your email" required>
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+                <small class="text-muted">Get safari tips & exclusive offers</small>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>
