@@ -48,6 +48,7 @@ class SafariAIBotEnhanced {
             cacheTimestamp: null
         };
         
+        // Define safari packages with metadata
         this.packages = [
             {
                 id: 'uganda-gorilla',
@@ -104,7 +105,9 @@ class SafariAIBotEnhanced {
     }
 
     init() {
+        // Avoid duplicate widget injection if already present
         this.createAIWidget();
+        // Bind events immediately if DOM is ready, otherwise on DOMContentLoaded
         this.bindEvents();
         this.preloadAPIData();
     }
@@ -321,7 +324,7 @@ class SafariAIBotEnhanced {
         aiWidget.innerHTML = `
             <div class="ai-bot-container">
                 <!-- AI Bot Button -->
-                <button class="ai-bot-trigger" id="aiBotTrigger" onclick="safariBot.toggleBot()">
+                <button class="ai-bot-trigger" id="aiBotTrigger">
                     <div class="ai-bot-icon">
                         <i class="fas fa-robot"></i>
                     </div>
@@ -339,7 +342,7 @@ class SafariAIBotEnhanced {
                             <h4>Safari AI Assistant</h4>
                             <small>Powered by Live Data APIs</small>
                         </div>
-                        <button class="ai-close-btn" onclick="safariBot.toggleBot()">
+                        <button class="ai-close-btn">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
@@ -376,13 +379,19 @@ class SafariAIBotEnhanced {
                     
                     <div class="ai-input-area">
                         <input type="text" id="aiUserInput" placeholder="Type your message or use buttons above..." maxlength="200">
-                        <button id="aiSendBtn" onclick="safariBot.sendMessage()">
+                        <button id="aiSendBtn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
                 </div>
             </div>
         `;
+
+        // Check if widget already exists
+        if (document.getElementById('ai-safari-bot')) {
+            console.log('AI Safari Bot widget already exists, skipping injection.');
+            return;
+        }
 
         document.body.appendChild(aiWidget);
         this.addAIStyles();
@@ -1023,7 +1032,7 @@ class SafariAIBotEnhanced {
             const btn = document.createElement('button');
             btn.className = 'quick-action-btn';
             btn.textContent = action;
-            btn.onclick = () => this.handleQuickAction(action);
+            btn.addEventListener('click', () => this.handleQuickAction(action));
             actionsContainer.appendChild(btn);
         });
     }
@@ -1213,7 +1222,7 @@ class SafariAIBotEnhanced {
                     🌟 Highlights: ${pkg.highlights.join(', ')}<br>
                     🎯 ${matchPercentage}% match for your preferences
                 </div>
-                <button class="package-rec-btn" onclick="safariBot.viewPackage('${pkg.url}')">
+                <button class="package-rec-btn" data-url="${pkg.url}">
                     View Details & Book
                 </button>
             </div>
@@ -1513,49 +1522,9 @@ class SafariAIBotEnhanced {
             // });
             
             this.trackEvent('email_notification', type);
-            
+
         } catch (error) {
-            console.error('Failed to send email notification:', error);
-        }
-    }
-
-    showHandoffOptions() {
-        this.addBotMessage(`🤝 I'd be happy to connect you with our human safari experts! How would you prefer to continue?`);
-        
-        setTimeout(() => {
-            this.addBotMessage(`<div class="handoff-options-card">\n<h4>📞 Contact Options</h4>\n<div class="handoff-options">\n<button onclick="safariBot.handleHumanHandoff('whatsapp')" class="handoff-option-btn whatsapp">\n<i class="fab fa-whatsapp"></i>\n<span>WhatsApp Chat</span>\n<small>Continue conversation</small>\n</button>\n<button onclick="safariBot.handleHumanHandoff('phone')" class="handoff-option-btn phone">\n<i class="fas fa-phone"></i>\n<span>Direct Call</span>\n<small>Speak immediately</small>\n</button>\n</div>\n</div>`);
-            
-            this.trackEvent('human_handoff', 'options_displayed');
-        }, 500);
-    }
-
-    handleSpecialQuickActions(action) {
-        switch(action) {
-            case 'Talk to Human':
-            case 'Contact WhatsApp':
-                this.initiateWhatsAppHandoff();
-                break;
-            case 'Get Phone Number':
-                this.showPhoneNumber();
-                break;
-            case 'Send Email Summary':
-                this.sendEmailSummary();
-                break;
-            case 'Book Consultation Call':
-                this.bookConsultationCall();
-                break;
-            case 'Start Guided Booking':
-                this.startGuidedBooking();
-                break;
-            case 'Continue with AI':
-                this.continueWithAI();
-                break;
-            case 'More Details':
-                this.showMoreDetails();
-                break;
-            case 'Start Over':
-                this.resetConversation();
-                break;
+            console.error('Failed to send email notification', error);
         }
     }
 
@@ -2053,13 +2022,45 @@ class SafariAIBotEnhanced {
     }
 
     bindEvents() {
-        document.addEventListener('DOMContentLoaded', () => {
+        const doBind = () => {
+            // Core controls
+            const triggerBtn = document.getElementById('aiBotTrigger');
+            if (triggerBtn) triggerBtn.addEventListener('click', () => this.toggleBot());
+
+            const closeBtn = document.querySelector('.ai-close-btn');
+            if (closeBtn) closeBtn.addEventListener('click', () => this.toggleBot());
+
+            const sendBtn = document.getElementById('aiSendBtn');
+            if (sendBtn) sendBtn.addEventListener('click', () => this.sendMessage());
+
+            // Delegate clicks inside chat messages (e.g., package buttons)
+            const messages = document.getElementById('aiChatMessages');
+            if (messages) {
+                messages.addEventListener('click', (e) => {
+                    // Package card button
+                    const pkgBtn = e.target.closest('button.package-rec-btn');
+                    if (pkgBtn) {
+                        const url = pkgBtn.getAttribute('data-url');
+                        if (url) this.viewPackage(url);
+                        return;
+                    }
+
+                    // Handoff options buttons
+                    const handoffBtn = e.target.closest('button.handoff-option-btn');
+                    if (handoffBtn) {
+                        const action = handoffBtn.getAttribute('data-action');
+                        if (action === 'whatsapp') this.handleHumanHandoff('whatsapp');
+                        else if (action === 'phone') this.handleHumanHandoff('phone');
+                        return;
+                    }
+                });
+            }
+
+            // Input enter-to-send
             const input = document.getElementById('aiUserInput');
             if (input) {
                 input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        this.sendMessage();
-                    }
+                    if (e.key === 'Enter') this.sendMessage();
                 });
             }
 
@@ -2070,81 +2071,87 @@ class SafariAIBotEnhanced {
             const emailInput = document.getElementById('aiVisitorEmail');
             const consentInput = document.getElementById('aiConsent');
 
-            // Real-time validation for pre-chat
             const validatePrechat = () => {
                 const name = (nameInput?.value || '').trim();
                 const email = (emailInput?.value || '').trim();
                 const consent = !!consentInput?.checked;
                 const emailValid = /.+@.+\..+/.test(email);
-
-                // Toggle invalid classes
                 if (nameInput) nameInput.classList.toggle('invalid', !name);
                 if (emailInput) emailInput.classList.toggle('invalid', !(email && emailValid));
                 const consentLabel = document.querySelector('label.prechat-consent');
                 if (consentLabel) consentLabel.classList.toggle('invalid', !consent);
-
-                // Enable/disable start button
                 if (startBtn) startBtn.disabled = !(name && emailValid && consent);
             };
 
-            if (nameInput) nameInput.addEventListener('input', validatePrechat);
-            if (emailInput) emailInput.addEventListener('input', validatePrechat);
-            if (consentInput) consentInput.addEventListener('change', validatePrechat);
-            // Initialize state
+            nameInput?.addEventListener('input', validatePrechat);
+            emailInput?.addEventListener('input', validatePrechat);
+            consentInput?.addEventListener('change', validatePrechat);
             validatePrechat();
 
             if (startBtn) {
                 startBtn.addEventListener('click', () => {
-                    const name = (nameInput.value || '').trim();
-                    const email = (emailInput.value || '').trim();
-                    const consent = !!consentInput.checked;
+                    const name = (nameInput?.value || '').trim();
+                    const email = (emailInput?.value || '').trim();
+                    const consent = !!consentInput?.checked;
                     const emailValid = /.+@.+\..+/.test(email);
 
-                    // Basic validation
-                    let errors = [];
-                    if (!name) { errors.push('name'); }
-                    if (!emailValid) { errors.push('valid email'); }
-                    if (!consent) { errors.push('consent'); }
-
-                    if (errors.length > 0) {
+                    const errors = [];
+                    if (!name) errors.push('name');
+                    if (!emailValid) errors.push('valid email');
+                    if (!consent) errors.push('consent');
+                    if (errors.length) {
                         alert(`Please provide ${errors.join(', ')} to start the chat.`);
-                        if (!name) { nameInput.focus(); return; }
-                        if (!emailValid) { emailInput.focus(); return; }
-                        if (!consent) { consentInput.focus(); return; }
+                        if (!name) { nameInput?.focus(); return; }
+                        if (!emailValid) { emailInput?.focus(); return; }
+                        if (!consent) { consentInput?.focus(); return; }
                         return;
                     }
 
                     this.visitor = { name, email, consent, capturedAt: new Date().toISOString() };
                     this.saveVisitorToStorage();
-                    document.getElementById('aiPrechatModal').style.display = 'none';
+                    const pre = document.getElementById('aiPrechatModal');
+                    if (pre) pre.style.display = 'none';
                     this.addBotMessage(`👋 Hi ${name.split(' ')[0]}! Great to meet you.`);
                     this.startConversation();
                 });
             }
-            
+
             if (forgetBtn) {
                 forgetBtn.addEventListener('click', () => {
                     this.clearVisitorFromStorage();
                     this.visitor = null;
-                    // Reset fields
-                    document.getElementById('aiVisitorName').value = '';
-                    document.getElementById('aiVisitorEmail').value = '';
-                    document.getElementById('aiConsent').checked = false;
+                    const n = document.getElementById('aiVisitorName'); if (n) n.value = '';
+                    const e = document.getElementById('aiVisitorEmail'); if (e) e.value = '';
+                    const c = document.getElementById('aiConsent'); if (c) c.checked = false;
+                    validatePrechat();
                 });
             }
-        });
-        
+        };
+
         // Set up inactivity checker
-        setInterval(() => {
-            this.checkInactivity();
-        }, 60000); // Check every minute
+        setInterval(() => { this.checkInactivity(); }, 60000);
 
         // Send transcript on page unload (best-effort)
         window.addEventListener('unload', () => {
             try { this.sendTranscript({ reason: 'unload' }, true); } catch (e) { /* ignore */ }
         });
+
+        // If DOM already loaded (common when script is injected dynamically), bind immediately
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', doBind, { once: true });
+        } else {
+            doBind();
+        }
+    }
+
+    // Initialize the Enhanced Safari AI Bot
+    static getInstance() {
+        if (!SafariAIBotEnhanced.instance) {
+            SafariAIBotEnhanced.instance = new SafariAIBotEnhanced();
+        }
+        return SafariAIBotEnhanced.instance;
     }
 }
 
 // Initialize the Enhanced Safari AI Bot
-const safariBot = new SafariAIBotEnhanced();
+const safariBot = SafariAIBotEnhanced.getInstance();
