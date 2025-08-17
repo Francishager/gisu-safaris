@@ -1712,3 +1712,11 @@ img, video, svg {
   .floating-whatsapp .whatsapp-input { font-size: 16px !important; }
   .floating-whatsapp .whatsapp-send-btn { width: 44px !important; height: 44px !important; }
 }
+
+/* Z-INDEX FIX: ensure WhatsApp widget sits above the AI bot on all devices */
+#ai-safari-bot { z-index: 2147483600 !important; }
+#ai-safari-bot .ai-chat-window { z-index: 2147483599 !important; }
+@media (max-width: 576px) {
+  #ai-safari-bot { z-index: 2147483600 !important; }
+  #ai-safari-bot .ai-chat-window { z-index: 2147483599 !important; }
+}
