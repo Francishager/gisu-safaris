@@ -1697,10 +1697,10 @@ img, video, svg {
 @media (max-width: 576px) {
   .floating-whatsapp { right: 12px !important; bottom: 12px !important; z-index: 9999 !important; }
   .floating-whatsapp .whatsapp-chat {
-    width: calc(100vw - 24px) !important;
-    max-width: 420px !important;
-    min-width: 320px !important;
-    right: 0 !important;
+    width: min(86vw, 340px) !important;
+    max-width: 340px !important;
+    min-width: 280px !important;
+    right: 12px !important;
     bottom: 68px !important;
     border-radius: 12px !important;
     box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
