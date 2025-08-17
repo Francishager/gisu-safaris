@@ -935,11 +935,32 @@
         }
 
         if (viewAllBtn) {
+          viewAllBtn.setAttribute('aria-expanded', 'false');
+          const defaultHTML = '<i class="fas fa-th-large me-2"></i>View All Hotels';
+          const hideHTML = '<i class="fas fa-times me-2"></i>Hide All Hotels';
           viewAllBtn.addEventListener('click', () => {
-            allHotelsSection.classList.remove('d-none');
-            render('all');
-            // scroll into view smoothly
-            allHotelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const isHidden = allHotelsSection.classList.contains('d-none');
+            if (isHidden) {
+              // Show section
+              allHotelsSection.classList.remove('d-none');
+              viewAllBtn.innerHTML = hideHTML;
+              viewAllBtn.setAttribute('aria-expanded', 'true');
+              // Reset filter buttons to All
+              const filterBtns = allHotelsSection.querySelectorAll('button[data-filter]');
+              filterBtns.forEach((b) => b.classList.replace('btn-primary','btn-outline-primary'));
+              const allBtn = allHotelsSection.querySelector('button[data-filter="all"]');
+              allBtn?.classList.remove('btn-outline-primary');
+              allBtn?.classList.add('btn-primary');
+              render('all');
+              allHotelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              // Hide section
+              allHotelsSection.classList.add('d-none');
+              viewAllBtn.innerHTML = defaultHTML;
+              viewAllBtn.setAttribute('aria-expanded', 'false');
+              // Scroll back to button for context
+              viewAllBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
           });
         }
 
