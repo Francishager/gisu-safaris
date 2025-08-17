@@ -28,6 +28,97 @@ class SafariPackagesLoader {
                 url: './packages/uganda-gorilla-trekking.html'
             },
             {
+                id: 'uganda-big-five',
+                name: 'Uganda Big Five Safari',
+                country: 'uganda',
+                duration: '5 Days',
+                price: 'From $720',
+                image: './images/uganda/Queen-Elizabeth-National.jpg',
+                description: 'Track the Big Five across Uganda’s top savannah parks.',
+                highlights: ['Big Five', 'Game Drives', 'Boat Safari'],
+                rating: 4.7,
+                reviews: 88,
+                url: './packages/uganda-big-five.html'
+            },
+            {
+                id: 'uganda-budget-safari',
+                name: 'Uganda Budget Safari',
+                country: 'uganda',
+                duration: '4 Days',
+                price: 'From $480',
+                image: './images/top-safari-packages/about_gisu_safaris2.jpg',
+                description: 'Affordable wildlife encounters without compromising experience.',
+                highlights: ['Budget Lodges', 'Wildlife', 'Local Guides'],
+                rating: 4.5,
+                reviews: 64,
+                url: './packages/uganda-budget-safari.html'
+            },
+            {
+                id: 'uganda-cultural-safari',
+                name: 'Uganda Cultural Safari',
+                country: 'uganda',
+                duration: '3 Days',
+                price: 'From $390',
+                image: './images/top-safari-packages/about_gisu_safaris2.jpg',
+                description: 'Immerse yourself in Uganda’s rich cultural heritage.',
+                highlights: ['Cultural Villages', 'Dance & Music', 'Local Cuisine'],
+                rating: 4.6,
+                reviews: 52,
+                url: './packages/uganda-cultural-safari.html'
+            },
+            {
+                id: 'uganda-kibale-national-park',
+                name: 'Kibale National Park Adventure',
+                country: 'uganda',
+                duration: '3 Days',
+                price: 'From $520',
+                image: './images/top-safari-packages/kibale.jpg',
+                description: 'Explore the primate capital and lush crater lakes region.',
+                highlights: ['Chimpanzees', 'Crater Lakes', 'Nature Walks'],
+                rating: 4.7,
+                reviews: 71,
+                url: './packages/uganda-kibale-national-park.html'
+            },
+            {
+                id: 'uganda-luxury-tour',
+                name: 'Uganda Luxury Tour',
+                country: 'uganda',
+                duration: '6 Days',
+                price: 'From $1,450',
+                image: './images/top-safari-packages/3-Day-Luxury-Gorilla-Trekking-Safari-in-Uganda-Bwindi-Gorilla-Tour.jpg',
+                description: 'Premium lodges, private drives, and curated experiences.',
+                highlights: ['Luxury Lodges', 'Private Guide', 'Fine Dining'],
+                rating: 4.9,
+                reviews: 81,
+                url: './packages/uganda-luxury-tour.html'
+            },
+            {
+                id: 'uganda-rwenzori-hike',
+                name: 'Rwenzori Mountains Hike',
+                country: 'uganda',
+                duration: '6 Days',
+                price: 'From $860',
+                image: './images/top-safari-packages/about_gisu_safaris2.jpg',
+                description: 'Trek the mystical Mountains of the Moon.',
+                highlights: ['Rwenzori Peaks', 'Glacial Valleys', 'Guided Trek'],
+                rating: 4.6,
+                reviews: 55,
+                url: './packages/uganda-rwenzori-hike.html'
+            },
+            {
+                id: 'uganda-sasa-trail-mount-elgon',
+                name: 'Mount Elgon Sasa Trail',
+                country: 'uganda',
+                duration: '4 Days',
+                price: 'From $540',
+                image: './images/uganda/Sipi-waterfall-jpg.webp',
+                description: 'Scenic trek to the Wagagai summit via the Sasa Trail.',
+                highlights: ['Sipi Falls', 'Wagagai', 'Caves & Forests'],
+                rating: 4.7,
+                reviews: 49,
+                url: './packages/uganda-sasa-trail-mount-elgon.html'
+            },
+            {
                 id: 'uganda-murchison-falls',
                 name: 'Murchison Falls Safari',
                 country: 'uganda',
@@ -134,6 +225,20 @@ class SafariPackagesLoader {
                 url: './packages/kenya-beach-safari-combo.html'
             },
 
+            {
+                id: 'kenya-mombasa-neptune-paradise',
+                name: 'Mombasa Neptune Paradise Beach',
+                country: 'kenya',
+                duration: '5 Days',
+                price: 'From $820',
+                image: './images/top-safari-packages/masai-mara-2.webp',
+                description: 'Relax on pristine beaches after thrilling safari days.',
+                highlights: ['Beach Resort', 'Indian Ocean', 'Relaxation'],
+                rating: 4.6,
+                reviews: 74,
+                url: './packages/kenya-mombasa-neptune-paradise.html'
+            },
+
             // Tanzania Packages
             {
                 id: 'tanzania-serengeti-migration',
@@ -188,6 +293,20 @@ class SafariPackagesLoader {
                 url: './packages/tanzania-honeymoon.html'
             },
 
+            {
+                id: 'tanzania-highlights-overview',
+                name: 'Tanzania Highlights Overview',
+                country: 'tanzania',
+                duration: '5 Days',
+                price: 'Custom',
+                image: './images/top-safari-packages/serengeti-safari-1.jpg',
+                description: 'Curated Tanzania highlights – flexible custom trip.',
+                highlights: ['Serengeti', 'Ngorongoro', 'Tarangire'],
+                rating: 4.7,
+                reviews: 61,
+                url: './packages/tanzania.html'
+            },
+
             // Rwanda Packages
             {
                 id: 'rwanda-gorilla-trekking',
@@ -227,6 +346,20 @@ class SafariPackagesLoader {
                 rating: 4.8,
                 reviews: 89,
                 url: './packages/rwanda-wildlife-culture.html'
+            },
+
+            {
+                id: 'rwanda-kigali-cultural',
+                name: 'Rwanda Kigali Cultural Tour',
+                country: 'rwanda',
+                duration: '2 Days',
+                price: 'From $350',
+                image: './images/top-safari-packages/rwanda-safari-1.jpg',
+                description: 'Discover Kigali’s culture, cuisine, and history.',
+                highlights: ['Kigali Tour', 'Culture', 'Museums'],
+                rating: 4.5,
+                reviews: 44,
+                url: './packages/rwanda-kigali-cultural.html'
             },
 
             // Multi-Country Packages
@@ -285,9 +418,20 @@ class SafariPackagesLoader {
             btn.querySelector('i').className = 'fas fa-eye-slash me-2';
             this.isVisible = true;
 
-            // Load packages if not already loaded
+            // Always default to showing ALL packages when opened
+            this.currentFilter = 'all';
+            // Update active filter button UI if present
+            const allBtn = document.querySelector('[data-filter="all"]');
+            if (allBtn) {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                allBtn.classList.add('active');
+            }
+
+            // Load packages if not already loaded; otherwise re-render with 'all'
             if (!this.isLoaded) {
                 this.loadPackages();
+            } else {
+                this.renderPackages();
             }
 
             // Smooth scroll to packages section
@@ -340,7 +484,8 @@ class SafariPackagesLoader {
     // Get filtered packages based on current filter
     getFilteredPackages() {
         if (this.currentFilter === 'all') {
-            return this.packages;
+            // Exclude multi-country from the default "All" count to show 26 (UG 12, KE 5, TZ 5, RW 4)
+            return this.packages.filter(pkg => pkg.country !== 'multi-country');
         }
         return this.packages.filter(pkg => pkg.country === this.currentFilter);
     }
@@ -351,7 +496,7 @@ class SafariPackagesLoader {
         
         return `
             <div class="col-lg-4 col-md-6">
-                <article class="card border-0 shadow-sm h-100 safari-package-card hover-card package-card" style="opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
+                <article class="card border-0 shadow-sm h-100 safari-package-card hover-card package-card" data-country="${pkg.country}" style="opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
                     <div class="position-relative overflow-hidden">
                         <img src="${pkg.image}" class="card-img-top" alt="${pkg.name}" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 end-0 m-3">
@@ -398,19 +543,19 @@ class SafariPackagesLoader {
     filterPackages(country) {
         this.currentFilter = country;
         
-        // Update active filter button
-        document.querySelectorAll('.btn-group button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
+        // Update active filter button without relying on event.target
+        const buttons = document.querySelectorAll('[data-filter]');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        const toActivate = document.querySelector(`[data-filter="${country}"]`);
+        if (toActivate) toActivate.classList.add('active');
         
         // Re-render packages
         this.renderPackages();
     }
 }
 
-// Initialize the packages loader
-const safariPackagesLoader = new SafariPackagesLoader();
+// Initialize the packages loader and expose globally
+window.safariPackagesLoader = new SafariPackagesLoader();
 
 // Global functions for HTML onclick events
 function toggleAllPackages() {

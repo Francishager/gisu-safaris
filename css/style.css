@@ -1116,6 +1116,46 @@ footer a:hover {
     animation: none;
 }
 
+/* === GLOBAL HORIZONTAL SCROLL FIXES === */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Constrain sections to viewport width to prevent accidental overflow */
+header,
+section,
+footer,
+.container,
+.container-fluid {
+  max-width: 100vw;
+}
+
+/* Ensure fixed navbar stays in place above all content */
+.navbar.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030; /* Bootstrap default */
+}
+
+/* Prevent WhatsApp chat from causing horizontal scroll */
+.whatsapp-chat {
+  max-width: 360px;
+  width: calc(100% - 30px);
+  right: 15px;
+}
+
+@media (max-width: 576px) {
+  .whatsapp-chat {
+    max-width: 360px !important;
+    width: calc(100% - 30px) !important;
+    right: 15px !important;
+    left: auto !important;
+  }
+}
+
 /* === ACCESSIBILITY === */
 .visually-hidden-focusable:focus {
     position: absolute !important;
@@ -1495,4 +1535,163 @@ html {
     .carousel-indicators {
         display: none;
     }
+}
+
+/* === MOBILE HORIZONTAL SCROLL FIXES === */
+/* Constrain media to container width */
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Allow filter button group to wrap on small screens */
+.btn-group[aria-label="Package filters"] {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Prevent package section from causing overflow */
+#allPackagesContainer,
+#allPackagesGrid {
+  overflow-x: hidden;
+}
+
+/* Hide packages section by default to prevent FOUC; JS will show on click */
+#allPackagesContainer { display: none; }
+
+/* Neutralize big hover transforms that can push width on small screens */
+@media (max-width: 576px) {
+  .hover-card:hover,
+  .safari-package-card:hover {
+    transform: none !important;
+  }
+  .card-image-carousel:hover .carousel-img.active,
+  .safari-package-card:hover .card-image-carousel .carousel-img.active {
+    transform: none !important;
+  }
+  /* Avoid layout shift on CTA button hover on small screens */
+  .hover-button:hover { transform: none !important; }
+}
+
+/* Restore navbar brand image sizing across devices */
+.navbar-brand img {
+  height: 40px !important;
+  width: auto !important;
+  max-width: none !important;
+}
+@media (max-width: 576px) {
+  .navbar-brand img { height: 36px !important; }
+}
+
+/* === WHATSAPP WIDGET STYLES === */
+.floating-whatsapp {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+}
+
+.whatsapp-widget { position: relative; }
+
+.whatsapp-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-btn i { font-size: 26px; }
+
+.whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5); }
+
+.whatsapp-chat {
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  overflow: hidden;
+  transform: translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.whatsapp-chat.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.whatsapp-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #25D366;
+  color: #fff;
+}
+
+.whatsapp-chat-header img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.whatsapp-chat-info h6 { margin: 0; font-weight: 700; }
+.whatsapp-chat-info small { opacity: 0.9; }
+
+.whatsapp-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.15);
+  color: #fff;
+}
+
+.whatsapp-chat-body { padding: 14px; }
+
+.whatsapp-input-group { display: flex; gap: 8px; margin-top: 10px; }
+.whatsapp-input { flex: 1; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px; }
+.whatsapp-send-btn { width: 44px; border: none; border-radius: 8px; background: #25D366; color: #fff; }
+
+@media (max-width: 576px) {
+  .whatsapp-btn { width: 56px; height: 56px; }
+  .whatsapp-chat { width: min(92vw, 360px); bottom: 72px; right: 0; }
+}
+
+/* FINAL OVERRIDES: Ensure WhatsApp chat has proper size on mobile */
+@media (max-width: 576px) {
+  .floating-whatsapp { right: 12px !important; bottom: 12px !important; z-index: 9999 !important; }
+  .floating-whatsapp .whatsapp-chat {
+    width: calc(100vw - 24px) !important;
+    max-width: 420px !important;
+    min-width: 320px !important;
+    right: 0 !important;
+    bottom: 68px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
+  }
+  .floating-whatsapp .whatsapp-chat-header { padding: 12px !important; }
+  .floating-whatsapp .whatsapp-chat-body { max-height: 56vh !important; overflow-y: auto !important; }
+  .floating-whatsapp .whatsapp-input { font-size: 16px !important; }
+  .floating-whatsapp .whatsapp-send-btn { width: 44px !important; height: 44px !important; }
 }

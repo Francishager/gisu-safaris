@@ -451,12 +451,12 @@
                 </div>
 
                 <div class="text-center mt-5 fade-element">
-                    <button id="viewAllPackagesBtn" class="btn btn-outline-primary btn-lg hover-button" onclick="toggleAllPackages()">
+                    <button id="viewAllPackagesBtn" class="btn btn-outline-primary btn-lg hover-button">
                         <i class="fas fa-binoculars me-2"></i><span id="btnText">View All Safari Packages</span>
                     </button>
                 </div>
                 
-                <div id="allPackagesContainer" class="mt-5" style="display: none;">
+                <div id="allPackagesContainer" class="mt-5">
                     <div class="text-center mb-4">
                         <h3 class="display-6 fw-bold text-primary">Complete Safari Packages Collection</h3>
                         <p class="lead">Explore all our carefully crafted safari adventures across East Africa</p>
@@ -464,12 +464,24 @@
                     
                     <div class="text-center mb-4">
                         <div class="btn-group" role="group" aria-label="Package filters">
-                            <button type="button" class="btn btn-outline-primary active" onclick="filterPackages('all')">All Packages</button>
-                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('uganda')">Uganda</button>
-                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('kenya')">Kenya</button>
-                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('tanzania')">Tanzania</button>
-                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('rwanda')">Rwanda</button>
-                            <button type="button" class="btn btn-outline-primary" onclick="filterPackages('multi-country')">Multi-Country</button>
+                            <button type="button" class="btn btn-outline-primary active" data-filter="all">
+                                <i class="fas fa-layer-group me-2"></i>All Packages
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="uganda">
+                                <i class="fas fa-leaf me-2"></i>Uganda
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="kenya">
+                                <i class="fas fa-paw me-2"></i>Kenya
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="tanzania">
+                                <i class="fas fa-mountain me-2"></i>Tanzania
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="rwanda">
+                                <i class="fas fa-users me-2"></i>Rwanda
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-filter="multi-country">
+                                <i class="fas fa-globe-africa me-2"></i>Multi-Country
+                            </button>
                         </div>
                     </div>
                     
@@ -484,6 +496,9 @@
                     <!-- Packages Grid -->
                     <div id="allPackagesGrid" class="row g-4">
                         <!-- Packages will be dynamically loaded here -->
+                    </div>
+                    <div id="noResultsMessage" class="text-center py-4" style="display: none;">
+                        <p class="mb-0">No packages match your selection.</p>
                     </div>
                 </div>
             </div>
@@ -878,5 +893,7 @@
     
     <!-- Safari Packages Loader Script -->
     <script src="js/safari-packages-loader.js"></script>
-</body>
+    <!-- Package Filters Script -->
+    <script src="js/package-filters.js"></script>
+  </body>
 </html>
