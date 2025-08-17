@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced AI Safari Bot - Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .test-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #FF6B35;
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: #FF6B35;
+        }
+        .feature-card ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .instructions h3 {
+            color: #25D366;
+            margin-top: 0;
+        }
+        .btn-test {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-indicator">
+        <i class="fas fa-robot"></i> AI Bot Active
+    </div>
+
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🤖 Enhanced AI Safari Bot</h1>
+            <p>Complete Testing Environment with Human Handoff Features</p>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-card">
+                <h3><i class="fas fa-globe"></i> Live API Integration</h3>
+                <ul>
+                    <li>Real-time exchange rates</li>
+                    <li>Country information</li>
+                    <li>Wikipedia data</li>
+                    <li>Smart caching system</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fab fa-whatsapp"></i> Human Handoff</h3>
+                <ul>
+                    <li>WhatsApp integration</li>
+                    <li>Phone number display</li>
+                    <li>Email notifications</li>
+                    <li>Conversation summaries</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-brain"></i> Smart Responses</h3>
+                <ul>
+                    <li>Location queries</li>
+                    <li>Geographic information</li>
+                    <li>Wildlife & safari tips</li>
+                    <li>Weather & climate data</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-chart-line"></i> Analytics</h3>
+                <ul>
+                    <li>Google Analytics tracking</li>
+                    <li>Conversation logging</li>
+                    <li>User behavior tracking</li>
+                    <li>Email notifications</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3><i class="fas fa-test-tube"></i> Test Instructions</h3>
+            <p><strong>1. Interact with the AI Bot:</strong> Click the orange robot icon in the bottom-left corner.</p>
+            <p><strong>2. Test Geographic Questions:</strong> Try asking "Where is Uganda located?" or "Tell me about Kenya"</p>
+            <p><strong>3. Test API Features:</strong> Ask about "exchange rates" or "population data"</p>
+            <p><strong>4. Test Human Handoff:</strong> Use "Talk to Human" or let the bot go inactive for 5 minutes</p>
+            <p><strong>5. Test WhatsApp Integration:</strong> Click on WhatsApp options to see conversation summary generation</p>
+            <p><strong>6. Test Safari Planning:</strong> Go through the recommendation flow to see package suggestions</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#" class="btn-test" onclick="safariBot.toggleBot(); return false;">
+                <i class="fas fa-robot"></i> Open AI Assistant
+            </a>
+            <a href="#" class="btn-test" onclick="console.log('WhatsApp Test:', safariBot.generateWhatsAppLink()); return false;">
+                <i class="fab fa-whatsapp"></i> Test WhatsApp Link
+            </a>
+            <a href="#" class="btn-test" onclick="safariBot.handleLocationQuery('where is uganda located'); return false;">
+                <i class="fas fa-map"></i> Test Location Query
+            </a>
+        </div>
+
+        <div style="margin-top: 30px; font-size: 14px; opacity: 0.8; text-align: center;">
+            <p>This is a testing environment for the Enhanced AI Safari Bot with live API integration and human handoff capabilities.</p>
+            <p>Phone: <strong>+256780950555</strong> | Email: <strong>rmagomu@yahoo.com, gisusafaris@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <!-- Load the Enhanced AI Safari Bot -->
+    <script src="js/ai-safari-bot-enhanced.js"></script>
+
+    <script>
+        // Additional testing functions
+        function testWhatsAppGeneration() {
+            // Simulate some conversation history
+            safariBot.conversationHistory = [
+                { sender: 'bot', message: 'Hello! How can I help you?', timestamp: new Date().toISOString() },
+                { sender: 'user', message: 'I want to go on safari', timestamp: new Date().toISOString() },
+                { sender: 'bot', message: 'Great! What\'s your budget?', timestamp: new Date().toISOString() },
+                { sender: 'user', message: 'Around $1000', timestamp: new Date().toISOString() }
+            ];
+            
+            safariBot.userPreferences = {
+                budget: '$700-$1000',
+                duration: '5-7 days',
+                interests: ['Big Five Safari 🦁', 'Photography 📸'],
+                experience: 'First time in East Africa'
+            };
+            
+            const whatsappLink = safariBot.generateWhatsAppLink();
+            console.log('Generated WhatsApp Link:', whatsappLink);
+            
+            // Test the link by opening it
+            window.open(whatsappLink, '_blank');
+        }
+
+        // Auto-test some functionality after page load
+        window.addEventListener('load', function() {
+            console.log('Enhanced AI Safari Bot Test Environment Loaded');
+            console.log('Bot instance:', safariBot);
+            
+            // Test API endpoints
+            setTimeout(() => {
+                console.log('Testing API functionality...');
+                safariBot.getExchangeRates().then(rates => {
+                    console.log('Exchange rates loaded:', rates);
+                });
+                
+                safariBot.getCountryInfo('UG').then(info => {
+                    console.log('Uganda info loaded:', info);
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

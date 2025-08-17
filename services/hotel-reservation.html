@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1240,7 +1240,7 @@
           titleEl.textContent = 'Search Results';
           const prettyCity = city ? ` in ${city}` : '';
           const prettyCountry = country ? ` (${country.charAt(0).toUpperCase()+country.slice(1)})` : '';
-          const typeText = type ? ` • ${typeLabelQS(type)}` : '';
+          const typeText = type ? ` â€¢ ${typeLabelQS(type)}` : '';
           subtitleEl.textContent = `Showing matches${typeText}${prettyCity}${prettyCountry}`;
           countEl.textContent = `${results.length} result${results.length===1?'':'s'}`;
 
@@ -1365,5 +1365,6 @@
       </div>
     </footer>
 
-  </body>
+      <!-- Site bootstrap -->
+    <script src="/js/main.js"></script></body>
 </html>
