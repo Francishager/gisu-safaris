@@ -646,6 +646,17 @@ class SafariAIBotEnhancedInternal {
                 gap: 10px;
             }
 
+            /* Input gating: hide input area until pre-chat is completed */
+            .ai-chat-window.gated .ai-input-area {
+                display: none;
+            }
+
+            /* While gated, also disable quick actions to avoid premature inputs */
+            .ai-chat-window.gated #aiQuickActions {
+                pointer-events: none;
+                opacity: 0.6;
+            }
+
             #aiUserInput {
                 flex: 1;
                 border: 1px solid #ddd;
@@ -989,6 +1000,16 @@ class SafariAIBotEnhancedInternal {
         document.head.appendChild(styles);
     }
 
+    updateGatingUI() {
+        const chatWindow = document.getElementById('aiChatWindow');
+        if (!chatWindow) return;
+        const v = this.visitor || {};
+        const hasName = !!(v.name && v.name.trim().length > 0);
+        const hasEmail = !!(v.email && /.+@.+\..+/.test(v.email));
+        const needsPrechat = (!v.consent || !hasName || !hasEmail);
+        chatWindow.classList.toggle('gated', !!needsPrechat);
+    }
+
     toggleBot() {
         const chatWindow = document.getElementById('aiChatWindow');
         const trigger = document.getElementById('aiBotTrigger');
@@ -1005,14 +1026,17 @@ class SafariAIBotEnhancedInternal {
             const hasEmail = !!(v.email && /.+@.+\..+/.test(v.email));
             if (!v.consent || !hasName || !hasEmail) {
                 prechat.style.display = 'block';
+                chatWindow.classList.add('gated');
             } else {
                 prechat.style.display = 'none';
+                chatWindow.classList.remove('gated');
                 this.startConversation();
             }
         }
     }
 
     startConversation() {
+        this.updateGatingUI();
         if (this.conversationState === 'greeting') {
             this.addBotMessage("👋 Hi! I'm your AI Safari Assistant with live data from global APIs. I'll help you find the perfect East Africa safari package!");
             
@@ -1279,6 +1303,17 @@ class SafariAIBotEnhancedInternal {
         const input = document.getElementById('aiUserInput');
         const message = input.value.trim();
         
+        // Prevent sending if pre-chat not completed; show pre-chat modal
+        const v = this.visitor || {};
+        const hasName = !!(v.name && v.name.trim().length > 0);
+        const hasEmail = !!(v.email && /.+@.+\..+/.test(v.email));
+        if (!(v.consent && hasName && hasEmail)) {
+            const pre = document.getElementById('aiPrechatModal');
+            if (pre) pre.style.display = 'block';
+            this.updateGatingUI();
+            return;
+        }
+
         if (message) {
             this.addUserMessage(message);
             input.value = '';
@@ -2164,6 +2199,7 @@ class SafariAIBotEnhancedInternal {
                     this.saveVisitorToStorage();
                     const pre = document.getElementById('aiPrechatModal');
                     if (pre) pre.style.display = 'none';
+                    this.updateGatingUI();
                     this.addBotMessage(`👋 Hi ${name.split(' ')[0]}! Great to meet you.`);
                     this.startConversation();
                 });
