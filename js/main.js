@@ -504,7 +504,7 @@
                             </div>
                         </div>
                         <div class="whatsapp-chat-body">
-                            <p>👋 Hello! Welcome to Gisu Safaris!</p>
+                            <p><i class="fa-solid fa-phone me-1" aria-hidden="true"></i> Hello! Welcome to Gisu Safaris!</p>
                             <p>How can we help you plan your perfect East African safari adventure today?</p>
                             <div class="whatsapp-input-group">
                                 <input type="text" class="whatsapp-input" id="whatsappMessage" placeholder="Type your message..." maxlength="500">

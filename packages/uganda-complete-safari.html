@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
+    
     <style>
         .hero-carousel {
             position: relative;
@@ -976,11 +981,9 @@
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
-        
-        // Auto-advance slides every 2 seconds
+
         setInterval(nextSlide, 2000);
-        
-        // WhatsApp Widget functionality
+
         let whatsappChatVisible = false;
         const phoneNumber = '61470133869';
         const defaultMessage = 'ðŸ‡ºðŸ‡¬ Hi! I\'m interested in the Complete Uganda Safari experience. Could you please provide more information about availability and pricing?';
@@ -1007,8 +1010,7 @@
             const finalMessage = userMessage || defaultMessage;
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
             window.open(whatsappUrl, '_blank');
-            
-            // Reset and hide chat
+
             messageInput.value = '';
             toggleWhatsAppChat();
         }

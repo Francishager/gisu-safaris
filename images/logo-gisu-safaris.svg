@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Gisu Safaris Logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d6efd"/>
+      <stop offset="100%" stop-color="#2aa876"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="56" ry="56" fill="url(#g)"/>
+  <!-- Safari motif: minimal mountain + sun -->
+  <circle cx="178" cy="86" r="18" fill="#ffd166"/>
+  <path d="M36 176 L96 120 L136 156 L176 124 L220 176 Z" fill="#ffffff" opacity="0.9" filter="url(#shadow)"/>
+  <!-- Monogram GS -->
+  <g fill="#ffffff" font-family="Poppins, Arial, Helvetica, sans-serif" font-weight="700" font-size="82">
+    <text x="58" y="158" letter-spacing="1">GS</text>
+  </g>
+</svg>
