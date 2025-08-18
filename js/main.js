@@ -187,6 +187,62 @@
         }
     }
 
+    // === ICONS: ENSURE FONT AWESOME ===
+    function ensureFontAwesome() {
+        try {
+            const hasFA = document.querySelector('link[href*="font-awesome"], link[href*="/all.min.css"], link[href*="/fontawesome"]');
+            if (!hasFA) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
+                link.crossOrigin = 'anonymous';
+                document.head.appendChild(link);
+                console.log('[Icons] Font Awesome injected');
+            }
+        } catch (e) {
+            console.warn('ensureFontAwesome failed:', e);
+        }
+    }
+
+    // === SAFE STUBS FOR OPTIONAL FEATURES ===
+    function showNotification(message, type = 'info') {
+        try { console.log(`[Notify:${type}]`, message); } catch (_) {}
+    }
+
+    function initFormEnhancements() {
+        // Enhance forms if needed (placeholder)
+    }
+
+    // === INITIALIZATION ===
+    function init() {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+            return;
+        }
+
+        // Initialize all features (guarded)
+        try {
+            if (typeof initNavbarScroll === 'function') initNavbarScroll();
+            if (typeof initHeroSlider === 'function') initHeroSlider();
+            if (typeof initSmoothScroll === 'function') initSmoothScroll();
+            if (typeof initScrollAnimations === 'function') initScrollAnimations();
+            if (typeof initLazyLoading === 'function') initLazyLoading();
+            if (typeof initFormEnhancements === 'function') initFormEnhancements();
+            if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
+            if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
+            if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
+            if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
+            if (typeof initAccessibility === 'function') initAccessibility();
+            if (typeof initSafariFeatures === 'function') initSafariFeatures();
+            if (typeof optimizePerformance === 'function') optimizePerformance();
+
+            console.log('Gisu Safaris website initialized successfully!');
+        } catch (error) {
+            console.error('Error initializing website:', error);
+        }
+    }
+
     // === WHATSAPP WIDGET HELPERS & GLOBALS ===
     const phoneNumber = '61478914106';
     const chatWidget = () => document.getElementById('whatsappChat');
