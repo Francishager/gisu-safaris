@@ -1677,10 +1677,15 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
   position: fixed;
   right: 16px;
   bottom: 16px;
-  z-index: 2147483649; /* above AI bot */
+  z-index: 1050; /* above navbar (1030) and AI bot (1040) */
+  pointer-events: none; /* container itself should not intercept clicks */
 }
 
 .whatsapp-widget { position: relative; }
+
+/* Only interactive elements accept pointer events */
+.floating-whatsapp .whatsapp-btn,
+.floating-whatsapp .whatsapp-chat { pointer-events: auto; }
 
 .whatsapp-btn {
   width: 56px;
@@ -1709,7 +1714,7 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-  z-index: 2147483649; /* ensure above AI bot */
+  z-index: 1051; /* one layer above WhatsApp button */
   overflow: hidden;
   transform: translateY(10px);
   opacity: 0;
@@ -1770,13 +1775,15 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
 /* FINAL OVERRIDES: Ensure WhatsApp chat has proper size on mobile */
 @media (max-width: 576px) {
   .floating-whatsapp { right: 12px !important; bottom: 12px !important; z-index: 2147483649 !important; }
+  /* Normalize mobile z-index to avoid overlays */
+  .floating-whatsapp { right: 12px !important; bottom: 12px !important; z-index: 1050 !important; }
   .floating-whatsapp .whatsapp-chat {
     width: min(86vw, 340px) !important;
     max-width: 340px !important;
     min-width: 280px !important;
     right: 12px !important;
     bottom: 68px !important;
-    z-index: 2147483649 !important; /* guarantee top-layer on mobile */
+    z-index: 1051 !important; /* keep above AI bot and navbar on mobile */
     border-radius: 12px !important;
     box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
   }
@@ -1787,9 +1794,9 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
 }
 
 /* Z-INDEX FIX: ensure WhatsApp widget sits above the AI bot on all devices */
-#ai-safari-bot { z-index: 2147483600 !important; }
-#ai-safari-bot .ai-chat-window { z-index: 2147483599 !important; }
+#ai-safari-bot { z-index: 1040 !important; }
+#ai-safari-bot .ai-chat-window { z-index: 1041 !important; }
 @media (max-width: 576px) {
-  #ai-safari-bot { z-index: 2147483600 !important; }
-  #ai-safari-bot .ai-chat-window { z-index: 2147483599 !important; }
+  #ai-safari-bot { z-index: 1040 !important; }
+  #ai-safari-bot .ai-chat-window { z-index: 1041 !important; }
 }

@@ -406,8 +406,9 @@ class SafariAIBotEnhanced {
                 position: fixed;
                 bottom: 100px;
                 left: 20px;
-                z-index: 2147483647;
+                z-index: 1040; /* below WhatsApp (1050/1051), above navbar (1030) */
                 font-family: 'Poppins', sans-serif;
+                pointer-events: none; /* prevent overlay from blocking page by default */
             }
 
             .ai-bot-trigger {
@@ -421,6 +422,7 @@ class SafariAIBotEnhanced {
                 position: relative;
                 overflow: hidden;
                 transition: all 0.3s ease;
+                pointer-events: auto; /* allow interaction */
             }
 
             .ai-bot-trigger:hover {
@@ -477,16 +479,17 @@ class SafariAIBotEnhanced {
                 position: absolute;
                 bottom: 80px;
                 left: 0;
-                width: 320px;
-                height: 380px;
+                width: 360px;
+                height: 420px;
                 background: white;
-                border-radius: 20px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                border-radius: 15px;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
                 display: none;
                 flex-direction: column;
                 overflow: hidden;
                 animation: slideInUp 0.3s ease;
-                z-index: 2147483646;
+                z-index: 1041; /* one above its trigger but below WhatsApp chat */
+                pointer-events: auto; /* allow interaction */
             }
 
             @keyframes slideInUp {

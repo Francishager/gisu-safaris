@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -777,90 +777,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="/js/main.js"></script>
-    <!-- AI Safari Bot (Enhanced) -->
-    <script src="js/ai-safari-bot-enhanced.js"></script>
     
-    <!-- Auto-Rotating Hero Slider Script -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        
-        function showNextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-        
-        // Auto-rotate every 2 seconds
-        setInterval(showNextSlide, 2000);
-    });
-    </script>
-    
-    <!-- WhatsApp Chat Widget Script -->
-    <script>
-    // WhatsApp Chat Widget Functionality
-    function toggleWhatsAppChat() {
-        const chatWidget = document.getElementById('whatsappChat');
-        if (!chatWidget) return;
-        chatWidget.classList.toggle('active');
-        if (chatWidget.classList.contains('active')) {
-            setTimeout(() => {
-                const input = document.getElementById('whatsappMessage');
-                if (input) input.focus();
-            }, 300);
-        }
-    }
-    
-    function sendWhatsAppMessage() {
-        const messageInput = document.getElementById('whatsappMessage');
-        const message = (messageInput.value || '').trim();
-        if (message === '') { messageInput.focus(); return; }
-        const phoneNumber = '61478914106';
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        window.open(whatsappUrl, '_blank');
-        messageInput.value = '';
-        toggleWhatsAppChat();
-    }
-    
-    // Handle Enter key press in the input field
-    document.addEventListener('DOMContentLoaded', function() {
-        const messageInput = document.getElementById('whatsappMessage');
-        if (messageInput) {
-            messageInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    sendWhatsAppMessage();
-                }
-            });
-            messageInput.addEventListener('input', function() {
-                const sendBtn = document.querySelector('.whatsapp-send-btn');
-                if (sendBtn) sendBtn.disabled = this.value.trim() === '';
-            });
-        }
-        // Close chat when clicking outside
-        document.addEventListener('click', function(event) {
-            const chatWidget = document.getElementById('whatsappChat');
-            const whatsappWidget = document.querySelector('.whatsapp-widget');
-            if (chatWidget && chatWidget.classList.contains('active') && 
-                whatsappWidget && !whatsappWidget.contains(event.target)) {
-                chatWidget.classList.remove('active');
-            }
-        });
-        // Prevent chat from closing when clicking inside it
-        const chatWidget = document.getElementById('whatsappChat');
-        if (chatWidget) {
-            chatWidget.addEventListener('click', function(event) {
-                event.stopPropagation();
-            });
-        }
-    });
-    </script>
-    
-    <!-- Safari Packages Loader Script -->
-    <script src="js/safari-packages-loader.js"></script>
-    <!-- Package Filters Script -->
-    <script src="js/package-filters.js"></script>
   </body>
 </html>
