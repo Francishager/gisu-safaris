@@ -416,11 +416,13 @@ class SafariAIBotEnhancedInternal {
             /* Enhanced AI Safari Bot Styles */
             #ai-safari-bot {
                 position: fixed;
-                bottom: 100px;
-                left: 20px;
+                bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+                left: calc(20px + env(safe-area-inset-left, 0px));
                 z-index: 1040; /* below WhatsApp (1050/1051), above navbar (1030) */
                 font-family: 'Poppins', sans-serif;
                 pointer-events: none; /* prevent overlay from blocking page by default */
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+                padding-left: env(safe-area-inset-left, 0px);
             }
 
             .ai-bot-trigger {
@@ -489,7 +491,7 @@ class SafariAIBotEnhancedInternal {
 
             .ai-chat-window {
                 position: absolute;
-                bottom: 80px;
+                bottom: calc(80px + env(safe-area-inset-bottom, 0px));
                 left: 0;
                 width: 360px;
                 height: 420px;
@@ -502,6 +504,7 @@ class SafariAIBotEnhancedInternal {
                 animation: slideInUp 0.3s ease;
                 z-index: 1041; /* one above its trigger but below WhatsApp chat */
                 pointer-events: auto; /* allow interaction */
+                max-height: calc(100vh - 160px - env(safe-area-inset-top, 0px));
             }
 
             @keyframes slideInUp {
@@ -516,14 +519,18 @@ class SafariAIBotEnhancedInternal {
             /* Pre-chat styles */
             .ai-prechat-modal { padding: 12px; border-bottom: 1px solid #eee; background:#fff; }
             .prechat-card { background:#f8f9fa; border:1px solid #e9ecef; border-radius:12px; padding:12px; }
-            .prechat-card h4 { margin: 0 0 8px 0; font-size: 15px; color:#2E7D32; }
+            .prechat-card h4 { margin: 0 0 8px 0; font-size: 16px; color:#2E7D32; }
             .prechat-row { margin:6px 0; }
-            .prechat-row input { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #ddd; border-radius:8px; font-size:13px; }
-            .prechat-consent { display:flex; gap:8px; align-items:flex-start; font-size:12px; color:#495057; margin-top:6px; }
-            .prechat-actions { display:flex; gap:8px; margin-top:10px; }
-            #aiStartChatBtn { background:#2E7D32; color:#fff; border:none; padding:8px 12px; border-radius:8px; font-size:13px; cursor:pointer; }
+            .prechat-row input { width:100%; box-sizing:border-box; padding:10px 12px; border:1px solid #bbb; border-radius:8px; font-size:14px; }
+            .prechat-row input:focus { outline: none; border-color:#2E7D32; box-shadow: 0 0 0 3px rgba(46,125,50,0.15); }
+            .prechat-row input.invalid { border-color:#B00020; }
+            .prechat-consent { display:flex; gap:8px; align-items:flex-start; font-size:13px; color:#212529; margin-top:8px; line-height:1.35; }
+            .prechat-consent input { accent-color:#2E7D32; margin-top:3px; }
+            .prechat-consent.invalid span { color:#B00020; }
+            .prechat-actions { display:flex; gap:8px; margin-top:12px; }
+            #aiStartChatBtn { background:#2E7D32; color:#fff; border:none; padding:10px 14px; border-radius:8px; font-size:14px; cursor:pointer; }
             .link-btn { background:transparent; border:none; color:#6c757d; cursor:pointer; font-size:12px; text-decoration:underline; }
-            .prechat-privacy { display:block; color:#6c757d; font-size:11px; margin-top:8px; }
+            .prechat-privacy { display:block; color:#212529; font-size:12px; margin-top:10px; background:#FFFBE6; padding:8px 10px; border-left:3px solid #F7931E; border-radius:6px; }
 
             .ai-chat-header {
                 background: linear-gradient(135deg, #2E7D32, #4CAF50);
@@ -914,20 +921,28 @@ class SafariAIBotEnhancedInternal {
             /* Mobile Responsive */
             @media (max-width: 768px) {
                 #ai-safari-bot {
-                    left: 15px;
-                    bottom: 90px;
+                    left: calc(15px + env(safe-area-inset-left, 0px));
+                    bottom: calc(90px + env(safe-area-inset-bottom, 0px));
                 }
                 
                 .ai-chat-window {
                     width: 300px;
-                    height: 350px;
+                    height: 360px;
+                    bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+                    max-height: calc(100vh - 140px - env(safe-area-inset-top, 0px));
                 }
                 
                 .ai-bot-trigger {
                     width: 60px;
                     height: 60px;
                 }
-                
+
+                .prechat-card h4 { font-size: 16px; }
+                .prechat-row input { font-size: 15px; }
+                .prechat-consent { font-size: 14px; }
+                .prechat-privacy { font-size: 13px; }
+            }
+    
                 .ai-bot-icon {
                     font-size: 20px;
                 }

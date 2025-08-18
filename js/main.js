@@ -449,7 +449,7 @@
             } catch (_) { /* fallback used */ }
 
             // Add a cache-busting version to ensure mobile gets the latest script
-            const ver = 'v=20250818-1';
+            const ver = 'v=20250818-2';
             botUrl += (botUrl.includes('?') ? '&' : '?') + ver;
 
             script.src = botUrl;
