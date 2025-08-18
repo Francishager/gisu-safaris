@@ -61,6 +61,24 @@
             }, 50);
         }
 
+    // === VIEW ALL SAFARI PACKAGES BUTTON ===
+    function initViewAllPackagesButton() {
+        try {
+            const btn = document.getElementById('viewAllPackagesBtn');
+            if (!btn) return;
+
+            // Open the full packages page for a consistent experience across devices
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = './packages/index.html';
+                // Use location.assign to keep history
+                window.location.assign(url);
+            });
+        } catch (e) {
+            console.warn('initViewAllPackagesButton failed:', e);
+        }
+    }
+
         function nextSlide() {
             showSlide(currentSlide + 1);
         }
@@ -241,6 +259,7 @@
             if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
             if (typeof initAccessibility === 'function') initAccessibility();
             if (typeof initSafariFeatures === 'function') initSafariFeatures();
+            if (typeof initViewAllPackagesButton === 'function') initViewAllPackagesButton();
             if (typeof optimizePerformance === 'function') optimizePerformance();
 
             console.log('Gisu Safaris website initialized successfully!');
@@ -290,6 +309,19 @@
                 sendWhatsAppMessageInternal();
             }
         });
+
+        // Delegated fallbacks to ensure clicks work even if dynamic timing changes
+        if (!window.__whatsappDelegated) {
+            window.__whatsappDelegated = true;
+            document.addEventListener('click', (e) => {
+                const open = e.target && e.target.closest && e.target.closest('.whatsapp-btn');
+                const close = e.target && e.target.closest && e.target.closest('.whatsapp-close-btn');
+                const send = e.target && e.target.closest && e.target.closest('.whatsapp-send-btn');
+                if (open) { e.preventDefault(); toggleWhatsAppChatInternal(); }
+                if (close) { e.preventDefault(); toggleWhatsAppChatInternal(); }
+                if (send) { e.preventDefault(); sendWhatsAppMessageInternal(); }
+            });
+        }
     }
 
     function initWhatsAppButton() {
