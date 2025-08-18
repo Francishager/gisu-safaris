@@ -110,7 +110,15 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-5">
         <!-- Hero Section -->
-        <header class="hero-section" style="height: 60vh; background: url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+        <header class="hero-section" style="height: 60vh;">
+            <!-- Rotating slides (2s interval handled by initHeroSlider in js/main.js) -->
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=2000&q=80');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1526481280698-8fcc13fd56f6?auto=format&fit=crop&w=2000&q=80');"></div>
+            </div>
             <div class="hero-overlay d-flex align-items-center">
                 <div class="container">
                     <div class="row justify-content-center text-center">
@@ -120,6 +128,9 @@
                             </h1>
                             <p class="hero-description lead text-white mb-0">
                                 Your trusted partner for extraordinary East African wildlife adventures since 2012
+                                <span class="d-block mt-3 hero-rotating text-white-50">
+                                    Discover <span class="word">our story</span>
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -138,7 +149,13 @@
                         <p class="mb-4">Today, we operate across four countries - Uganda, Kenya, Tanzania, and Rwanda - offering everything from intimate gorilla encounters to epic Great Migration safaris. Every journey we craft is designed to create lasting memories while contributing to wildlife conservation and community development.</p>
                     </div>
                     <div class="col-lg-6 fade-element">
-                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gisu Safaris team in the field" class="img-fluid rounded-3 shadow hover-image">
+                        <div class="story-slider rounded-3 shadow overflow-hidden">
+                            <div class="story-slide active" style="background-image: url('images/uganda/Queen-Elizabeth-National.jpg');"></div>
+                            <div class="story-slide" style="background-image: url('images/uganda/6-Days-Jinja-sipi-falls-and-Kidepo-valley-1200x675.webp');"></div>
+                            <div class="story-slide" style="background-image: url('images/uganda/Sipi-waterfall-jpg.webp');"></div>
+                            <div class="story-slide" style="background-image: url('images/Sipi-falls-2-1024x576.png');"></div>
+                            <div class="story-slide" style="background-image: url('images/img/14846624841_9347ac575d_b.jpg');"></div>
+                        </div>
                     </div>
                 </div>
             </div>

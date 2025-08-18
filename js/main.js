@@ -100,6 +100,47 @@
         };
     }
 
+    // === OUR STORY SLIDER FUNCTIONALITY ===
+    function initStorySlider() {
+        const slides = document.querySelectorAll('.story-slider .story-slide');
+        if (!slides.length) return;
+
+        let current = 0;
+        let intervalId;
+
+        function next() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }
+
+        function start() {
+            clearInterval(intervalId);
+            intervalId = setInterval(next, 2000);
+        }
+
+        function stop() {
+            clearInterval(intervalId);
+        }
+
+        // start rotation
+        start();
+
+        // Pause on hover
+        const container = document.querySelector('.story-slider');
+        if (container) {
+            container.addEventListener('mouseenter', stop);
+            container.addEventListener('mouseleave', start);
+        }
+
+        // Pause when tab hidden
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) stop(); else start();
+        });
+
+        return { start, stop, next };
+    }
+
     // === VIEW ALL SAFARI PACKAGES BUTTON ===
     function initViewAllPackagesButton() {
         try {
@@ -233,8 +274,31 @@
         try { console.log(`[Notify:${type}]`, message); } catch (_) {}
     }
 
-    function initFormEnhancements() {
-        // Enhance forms if needed (placeholder)
+    // === HERO TEXT ROTATOR ===
+    function initHeroTextRotator() {
+        try {
+            const el = document.querySelector('.hero-rotating .word');
+            if (!el) return;
+
+            const words = ['our story','our mission','our vision','our values','our team'];
+            let idx = 0;
+            el.classList.add('in');
+
+            const cycle = () => {
+                el.classList.remove('in');
+                el.classList.add('out');
+                setTimeout(() => {
+                    idx = (idx + 1) % words.length;
+                    el.textContent = words[idx];
+                    el.classList.remove('out');
+                    el.classList.add('in');
+                }, 200);
+            };
+
+            setInterval(cycle, 2000);
+        } catch (e) {
+            console.warn('initHeroTextRotator failed:', e);
+        }
     }
 
     // === INITIALIZATION ===
@@ -245,18 +309,18 @@
             return;
         }
 
-        // Initialize all features (guarded)
         try {
             if (typeof initNavbarScroll === 'function') initNavbarScroll();
             if (typeof initHeroSlider === 'function') initHeroSlider();
+            if (typeof initStorySlider === 'function') initStorySlider();
+            if (typeof initHeroTextRotator === 'function') initHeroTextRotator();
             if (typeof initSmoothScroll === 'function') initSmoothScroll();
             if (typeof initScrollAnimations === 'function') initScrollAnimations();
             if (typeof initLazyLoading === 'function') initLazyLoading();
-            if (typeof initFormEnhancements === 'function') initFormEnhancements();
             if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
-            if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
-            if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
             if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
+            if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
+            if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
             if (typeof initAccessibility === 'function') initAccessibility();
             if (typeof initSafariFeatures === 'function') initSafariFeatures();
             if (typeof initViewAllPackagesButton === 'function') initViewAllPackagesButton();
@@ -832,6 +896,8 @@
             // Minimal critical boot sequence to ensure widgets load
             initNavbarScroll && initNavbarScroll();
             initHeroSlider && initHeroSlider();
+            initStorySlider && initStorySlider();
+            initHeroTextRotator && initHeroTextRotator();
             initSmoothScroll && initSmoothScroll();
             initScrollAnimations && initScrollAnimations();
             initLazyLoading && initLazyLoading();

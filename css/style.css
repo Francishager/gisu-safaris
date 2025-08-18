@@ -173,6 +173,51 @@ body {
     backdrop-filter: blur(10px);
 }
 
+/* Rotating text on hero (modern fade/slide) */
+.hero-rotating {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+.hero-rotating .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 350ms ease, transform 350ms ease;
+}
+.hero-rotating .word.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hero-rotating .word.out {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+/* === OUR STORY SLIDER === */
+.story-slider {
+    position: relative;
+    width: 100%;
+    /* 16:10 aspect ratio for a balanced card */
+    padding-top: 62.5%;
+    background: #000;
+}
+.story-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 6s ease;
+    will-change: opacity;
+}
+.story-slide.active {
+    opacity: 1;
+}
+
 /* === BUTTON STYLING === */
 .btn-primary {
     background-color: var(--accent-color);

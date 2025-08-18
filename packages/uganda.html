@@ -40,6 +40,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <noscript>
+        <style>
+            /* Ensure content is visible if JavaScript fails */
+            .fade-element { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
+    <style>
+        /* Page-scoped styles for hero video */
+        .hero-section { position: relative; height: 70vh; overflow: hidden; }
+        .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: relative; z-index: 2; background: transparent; height: 100%; }
+        @media (max-width: 576px) { .hero-section { height: 56vh; } }
+    </style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -108,7 +121,13 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <header class="hero-section" style="height: 70vh; background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+        <header class="hero-section">
+            <!-- Background video (replace src with your Uganda safari video URL) -->
+            <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+                <source src="https://gisusafaris.com/video/videoplayback.mp4" type="video/mp4">
+                <source src="https://cdn.coverr.co/videos/coverr-elephants-in-the-savannah-4442/1080p.mp4" type="video/mp4">
+                <!-- Fallback image if video not supported will be provided by poster attribute -->
+            </video>
             <div class="hero-overlay d-flex align-items-center">
                 <div class="container">
                     <div class="row justify-content-center text-center">
@@ -766,7 +785,11 @@
                         </a>
                     </div>
                     <div class="col-lg-6 fade-element">
-                        <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Uganda landscape seasonal changes" class="img-fluid rounded-3 shadow hover-image">
+                        <video class="img-fluid rounded-3 shadow hover-image section-video" autoplay loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1200&q=70" controls controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture oncontextmenu="return false;">
+                            <source src="https://gisusafaris.com/video/videoplayback.mp4" type="video/mp4">
+                            <source src="https://cdn.coverr.co/videos/coverr-elephants-in-the-savannah-4442/1080p.mp4" type="video/mp4">
+                            <!-- If the browser does not support HTML5 video, the poster image will show -->
+                        </video>
                     </div>
                 </div>
             </div>
@@ -958,8 +981,40 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript -->
-    <script src="/js/main.js"></script>
+    <!-- Custom JavaScript (relative path fixed) -->
+    <script src="../js/main.js"></script>
+    <!-- Page init to ensure WhatsApp widget binds properly and videos play with sound -->
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        try { if (window.ensureWhatsAppWidget) window.ensureWhatsAppWidget(); } catch (e) { /* no-op */ }
+        try { if (window.initWhatsAppButton) window.initWhatsAppButton(); } catch (e) { /* no-op */ }
+
+        // Ensure the Best Time section video plays with sound; if blocked, wait for user gesture
+        try {
+          const vids = Array.from(document.querySelectorAll('.section-video'));
+          const tryPlay = (v) => {
+            v.muted = false;
+            v.volume = 0.7;
+            const p = v.play();
+            if (p && typeof p.then === 'function') {
+              p.catch(() => { /* will handle via gesture */ });
+            }
+          };
+          const gestureHandler = () => {
+            vids.forEach(tryPlay);
+            document.removeEventListener('click', gestureHandler);
+            document.removeEventListener('touchstart', gestureHandler);
+            document.removeEventListener('keydown', gestureHandler);
+          };
+          // Initial attempt
+          vids.forEach(tryPlay);
+          // Fallback on user gesture if blocked by autoplay policy
+          document.addEventListener('click', gestureHandler, { once: true });
+          document.addEventListener('touchstart', gestureHandler, { once: true });
+          document.addEventListener('keydown', gestureHandler, { once: true });
+        } catch (_) { /* no-op */ }
+      });
+    </script>
   </body>
 </html>
 
