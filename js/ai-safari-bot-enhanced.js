@@ -815,6 +815,16 @@ class SafariAIBotEnhancedInternal {
                 color: white !important;
             }
 
+            /* Desktop adjustments: bring AI bot closer to bottom so header is fully visible */
+            @media (min-width: 992px) {
+                #ai-safari-bot {
+                    bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+                }
+                .ai-chat-window {
+                    bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+                }
+            }
+
             .phone-handoff-card {
                 background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
                 border-radius: 12px;
