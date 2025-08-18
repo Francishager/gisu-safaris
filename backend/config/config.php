@@ -58,6 +58,13 @@ define('DATE_FORMAT', 'Y-m-d H:i:s');
 define('FRONTEND_URL', $_ENV['FRONTEND_URL'] ?? 'https://gisusafaris.com');
 define('ADMIN_URL', $_ENV['ADMIN_URL'] ?? 'https://gisusafaris.com/admin');
 
+// Payments / Stripe Configuration
+define('STRIPE_SECRET_KEY', $_ENV['STRIPE_SECRET_KEY'] ?? '');
+define('STRIPE_WEBHOOK_SECRET', $_ENV['STRIPE_WEBHOOK_SECRET'] ?? '');
+define('PAYMENTS_CURRENCY', $_ENV['PAYMENTS_CURRENCY'] ?? 'USD');
+define('PAYMENTS_SUCCESS_URL', $_ENV['PAYMENTS_SUCCESS_URL'] ?? (FRONTEND_URL . '/payments/success.html'));
+define('PAYMENTS_CANCEL_URL', $_ENV['PAYMENTS_CANCEL_URL'] ?? (FRONTEND_URL . '/payments/cancel.html'));
+
 // Notification Settings
 define('ADMIN_EMAIL', 'admin@gisusafaris.com');
 define('BOOKING_NOTIFICATION_EMAIL', 'bookings@gisusafaris.com');

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payment Canceled - Gisu Safaris</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .payment-page { max-width: 720px; margin: 60px auto; padding: 24px; background: #fff; border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+    .payment-page h1 { color: #b71c1c; }
+    .actions { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 10px 16px; background: #1b5e20; color: #fff; border-radius: 6px; text-decoration: none; }
+    .btn.secondary { background: #1565c0; }
+  </style>
+</head>
+<body>
+  <main class="payment-page">
+    <h1>Payment was canceled</h1>
+    <p>
+      Your payment was not completed. You can try again anytime, or contact us for assistance.
+    </p>
+    <div id="booking-meta"></div>
+    <div class="actions">
+      <a class="btn" href="/index.html">Back to Home</a>
+      <a class="btn secondary" href="/contact.html">Contact Support</a>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const bookingId = params.get('bookingId');
+    if (bookingId) {
+      const el = document.getElementById('booking-meta');
+      el.innerHTML = `<p><strong>Booking ID:</strong> ${bookingId}</p>`;
+    }
+  </script>
+</body>
+</html>

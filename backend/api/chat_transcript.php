@@ -67,6 +67,41 @@ try {
     $ua = htmlspecialchars($_SERVER['HTTP_USER_AGENT'] ?? '');
     $ip = htmlspecialchars(getClientIp());
 
+    // Analytics/meta extraction
+    $sessionId = (string)($input['sessionId'] ?? ($meta['session_id'] ?? ''));
+    if ($sessionId === '') { $sessionId = substr(bin2hex(random_bytes(24)), 0, 48); }
+    $referrer = (string)($meta['referrer'] ?? ($_SERVER['HTTP_REFERER'] ?? ''));
+    $utm = is_array($meta['utm'] ?? null) ? $meta['utm'] : [];
+    $device = (string)($meta['device'] ?? ($meta['userAgent'] ?? ''));
+    $locale = (string)($meta['locale'] ?? '');
+    $tzOffset = (int)($meta['tzOffset'] ?? 0);
+    $leadScore = isset($meta['lead_score']) ? (int)$meta['lead_score'] : null;
+    $bookingIntent = !empty($meta['booking_intent']);
+    $packageInterest = (string)($meta['package_interest'] ?? '');
+    $marketingConsent = !empty($meta['marketing_consent']);
+
+    // PII masking helpers for analytics persistence (do not affect email body)
+    $maskPIIText = function ($text) {
+        if (!is_string($text) || $text === '') return $text;
+        // Mask emails
+        $masked = preg_replace('/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[REDACTED_EMAIL]', $text);
+        // Mask phone numbers (simple patterns for intl/local)
+        $masked = preg_replace('/(?:(?:\+\d{1,3}[\s-]?)?(?:\(\d{1,4}\)[\s-]?)?\d[\d\s-]{6,}\d)/', '[REDACTED_PHONE]', $masked);
+        // Mask names preceded by Name: pattern (best-effort)
+        $masked = preg_replace('/(?i)(name\s*:\s*)([^\n<]{1,80})/', '$1[REDACTED_NAME]', $masked);
+        return $masked;
+    };
+
+    // Compute duration and counts
+    $durationSeconds = null;
+    try {
+        $startTs = strtotime($input['sessionStart'] ?? '');
+        $endTs = strtotime($input['sessionEnd'] ?? '');
+        if ($startTs && $endTs && $endTs >= $startTs) {
+            $durationSeconds = $endTs - $startTs;
+        }
+    } catch (Exception $_e) { /* ignore */ }
+
     $rows = '';
     foreach ($history as $m) {
         if (!is_array($m)) continue;
@@ -115,12 +150,145 @@ try {
 
     $subject = 'AI Safari Chat Transcript - ' . ($name !== '' ? $name : 'Visitor') . ($summary !== '' ? (' - ' . $summary) : '');
 
+    // Persist analytics: chat_sessions and chat_messages
+    $persisted = false; $messagesSaved = 0;
+    try {
+        $db = getDbConnection();
+        // Prepare masked fields for analytics if marketing consent is false
+        $storeName = $marketingConsent ? ($name ?: null) : null;
+        $storeEmail = $marketingConsent ? ($email ?: null) : null;
+        $storeIp = $marketingConsent ? getClientIp() : null;
+        $storePreferences = $marketingConsent ? $preferences : json_decode(json_encode($preferences), true);
+        if (!$marketingConsent && !empty($storePreferences)) {
+            // Best-effort mask string values in preferences
+            foreach ($storePreferences as $pk => $pv) {
+                if (is_string($pv)) $storePreferences[$pk] = $maskPIIText($pv);
+            }
+        }
+
+        // Upsert session
+        $stmt = $db->prepare("INSERT INTO chat_sessions (
+            session_id, visitor_name, visitor_email, consent_transcript, marketing_consent,
+            page, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content,
+            device, locale, tz_offset_minutes, ip_address, user_agent,
+            started_at, ended_at, duration_seconds, messages_total, user_msgs, bot_msgs,
+            lead_score, booking_intent, package_interest, preferences, meta
+        ) VALUES (
+            :session_id, :visitor_name, :visitor_email, :consent_transcript, :marketing_consent,
+            :page, :referrer, :utm_source, :utm_medium, :utm_campaign, :utm_term, :utm_content,
+            :device, :locale, :tz_offset_minutes, :ip_address, :user_agent,
+            :started_at, :ended_at, :duration_seconds, :messages_total, :user_msgs, :bot_msgs,
+            :lead_score, :booking_intent, :package_interest, :preferences, :meta
+        )
+        ON CONFLICT (session_id) DO UPDATE SET
+            visitor_name=EXCLUDED.visitor_name,
+            visitor_email=EXCLUDED.visitor_email,
+            consent_transcript=EXCLUDED.consent_transcript,
+            marketing_consent=EXCLUDED.marketing_consent,
+            page=EXCLUDED.page,
+            referrer=EXCLUDED.referrer,
+            utm_source=EXCLUDED.utm_source,
+            utm_medium=EXCLUDED.utm_medium,
+            utm_campaign=EXCLUDED.utm_campaign,
+            utm_term=EXCLUDED.utm_term,
+            utm_content=EXCLUDED.utm_content,
+            device=EXCLUDED.device,
+            locale=EXCLUDED.locale,
+            tz_offset_minutes=EXCLUDED.tz_offset_minutes,
+            ip_address=EXCLUDED.ip_address,
+            user_agent=EXCLUDED.user_agent,
+            started_at=EXCLUDED.started_at,
+            ended_at=EXCLUDED.ended_at,
+            duration_seconds=EXCLUDED.duration_seconds,
+            messages_total=EXCLUDED.messages_total,
+            user_msgs=EXCLUDED.user_msgs,
+            bot_msgs=EXCLUDED.bot_msgs,
+            lead_score=EXCLUDED.lead_score,
+            booking_intent=EXCLUDED.booking_intent,
+            package_interest=EXCLUDED.package_interest,
+            preferences=EXCLUDED.preferences,
+            meta=EXCLUDED.meta;");
+
+        $stmt->execute([
+            ':session_id' => $sessionId,
+            ':visitor_name' => $storeName,
+            ':visitor_email' => $storeEmail,
+            ':consent_transcript' => $consent,
+            ':marketing_consent' => $marketingConsent,
+            ':page' => $meta['page'] ?? ($_SERVER['HTTP_REFERER'] ?? ''),
+            ':referrer' => $referrer,
+            ':utm_source' => $utm['source'] ?? ($meta['utm_source'] ?? null),
+            ':utm_medium' => $utm['medium'] ?? ($meta['utm_medium'] ?? null),
+            ':utm_campaign' => $utm['campaign'] ?? ($meta['utm_campaign'] ?? null),
+            ':utm_term' => $utm['term'] ?? ($meta['utm_term'] ?? null),
+            ':utm_content' => $utm['content'] ?? ($meta['utm_content'] ?? null),
+            ':device' => $device ?: null,
+            ':locale' => $locale ?: null,
+            ':tz_offset_minutes' => $tzOffset,
+            ':ip_address' => $storeIp,
+            ':user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+            ':started_at' => ($input['sessionStart'] ?? null) ?: null,
+            ':ended_at' => ($input['sessionEnd'] ?? null) ?: null,
+            ':duration_seconds' => $durationSeconds,
+            ':messages_total' => count($history),
+            ':user_msgs' => $userCount,
+            ':bot_msgs' => $botCount,
+            ':lead_score' => $leadScore,
+            ':booking_intent' => $bookingIntent,
+            ':package_interest' => $packageInterest ?: null,
+            ':preferences' => json_encode($storePreferences ?: (object)[]),
+            ':meta' => json_encode($meta),
+        ]);
+
+        // Insert messages (append-only)
+        if (!empty($history)) {
+            $msgStmt = $db->prepare("INSERT INTO chat_messages (session_id, sender, message, occurred_at) VALUES (:sid, :sender, :message, :occurred_at)");
+            foreach ($history as $m) {
+                if (!is_array($m)) continue;
+                $senderVal = strtolower($m['sender'] ?? '');
+                if ($senderVal !== 'user' && $senderVal !== 'bot') $senderVal = 'user';
+                $messageToStore = (string)($m['message'] ?? '');
+                if (!$marketingConsent && $senderVal === 'user') {
+                    $messageToStore = $maskPIIText($messageToStore);
+                }
+                $msgStmt->execute([
+                    ':sid' => $sessionId,
+                    ':sender' => $senderVal,
+                    ':message' => $messageToStore,
+                    ':occurred_at' => ($m['timestamp'] ?? null) ?: null,
+                ]);
+                $messagesSaved++;
+            }
+        }
+        $persisted = true;
+    } catch (Exception $e) {
+        logEvent('error', 'Failed to persist chat analytics', [ 'error' => $e->getMessage() ]);
+    }
+
+    // Hot lead tweak to subject
+    if ($bookingIntent || ($leadScore !== null && $leadScore >= 70)) {
+        $subject = '[HOT LEAD] ' . $subject;
+    }
+
     // Send to admins
     $adminSent = false;
     try {
         $adminSent = sendMultipleAdminEmails($subject, $html);
     } catch (Exception $e) {
         logEvent('error', 'Failed to send admin transcript emails', [ 'error' => $e->getMessage() ]);
+    }
+
+    // Route hot lead to dedicated booking notifications address as well
+    $hotLeadRouted = false;
+    if ($bookingIntent || ($leadScore !== null && $leadScore >= 70)) {
+        try {
+            if (!empty(BOOKING_NOTIFICATION_EMAIL)) {
+                sendEmail(BOOKING_NOTIFICATION_EMAIL, 'Bookings', $subject, $html);
+                $hotLeadRouted = true;
+            }
+        } catch (Exception $e) {
+            logEvent('warning', 'Failed to send hot lead email to booking notifications', [ 'error' => $e->getMessage() ]);
+        }
     }
 
     // CC visitor if consent and email valid
@@ -141,6 +309,10 @@ try {
         'user_msgs' => $userCount,
         'bot_msgs' => $botCount,
         'page' => $page,
+        'session_id' => $sessionId,
+        'persisted' => $persisted,
+        'messages_saved' => $messagesSaved,
+        'hotlead_routed' => isset($hotLeadRouted) ? $hotLeadRouted : false,
     ]);
 
     sendJsonResponse([

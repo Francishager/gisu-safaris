@@ -64,12 +64,33 @@ CREATE TABLE package_bookings (
     estimated_price DECIMAL(10,2),
     booking_status VARCHAR(20) DEFAULT 'inquiry', -- inquiry, confirmed, cancelled
     payment_status VARCHAR(20) DEFAULT 'pending', -- pending, paid, partial, failed
+    paid_amount DECIMAL(10,2),
+    paid_at TIMESTAMP WITH TIME ZONE,
+    stripe_session_id VARCHAR(100),
+    stripe_payment_intent_id VARCHAR(100),
     whatsapp_sent BOOLEAN DEFAULT false,
     ip_address INET,
     user_agent TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 3. Payments (legacy schema - disabled)
+-- NOTE: A newer generic `payments` table is defined later in this file with
+-- fields for Stripe session/intent IDs, status, receipt_url, etc.
+-- Keeping this legacy block commented for reference to avoid duplicate table creation.
+--
+-- CREATE TABLE payments (
+--     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+--     package_booking_id UUID NOT NULL REFERENCES package_bookings(id),
+--     payment_method VARCHAR(50) NOT NULL, -- 'stripe', 'bank-transfer', etc.
+--     payment_status VARCHAR(20) NOT NULL, -- 'pending', 'paid', 'failed'
+--     amount DECIMAL(10,2) NOT NULL,
+--     payment_date TIMESTAMP WITH TIME ZONE NOT NULL,
+--     payment_reference VARCHAR(100) NOT NULL,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );
 
 -- 3. Newsletter Subscriptions
 CREATE TABLE newsletter_subscriptions (
@@ -161,6 +182,8 @@ CREATE INDEX idx_package_bookings_package_type ON package_bookings(package_type)
 CREATE INDEX idx_package_bookings_created_at ON package_bookings(created_at DESC);
 CREATE INDEX idx_package_bookings_booking_status ON package_bookings(booking_status);
 CREATE INDEX idx_package_bookings_travel_date ON package_bookings(travel_date);
+CREATE INDEX IF NOT EXISTS idx_package_bookings_payment_status ON package_bookings(payment_status);
+CREATE INDEX IF NOT EXISTS idx_package_bookings_stripe ON package_bookings(stripe_session_id, stripe_payment_intent_id);
 
 -- Newsletter subscriptions indexes
 CREATE INDEX idx_newsletter_subscriptions_email ON newsletter_subscriptions(email);
@@ -320,9 +343,140 @@ FROM package_bookings
 GROUP BY DATE_TRUNC('day', created_at)
 ORDER BY booking_date DESC;
 
+-- 8. Chat Analytics
+CREATE TABLE IF NOT EXISTS chat_sessions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    session_id VARCHAR(64) UNIQUE NOT NULL,
+    visitor_name VARCHAR(150),
+    visitor_email VARCHAR(255),
+    consent_transcript BOOLEAN DEFAULT false,
+    marketing_consent BOOLEAN DEFAULT false,
+    page TEXT,
+    referrer TEXT,
+    utm_source VARCHAR(100),
+    utm_medium VARCHAR(100),
+    utm_campaign VARCHAR(150),
+    utm_term VARCHAR(150),
+    utm_content VARCHAR(150),
+    device VARCHAR(150),
+    locale VARCHAR(20),
+    tz_offset_minutes INTEGER,
+    ip_address INET,
+    user_agent TEXT,
+    started_at TIMESTAMP WITH TIME ZONE,
+    ended_at TIMESTAMP WITH TIME ZONE,
+    duration_seconds INTEGER,
+    messages_total INTEGER DEFAULT 0,
+    user_msgs INTEGER DEFAULT 0,
+    bot_msgs INTEGER DEFAULT 0,
+    lead_score INTEGER,
+    booking_intent BOOLEAN,
+    package_interest VARCHAR(200),
+    preferences JSONB,
+    meta JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chat_messages (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    session_id VARCHAR(64) NOT NULL REFERENCES chat_sessions(session_id) ON DELETE CASCADE,
+    sender VARCHAR(10) NOT NULL, -- 'user' | 'bot'
+    message TEXT NOT NULL,
+    occurred_at TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Indexes for analytics performance
+CREATE INDEX IF NOT EXISTS idx_chat_sessions_session_id ON chat_sessions(session_id);
+CREATE INDEX IF NOT EXISTS idx_chat_sessions_started_at ON chat_sessions(started_at DESC);
+CREATE INDEX IF NOT EXISTS idx_chat_sessions_booking_intent ON chat_sessions(booking_intent);
+CREATE INDEX IF NOT EXISTS idx_chat_sessions_utm ON chat_sessions(utm_source, utm_medium, utm_campaign);
+CREATE INDEX IF NOT EXISTS idx_chat_messages_session_time ON chat_messages(session_id, occurred_at);
+
+-- Trigger to auto-update updated_at
+CREATE TRIGGER update_chat_sessions_updated_at BEFORE UPDATE ON chat_sessions
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- 9. Payments
+CREATE TABLE IF NOT EXISTS payments (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    booking_id UUID,
+    booking_type VARCHAR(30), -- safari|hotel|service|custom
+    amount DECIMAL(10,2) NOT NULL,
+    currency VARCHAR(10) NOT NULL DEFAULT 'USD',
+    status VARCHAR(20) NOT NULL, -- pending|succeeded|failed|refunded|partial
+    stripe_session_id VARCHAR(100) UNIQUE,
+    stripe_payment_intent_id VARCHAR(100),
+    receipt_url TEXT,
+    customer_email VARCHAR(255),
+    metadata JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_payments_booking ON payments(booking_id);
+CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
+CREATE INDEX IF NOT EXISTS idx_payments_created_at ON payments(created_at DESC);
+
+CREATE TRIGGER update_payments_updated_at BEFORE UPDATE ON payments
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
 -- Grant necessary permissions (adjust for your cPanel user)
 -- GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO cpanel_user;
 -- GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO cpanel_user;
 -- GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO cpanel_user;
+
+-- =============================================
+-- ANALYTICS VIEWS: DAILY ROLLUPS FOR DASHBOARDS
+-- =============================================
+
+-- Chat sessions per day with engagement metrics
+CREATE OR REPLACE VIEW chat_sessions_daily AS
+SELECT
+    DATE_TRUNC('day', COALESCE(started_at, created_at))::date AS day,
+    COUNT(*)::int AS total_sessions,
+    COALESCE(AVG(NULLIF(duration_seconds,0)), 0)::numeric(10,2) AS avg_duration_seconds,
+    COALESCE(AVG(messages_total), 0)::numeric(10,2) AS avg_messages_total,
+    COALESCE(AVG(user_msgs), 0)::numeric(10,2) AS avg_user_msgs,
+    COALESCE(AVG(bot_msgs), 0)::numeric(10,2) AS avg_bot_msgs,
+    COUNT(*) FILTER (WHERE booking_intent IS TRUE OR COALESCE(lead_score,0) >= 70)::int AS hot_leads,
+    COALESCE(AVG(NULLIF(lead_score,0)), 0)::numeric(10,2) AS avg_lead_score
+FROM chat_sessions
+GROUP BY 1
+ORDER BY 1 DESC;
+
+-- Chat sessions UTM breakdown per day
+CREATE OR REPLACE VIEW chat_sessions_utm_daily AS
+SELECT
+    DATE_TRUNC('day', COALESCE(started_at, created_at))::date AS day,
+    COALESCE(utm_source, 'unknown') AS utm_source,
+    COALESCE(utm_medium, 'unknown') AS utm_medium,
+    COALESCE(utm_campaign, 'unknown') AS utm_campaign,
+    COUNT(*)::int AS sessions,
+    COUNT(*) FILTER (WHERE booking_intent IS TRUE OR COALESCE(lead_score,0) >= 70)::int AS hot_leads
+FROM chat_sessions
+GROUP BY 1,2,3,4
+ORDER BY 1 DESC, sessions DESC;
+
+-- Chat messages per day by sender
+CREATE OR REPLACE VIEW chat_messages_daily AS
+SELECT
+    DATE_TRUNC('day', COALESCE(occurred_at, created_at))::date AS day,
+    sender,
+    COUNT(*)::int AS messages
+FROM chat_messages
+GROUP BY 1,2
+ORDER BY 1 DESC, 3 DESC;
+
+-- Chat conversion rate per day
+CREATE OR REPLACE VIEW chat_conversion_daily AS
+SELECT
+    d.day,
+    d.total_sessions,
+    d.hot_leads,
+    CASE WHEN d.total_sessions > 0 THEN ROUND((d.hot_leads::numeric / d.total_sessions::numeric) * 100.0, 2) ELSE 0 END AS hot_lead_rate_pct
+FROM chat_sessions_daily d
+ORDER BY d.day DESC;
 
 COMMIT;
