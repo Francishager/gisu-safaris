@@ -319,8 +319,16 @@
 
             // Add script dynamically
             const script = document.createElement('script');
-            // Use absolute root path so it works from subdirectories too
-            script.src = '/js/ai-safari-bot-enhanced.js';
+            // Resolve bot script relative to the current main.js path so it works on GitHub Pages subpaths
+            try {
+                const thisScript = document.currentScript || scripts.find(s => (s.src || '').includes('js/main.js'));
+                const base = thisScript ? thisScript.src : (location.origin + location.pathname);
+                const botUrl = new URL('ai-safari-bot-enhanced.js', base).toString();
+                script.src = botUrl;
+            } catch (_) {
+                // Fallback to relative path from page
+                script.src = 'js/ai-safari-bot-enhanced.js';
+            }
             script.defer = true;
             document.body.appendChild(script);
         } catch (err) {
