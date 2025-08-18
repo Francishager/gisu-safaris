@@ -476,23 +476,35 @@
                     </div>
                     
                     <div class="col-lg-6 fade-element">
-                        <div class="rounded shadow" style="position: relative; overflow: hidden; width: 100%; padding-top: 56.25%;">
+                        <div class="rounded shadow" id="includedVideoWrapper" style="position: relative; overflow: hidden; width: 100%; padding-top: 56.25%;">
                             <iframe 
                                 id="includedVideo"
-                                src="https://www.youtube.com/embed/siqAfzwCVuw?start=102&autoplay=1&mute=1&controls=0&loop=1&playlist=siqAfzwCVuw&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+                                src="https://www.youtube.com/embed/siqAfzwCVuw?start=102&autoplay=0&mute=1&controls=0&loop=1&playlist=siqAfzwCVuw&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&disablekb=1"
                                 title="What's Included - Multi-Country Safari"
                                 frameborder="0"
                                 allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin"
                                 style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
                             </iframe>
-                            <!-- Custom Unmute/Play Control -->
-                            <button id="includedVideoUnmuteBtn" type="button" aria-label="Unmute video and play"
-                                    class="btn btn-light btn-sm"
-                                    style="position:absolute; bottom:10px; left:10px; z-index:3; backdrop-filter: blur(4px); border-radius: 999px; display:flex; align-items:center; gap:8px;">
-                                <i class="fas fa-volume-up"></i>
-                                <span>Unmute</span>
-                            </button>
+                            <!-- Custom Controls: Play, Pause, Stop, Mute/Unmute -->
+                            <div class="video-controls d-flex gap-2" style="position:absolute; bottom:10px; left:10px; z-index:3;">
+                                <button id="includedVideoPlayBtn" type="button" class="btn btn-light btn-sm" aria-label="Play video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button id="includedVideoPauseBtn" type="button" class="btn btn-light btn-sm" aria-label="Pause video">
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <button id="includedVideoStopBtn" type="button" class="btn btn-light btn-sm" aria-label="Stop video">
+                                    <i class="fas fa-stop"></i>
+                                </button>
+                                <button id="includedVideoMuteToggle" type="button" class="btn btn-light btn-sm" aria-label="Unmute video">
+                                    <i class="fas fa-volume-mute"></i>
+                                    <span class="ms-1">Unmute</span>
+                                </button>
+                                <button id="includedVideoFullscreenBtn" type="button" class="btn btn-light btn-sm" aria-label="Enter fullscreen">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1078,28 +1090,172 @@
         // Custom unmute/play for What's Included video
         const unmuteBtn = document.getElementById('includedVideoUnmuteBtn');
         const includedIframe = document.getElementById('includedVideo');
+        // Add origin to iframe src to improve YT API command reliability
+        if (includedIframe) {
+            try {
+                const url = new URL(includedIframe.src);
+                if (!url.searchParams.has('origin')) {
+                    url.searchParams.set('origin', window.location.origin);
+                    includedIframe.src = url.toString();
+                }
+            } catch (e) {}
+        }
+        const ytOrigin = 'https://www.youtube.com';
+        let includedYTPlayer = null;
+        let playerReady = false;
+        const sendYT = (func, args = []) => {
+            if (!includedIframe) return;
+            try {
+                includedIframe.contentWindow.postMessage(
+                    JSON.stringify({ event: 'command', func, args }),
+                    ytOrigin
+                );
+            } catch (e) { console.debug('sendYT error', e); }
+        };
+        const sendYTRetry = (func, args = [], retries = 3, delay = 150) => {
+            sendYT(func, args);
+            if (retries <= 0) return;
+            setTimeout(() => sendYTRetry(func, args, retries - 1, delay), delay);
+        };
+
+        const runWhenReady = (fn, fallback) => {
+            if (playerReady && includedYTPlayer) { fn(includedYTPlayer); return; }
+            let attempts = 15; // ~2.25s total
+            const t = setInterval(() => {
+                if (playerReady && includedYTPlayer) {
+                    clearInterval(t);
+                    fn(includedYTPlayer);
+                } else if (--attempts <= 0) {
+                    clearInterval(t);
+                    if (typeof fallback === 'function') fallback();
+                }
+            }, 150);
+        };
+
         if (unmuteBtn && includedIframe) {
-            const ytOrigin = 'https://www.youtube.com';
-            const sendCmd = (func) => {
-                try {
-                    includedIframe.contentWindow.postMessage(JSON.stringify({
-                        event: 'command',
-                        func,
-                        args: []
-                    }), ytOrigin);
-                } catch (e) {}
-            };
             unmuteBtn.addEventListener('click', () => {
-                // Attempt to unmute and play; user gesture ensures autoplay with sound
-                sendCmd('unMute');
-                sendCmd('playVideo');
-                // Provide visual feedback and then hide the button
+                console.debug('Unmute clicked');
+                runWhenReady((p) => { try { p.unMute(); p.playVideo(); } catch(e) {} }, () => { sendYT('unMute'); sendYT('playVideo'); });
                 unmuteBtn.disabled = true;
                 unmuteBtn.style.opacity = '0.6';
-                setTimeout(() => {
-                    unmuteBtn.style.display = 'none';
-                }, 600);
+                setTimeout(() => { unmuteBtn.style.display = 'none'; }, 600);
             });
+        }
+
+        // Overlay controls
+        const playBtn = document.getElementById('includedVideoPlayBtn');
+        const pauseBtn = document.getElementById('includedVideoPauseBtn');
+        const stopBtn = document.getElementById('includedVideoStopBtn');
+        const muteToggleBtn = document.getElementById('includedVideoMuteToggle');
+        let isMuted = true; // starts muted per iframe URL
+
+        if (playBtn && includedIframe) {
+            playBtn.addEventListener('click', () => {
+                console.debug('Play clicked');
+                // Unmute then play; wait for player if needed
+                runWhenReady((p) => { try { p.unMute(); p.playVideo(); } catch(e) {} }, () => { sendYTRetry('unMute'); sendYTRetry('playVideo'); });
+                // sync UI state for mute button
+                if (typeof isMuted !== 'undefined' && isMuted === true) {
+                    const icon = muteToggleBtn?.querySelector('i');
+                    const text = muteToggleBtn?.querySelector('span');
+                    muteToggleBtn?.setAttribute('aria-label', 'Mute video');
+                    if (icon) { icon.classList.remove('fa-volume-mute'); icon.classList.add('fa-volume-up'); }
+                    if (text) { text.textContent = 'Mute'; }
+                    isMuted = false;
+                }
+            });
+        }
+        if (pauseBtn && includedIframe) {
+            pauseBtn.addEventListener('click', () => {
+                console.debug('Pause clicked');
+                runWhenReady((p) => { try { p.pauseVideo(); } catch(e) {} }, () => { sendYT('pauseVideo'); });
+            });
+        }
+        if (stopBtn && includedIframe) {
+            stopBtn.addEventListener('click', () => {
+                console.debug('Stop clicked');
+                runWhenReady((p) => { try { p.pauseVideo(); p.seekTo(0, true); } catch(e) {} }, () => { sendYT('pauseVideo'); sendYT('seekTo', [0, true]); });
+            });
+        }
+        if (muteToggleBtn && includedIframe) {
+            muteToggleBtn.addEventListener('click', () => {
+                console.debug('Mute toggle clicked');
+                if (isMuted) {
+                    runWhenReady((p) => { try { p.unMute(); } catch(e) {} }, () => { sendYT('unMute'); });
+                    muteToggleBtn.setAttribute('aria-label', 'Mute video');
+                    const icon = muteToggleBtn.querySelector('i');
+                    const text = muteToggleBtn.querySelector('span');
+                    if (icon) { icon.classList.remove('fa-volume-mute'); icon.classList.add('fa-volume-up'); }
+                    if (text) { text.textContent = 'Mute'; }
+                    isMuted = false;
+                } else {
+                    runWhenReady((p) => { try { p.mute(); } catch(e) {} }, () => { sendYT('mute'); });
+                    muteToggleBtn.setAttribute('aria-label', 'Unmute video');
+                    const icon = muteToggleBtn.querySelector('i');
+                    const text = muteToggleBtn.querySelector('span');
+                    if (icon) { icon.classList.remove('fa-volume-up'); icon.classList.add('fa-volume-mute'); }
+                    if (text) { text.textContent = 'Unmute'; }
+                    isMuted = true;
+                }
+            });
+        }
+
+        // Initialize YouTube Iframe API for reliable control
+        const initIncludedYTPlayer = () => {
+            try {
+                includedYTPlayer = new YT.Player('includedVideo', {
+                    events: {
+                        onReady: (e) => {
+                            playerReady = true;
+                            console.debug('YT Player ready');
+                            try { e.target.mute(); } catch (err) {}
+                            try { e.target.pauseVideo(); } catch (err) {}
+                        }
+                    }
+                });
+            } catch (e) {}
+        };
+        const ensureYTApi = () => {
+            if (window.YT && typeof window.YT.Player === 'function') {
+                initIncludedYTPlayer();
+                return;
+            }
+            const prev = window.onYouTubeIframeAPIReady;
+            window.onYouTubeIframeAPIReady = function() {
+                if (typeof prev === 'function') try { prev(); } catch(e) {}
+                initIncludedYTPlayer();
+            };
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.appendChild(tag);
+        };
+        ensureYTApi();
+
+        // Fullscreen toggle
+        const fsBtn = document.getElementById('includedVideoFullscreenBtn');
+        const fsWrapper = document.getElementById('includedVideoWrapper');
+        if (fsBtn && fsWrapper) {
+            const updateFSIcon = () => {
+                const icon = fsBtn.querySelector('i');
+                if (document.fullscreenElement) {
+                    if (icon) { icon.classList.remove('fa-expand'); icon.classList.add('fa-compress'); }
+                    fsBtn.setAttribute('aria-label', 'Exit fullscreen');
+                } else {
+                    if (icon) { icon.classList.remove('fa-compress'); icon.classList.add('fa-expand'); }
+                    fsBtn.setAttribute('aria-label', 'Enter fullscreen');
+                }
+            };
+            fsBtn.addEventListener('click', async () => {
+                try {
+                    if (!document.fullscreenElement) {
+                        await fsWrapper.requestFullscreen();
+                    } else {
+                        await document.exitFullscreen();
+                    }
+                } catch (e) {}
+                updateFSIcon();
+            });
+            document.addEventListener('fullscreenchange', updateFSIcon);
         }
 
         // Fade animation on scroll
