@@ -1800,3 +1800,42 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
   #ai-safari-bot { z-index: 1040 !important; }
   #ai-safari-bot .ai-chat-window { z-index: 1041 !important; }
 }
+
+/* Ensure WhatsApp close (X) button is always clickable and above header */
+.floating-whatsapp .whatsapp-close-btn {
+  pointer-events: auto !important;
+  z-index: 2147483647 !important;
+}
+
+/* Ensure clicks on the X icon register on the button */
+.floating-whatsapp .whatsapp-close-btn i {
+  pointer-events: none !important;
+}
+
+/* Make sure the chat header and active chat accept pointer events */
+.floating-whatsapp .whatsapp-chat.active,
+.floating-whatsapp .whatsapp-chat-header {
+  pointer-events: auto !important;
+}
+
+/* Force the chat container to the very top layer to avoid any overlays */
+.floating-whatsapp,
+.floating-whatsapp .whatsapp-chat {
+  z-index: 2147483646 !important;
+}
+
+/* Establish stacking context for header and prioritize close button */
+.floating-whatsapp .whatsapp-chat-header {
+  position: relative !important;
+  z-index: 1;
+}
+
+.floating-whatsapp .whatsapp-close-btn {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important; /* above header contents */
+}

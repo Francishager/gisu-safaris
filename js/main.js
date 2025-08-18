@@ -61,24 +61,6 @@
             }, 50);
         }
 
-    // === VIEW ALL SAFARI PACKAGES BUTTON ===
-    function initViewAllPackagesButton() {
-        try {
-            const btn = document.getElementById('viewAllPackagesBtn');
-            if (!btn) return;
-
-            // Open the full packages page for a consistent experience across devices
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = './packages/index.html';
-                // Use location.assign to keep history
-                window.location.assign(url);
-            });
-        } catch (e) {
-            console.warn('initViewAllPackagesButton failed:', e);
-        }
-    }
-
         function nextSlide() {
             showSlide(currentSlide + 1);
         }
@@ -116,6 +98,24 @@
             start: startSlider,
             stop: stopSlider
         };
+    }
+
+    // === VIEW ALL SAFARI PACKAGES BUTTON ===
+    function initViewAllPackagesButton() {
+        try {
+            const btn = document.getElementById('viewAllPackagesBtn');
+            if (!btn) return;
+
+            // Open the full packages page for a consistent experience across devices
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = './packages/index.html';
+                // Use location.assign to keep history
+                window.location.assign(url);
+            });
+        } catch (e) {
+            console.warn('initViewAllPackagesButton failed:', e);
+        }
     }
 
     // === SMOOTH SCROLL FOR ANCHOR LINKS ===
