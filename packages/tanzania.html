@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,9 +107,19 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <header class="hero-section" style="height: 70vh; background: linear-gradient(rgba(255, 107, 53, 0.8), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1549366021-9f761d040a94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
-            <div class="hero-overlay d-flex align-items-center">
+        <!-- Hero Section: Background Video -->
+        <header class="hero-section" style="height: 70vh;">
+            <div class="video-background" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+                <iframe 
+                    src="https://www.youtube.com/embed/b9rXl24ALlg?autoplay=1&mute=1&controls=0&loop=1&playlist=b9rXl24ALlg&modestbranding=1&playsinline=1&rel=0"
+                    title="Tanzania Safari Video"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    style="position:absolute; top:50%; left:50%; width:120%; height:120%; transform: translate(-50%, -50%); pointer-events:none;">
+                </iframe>
+            </div>
+            <div class="hero-overlay d-flex align-items-center" style="position: relative; z-index: 1; background: linear-gradient(rgba(255, 107, 53, 0.35), rgba(0, 0, 0, 0.45));">
                 <div class="container">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-8 fade-element">
@@ -348,7 +358,7 @@
                 <div class="row g-4 mt-4">
                     <div class="col-12">
                         <h3 class="text-center mb-4 fade-element">
-                            <span class="badge bg-danger fs-5 px-4 py-2">ðŸ”¥ Top Selling Tanzania Packages</span>
+                            <span class="badge bg-danger fs-5 px-4 py-2">🔥 Top Selling Tanzania Packages</span>
                         </h3>
                     </div>
                     
@@ -642,8 +652,13 @@
             
             <hr class="my-4">
             
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                </div>
             </div>
         </div>
     </footer>
@@ -664,7 +679,7 @@
                     </div>
                 </div>
                 <div class="whatsapp-chat-body">
-                    <p>ðŸ¦ Hello! Welcome to Gisu Safaris!</p>
+                    <p>🦁 Hello! Welcome to Gisu Safaris!</p>
                     <p>Interested in our Tanzania safari packages? From Serengeti Great Migration to luxury tented camps and romantic honeymoon safaris - how can we help you plan your perfect Tanzania experience?</p>
                     <div class="whatsapp-input-group">
                         <input type="text" 
@@ -688,8 +703,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript -->
-    <script src="/js/main.js"></script>
+    <!-- Custom JavaScript (relative path) -->
+    <script src="../js/main.js"></script>
     
     <!-- WhatsApp Widget JavaScript -->
     <script>
@@ -732,7 +747,7 @@
         }
         
         // Create WhatsApp URL with the message
-        const phoneNumber = '61470133869';
+        const phoneNumber = '61478914106';
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         

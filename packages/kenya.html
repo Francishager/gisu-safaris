@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,6 +40,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Ensure content visible if JS fails -->
+    <noscript>
+        <style>
+            .fade-element { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
+    <style>
+        /* Ensure WhatsApp button is always clickable above content */
+        .floating-whatsapp { z-index: 2147483647 !important; }
+        .floating-whatsapp .whatsapp-btn { pointer-events: auto !important; }
+    </style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -107,17 +118,23 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <header class="hero-section" style="height: 70vh; background: linear-gradient(rgba(244, 67, 54, 0.8), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+        <!-- Hero Section: 5-image animated slider -->
+        <header class="hero-section" style="height: 70vh;">
+            <div class="hero-slider">
+                <!-- Slides: add 'active' on first for immediate paint -->
+                <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1543248939-bc7c8b85d2d0?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1920&q=80');"></div>
+            </div>
             <div class="hero-overlay d-flex align-items-center">
                 <div class="container">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-8 fade-element">
-                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
-                                Kenya Safari Packages
-                            </h1>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">Kenya Safari Packages</h1>
                             <p class="hero-description lead text-white mb-5">
-                                Discover the magical land of Kenya - from the world-famous Masai Mara and its Great Migration to the snow-capped peaks of Mount Kenya and pristine coastal beaches
+                                Discover the magical land of Kenya — from the world-famous Masai Mara and its Great Migration to Mount Kenya peaks and pristine coastal beaches.
                             </p>
                             <div class="hero-buttons">
                                 <a href="#packages" class="btn btn-primary btn-lg me-3">
@@ -348,7 +365,7 @@
                 <div class="row g-4 mt-4">
                     <div class="col-12">
                         <h3 class="text-center mb-4 fade-element">
-                            <span class="badge bg-danger fs-5 px-4 py-2">ðŸ”¥ Top Selling Kenya Packages</span>
+                            <span class="badge bg-danger fs-5 px-4 py-2">🔥 Top Selling Kenya Packages</span>
                         </h3>
                     </div>
                     
@@ -359,8 +376,12 @@
                                 <div class="col-md-5">
                                     <div class="card-image-carousel" style="height: 300px; position: relative; overflow: hidden;">
                                         <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img active" alt="Masai Mara lions" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1546530967-21531b891dd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Safari jeep in Masai Mara" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Elephants at sunset" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1562184552-08fd6d9c3401?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Giraffes in savannah" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1544989164-31dc3c645987?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Masai culture" style="height: 300px; object-fit: cover; width: 100%;">
                                         <div class="card-badges">
-                                            <span class="badge bg-danger">ðŸ”¥ Best Seller</span>
+                                            <span class="badge bg-danger">🔥 Best Seller</span>
                                         </div>
                                     </div>
                                 </div>
@@ -411,8 +432,12 @@
                                 <div class="col-md-5">
                                     <div class="card-image-carousel" style="height: 300px; position: relative; overflow: hidden;">
                                         <img src="https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img active" alt="Kenya beach and safari combo" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1528756514091-dee5ecaa3278?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Diani Beach coast" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1551683380-c0d3e6f87c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Amboseli with Kilimanjaro" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Resort pool" style="height: 300px; object-fit: cover; width: 100%;">
+                                        <img src="https://images.unsplash.com/photo-1558981033-0b7b6a0c9bd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="carousel-img" alt="Beach sunset" style="height: 300px; object-fit: cover; width: 100%;">
                                         <div class="card-badges">
-                                            <span class="badge bg-success">ðŸ”¥ Popular</span>
+                                            <span class="badge bg-success">🔥 Popular</span>
                                         </div>
                                     </div>
                                 </div>
@@ -642,8 +667,13 @@
             
             <hr class="my-4">
             
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                </div>
             </div>
         </div>
     </footer>
@@ -664,7 +694,7 @@
                     </div>
                 </div>
                 <div class="whatsapp-chat-body">
-                    <p>ðŸ¦ Hello! Welcome to Gisu Safaris!</p>
+                    <p>👋 Hello! Welcome to Gisu Safaris!</p>
                     <p>Interested in our Kenya safari packages? From Masai Mara adventures to Mount Kenya hiking and Mombasa beach relaxation - how can we help you plan your perfect Kenya experience?</p>
                     <div class="whatsapp-input-group">
                         <input type="text" 
@@ -679,17 +709,17 @@
                 </div>
             </div>
             
-            <!-- WhatsApp Button -->
-            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+            <!-- WhatsApp Button (non-navigating; opens in-page chat) -->
+            <a class="whatsapp-btn" href="#" role="button" aria-label="Open WhatsApp chat">
                 <i class="fab fa-whatsapp"></i>
-            </button>
+            </a>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript -->
-    <script src="/js/main.js"></script>
+    <!-- Custom JavaScript (relative path) -->
+    <script src="../js/main.js"></script>
     
     <!-- WhatsApp Widget JavaScript -->
     <script>
@@ -732,7 +762,7 @@
         }
         
         // Create WhatsApp URL with the message
-        const phoneNumber = '61470133869';
+        const phoneNumber = '61478914106';
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         
@@ -783,6 +813,43 @@
             });
         }
     });
+    </script>
+    <!-- Page init: ensure WhatsApp/AI bot init and provide wa.me fallback -->
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        try { if (window.ensureWhatsAppWidget) window.ensureWhatsAppWidget(); } catch (e) { /* no-op */ }
+        try { if (window.initWhatsAppButton) window.initWhatsAppButton(); } catch (e) { /* no-op */ }
+        // Retry after a bit in case scripts load late
+        setTimeout(function(){
+          try { if (window.ensureWhatsAppWidget) window.ensureWhatsAppWidget(); } catch (e) {}
+          try { if (window.initWhatsAppButton) window.initWhatsAppButton(); } catch (e) {}
+        }, 600);
+
+        // Hard fallback: open WhatsApp directly if toggle not bound
+        (function bindWaFallback(){
+          const btn = document.querySelector('.whatsapp-btn');
+          if (!btn || btn.__waFallbackBound) return;
+          btn.__waFallbackBound = true;
+          btn.addEventListener('click', function(e) {
+            // Prevent navigation; always open in-page chat
+            e.preventDefault();
+            try {
+              if (window.toggleWhatsAppChat) {
+                window.toggleWhatsAppChat();
+              } else {
+                const chat = document.getElementById('whatsappChat');
+                if (chat) {
+                  chat.classList.add('active');
+                  setTimeout(() => {
+                    const input = document.getElementById('whatsappMessage');
+                    if (input) input.focus();
+                  }, 250);
+                }
+              }
+            } catch(_) {}
+          });
+        })();
+      });
     </script>
 </body>
 </html>
