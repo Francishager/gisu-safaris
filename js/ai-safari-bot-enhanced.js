@@ -1,4 +1,15 @@
 // Enhanced AI-Powered Safari Package Recommendation System with External APIs
+// Guard against double-loading: if constructor already exists, reuse it and skip redefinition
+if (typeof window !== 'undefined' && window.SafariAIBotEnhanced) {
+    try {
+        // Ensure a global instance exists for interoperability
+        if (typeof window.SafariAIBotEnhanced.getInstance === 'function') {
+            window.safariBot = window.SafariAIBotEnhanced.getInstance();
+        }
+    } catch (e) {
+        // no-op
+    }
+} else {
 class SafariAIBotEnhanced {
     constructor() {
         this.isActive = false;
@@ -1664,7 +1675,22 @@ class SafariAIBotEnhanced {
 
     sendTranscript(extra = {}, useBeacon = false) {
         const payload = this.formatTranscriptPayload(extra);
-        const url = '/backend/api/chat_transcript.php';
+
+        // On GitHub Pages, PHP won't execute; skip network call to avoid 405 noise
+        try {
+            const host = (typeof location !== 'undefined' ? location.hostname : '');
+            if (/github\.io$/.test(host)) {
+                console.log('[AI Bot] Transcript skipped on GitHub Pages.');
+                return false;
+            }
+        } catch (_) { /* ignore */ }
+
+        // Compute base path when not on GitHub Pages
+        let url = '/backend/api/chat_transcript.php';
+        try {
+            const basePath = (location && location.pathname && location.pathname.includes('/gisu-safaris')) ? '/gisu-safaris' : '';
+            url = `${basePath}/backend/api/chat_transcript.php`;
+        } catch (_) { /* default url used */ }
 
         try {
             const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
@@ -2166,3 +2192,5 @@ const safariBot = SafariAIBotEnhanced.getInstance();
 if (typeof window !== 'undefined') {
     window.safariBot = safariBot;
 }
+
+} // end double-load guard else
