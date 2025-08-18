@@ -1,16 +1,17 @@
 // Enhanced AI-Powered Safari Package Recommendation System with External APIs
-// Guard against double-loading: if constructor already exists, reuse it and skip redefinition
-if (typeof window !== 'undefined' && window.SafariAIBotEnhanced) {
-    try {
-        // Ensure a global instance exists for interoperability
-        if (typeof window.SafariAIBotEnhanced.getInstance === 'function') {
-            window.safariBot = window.SafariAIBotEnhanced.getInstance();
-        }
-    } catch (e) {
-        // no-op
+// Wrapped in an IIFE to avoid polluting global scope and prevent redeclaration errors on double-load
+(function() {
+    if (typeof window !== 'undefined' && window.SafariAIBotEnhanced) {
+        try {
+            // Reuse existing constructor/instance when already present
+            if (typeof window.SafariAIBotEnhanced.getInstance === 'function') {
+                window.safariBot = window.SafariAIBotEnhanced.getInstance();
+            }
+        } catch (_) { /* no-op */ }
+        return; // stop here, avoid redefining
     }
-} else {
-class SafariAIBotEnhanced {
+
+class SafariAIBotEnhancedInternal {
     constructor() {
         this.isActive = false;
         this.conversationState = 'greeting';
@@ -2175,22 +2176,22 @@ class SafariAIBotEnhanced {
 
     // Initialize the Enhanced Safari AI Bot
     static getInstance() {
-        if (!SafariAIBotEnhanced.instance) {
-            SafariAIBotEnhanced.instance = new SafariAIBotEnhanced();
+        if (!SafariAIBotEnhancedInternal.instance) {
+            SafariAIBotEnhancedInternal.instance = new SafariAIBotEnhancedInternal();
         }
-        return SafariAIBotEnhanced.instance;
+        return SafariAIBotEnhancedInternal.instance;
     }
 }
 
 // Expose constructor globally for external loaders
 if (typeof window !== 'undefined') {
-    window.SafariAIBotEnhanced = SafariAIBotEnhanced;
+    window.SafariAIBotEnhanced = SafariAIBotEnhancedInternal;
 }
 
 // Initialize the Enhanced Safari AI Bot and expose instance for debugging/interop
-const safariBot = SafariAIBotEnhanced.getInstance();
+const safariBot = window.SafariAIBotEnhanced.getInstance();
 if (typeof window !== 'undefined') {
     window.safariBot = safariBot;
 }
 
-} // end double-load guard else
+})();
