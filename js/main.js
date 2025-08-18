@@ -310,6 +310,19 @@
             }
         });
 
+        // Capture-phase safety net to ensure close works even if an overlay intercepts bubbling
+        // This does not interfere with inline onclick or other handlers
+        try {
+            document.addEventListener('click', function(e) {
+                const isClose = e.target && e.target.closest && e.target.closest('.whatsapp-close-btn');
+                if (isClose) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleWhatsAppChatInternal();
+                }
+            }, true); // capture phase
+        } catch (_) { /* no-op */ }
+
         // Delegated fallbacks to ensure clicks work even if dynamic timing changes
         if (!window.__whatsappDelegated) {
             window.__whatsappDelegated = true;
