@@ -494,7 +494,7 @@ class SafariAIBotEnhancedInternal {
                 bottom: calc(80px + env(safe-area-inset-bottom, 0px));
                 left: 0;
                 width: 360px;
-                height: 420px;
+                height: 480px;
                 background: white;
                 border-radius: 15px;
                 box-shadow: 0 12px 40px rgba(0,0,0,0.15);
@@ -514,6 +514,13 @@ class SafariAIBotEnhancedInternal {
 
             .ai-chat-window.active {
                 display: flex;
+            }
+
+            /* Ensure messages area expands and scrolls */
+            #aiChatMessages {
+                flex: 1 1 auto;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             /* Pre-chat styles */
@@ -926,8 +933,8 @@ class SafariAIBotEnhancedInternal {
                 }
                 
                 .ai-chat-window {
-                    width: 300px;
-                    height: 360px;
+                    width: 92vw;
+                    height: min(78vh, 560px);
                     bottom: calc(70px + env(safe-area-inset-bottom, 0px));
                     max-height: calc(100vh - 140px - env(safe-area-inset-top, 0px));
                 }
@@ -938,9 +945,10 @@ class SafariAIBotEnhancedInternal {
                 }
 
                 .prechat-card h4 { font-size: 16px; }
-                .prechat-row input { font-size: 15px; }
-                .prechat-consent { font-size: 14px; }
-                .prechat-privacy { font-size: 13px; }
+                .prechat-row input { font-size: 16px; }
+                .prechat-consent { font-size: 15px; }
+                .prechat-privacy { font-size: 14px; font-weight: 500; line-height: 1.5; }
+                #aiChatMessages { max-height: calc(100vh - 220px - env(safe-area-inset-top, 0px)); }
             }
     
                 .ai-bot-icon {
