@@ -320,6 +320,7 @@
     // === AI SAFARI BOT LOADER ===
     function ensureAISafariBotLoaded() {
         try {
+            console.log('[AI Bot] ensure loader running');
             if (document.getElementById('ai-bot-script')) {
                 return; // already requested
             }
@@ -340,7 +341,8 @@
             } catch (_) { /* fallback used */ }
 
             script.src = botUrl;
-            script.defer = true;
+            // Use async to run as soon as possible (helps when injected late or under file://)
+            script.async = true;
             script.onload = () => console.log('[AI Bot] loaded:', botUrl);
             script.onerror = (e) => console.warn('[AI Bot] failed to load:', botUrl, e);
             document.body.appendChild(script);
@@ -351,11 +353,33 @@
                     const retry = document.createElement('script');
                     retry.id = 'ai-bot-script-retry';
                     retry.src = botUrl;
-                    retry.defer = true;
+                    retry.async = true;
                     document.body.appendChild(retry);
                     console.warn('[AI Bot] retrying injection');
                 }
             }, 2500);
+
+            // Defensive: poll for constructor and explicitly init if needed
+            let attempts = 0;
+            const maxAttempts = 12; // ~6s
+            const poll = setInterval(() => {
+                attempts++;
+                if (window.SafariAIBotEnhanced) {
+                    try {
+                        if (!document.getElementById('ai-safari-bot')) {
+                            console.log('[AI Bot] constructor detected; forcing init');
+                            window.SafariAIBotEnhanced.getInstance();
+                        }
+                        clearInterval(poll);
+                    } catch (e) {
+                        console.warn('[AI Bot] force init error:', e);
+                        clearInterval(poll);
+                    }
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(poll);
+                    console.warn('[AI Bot] constructor not found after wait');
+                }
+            }, 500);
         } catch (err) {
             console.warn('AI Safari Bot script injection failed:', err);
         }
@@ -652,47 +676,6 @@
                     currentTestimonial = (currentTestimonial + 1) % testimonials.length;
                 }, 300);
             }, 5000);
-        }
-    }
-
-    // === TRUST INDICATORS ===
-    function showTrustIndicators() {
-        // Add trust badges animation
-        const trustBadges = document.querySelectorAll('.trust-badge');
-        trustBadges.forEach((badge, index) => {
-            setTimeout(() => {
-                badge.classList.add('fade-in');
-            }, index * 200);
-        });
-    }
-
-    // === INITIALIZATION ===
-    function init() {
-        // Wait for DOM to be ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-            return;
-        }
-
-        // Initialize all features
-        try {
-            initNavbarScroll();
-            initHeroSlider();
-            initSmoothScroll();
-            initScrollAnimations();
-            initLazyLoading();
-            initFormEnhancements();
-            ensureFontAwesome();
-            initWhatsAppButton();
-            ensureWhatsAppWidget();
-            ensureAISafariBotLoaded();
-            initAccessibility();
-            initSafariFeatures();
-            optimizePerformance();
-
-            console.log('Gisu Safaris website initialized successfully!');
-        } catch (error) {
-            console.error('Error initializing website:', error);
         }
     }
 
