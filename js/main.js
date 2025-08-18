@@ -364,7 +364,31 @@
         const sendBtn = document.querySelector('.whatsapp-send-btn');
         const input = messageInput();
 
-        if (openBtn) openBtn.addEventListener('click', () => toggleWhatsAppChatInternal());
+        // Robust open with preference for inline chat; only use wa.me if widget is missing after injection
+        if (openBtn) openBtn.addEventListener('click', (e) => {
+            try {
+                e.preventDefault();
+            } catch (_) {}
+            const hasWidgetMarkup = !!document.querySelector('.whatsapp-widget');
+            if (!hasWidgetMarkup) {
+                // Try to inject the widget first
+                try { if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget(); } catch(_) {}
+            }
+            // Attempt to open inline chat after injection
+            setTimeout(() => {
+                const widget = chatWidget();
+                if (widget) {
+                    if (!widget.classList.contains('active')) {
+                        toggleWhatsAppChatInternal();
+                    }
+                    return; // Do not open wa.me if we have inline chat
+                }
+                // As a last resort (widget missing), open wa.me
+                const fallbackMsg = encodeURIComponent('Hello! I would like to plan a safari.');
+                const url = `https://wa.me/${phoneNumber}?text=${fallbackMsg}`;
+                window.open(url, '_blank');
+            }, 180);
+        });
         if (closeBtn) closeBtn.addEventListener('click', () => toggleWhatsAppChatInternal());
         if (sendBtn) sendBtn.addEventListener('click', () => sendWhatsAppMessageInternal());
         if (input) input.addEventListener('keydown', (e) => {
@@ -394,7 +418,25 @@
                 const open = e.target && e.target.closest && e.target.closest('.whatsapp-btn');
                 const close = e.target && e.target.closest && e.target.closest('.whatsapp-close-btn');
                 const send = e.target && e.target.closest && e.target.closest('.whatsapp-send-btn');
-                if (open) { e.preventDefault(); toggleWhatsAppChatInternal(); }
+                if (open) { 
+                    try { e.preventDefault(); } catch (_) {}
+                    const hasWidgetMarkup = !!document.querySelector('.whatsapp-widget');
+                    if (!hasWidgetMarkup) {
+                        try { if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget(); } catch(_) {}
+                    }
+                    setTimeout(() => {
+                        const widget = chatWidget();
+                        if (widget) {
+                            if (!widget.classList.contains('active')) {
+                                toggleWhatsAppChatInternal();
+                            }
+                            return; // inline chat available; do not open wa.me
+                        }
+                        const fallbackMsg = encodeURIComponent('Hello! I would like to plan a safari.');
+                        const url = `https://wa.me/${phoneNumber}?text=${fallbackMsg}`;
+                        window.open(url, '_blank');
+                    }, 180);
+                }
                 if (close) { e.preventDefault(); toggleWhatsAppChatInternal(); }
                 if (send) { e.preventDefault(); sendWhatsAppMessageInternal(); }
             });

@@ -107,9 +107,19 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <header class="hero-section" style="height: 80vh; background: linear-gradient(rgba(244, 67, 54, 0.8), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
-            <div class="hero-overlay d-flex align-items-center">
+        <!-- Hero Section: Background Video -->
+        <header class="hero-section" style="height: 80vh; position: relative; overflow: hidden;">
+            <div class="video-background" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+                <iframe 
+                    src="https://www.youtube.com/embed/siqAfzwCVuw?start=102&autoplay=1&mute=1&controls=0&loop=1&playlist=siqAfzwCVuw&modestbranding=1&playsinline=1&rel=0"
+                    title="Multi-Country Safari Video"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    style="position:absolute; top:50%; left:50%; width:120%; height:120%; transform: translate(-50%, -50%); pointer-events:none;">
+                </iframe>
+            </div>
+            <div class="hero-overlay d-flex align-items-center" style="position: relative; z-index: 1; background: transparent;">
                 <div class="container">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-10 fade-element">
@@ -205,9 +215,22 @@
                     <!-- Uganda-Kenya Combination -->
                     <div class="col-lg-6 fade-element">
                         <div class="card border-0 shadow-lg h-100 hover-card">
-                            <div class="position-relative">
-                                <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Uganda Kenya Safari" style="height: 300px; object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 m-3">
+                            <div class="position-relative image-rotator" 
+                                 data-images='[
+                                     "https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1571407970349-bc81e0b69d4c?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=60"
+                                 ]'>
+                                <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-a" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-b" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
                                     <span class="badge bg-primary fs-6">Popular Choice</span>
                                 </div>
                             </div>
@@ -233,9 +256,22 @@
                     <!-- Uganda-Tanzania Combination -->
                     <div class="col-lg-6 fade-element">
                         <div class="card border-0 shadow-lg h-100 hover-card">
-                            <div class="position-relative">
-                                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Uganda Tanzania Safari" style="height: 300px; object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 m-3">
+                            <div class="position-relative image-rotator"
+                                 data-images='[
+                                     "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1526318472351-c75fcf070305?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1505839673365-e3971f8d9184?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=60"
+                                 ]'>
+                                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-a" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-b" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
                                     <span class="badge bg-success fs-6">Best Wildlife</span>
                                 </div>
                             </div>
@@ -261,9 +297,22 @@
                     <!-- Rwanda-Uganda Combination -->
                     <div class="col-lg-6 fade-element">
                         <div class="card border-0 shadow-lg h-100 hover-card">
-                            <div class="position-relative">
-                                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Rwanda Uganda Gorilla Safari" style="height: 300px; object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 m-3">
+                            <div class="position-relative image-rotator"
+                                 data-images='[
+                                     "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1563729784474-d77dbb933a9b?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1581888227599-7798119390d4?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1579033833707-58d167c1ff0b?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1544211412-2b42f7a4c5fe?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1587613863325-9bf3c5a7b41b?auto=format&fit=crop&w=1200&q=60"
+                                 ]'>
+                                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-a" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9b?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-b" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
                                     <span class="badge bg-warning fs-6">Gorilla Special</span>
                                 </div>
                             </div>
@@ -289,9 +338,22 @@
                     <!-- East Africa Grand Tour -->
                     <div class="col-lg-6 fade-element">
                         <div class="card border-0 shadow-lg h-100 hover-card">
-                            <div class="position-relative">
-                                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="East Africa Grand Safari" style="height: 300px; object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 m-3">
+                            <div class="position-relative image-rotator"
+                                 data-images='[
+                                     "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1545194827-c3c3bff2c1a9?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1526481280698-8fcc13fd408b?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=60",
+                                     "https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&w=1200&q=60"
+                                 ]'>
+                                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-a" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1200&q=60" 
+                                     class="card-img-top rotator-img img-b" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
                                     <span class="badge bg-danger fs-6">Ultimate Adventure</span>
                                 </div>
                             </div>
@@ -414,7 +476,24 @@
                     </div>
                     
                     <div class="col-lg-6 fade-element">
-                        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Multi-country safari experience" class="img-fluid rounded shadow">
+                        <div class="rounded shadow" style="position: relative; overflow: hidden; width: 100%; padding-top: 56.25%;">
+                            <iframe 
+                                id="includedVideo"
+                                src="https://www.youtube.com/embed/siqAfzwCVuw?start=102&autoplay=1&mute=1&controls=0&loop=1&playlist=siqAfzwCVuw&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+                                title="What's Included - Multi-Country Safari"
+                                frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
+                            </iframe>
+                            <!-- Custom Unmute/Play Control -->
+                            <button id="includedVideoUnmuteBtn" type="button" aria-label="Unmute video and play"
+                                    class="btn btn-light btn-sm"
+                                    style="position:absolute; bottom:10px; left:10px; z-index:3; backdrop-filter: blur(4px); border-radius: 999px; display:flex; align-items:center; gap:8px;">
+                                <i class="fas fa-volume-up"></i>
+                                <span>Unmute</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -784,12 +863,17 @@
             <hr class="my-4">
             
             <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0 text-light">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                    </div>
                 </div>
-                <div class="col-md-6 text-end">
-                    <a href="#" class="text-light text-decoration-none me-3">Privacy Policy</a>
-                    <a href="#" class="text-light text-decoration-none">Terms of Service</a>
+                <div class="col-md-7 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -953,6 +1037,71 @@
             });
         }
         
+        // Image rotators (cards): crossfade every 2s
+        document.querySelectorAll('.image-rotator').forEach(rotator => {
+            let images = [];
+            try {
+                const raw = rotator.getAttribute('data-images') || '[]';
+                images = JSON.parse(raw);
+            } catch (e) {
+                images = [];
+            }
+            if (!images || images.length < 2) return;
+            
+            const imgA = rotator.querySelector('.img-a');
+            const imgB = rotator.querySelector('.img-b');
+            if (!imgA || !imgB) return;
+            
+            // Ensure initial sources
+            imgA.src = images[0];
+            imgB.src = images[1];
+            let index = 1; // currently showing [0] on A, [1] preloaded on B
+            let showingA = true;
+            
+            setInterval(() => {
+                // Pick next image index
+                index = (index + 1) % images.length;
+                const hidden = showingA ? imgB : imgA;
+                const visible = showingA ? imgA : imgB;
+                
+                // Update hidden image source, then crossfade
+                hidden.src = images[index];
+                
+                // Crossfade via opacity
+                hidden.style.opacity = '1';
+                visible.style.opacity = '0';
+                
+                showingA = !showingA;
+            }, 2000);
+        });
+        
+        // Custom unmute/play for What's Included video
+        const unmuteBtn = document.getElementById('includedVideoUnmuteBtn');
+        const includedIframe = document.getElementById('includedVideo');
+        if (unmuteBtn && includedIframe) {
+            const ytOrigin = 'https://www.youtube.com';
+            const sendCmd = (func) => {
+                try {
+                    includedIframe.contentWindow.postMessage(JSON.stringify({
+                        event: 'command',
+                        func,
+                        args: []
+                    }), ytOrigin);
+                } catch (e) {}
+            };
+            unmuteBtn.addEventListener('click', () => {
+                // Attempt to unmute and play; user gesture ensures autoplay with sound
+                sendCmd('unMute');
+                sendCmd('playVideo');
+                // Provide visual feedback and then hide the button
+                unmuteBtn.disabled = true;
+                unmuteBtn.style.opacity = '0.6';
+                setTimeout(() => {
+                    unmuteBtn.style.display = 'none';
+                }, 600);
+            });
+        }
+
         // Fade animation on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -977,5 +1126,5 @@
     });
     </script>
     <!-- Site bootstrap -->
-    <script src="/js/main.js"></script></body>
+    <script src="../js/main.js"></script></body>
 </html>
