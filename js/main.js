@@ -320,21 +320,42 @@
     // === AI SAFARI BOT LOADER ===
     function ensureAISafariBotLoaded() {
         try {
+            if (document.getElementById('ai-bot-script')) {
+                return; // already requested
+            }
+
             const scripts = Array.from(document.scripts || []);
-            const hasBotScript = scripts.some(s => (s.src || '').endsWith('js/ai-safari-bot-enhanced.js'));
-            if (hasBotScript) return;
+            const hasWidget = !!document.getElementById('ai-safari-bot');
+            const hasBotScript = scripts.some(s => (s.src || '').includes('ai-safari-bot-enhanced.js'));
+            if (hasWidget || hasBotScript) return;
 
             const script = document.createElement('script');
+            script.id = 'ai-bot-script';
+
+            let botUrl = 'js/ai-safari-bot-enhanced.js';
             try {
-                const thisScript = document.currentScript || scripts.find(s => (s.src || '').includes('js/main.js'));
+                const thisScript = document.currentScript || scripts.find(s => (s.src || '').includes('js/main.js')) || scripts.find(s => (s.src || '').endsWith('main.js'));
                 const base = thisScript ? thisScript.src : (location.origin + location.pathname);
-                const botUrl = new URL('ai-safari-bot-enhanced.js', base).toString();
-                script.src = botUrl;
-            } catch (_) {
-                script.src = 'js/ai-safari-bot-enhanced.js';
-            }
+                botUrl = new URL('ai-safari-bot-enhanced.js', base).toString();
+            } catch (_) { /* fallback used */ }
+
+            script.src = botUrl;
             script.defer = true;
+            script.onload = () => console.log('[AI Bot] loaded:', botUrl);
+            script.onerror = (e) => console.warn('[AI Bot] failed to load:', botUrl, e);
             document.body.appendChild(script);
+
+            // One-time retry if widget not present after load window
+            setTimeout(() => {
+                if (!document.getElementById('ai-safari-bot')) {
+                    const retry = document.createElement('script');
+                    retry.id = 'ai-bot-script-retry';
+                    retry.src = botUrl;
+                    retry.defer = true;
+                    document.body.appendChild(retry);
+                    console.warn('[AI Bot] retrying injection');
+                }
+            }, 2500);
         } catch (err) {
             console.warn('AI Safari Bot script injection failed:', err);
         }
