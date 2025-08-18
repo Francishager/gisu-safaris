@@ -52,6 +52,9 @@
         .hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         .hero-overlay { position: relative; z-index: 2; background: transparent; height: 100%; }
         @media (max-width: 576px) { .hero-section { height: 56vh; } }
+        /* Ensure WhatsApp button is always clickable above content */
+        .floating-whatsapp { z-index: 2147483647 !important; }
+        .floating-whatsapp .whatsapp-btn { pointer-events: auto !important; }
     </style>
 </head>
 <body>
@@ -1013,6 +1016,35 @@
           document.addEventListener('touchstart', gestureHandler, { once: true });
           document.addEventListener('keydown', gestureHandler, { once: true });
         } catch (_) { /* no-op */ }
+      });
+    </script>
+    <!-- Hard fallback: if widget toggle fails, open wa.me on button click -->
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        const makeHandler = () => {
+          const btn = document.querySelector('.whatsapp-btn');
+          if (!btn) return false;
+          if (!btn.__waBound) {
+            btn.__waBound = true;
+            btn.addEventListener('click', function(e) {
+              try {
+                // Try normal toggle first
+                if (window.toggleWhatsAppChat) { window.toggleWhatsAppChat(); return; }
+              } catch (_) {}
+              // Fallback: open wa.me directly
+              const num = '61478914106';
+              const msg = 'Hello! I would like to plan a Uganda safari.';
+              const url = `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+              window.open(url, '_blank');
+            });
+          }
+          return true;
+        };
+        if (!makeHandler()) {
+          // Retry after widget injection
+          setTimeout(makeHandler, 800);
+          setTimeout(makeHandler, 1600);
+        }
       });
     </script>
   </body>
