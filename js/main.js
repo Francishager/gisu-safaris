@@ -424,6 +424,20 @@
             const hasBotScript = scripts.some(s => (s.src || '').includes('ai-safari-bot-enhanced.js'));
             if (hasWidget || hasBotScript) return;
 
+            // Proactively remove any old bot scripts that might conflict on some devices
+            try {
+                const oldSelectors = [
+                    'script[src*="ai-safari-bot.js"]',
+                    'script[src*="ai-personalization.js"]'
+                ];
+                oldSelectors.forEach(sel => {
+                    document.querySelectorAll(sel).forEach(el => {
+                        console.warn('[AI Bot] removing old bot script:', el.src || sel);
+                        el.parentNode && el.parentNode.removeChild(el);
+                    });
+                });
+            } catch (_) { /* ignore */ }
+
             const script = document.createElement('script');
             script.id = 'ai-bot-script';
 
@@ -433,6 +447,10 @@
                 const base = thisScript ? thisScript.src : (location.origin + location.pathname);
                 botUrl = new URL('ai-safari-bot-enhanced.js', base).toString();
             } catch (_) { /* fallback used */ }
+
+            // Add a cache-busting version to ensure mobile gets the latest script
+            const ver = 'v=20250818-1';
+            botUrl += (botUrl.includes('?') ? '&' : '?') + ver;
 
             script.src = botUrl;
             // Use async to run as soon as possible (helps when injected late or under file://)
