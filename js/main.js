@@ -187,6 +187,12 @@
         }
     }
 
+    // === TRUST INDICATORS (SAFE STUB) ===
+    function showTrustIndicators() {
+        // Placeholder to avoid breaking init flow if specific markup not present
+        // Optionally, we can add small badges/logos later
+    }
+
     // === ICONS: ENSURE FONT AWESOME ===
     function ensureFontAwesome() {
         try {

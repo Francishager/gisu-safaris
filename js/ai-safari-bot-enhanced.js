@@ -2156,5 +2156,13 @@ class SafariAIBotEnhanced {
     }
 }
 
-// Initialize the Enhanced Safari AI Bot
+// Expose constructor globally for external loaders
+if (typeof window !== 'undefined') {
+    window.SafariAIBotEnhanced = SafariAIBotEnhanced;
+}
+
+// Initialize the Enhanced Safari AI Bot and expose instance for debugging/interop
 const safariBot = SafariAIBotEnhanced.getInstance();
+if (typeof window !== 'undefined') {
+    window.safariBot = safariBot;
+}
