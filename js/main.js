@@ -187,15 +187,94 @@
         }
     }
 
+    // === WHATSAPP WIDGET HELPERS & GLOBALS ===
+    const phoneNumber = '61478914106';
+    const chatWidget = () => document.getElementById('whatsappChat');
+    const messageInput = () => document.getElementById('whatsappMessage');
+
+    function toggleWhatsAppChatInternal() {
+        const widget = chatWidget();
+        if (!widget) return;
+        widget.classList.toggle('active');
+        if (widget.classList.contains('active')) {
+            setTimeout(() => { const inp = messageInput(); if (inp) inp.focus(); }, 300);
+        }
+    }
+
+    function sendWhatsAppMessageInternal() {
+        const input = messageInput();
+        if (!input) return;
+        const message = (input.value || '').trim();
+        if (!message) { input.focus(); return; }
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+        input.value = '';
+        toggleWhatsAppChatInternal();
+    }
+
+    function bindWhatsAppWidgetEvents() {
+        const openBtn = document.querySelector('.whatsapp-btn');
+        const closeBtn = document.querySelector('.whatsapp-close-btn');
+        const sendBtn = document.querySelector('.whatsapp-send-btn');
+        const input = messageInput();
+
+        if (openBtn) openBtn.addEventListener('click', () => toggleWhatsAppChatInternal());
+        if (closeBtn) closeBtn.addEventListener('click', () => toggleWhatsAppChatInternal());
+        if (sendBtn) sendBtn.addEventListener('click', () => sendWhatsAppMessageInternal());
+        if (input) input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendWhatsAppMessageInternal();
+            }
+        });
+    }
+
+    function initWhatsAppButton() {
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+        if (!whatsappBtn) return;
+
+        const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReduced) {
+            whatsappBtn.style.animation = 'pulse 1.8s 3';
+            const stopAnimation = () => { whatsappBtn.style.animation = 'none'; };
+            whatsappBtn.addEventListener('mouseenter', stopAnimation, { once: true });
+            whatsappBtn.addEventListener('click', stopAnimation, { once: true });
+            whatsappBtn.addEventListener('focus', stopAnimation, { once: true });
+        }
+    }
+
+    // Expose for legacy inline handlers
+    if (!window.toggleWhatsAppChat) window.toggleWhatsAppChat = toggleWhatsAppChatInternal;
+    if (!window.sendWhatsAppMessage) window.sendWhatsAppMessage = sendWhatsAppMessageInternal;
+
     // === ENSURE WHATSAPP WIDGET EXISTS SITE-WIDE ===
     function ensureWhatsAppWidget() {
         try {
-            if (document.querySelector('.floating-whatsapp')) {
-                // Already present on this page
+            const hasWrapper = !!document.querySelector('.floating-whatsapp');
+            const hasExistingWidget = !!document.querySelector('.whatsapp-widget');
+
+            // If page already has a WhatsApp widget section (like index.html), just bind events
+            if (hasExistingWidget && !hasWrapper) {
+                if (!window.__whatsappWidgetInitialized) {
+                    window.__whatsappWidgetInitialized = true;
+                    bindWhatsAppWidgetEvents();
+                    initWhatsAppButton();
+                }
                 return;
             }
 
-            // Inject minimal widget markup (matches structure used on index.html)
+            if (hasWrapper) {
+                // Already injected; ensure events are bound
+                if (!window.__whatsappWidgetInitialized) {
+                    window.__whatsappWidgetInitialized = true;
+                    bindWhatsAppWidgetEvents();
+                    initWhatsAppButton();
+                }
+                return;
+            }
+
+            // Inject minimal widget markup
             const wrapper = document.createElement('div');
             wrapper.className = 'floating-whatsapp';
             wrapper.innerHTML = `
@@ -228,226 +307,36 @@
                 </div>`;
             document.body.appendChild(wrapper);
 
-            // Bind events once
             if (!window.__whatsappWidgetInitialized) {
                 window.__whatsappWidgetInitialized = true;
-
-                const phoneNumber = '61478914106'; // per business contact
-                const chatWidget = () => document.getElementById('whatsappChat');
-                const messageInput = () => document.getElementById('whatsappMessage');
-                const sendBtn = () => document.querySelector('.whatsapp-send-btn');
-                const openBtn = () => document.querySelector('.whatsapp-btn');
-                const closeBtn = () => document.querySelector('.whatsapp-close-btn');
-
-                function toggleWhatsAppChatInternal() {
-                    const widget = chatWidget();
-                    if (!widget) return;
-                    widget.classList.toggle('active');
-                    if (widget.classList.contains('active')) {
-                        setTimeout(() => { const inp = messageInput(); if (inp) inp.focus(); }, 300);
-                    }
-                }
-
-                function sendWhatsAppMessageInternal() {
-                    const input = messageInput();
-                    if (!input) return;
-                    const message = (input.value || '').trim();
-                    if (!message) { input.focus(); return; }
-                    const encodedMessage = encodeURIComponent(message);
-                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-                    window.open(whatsappUrl, '_blank');
-                    input.value = '';
-                    toggleWhatsAppChatInternal();
-                }
-
-                // Expose globally only if not already defined (avoid clobbering index.html inline defs)
-                if (typeof window.toggleWhatsAppChat !== 'function') {
-                    window.toggleWhatsAppChat = toggleWhatsAppChatInternal;
-                }
-                if (typeof window.sendWhatsAppMessage !== 'function') {
-                    window.sendWhatsAppMessage = sendWhatsAppMessageInternal;
-                }
-
-                // Click handlers
-                const ob = openBtn(); if (ob) ob.addEventListener('click', window.toggleWhatsAppChat);
-                const cb = closeBtn(); if (cb) cb.addEventListener('click', window.toggleWhatsAppChat);
-                const sb = sendBtn(); if (sb) sb.addEventListener('click', window.sendWhatsAppMessage);
-
-                // Enter key send
-                const mi = messageInput();
-                if (mi) {
-                    mi.addEventListener('keypress', function(event) {
-                        if (event.key === 'Enter') {
-                            event.preventDefault();
-                            window.sendWhatsAppMessage();
-                        }
-                    });
-                    mi.addEventListener('input', function() {
-                        const s = sendBtn();
-                        if (s) s.disabled = this.value.trim() === '';
-                    });
-                }
-
-                // Close on outside click
-                document.addEventListener('click', function(event) {
-                    const widget = chatWidget();
-                    const container = document.querySelector('.whatsapp-widget');
-                    if (widget && widget.classList.contains('active') && container && !container.contains(event.target)) {
-                        widget.classList.remove('active');
-                    }
-                });
-
-                // Prevent closing when clicking inside
-                const cw = chatWidget();
-                if (cw) cw.addEventListener('click', function(e){ e.stopPropagation(); });
+                bindWhatsAppWidgetEvents();
+                initWhatsAppButton();
             }
-
-            // Start button pulse animation if styles exist
-            initWhatsAppButton();
         } catch (err) {
-            console.warn('WhatsApp widget injection failed:', err);
+            console.warn('WhatsApp widget initialization failed:', err);
         }
     }
 
-    // === ENSURE AI SAFARI BOT LOADED SITE-WIDE ===
+    // === AI SAFARI BOT LOADER ===
     function ensureAISafariBotLoaded() {
         try {
-            // Check if script already present
             const scripts = Array.from(document.scripts || []);
             const hasBotScript = scripts.some(s => (s.src || '').endsWith('js/ai-safari-bot-enhanced.js'));
             if (hasBotScript) return;
 
-            // Add script dynamically
             const script = document.createElement('script');
-            // Resolve bot script relative to the current main.js path so it works on GitHub Pages subpaths
             try {
                 const thisScript = document.currentScript || scripts.find(s => (s.src || '').includes('js/main.js'));
                 const base = thisScript ? thisScript.src : (location.origin + location.pathname);
                 const botUrl = new URL('ai-safari-bot-enhanced.js', base).toString();
                 script.src = botUrl;
             } catch (_) {
-                // Fallback to relative path from page
                 script.src = 'js/ai-safari-bot-enhanced.js';
             }
             script.defer = true;
             document.body.appendChild(script);
         } catch (err) {
             console.warn('AI Safari Bot script injection failed:', err);
-        }
-    }
-
-    // === ENSURE FONT AWESOME ICONS AVAILABLE SITE-WIDE ===
-    function ensureFontAwesome() {
-        try {
-            // Detect common Font Awesome link patterns
-            const hasFA = !!document.querySelector(
-                'link[href*="font-awesome"], link[href*="fontawesome"], link[href*="cdnjs.cloudflare.com/ajax/libs/font-awesome"]'
-            );
-            if (hasFA) return;
-
-            const faLink = document.createElement('link');
-            faLink.rel = 'stylesheet';
-            faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-            faLink.referrerPolicy = 'no-referrer';
-            faLink.crossOrigin = 'anonymous';
-            document.head.appendChild(faLink);
-        } catch (err) {
-            console.warn('Font Awesome injection failed:', err);
-        }
-    }
-
-    // === FORM ENHANCEMENTS ===
-    function initFormEnhancements() {
-        // Newsletter form
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                
-                if (email) {
-                    // Show success message (replace with actual implementation)
-                    showNotification('Thank you! We\'ll send you safari tips and exclusive offers.', 'success');
-                    this.reset();
-                }
-            });
-        }
-
-        // Contact forms validation
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                const requiredFields = this.querySelectorAll('[required]');
-                let isValid = true;
-
-                requiredFields.forEach(field => {
-                    if (!field.value.trim()) {
-                        isValid = false;
-                        field.classList.add('is-invalid');
-                    } else {
-                        field.classList.remove('is-invalid');
-                    }
-                });
-
-                if (!isValid && !form.classList.contains('newsletter-form')) {
-                    e.preventDefault();
-                    showNotification('Please fill in all required fields.', 'error');
-                }
-            });
-        });
-    }
-
-    // === NOTIFICATION SYSTEM ===
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} alert-dismissible fade show`;
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1060;
-            min-width: 300px;
-            max-width: 500px;
-        `;
-        
-        notification.innerHTML = `
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-        
-        document.body.appendChild(notification);
-
-        // Auto remove after 5 seconds
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    notification.remove();
-                }, 150);
-            }
-        }, 5000);
-    }
-
-    // === WHATSAPP BUTTON ANIMATION ===
-    function initWhatsAppButton() {
-        const whatsappBtn = document.querySelector('.whatsapp-btn');
-        if (!whatsappBtn) return;
-
-        // Add pulse animation
-        whatsappBtn.style.animation = 'pulse 2s infinite';
-
-        // Add CSS for pulse animation if not already present
-        if (!document.querySelector('#whatsapp-animation')) {
-            const style = document.createElement('style');
-            style.id = 'whatsapp-animation';
-            style.textContent = `
-                @keyframes pulse {
-                    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-                    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-                    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-                }
-            `;
-            document.head.appendChild(style);
         }
     }
 
