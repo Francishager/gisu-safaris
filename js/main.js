@@ -692,12 +692,35 @@
 
     // === ERROR HANDLING ===
     window.addEventListener('error', function(e) {
-        console.error('JavaScript error:', e.error);
+        // e.error can be null for some errors; log message and target as fallback
+        const details = e && (e.error || e.message || e.filename || 'unknown');
+        console.error('JavaScript error:', details);
         // Optionally send to error tracking service
     });
 
-    // Start initialization
-    init();
+    // Start initialization (with fallback if init is not defined)
+    if (typeof init === 'function') {
+        init();
+    } else {
+        console.warn('init() not found, running fallback bootstrap');
+        try {
+            // Minimal critical boot sequence to ensure widgets load
+            initNavbarScroll && initNavbarScroll();
+            initHeroSlider && initHeroSlider();
+            initSmoothScroll && initSmoothScroll();
+            initScrollAnimations && initScrollAnimations();
+            initLazyLoading && initLazyLoading();
+            ensureFontAwesome && ensureFontAwesome();
+            initWhatsAppButton && initWhatsAppButton();
+            ensureWhatsAppWidget && ensureWhatsAppWidget();
+            ensureAISafariBotLoaded && ensureAISafariBotLoaded();
+            initAccessibility && initAccessibility();
+            initSafariFeatures && initSafariFeatures();
+            optimizePerformance && optimizePerformance();
+        } catch (e) {
+            console.error('Fallback init error:', e);
+        }
+    }
 
     // === UTILITY FUNCTIONS ===
     window.GisuSafaris = {
