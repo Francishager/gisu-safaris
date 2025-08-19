@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking - Gisu Safaris</title>
+  <meta name="description" content="Secure your Gisu Safaris booking. Choose dates, provide traveler details, and pay deposit or full amount." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    body { padding-top: 72px; }
+    .step { display: none; }
+    .step.active { display: block; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2" />
+        <span>Gisu Safaris</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
+    </div>
+  </nav>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="h3 mb-3">Complete Your Booking</h1>
+          <div class="alert alert-info" id="pkgSummary" role="alert">
+            <div><strong>Package:</strong> <span id="pkgTitle">—</span></div>
+            <div><strong>Base Price (per person):</strong> $<span id="pkgAmount">0</span></div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <!-- Step 1: Trip details -->
+              <section class="step active" id="step1">
+                <h5 class="mb-3">1) Trip details</h5>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="startDate" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">End Date</label>
+                    <input type="date" class="form-control" id="endDate" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Travelers</label>
+                    <input type="number" min="1" value="1" class="form-control" id="travelers" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Pickup Location (optional)</label>
+                    <input type="text" class="form-control" id="pickup" placeholder="Hotel / Airport" />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                  <button class="btn btn-primary" id="toStep2">Next</button>
+                </div>
+              </section>
+
+              <!-- Step 2: Traveler info -->
+              <section class="step" id="step2">
+                <h5 class="mb-3">2) Traveler information</h5>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Nationality (optional)</label>
+                    <input type="text" class="form-control" id="nationality" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Passport (optional)</label>
+                    <input type="text" class="form-control" id="passport" />
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Notes (optional)</label>
+                    <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests"></textarea>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                  <button class="btn btn-outline-secondary" id="backTo1">Back</button>
+                  <button class="btn btn-primary" id="toStep3">Next</button>
+                </div>
+              </section>
+
+              <!-- Step 3: Review & payment -->
+              <section class="step" id="step3">
+                <h5 class="mb-3">3) Review & Payment</h5>
+                <div class="border rounded p-3 mb-3">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div><strong>Dates:</strong> <span id="reviewDates">—</span></div>
+                      <div><strong>Travelers:</strong> <span id="reviewTravelers">1</span></div>
+                    </div>
+                    <div class="col-md-6">
+                      <div><strong>Per Person:</strong> $<span id="reviewPerPerson">0</span></div>
+                      <div><strong>Total:</strong> $<span id="reviewTotal">0</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Choose Payment</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payChoice" id="payDeposit" checked />
+                    <label class="form-check-label" for="payDeposit">
+                      Pay 70% Deposit now — $<span id="depositAmount">0</span>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payChoice" id="payFull" />
+                    <label class="form-check-label" for="payFull">
+                      Pay Full Amount now — $<span id="fullAmount">0</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                  <button class="btn btn-outline-secondary" id="backTo2">Back</button>
+                  <button class="btn btn-success" id="confirmPay">
+                    <i class="fas fa-credit-card me-2"></i>Proceed to Payment
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/payment.js"></script>
+  <script>
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const packageId = params.get('packageId') || 'custom';
+      const title = params.get('title') || 'Gisu Safaris Booking';
+      const amount = parseFloat(params.get('amount') || '0') || 0;
+
+      // 70% deposit rule
+      const depositRate = 0.7;
+
+      // Elements
+      const pkgTitle = document.getElementById('pkgTitle');
+      const pkgAmount = document.getElementById('pkgAmount');
+      const reviewPerPerson = document.getElementById('reviewPerPerson');
+      const reviewTotal = document.getElementById('reviewTotal');
+      const depositAmountEl = document.getElementById('depositAmount');
+      const fullAmountEl = document.getElementById('fullAmount');
+      const reviewDates = document.getElementById('reviewDates');
+      const reviewTravelers = document.getElementById('reviewTravelers');
+
+      const startDate = document.getElementById('startDate');
+      const endDate = document.getElementById('endDate');
+      const travelers = document.getElementById('travelers');
+      const pickup = document.getElementById('pickup');
+
+      const fullName = document.getElementById('fullName');
+      const phone = document.getElementById('phone');
+      const email = document.getElementById('email');
+      const nationality = document.getElementById('nationality');
+      const passport = document.getElementById('passport');
+      const notes = document.getElementById('notes');
+
+      const step1 = document.getElementById('step1');
+      const step2 = document.getElementById('step2');
+      const step3 = document.getElementById('step3');
+
+      // Initialize summary
+      pkgTitle.textContent = title;
+      pkgAmount.textContent = amount.toFixed(2);
+      reviewPerPerson.textContent = amount.toFixed(2);
+      fullAmountEl.textContent = amount.toFixed(2);
+      depositAmountEl.textContent = (amount * depositRate).toFixed(2);
+
+      function go(step){
+        [step1, step2, step3].forEach(s => s.classList.remove('active'));
+        step.classList.add('active');
+      }
+
+      document.getElementById('toStep2').addEventListener('click', () => {
+        if (!startDate.value || !endDate.value || !travelers.value) return alert('Please fill dates and number of travelers.');
+        go(step2);
+      });
+      document.getElementById('backTo1').addEventListener('click', () => go(step1));
+
+      document.getElementById('toStep3').addEventListener('click', () => {
+        if (!fullName.value || !phone.value || !email.value) return alert('Please provide name, phone, and email.');
+        reviewDates.textContent = `${startDate.value} to ${endDate.value}`;
+        reviewTravelers.textContent = travelers.value;
+        const total = amount * Number(travelers.value || 1);
+        reviewTotal.textContent = total.toFixed(2);
+        fullAmountEl.textContent = total.toFixed(2);
+        depositAmountEl.textContent = (total * depositRate).toFixed(2);
+        go(step3);
+      });
+      document.getElementById('backTo2').addEventListener('click', () => go(step2));
+
+      document.getElementById('confirmPay').addEventListener('click', async () => {
+        const total = amount * Number(travelers.value || 1);
+        const payDeposit = document.getElementById('payDeposit').checked;
+        const payAmount = payDeposit ? (total * depositRate) : total;
+
+        const customer = { name: fullName.value.trim(), email: email.value.trim(), phone: phone.value.trim() };
+        const metadata = {
+          packageId,
+          title,
+          startDate: startDate.value,
+          endDate: endDate.value,
+          travelers: travelers.value,
+          pickup: pickup.value,
+          nationality: nationality.value,
+          passport: passport.value,
+          notes: notes.value
+        };
+
+        // Create placeholder booking
+        try {
+          const resp = await fetch('../backend/api/payments/create_placeholder_booking.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ bookingType: 'safari', title, customer, metadata })
+          });
+          if (!resp.ok) throw new Error(await resp.text());
+          const data = await resp.json();
+          if (!data || !data.bookingId) throw new Error('No bookingId');
+
+          const url = new URL(location.href);
+          url.searchParams.set('status', 'pending_payment');
+
+          await initiatePayment({
+            bookingId: data.bookingId,
+            bookingType: 'safari',
+            title,
+            amount: Number(payAmount.toFixed(2)),
+            deposit: payDeposit,
+            customer,
+            metadata,
+            endpoint: '../backend/api/payments/create_checkout.php'
+          });
+        } catch (e) {
+          console.error(e);
+          alert('Unable to start payment. Please try again.');
+        }
+      });
+
+      // If returning from Stripe with status param
+      const status = params.get('status');
+      if (status) {
+        const map = {
+          success: { cls: 'alert-success', msg: 'Payment successful. Thank you!' },
+          canceled: { cls: 'alert-warning', msg: 'Payment was canceled. You can try again.' },
+          pending_payment: { cls: 'alert-info', msg: 'Continue to complete your payment.' }
+        };
+        const s = map[status] || { cls: 'alert-secondary', msg: `Status: ${status}` };
+        const div = document.createElement('div');
+        div.className = `alert ${s.cls}`;
+        div.textContent = s.msg;
+        document.querySelector('.container').prepend(div);
+      }
+    })();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
