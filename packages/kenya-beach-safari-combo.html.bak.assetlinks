@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Ultimate Kenya Beach & Safari Combo - 10 Days Masai Mara & Mombasa Paradise | Gisu Safaris</title>
+    <meta name="description" content="Experience the best of Kenya with Gisu Safaris' Ultimate Beach & Safari Combo. 10 days combining Masai Mara Big Five safari with pristine Mombasa beaches. Perfect blend of wildlife adventure and tropical relaxation. Book your Kenya beach safari combo today!">
+    <meta name="keywords" content="Kenya beach safari combo, Masai Mara and Mombasa, Kenya wildlife and beach holiday, Big Five safari and beach, Kenya luxury combo package, Mombasa beach holiday, Kenya safari beach vacation">
+    <meta name="author" content="Gisu Safaris - Kenya Adventure Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ultimate Kenya Beach & Safari Combo - 10 Days Adventure">
+    <meta property="og:description" content="Perfect combination of Masai Mara Big Five safari and pristine Mombasa beaches. Experience Kenya's wildlife and coastal paradise in one unforgettable journey.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/kenya-beach-safari-combo.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ultimate Kenya Beach & Safari Combo - Wildlife & Paradise">
+    <meta name="twitter:description" content="Experience Kenya's Big Five wildlife in Masai Mara followed by pristine beaches in Mombasa. The perfect adventure and relaxation combo.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/kenya-beach-safari-combo.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item active" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="kenya.html" class="text-white-50">Kenya Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Beach & Safari Combo</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Ultimate Kenya Beach & Safari Combo
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                10 Days of pure bliss - Big Five safari in Masai Mara followed by pristine beaches in Mombasa. The perfect Kenya adventure and relaxation combo
+                            </p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-primary fs-6 px-3 py-2">ðŸŒŸ Ultimate Combo</span>
+                                <span class="badge bg-success fs-6 px-3 py-2">10 Days</span>
+                                <span class="badge bg-info fs-6 px-3 py-2">Safari & Beach</span>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book This Combo
+                                </a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-map-marked-alt me-2"></i>View Itinerary
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Experience Kenya's <span class="text-primary">Ultimate Adventure</span></h2>
+                        <p class="lead mb-4">Discover the perfect harmony of adventure and relaxation with our Ultimate Kenya Beach & Safari Combo. Start with 5 thrilling days exploring the world-famous Masai Mara, witnessing the Great Migration and encountering the Big Five. Then unwind for 5 blissful days on Mombasa's pristine beaches, enjoying crystal-clear waters, white sand, and luxurious coastal resorts. This 10-day journey offers the best of both worlds - Kenya's incredible wildlife and stunning coastline.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-danger bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-paw fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Big Five Safari</h5>
+                                    <p class="small text-muted">5 days in Masai Mara with lions, leopards, elephants, buffalo, and rhinos plus the Great Migration</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-umbrella-beach fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Pristine Beaches</h5>
+                                    <p class="small text-muted">5 days on Mombasa's white sand beaches with crystal waters and luxury beach resorts</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-star fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Luxury Experience</h5>
+                                    <p class="small text-muted">Premium safari lodges and beachfront resorts with world-class amenities and service</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$2,299</div>
+                                    <p class="text-muted">per person (2 people sharing)</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(289 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 10 Days / 9 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Group Size:</strong> Max 8 people</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Time:</strong> Year-round</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Focus:</strong> Safari & Beach Relaxation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Includes:</strong> All Flights & Transfers</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                    <a href="https://wa.me/256780950555" class="btn btn-outline-success">
+                                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section id="itinerary" class="py-5 bg-light position-relative">
+            <!-- Combo pattern background -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-5" style="background: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%222%22 fill=%22%23007bff%22/%3E%3Ccircle cx=%2280%22 cy=%2220%22 r=%222%22 fill=%22%2317a2b8%22/%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%222%22 fill=%22%23dc3545%22/%3E%3Ccircle cx=%2220%22 cy=%2280%22 r=%222%22 fill=%22%2328a745%22/%3E%3Ccircle cx=%2280%22 cy=%2280%22 r=%222%22 fill=%22%23ffc107%22/%3E%3C/svg%3E') repeat;"></div>
+            
+            <div class="container position-relative">
+                <div class="text-center mb-5 fade-element">
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-primary fs-6 px-3 py-2 mb-2 d-inline-block">ðŸŒŸ ULTIMATE COMBO</span>
+                        <h2 class="display-5 fw-bold">Day-by-Day <span class="text-primary position-relative">
+                            Adventure
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#007bff" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
+                    <p class="lead">Your complete 10-day Kenya adventure from wildlife to paradise</p>
+                </div>
+                
+                <!-- Safari Phase Header -->
+                <div class="mb-5 fade-element">
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                        <div class="card-body p-4" style="background: linear-gradient(135deg, #dc3545 0%, #ff6b7a 100%);">
+                            <div class="row align-items-center text-white">
+                                <div class="col-md-8">
+                                    <h3 class="fw-bold mb-2">ðŸ¦ PHASE 1: MASAI MARA SAFARI</h3>
+                                    <p class="mb-0">Days 1-5: Big Five wildlife encounters and Great Migration experience</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="bg-white bg-opacity-20 rounded-3 p-3">
+                                        <h4 class="fw-bold mb-0">5 Days</h4>
+                                        <small>Safari Adventure</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safari Days 1-5 (Condensed) -->
+                <div class="row mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold text-danger mb-3">Masai Mara Safari Highlights (Days 1-5)</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="bg-danger text-white rounded-circle p-2 me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fw-bold">1</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Arrival & First Safari</h6>
+                                                <small class="text-muted">Nairobi to Masai Mara flight, afternoon game drive</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="bg-danger text-white rounded-circle p-2 me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fw-bold">2</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Big Five Safari</h6>
+                                                <small class="text-muted">Full day searching for lions, leopards, elephants, buffalo, rhinos</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="bg-danger text-white rounded-circle p-2 me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fw-bold">3</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Great Migration</h6>
+                                                <small class="text-muted">Witness wildebeest river crossings and predator action</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="bg-danger text-white rounded-circle p-2 me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fw-bold">4</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Masai Culture</h6>
+                                                <small class="text-muted">Traditional village visit and cultural experiences</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-danger text-white rounded-circle p-2 me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                                <span class="fw-bold">5</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Final Safari & Transfer</h6>
+                                                <small class="text-muted">Last game drive, flight to Mombasa</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="bg-light rounded-3 p-3 text-center">
+                                            <div class="fw-bold text-danger">ðŸ¦ Big Five</div>
+                                            <small>Wildlife Guaranteed</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beach Phase Header -->
+                <div class="mb-5 fade-element">
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                        <div class="card-body p-4" style="background: linear-gradient(135deg, #17a2b8 0%, #6cc5d4 100%);">
+                            <div class="row align-items-center text-white">
+                                <div class="col-md-8">
+                                    <h3 class="fw-bold mb-2">ðŸ–ï¸ PHASE 2: MOMBASA BEACH PARADISE</h3>
+                                    <p class="mb-0">Days 6-10: Pristine beaches, luxury resorts, and coastal relaxation</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="bg-white bg-opacity-20 rounded-3 p-3">
+                                        <h4 class="fw-bold mb-0">5 Days</h4>
+                                        <small>Beach Paradise</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beach Days 6-10 (Detailed) -->
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <!-- Day 6 -->
+                        <div class="mb-4 fade-element">
+                            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <div class="position-relative h-100" style="min-height: 250px;">
+                                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Mombasa Beach">
+                                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(23,162,184,0.2), rgba(23,162,184,0.6));"></div>
+                                            <div class="position-absolute top-3 start-3">
+                                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold fs-5">6</span>
+                                                </div>
+                                            </div>
+                                            <div class="position-absolute bottom-3 start-3">
+                                                <div class="badge bg-white text-info fs-6 px-3 py-2">ðŸ–ï¸ Beach Arrival</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-info text-white rounded-circle p-2 me-3">
+                                                    <i class="fas fa-plane-arrival"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="card-title fw-bold text-info mb-0">Arrival in Mombasa Paradise</h4>
+                                                    <small class="text-muted">Day 6: From Safari to Beach</small>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="card-text mb-4">Fly from the Masai Mara to Mombasa and check into your luxury beachfront resort. Spend the afternoon unwinding on pristine white sand beaches with crystal-clear turquoise waters. Welcome to your beach paradise where luxury meets natural beauty.</p>
+                                            
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-12">
+                                                    <div class="bg-light rounded-3 p-3">
+                                                        <h6 class="fw-bold text-info mb-3">ðŸŒŠ Beach Activities Available</h6>
+                                                        <div class="row g-2">
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-swimming-pool text-info me-2"></i>
+                                                                    <small>Infinity pools & spa treatments</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-cocktail text-warning me-2"></i>
+                                                                    <small>Sunset cocktails on the beach</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex flex-wrap gap-3 pt-3 border-top">
+                                                <div class="bg-info bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-utensils text-info me-2"></i>
+                                                    <small class="fw-medium">All Meals</small>
+                                                </div>
+                                                <div class="bg-info bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-hotel text-info me-2"></i>
+                                                    <small class="fw-medium">Luxury Beach Resort</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Days 7-9 Condensed -->
+                        <div class="mb-4 fade-element">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title fw-bold text-info mb-3">Beach Paradise Days (Days 7-9)</h5>
+                                    <div class="row g-4">
+                                        <div class="col-md-4">
+                                            <div class="text-center p-3 bg-light rounded-3">
+                                                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold">7</span>
+                                                </div>
+                                                <h6 class="fw-bold">Water Sports Adventure</h6>
+                                                <p class="small mb-3">Snorkeling, diving, dhow sailing, and exploring coral reefs</p>
+                                                <div class="small text-muted">
+                                                    <div>ðŸ¤¿ Snorkeling gear included</div>
+                                                    <div>â›µ Traditional dhow cruise</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="text-center p-3 bg-light rounded-3">
+                                                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold">8</span>
+                                                </div>
+                                                <h6 class="fw-bold">Cultural & Spa Day</h6>
+                                                <p class="small mb-3">Explore Old Town Mombasa, Fort Jesus, and luxury spa treatments</p>
+                                                <div class="small text-muted">
+                                                    <div>ðŸ›ï¸ Historical Fort Jesus</div>
+                                                    <div>ðŸ’† Full spa treatment</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="text-center p-3 bg-light rounded-3">
+                                                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold">9</span>
+                                                </div>
+                                                <h6 class="fw-bold">Pure Relaxation</h6>
+                                                <p class="small mb-3">Beach lounging, poolside dining, and sunset photography</p>
+                                                <div class="small text-muted">
+                                                    <div>ðŸŒ… Sunrise yoga sessions</div>
+                                                    <div>ðŸ¹ Premium dining experiences</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 10 -->
+                        <div class="mb-4 fade-element">
+                            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                                <div class="row g-0">
+                                    <div class="col-md-8">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-secondary text-white rounded-circle p-2 me-3">
+                                                    <i class="fas fa-plane-departure"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="card-title fw-bold text-secondary mb-0">Final Beach Morning & Departure</h4>
+                                                    <small class="text-muted">Day 10: Farewell to Paradise</small>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="card-text mb-4">Enjoy a final morning on the pristine beaches of Mombasa. Take last-minute photos, enjoy a leisurely breakfast with ocean views, and perhaps one final swim in the crystal-clear waters. Transfer to Mombasa airport for your departure flight, taking with you incredible memories of Kenya's wildlife and coastal paradise.</p>
+                                            
+                                            <div class="d-flex flex-wrap gap-3 pt-3 border-top">
+                                                <div class="bg-secondary bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-utensils text-secondary me-2"></i>
+                                                    <small class="fw-medium">Breakfast Only</small>
+                                                </div>
+                                                <div class="bg-secondary bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-plane text-secondary me-2"></i>
+                                                    <small class="fw-medium">Airport Transfer</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="position-relative h-100" style="min-height: 250px;">
+                                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Beach Memories">
+                                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(108,117,125,0.2), rgba(108,117,125,0.6));"></div>
+                                            <div class="position-absolute top-3 end-3">
+                                                <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold fs-5">10</span>
+                                                </div>
+                                            </div>
+                                            <div class="position-absolute bottom-3 end-3">
+                                                <div class="badge bg-white text-secondary fs-6 px-3 py-2">âœˆï¸ Departure</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="mb-0"><i class="fas fa-check-circle me-2"></i>What's Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All domestic flights (Nairobi-Masai Mara-Mombasa)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>5 nights luxury safari lodge in Masai Mara</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>4 nights beachfront resort in Mombasa</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All meals throughout the journey</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional safari guide and 4WD vehicle</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All park entry and conservancy fees</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All game drives as per itinerary</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Masai cultural village visit</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Airport transfers in Nairobi and Mombasa</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bottled water during safari</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Beach activities and water sports</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Government taxes and service charges</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Flying Doctors emergency evacuation insurance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0"><i class="fas fa-times-circle me-2"></i>What's Not Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International flights to/from Kenya</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Kenya visa fees ($50 for most nationalities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Travel insurance (highly recommended)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Alcoholic beverages (except at beach resort)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tips for guide and hotel staff (recommended $15/day)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal expenses and shopping</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Laundry services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Optional hot air balloon safari ($450 per person)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Optional night game drives ($40 per person)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Spa treatments and premium activities</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Phone calls and internet charges</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Medical expenses</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Items of personal nature</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for Your Ultimate Kenya Adventure?</h2>
+                    <p class="lead">Book now or get a custom quote for your perfect safari and beach combo</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Country</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Travel Date</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Number of Travelers</label>
+                                            <select class="form-select">
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5+">5+ People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Special Requests & Preferences</label>
+                                            <textarea class="form-control" rows="3" placeholder="Tell us about your wildlife interests, photography needs, dietary requirements, beach activity preferences, or any special requests..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                            <a href="tel:+256780950555" class="btn btn-outline-primary btn-lg">
+                                                <i class="fas fa-phone me-2"></i>Call Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p class="mb-3">Kenya's ultimate adventure specialists offering the perfect combination of Big Five safari and pristine beach experiences.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Quick Links</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                                <li class="mb-2"><a href="kenya.html" class="text-light text-decoration-none">Kenya Safaris</a></li>
+                                <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                                <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Other Adventures</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="kenya-masai-mara-big-five.html" class="text-light text-decoration-none">Masai Mara Safari</a></li>
+                                <li class="mb-2"><a href="kenya-samburu-national-reserve.html" class="text-light text-decoration-none">Samburu Safari</a></li>
+                                <li class="mb-2"><a href="kenya-mount-kenya-hiking.html" class="text-light text-decoration-none">Mount Kenya Hiking</a></li>
+                                <li class="mb-2"><a href="kenya-mombasa-neptune-paradise.html" class="text-light text-decoration-none">Mombasa Beach</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Connect With Us</h6>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-facebook fa-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </a>
+                                <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>ðŸŒŸ Hello! Welcome to Gisu Safaris!</p>
+                    <p>Interested in our Ultimate Kenya Beach & Safari Combo? Experience the Big Five in Masai Mara followed by pristine Mombasa beaches. How can we help you plan this incredible 10-day adventure?</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <script>
+    function toggleWhatsAppChat() {
+        const chatWidget = document.getElementById('whatsappChat');
+        chatWidget.classList.toggle('active');
+        if (chatWidget.classList.contains('active')) {
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) input.focus();
+            }, 300);
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        if (message === '') return;
+        
+        const phoneNumber = '61470133869';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    </script>
+</body>
+</html>
+

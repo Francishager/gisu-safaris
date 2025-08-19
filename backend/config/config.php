@@ -10,6 +10,34 @@ if (!defined('GISU_SAFARIS_BACKEND')) {
     exit('Access denied');
 }
 
+// Security headers (CSP in Report-Only to prevent breakage while observing violations)
+function setSecurityHeaders() {
+    // Mitigate MIME sniffing and clickjacking
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: DENY');
+
+    // Reduce referrer leakage
+    header('Referrer-Policy: no-referrer');
+
+    // Limit powerful features by default (tighten as needed)
+    header("Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), bluetooth=(), gyroscope=(), magnetometer=(), accelerometer=()");
+
+    // Cross-origin protections
+    header('Cross-Origin-Resource-Policy: same-origin');
+    header('Cross-Origin-Opener-Policy: same-origin');
+
+    // Content Security Policy (Report-Only initially to avoid breaking existing inline resources)
+    // Adjust sources based on your CDNs if needed.
+    $csp = "default-src 'self' https: data:; " .
+           "img-src 'self' https: data:; " .
+           "script-src 'self' https: 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " .
+           "style-src 'self' https: 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; " .
+           "connect-src 'self' https:; " .
+           "font-src 'self' https: data:; " .
+           "frame-ancestors 'none';";
+    header('Content-Security-Policy-Report-Only: ' . $csp);
+}
+
 // Environment configuration
 define('ENVIRONMENT', $_ENV['ENVIRONMENT'] ?? 'production');
 define('DEBUG', ENVIRONMENT === 'development');

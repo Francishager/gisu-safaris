@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Tanzania Classic Safari Tour - 7 Days Serengeti, Ngorongoro & Tarangire | Gisu Safaris</title>
+    <meta name="description" content="Experience the ultimate Tanzania classic safari with Gisu Safaris. 7-day adventure through Serengeti National Park, Ngorongoro Crater, and Tarangire. Witness the Great Migration, Big Five wildlife, and stunning African landscapes. Book your Tanzania safari tour today!">
+    <meta name="keywords" content="Tanzania classic safari, Serengeti safari, Ngorongoro Crater tour, Tarangire National Park, Tanzania Big Five safari, Great Migration Tanzania, Northern Circuit safari, Tanzania wildlife tours">
+    <meta name="author" content="Gisu Safaris - Tanzania Safari Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tanzania Classic Safari Tour - 7 Days Ultimate Adventure">
+    <meta property="og:description" content="Experience Tanzania's most iconic destinations with our classic 7-day safari featuring Serengeti, Ngorongoro Crater, and Tarangire National Park.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/tanzania-classic-tour.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tanzania Classic Safari Tour - 7 Days Adventure">
+    <meta name="twitter:description" content="Explore the Serengeti, Ngorongoro Crater, and Tarangire on this ultimate 7-day Tanzania safari adventure.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/tanzania-classic-tour.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item active" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: url('https://images.unsplash.com/photo-1534794238753-3a7a39766100?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="tanzania.html" class="text-white-50">Tanzania Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Classic Safari Tour</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Tanzania Classic Safari Tour
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                7 Days exploring the Northern Circuit - Serengeti, Ngorongoro Crater & Tarangire. The ultimate Tanzania wildlife adventure
+                            </p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-warning fs-6 px-3 py-2">ðŸ† Most Popular</span>
+                                <span class="badge bg-primary fs-6 px-3 py-2">7 Days</span>
+                                <span class="badge bg-success fs-6 px-3 py-2">Northern Circuit</span>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book This Safari
+                                </a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-map-marked-alt me-2"></i>View Itinerary
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Experience Tanzania's <span class="text-primary">Golden Triangle</span></h2>
+                        <p class="lead mb-4">Discover the magic of Tanzania's most iconic safari destinations on this 7-day classic adventure. Journey through the endless plains of the Serengeti, descend into the wildlife-rich Ngorongoro Crater, and explore the elephant paradise of Tarangire National Park. This classic northern circuit safari combines breathtaking landscapes, incredible wildlife viewing, and luxury accommodations for the ultimate East African safari experience.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-globe-africa fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Serengeti Plains</h5>
+                                    <p class="small text-muted">Endless grasslands home to the Great Migration and abundant predators including lions and cheetahs</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-mountain fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Ngorongoro Crater</h5>
+                                    <p class="small text-muted">World's largest inactive volcanic caldera, the "8th Wonder of the World" with guaranteed Big Five</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-tree fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Tarangire Paradise</h5>
+                                    <p class="small text-muted">Famous for massive elephant herds, ancient baobab trees, and diverse wildlife concentrations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$1,899</div>
+                                    <p class="text-muted">per person (2 people sharing)</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(327 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 7 Days / 6 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Group Size:</strong> Max 8 people</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Time:</strong> Year-round</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Focus:</strong> Northern Circuit</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Includes:</strong> All Park Fees</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                    <a href="https://wa.me/256780950555" class="btn btn-outline-success">
+                                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section id="itinerary" class="py-5 bg-light position-relative">
+            <!-- Safari pattern background -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath d=%22M15 15L20 5L25 15M75 15L80 5L85 15M15 85L20 95L25 85M75 85L80 95L85 85%22 stroke=%22%23ff6b35%22 stroke-width=%221%22 fill=%22none%22/%3E%3C/svg%3E') center/150px;"></div>
+            
+            <div class="container position-relative">
+                <div class="text-center mb-5 fade-element">
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-warning fs-6 px-3 py-2 mb-2 d-inline-block">ðŸ¦ CLASSIC SAFARI</span>
+                        <h2 class="display-5 fw-bold">Day-by-Day <span class="text-warning position-relative">
+                            Itinerary
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
+                    <p class="lead">Your complete 7-day Tanzania Northern Circuit adventure</p>
+                </div>
+                
+                <!-- Itinerary timeline with enhanced styling -->
+                <div class="position-relative itinerary-timeline mx-auto" style="max-width: 1000px;">
+                    <!-- Vertical timeline line -->
+                    <div class="position-absolute start-50 translate-middle-x" style="top: 0; bottom: 0; width: 4px; background-color: rgba(0,0,0,0.1); z-index: 0;"></div>
+                    
+                    <!-- Day 1 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-warning opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-warning text-dark rounded-circle p-2 me-3">
+                                            <i class="fas fa-plane-arrival"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-warning mb-0">Arrival & Arusha Welcome</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Land at Kilimanjaro International Airport where our guide welcomes you to Tanzania. Transfer to your comfortable hotel in Arusha, the safari capital. Evening briefing about your upcoming adventure, followed by dinner featuring local Tanzanian cuisine. Rest up for the incredible journey ahead!</p>
+                                    
+                                    <!-- Itinerary highlights -->
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">âœˆï¸ <span class="text-dark fw-medium">Airport pickup & transfer to Arusha</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ“‹ <span class="text-dark fw-medium">Safari briefing & equipment check</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ½ï¸ <span class="text-dark fw-medium">Welcome dinner with local cuisine</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Trip essentials -->
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-warning me-2"></i>
+                                            <small class="fw-medium">Dinner</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-bed text-warning me-2"></i>
+                                            <small class="fw-medium">Arusha Hotel</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <!-- Day number with enhanced styling -->
+                            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">1</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 1</h5>
+                            <div class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill">
+                                <i class="fas fa-map-marker-alt me-1"></i>Arrival
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <!-- Day 1 image -->
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Arusha Welcome">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Welcome to Tanzania</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-success opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-tree"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-success mb-0">Tarangire National Park</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Journey to Tarangire National Park, famous for its massive elephant herds and iconic baobab trees. Experience your first African game drive, spotting elephants, zebras, wildebeest, and various antelope species. The park's diverse ecosystems provide incredible wildlife viewing opportunities.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ˜ <span class="text-dark fw-medium">Massive elephant herds & baobab trees</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ¦“ <span class="text-dark fw-medium">Zebras, wildebeest & antelope species</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ“¸ <span class="text-dark fw-medium">First African game drive experience</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-success me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-campground text-success me-2"></i>
+                                            <small class="fw-medium">Safari Lodge</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">2</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 2</h5>
+                            <div class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
+                                <i class="fas fa-tree me-1"></i>Tarangire
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1549366021-9f761d040ed6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Tarangire Elephants">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Tarangire National Park</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-danger opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-danger text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-mountain"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-danger mb-0">Ngorongoro Crater</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Descend into the "8th Wonder of the World" - Ngorongoro Crater. This massive volcanic caldera hosts an incredible concentration of wildlife including lions, elephants, rhinos, and flamingos. Experience guaranteed Big Five viewing in one of Africa's most spectacular settings.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-danger">
+                                            <small class="text-muted d-block">ðŸ¦ <span class="text-dark fw-medium">Black rhino sightings & Big Five encounters</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸŒ‹ <span class="text-dark fw-medium">World's largest intact volcanic caldera</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ¦© <span class="text-dark fw-medium">Lake Magadi flamingo viewing</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-danger me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-bed text-danger me-2"></i>
+                                            <small class="fw-medium">Crater Lodge</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">3</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 3</h5>
+                            <div class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill">
+                                <i class="fas fa-mountain me-1"></i>Ngorongoro
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Ngorongoro Crater">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Ngorongoro Crater</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 4 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-globe-africa"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-primary mb-0">Central Serengeti</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Enter the legendary Serengeti National Park via the Seronera Valley. This central region offers year-round excellent wildlife viewing with resident prides of lions, leopards, and large herds of buffalo and elephants. The Seronera River attracts wildlife throughout the year.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ¦ <span class="text-dark fw-medium">Resident lion prides & leopard sightings</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸŒŠ <span class="text-dark fw-medium">Seronera River wildlife corridor</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ¦¬ <span class="text-dark fw-medium">Large buffalo herds & elephants</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-primary me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-campground text-primary me-2"></i>
+                                            <small class="fw-medium">Serengeti Lodge</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">4</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 4</h5>
+                            <div class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
+                                <i class="fas fa-running me-1"></i>Serengeti
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Central Serengeti">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Central Serengeti</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-info opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-info text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-running"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-info mb-0">Northern Serengeti</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Explore the northern reaches of the Serengeti, following the Great Migration route (seasonal). This remote area offers spectacular wildlife viewing with fewer crowds. Experience river crossings at the Mara River and witness the drama of the migration.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-info">
+                                            <small class="text-muted d-block">ðŸ¦“ <span class="text-dark fw-medium">Great Migration herds (seasonal)</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-danger">
+                                            <small class="text-muted d-block">ðŸŒŠ <span class="text-dark fw-medium">Mara River dramatic crossings</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ† <span class="text-dark fw-medium">Resident predators following herds</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-info me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-campground text-info me-2"></i>
+                                            <small class="fw-medium">Mobile Camp</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">5</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 5</h5>
+                            <div class="badge bg-info-subtle text-info px-3 py-2 rounded-pill">
+                                <i class="fas fa-water me-1"></i>Migration
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Northern Serengeti Migration">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Great Migration</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 6 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-secondary text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-secondary mb-0">Full Day Serengeti</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Spend a full day exploring the vast Serengeti plains. Early morning and late afternoon game drives offer the best wildlife viewing opportunities. Optional hot air balloon safari provides breathtaking aerial views of the endless plains and wildlife below.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-secondary">
+                                            <small class="text-muted d-block">ðŸŒ… <span class="text-dark fw-medium">Early morning & evening game drives</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸŽˆ <span class="text-dark fw-medium">Optional hot air balloon safari</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ“¸ <span class="text-dark fw-medium">Photography opportunities</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-secondary me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-campground text-secondary me-2"></i>
+                                            <small class="fw-medium">Serengeti Lodge</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">6</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 6</h5>
+                            <div class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill">
+                                <i class="fas fa-binoculars me-1"></i>Full Day
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Serengeti Wildlife">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Serengeti Plains</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 7 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-dark text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-plane-departure"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-dark mb-0">Departure Day</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Final morning game drive before departing the Serengeti. Transfer to the airstrip for your flight back to Arusha. Connect with your international departure or extend your stay with additional activities. Take with you unforgettable memories of Tanzania's incredible wildlife and landscapes.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-dark">
+                                            <small class="text-muted d-block">ðŸŒ… <span class="text-dark fw-medium">Final morning game drive</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">âœˆï¸ <span class="text-dark fw-medium">Flight back to Arusha</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ  <span class="text-dark fw-medium">International departure or extend stay</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-dark me-2"></i>
+                                            <small class="fw-medium">Breakfast</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-plane text-dark me-2"></i>
+                                            <small class="fw-medium">Departure</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">7</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 7</h5>
+                            <div class="badge bg-dark-subtle text-dark px-3 py-2 rounded-pill">
+                                <i class="fas fa-home me-1"></i>Departure
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Safari Memories">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Safari Memories</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- View full itinerary button -->
+                <div class="text-center mt-5">
+                    <a href="#booking" class="btn btn-lg btn-warning rounded-pill shadow px-5">
+                        <i class="fas fa-calendar-check me-2"></i>Book This Safari Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="mb-0"><i class="fas fa-check-circle me-2"></i>What's Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional safari guide and 4WD vehicle</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>6 nights accommodation in safari lodges</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All meals during the safari</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All national park entrance fees</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Game drives as per itinerary</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Airport transfers in Arusha</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bottled water during game drives</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Binoculars for wildlife viewing</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Government taxes and service charges</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Flying Doctors emergency insurance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0"><i class="fas fa-times-circle me-2"></i>What's Not Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International flights to/from Tanzania</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tanzania visa fees ($50 for most nationalities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Travel insurance (highly recommended)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Alcoholic beverages and soft drinks</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tips for guide and lodge staff ($10-15/day recommended)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal expenses and shopping</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Laundry services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Optional balloon safari ($550 per person)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Phone calls and internet charges</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Medical expenses and vaccinations</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Items of personal nature</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for Your Tanzania Classic Adventure?</h2>
+                    <p class="lead">Book now or get a custom quote for your perfect Northern Circuit safari</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Country</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Travel Date</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Number of Travelers</label>
+                                            <select class="form-select">
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5+">5+ People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Safari Interests & Special Requirements</label>
+                                            <textarea class="form-control" rows="3" placeholder="Tell us about your wildlife interests, photography needs, dietary requirements, or any special requests..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                            <a href="tel:+256780950555" class="btn btn-outline-primary btn-lg">
+                                                <i class="fas fa-phone me-2"></i>Call Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p class="mb-3">Tanzania's premier safari specialists offering unforgettable Northern Circuit adventures through Serengeti, Ngorongoro, and Tarangire.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Quick Links</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                                <li class="mb-2"><a href="tanzania.html" class="text-light text-decoration-none">Tanzania Safaris</a></li>
+                                <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                                <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Other Adventures</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="tanzania-honeymoon.html" class="text-light text-decoration-none">Tanzania Honeymoon</a></li>
+                                <li class="mb-2"><a href="tanzania-luxury-tented-camp.html" class="text-light text-decoration-none">Luxury Tented Camp</a></li>
+                                <li class="mb-2"><a href="serengeti-national-park.html" class="text-light text-decoration-none">Serengeti National Park</a></li>
+                                <li class="mb-2"><a href="kenya.html" class="text-light text-decoration-none">Kenya Safaris</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Connect With Us</h6>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-facebook fa-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </a>
+                                <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>ðŸ¦ Hello! Welcome to Gisu Safaris!</p>
+                    <p>Interested in our Tanzania Classic Safari Tour? Experience the Serengeti, Ngorongoro Crater, and Tarangire on this incredible 7-day Northern Circuit adventure. How can we help you plan this unforgettable journey?</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <script>
+    function toggleWhatsAppChat() {
+        const chatWidget = document.getElementById('whatsappChat');
+        chatWidget.classList.toggle('active');
+        if (chatWidget.classList.contains('active')) {
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) input.focus();
+            }, 300);
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        if (message === '') return;
+        
+        const phoneNumber = '61470133869';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    </script>
+</body>
+</html>
+

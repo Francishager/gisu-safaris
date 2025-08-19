@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uganda Luxury Tour | 5-Star Gorilla & Wildlife Safari | Gisu Safaris</title>
+    <meta name="description" content="Experience the best of Uganda in ultimate comfort. 5-star luxury gorilla trekking in Bwindi, exclusive Murchison Falls wildlife drives, and premium lodges.">
+    <meta name="keywords" content="Uganda luxury safari, luxury gorilla trekking Uganda, 5-star Uganda safari, Bwindi Impenetrable Forest luxury, Murchison Falls exclusive safari, premium Uganda tours">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
+    <style>
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+        
+        .timeline-item {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-left: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-item:nth-child(1) { border-left-color: #667eea; }
+        .timeline-item:nth-child(2) { border-left-color: #f093fb; }
+        .timeline-item:nth-child(3) { border-left-color: #4facfe; }
+        .timeline-item:nth-child(4) { border-left-color: #43e97b; }
+        .timeline-item:nth-child(5) { border-left-color: #fa709a; }
+        .timeline-item:nth-child(6) { border-left-color: #fee140; }
+        .timeline-item:nth-child(7) { border-left-color: #a8edea; }
+        .timeline-item:nth-child(8) { border-left-color: #d299c2; }
+        
+        .timeline-item:hover {
+            transform: translateX(15px) translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start, #667eea), var(--gradient-end, #764ba2));
+        }
+        
+        .timeline-item:nth-child(1) { --gradient-start: #667eea; --gradient-end: #764ba2; }
+        .timeline-item:nth-child(2) { --gradient-start: #f093fb; --gradient-end: #f5576c; }
+        .timeline-item:nth-child(3) { --gradient-start: #4facfe; --gradient-end: #00f2fe; }
+        .timeline-item:nth-child(4) { --gradient-start: #43e97b; --gradient-end: #38f9d7; }
+        .timeline-item:nth-child(5) { --gradient-start: #fa709a; --gradient-end: #fee140; }
+        .timeline-item:nth-child(6) { --gradient-start: #fee140; --gradient-end: #fa709a; }
+        .timeline-item:nth-child(7) { --gradient-start: #a8edea; --gradient-end: #fed6e3; }
+        .timeline-item:nth-child(8) { --gradient-start: #d299c2; --gradient-end: #fef9d7; }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--gradient-start, #667eea), var(--gradient-end, #764ba2));
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .timeline-content h5 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .timeline-content p {
+            color: #5a6c7d;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(var(--pulse-color, 102, 126, 234), 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(var(--pulse-color, 102, 126, 234), 0); }
+            100% { box-shadow: 0 0 0 0 rgba(var(--pulse-color, 102, 126, 234), 0); }
+        }
+        
+        .timeline-item:nth-child(1) .timeline-marker { --pulse-color: 102, 126, 234; }
+        .timeline-item:nth-child(2) .timeline-marker { --pulse-color: 240, 147, 251; }
+        .timeline-item:nth-child(3) .timeline-marker { --pulse-color: 79, 172, 254; }
+        .timeline-item:nth-child(4) .timeline-marker { --pulse-color: 67, 233, 123; }
+        .timeline-item:nth-child(5) .timeline-marker { --pulse-color: 250, 112, 154; }
+        .timeline-item:nth-child(6) .timeline-marker { --pulse-color: 254, 225, 64; }
+        .timeline-item:nth-child(7) .timeline-marker { --pulse-color: 168, 237, 234; }
+        .timeline-item:nth-child(8) .timeline-marker { --pulse-color: 210, 153, 194; }
+        
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start, #667eea), var(--gradient-end, #764ba2));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item" href="travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="visa.html">Visa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542037104-924839999554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="uganda.html" class="text-white-50">Uganda Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Uganda Luxury Tour</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">Ultimate Uganda Luxury Safari</h1>
+                            <p class="hero-description lead text-white mb-5">Experience Gorilla Trekking & Wildlife Viewing in Unparalleled Comfort</p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-warning text-dark fs-6 px-3 py-2">8 Days</span>
+                                <span class="badge bg-primary fs-6 px-3 py-2">5-Star Lodges</span>
+                                <span class="badge bg-success fs-6 px-3 py-2">Gorilla & Big 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Experience the Pearl of Africa in <span class="text-primary">Absolute Luxury</span></h2>
+                        <p class="lead mb-4">This exclusive safari offers the best of Uganda with uncompromising comfort. Enjoy private transport, stay in world-class lodges, and witness breathtaking wildlife, including the magnificent mountain gorillas of Bwindi Impenetrable Forest and the rich game of Murchison Falls.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-user-tie fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Luxury Gorilla Trek</h5>
+                                    <p class="small text-muted">Exclusive, intimate gorilla encounters in Bwindi with premium permits</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-bed fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">5-Star Accommodation</h5>
+                                    <p class="small text-muted">Stay in Uganda's most exclusive safari lodges and camps</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-car-side fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Private Safari Drives</h5>
+                                    <p class="small text-muted">Explore Murchison Falls in a private, comfortable 4x4 vehicle</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$4,999</div>
+                                    <p class="text-muted">per person</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(58 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 8 Days / 7 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Focus:</strong> Luxury, Wildlife, Gorillas</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Transport:</strong> Private 4x4 & Flights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Accommodation:</strong> 5-Star Lodges</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luxury Itinerary -->
+        <section class="py-5 bg-light">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-6 fw-bold">Your 8-Day Luxury Itinerary</h2>
+                    <p class="lead text-muted">A seamless journey through Uganda's highlights</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 1: Arrival in Entebbe</h5>
+                            <p>Arrive at Entebbe International Airport, where you'll be met by our VIP guide and transferred to the serene Lake Victoria Serena Golf Resort & Spa.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 2: Fly to Bwindi Impenetrable Forest</h5>
+                            <p>Take a morning flight to Kihihi, followed by a scenic drive to the luxurious Bwindi Lodge, offering stunning forest views.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 3: Ultimate Gorilla Trekking</h5>
+                            <p>An unforgettable day tracking mountain gorillas. A challenging yet immensely rewarding experience. Enjoy post-trek massages at the lodge.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 4: Fly to Murchison Falls</h5>
+                            <p>Fly to Murchison Falls National Park. Check into the opulent Nile Safari Lodge, overlooking the majestic River Nile.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 5: Private Game Drive & Nile Cruise</h5>
+                            <p>Morning game drive to spot lions, elephants, giraffes, and more. In the afternoon, take a luxury boat cruise to the base of Murchison Falls.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 6: Delta Boat Trip & Sundowners</h5>
+                            <p>Explore the Nile Delta by boat for a chance to see the rare Shoebill Stork. Enjoy evening sundowners with panoramic views.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 7: Relaxation or Chimpanzee Trekking</h5>
+                            <p>A day of leisure at the lodge or an optional chimpanzee trek in Budongo Forest. Your choice.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h5 class="fw-bold">Day 8: Departure</h5>
+                            <p>Enjoy a final breakfast before flying from Murchison back to Entebbe for your international departure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for a Safari of a Lifetime?</h2>
+                    <p class="lead">Book your Uganda luxury tour today</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-4">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Full Name *" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="Email *" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" placeholder="Phone Number">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="3" placeholder="Mention any special requests or preferences..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p>Curating unforgettable luxury experiences in Uganda.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i>+256 780 950 555</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <!-- Chat Window -->
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>Ã¢Å“Â¨ Hello! Interested in our Luxury Uganda Safari?</p>
+                    <p>Experience Uganda's finest luxury lodges, premium service, and exclusive wildlife encounters on this premium safari adventure!</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <!-- WhatsApp Chat Widget Script -->
+    <script>
+    // WhatsApp Chat Widget Functionality
+    function toggleWhatsAppChat() {
+        const chatWidget = document.getElementById('whatsappChat');
+        chatWidget.classList.toggle('active');
+        
+        // Focus on input when chat opens
+        if (chatWidget.classList.contains('active')) {
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) input.focus();
+            }, 300);
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        
+        if (message === '') {
+            messageInput.focus();
+            return;
+        }
+        
+        // Create WhatsApp URL with the message
+        const phoneNumber = '61470133869';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        // Open WhatsApp with the message
+        window.open(whatsappUrl, '_blank');
+        
+        // Clear the input and close the chat
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    
+    // Handle Enter key press in the input field
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageInput = document.getElementById('whatsappMessage');
+        if (messageInput) {
+            messageInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendWhatsAppMessage();
+                }
+            });
+            
+            // Enable/disable send button based on input
+            messageInput.addEventListener('input', function() {
+                const sendBtn = document.querySelector('.whatsapp-send-btn');
+                if (sendBtn) {
+                    sendBtn.disabled = this.value.trim() === '';
+                }
+            });
+        }
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatWidget = document.getElementById('whatsappChat');
+            const whatsappWidget = document.querySelector('.whatsapp-widget');
+            
+            if (chatWidget && chatWidget.classList.contains('active') && 
+                !whatsappWidget.contains(event.target)) {
+                chatWidget.classList.remove('active');
+            }
+        });
+        
+        // Prevent chat from closing when clicking inside it
+        const chatWidget = document.getElementById('whatsappChat');
+        if (chatWidget) {
+            chatWidget.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+
+

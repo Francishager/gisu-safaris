@@ -10,6 +10,8 @@ require_once __DIR__ . '/../includes/email.php';
 
 // Set CORS headers
 setCorsHeaders();
+// Add strict security headers (CSP Report-Only, clickjacking, etc.)
+setSecurityHeaders();
 
 // Check rate limiting
 checkRateLimit();
@@ -20,6 +22,12 @@ initSession();
 // Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     sendJsonResponse(null, 405, 'Method not allowed');
+}
+
+// Enforce JSON requests to reduce CSRF and malformed submissions
+$contentType = $_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? '';
+if (stripos($contentType, 'application/json') === false) {
+    sendJsonResponse(null, 415, 'Unsupported Media Type: application/json required');
 }
 
 /** Normalize ISO country codes/names to canonical names used in phone map */
@@ -418,7 +426,8 @@ try {
  * Generate admin notification email content
  */
 function generateAdminNotificationEmail($data, $contact_id) {
-    $interests_text = !empty($data['interests']) ? implode(', ', $data['interests']) : 'Not specified';
+    $h = fn($v) => htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');
+    $interests_text = !empty($data['interests']) ? $h(implode(', ', $data['interests'])) : 'Not specified';
     
     $html = "
     <html>
@@ -427,34 +436,34 @@ function generateAdminNotificationEmail($data, $contact_id) {
         
         <div style='background: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;'>
             <h3>Contact Information</h3>
-            <p><strong>Name:</strong> {$data['first_name']} {$data['last_name']}</p>
-            <p><strong>Email:</strong> {$data['email']}</p>
-            <p><strong>Phone:</strong> " . ($data['phone'] ?: 'Not provided') . "</p>
-            <p><strong>Country:</strong> {$data['country']}</p>
-            <p><strong>Nationality:</strong> {$data['nationality']}</p>
-            <p><strong>Passport:</strong> {$data['passport']}</p>
+            <p><strong>Name:</strong> {$h($data['first_name'])} {$h($data['last_name'])}</p>
+            <p><strong>Email:</strong> {$h($data['email'])}</p>
+            <p><strong>Phone:</strong> " . ($h($data['phone']) ?: 'Not provided') . "</p>
+            <p><strong>Country:</strong> {$h($data['country'])}</p>
+            <p><strong>Nationality:</strong> {$h($data['nationality'])}</p>
+            <p><strong>Passport:</strong> {$h($data['passport'])}</p>
         </div>
         
         <div style='background: #e8f5e8; padding: 20px; border-radius: 5px; margin: 20px 0;'>
             <h3>Safari Details</h3>
-            <p><strong>Destination:</strong> {$data['destination']}</p>
-            <p><strong>Group Size:</strong> {$data['group_size']}</p>
-            <p><strong>Duration:</strong> " . ($data['duration'] ?: 'Not specified') . "</p>
-            <p><strong>Budget:</strong> " . ($data['budget'] ?: 'Not specified') . "</p>
-            <p><strong>Travel Date:</strong> " . ($data['travel_date'] ?: 'Not specified') . "</p>
+            <p><strong>Destination:</strong> {$h($data['destination'])}</p>
+            <p><strong>Group Size:</strong> {$h($data['group_size'])}</p>
+            <p><strong>Duration:</strong> " . ($h($data['duration']) ?: 'Not specified') . "</p>
+            <p><strong>Budget:</strong> " . ($h($data['budget']) ?: 'Not specified') . "</p>
+            <p><strong>Travel Date:</strong> " . ($h($data['travel_date']) ?: 'Not specified') . "</p>
             <p><strong>Interests:</strong> {$interests_text}</p>
         </div>
         
         " . (!empty($data['message']) ? "
         <div style='background: #fff3cd; padding: 20px; border-radius: 5px; margin: 20px 0;'>
             <h3>Message</h3>
-            <p>" . nl2br(htmlspecialchars($data['message'])) . "</p>
+            <p>" . nl2br($h($data['message'])) . "</p>
         </div>
         " : "") . "
         
         <div style='background: #d1ecf1; padding: 20px; border-radius: 5px; margin: 20px 0;'>
             <h3>Additional Information</h3>
-            <p><strong>Contact ID:</strong> {$contact_id}</p>
+            <p><strong>Contact ID:</strong> {$h($contact_id)}</p>
             <p><strong>Newsletter Subscription:</strong> " . ($data['newsletter_opt_in'] ? 'Yes' : 'No') . "</p>
             <p><strong>Submission Time:</strong> " . date('Y-m-d H:i:s T') . "</p>
         </div>

@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Rwanda Wildlife & Culture Combo - 5 Days Akagera Safari & Kigali Tour | Gisu Safaris</title>
+    <meta name="description" content="Experience Rwanda's complete adventure: Big Five safari in Akagera National Park, cultural immersion in Kigali, genocide memorial visit, and Lake Kivu relaxation. 5-day comprehensive tour with wildlife and heritage experiences.">
+    <meta name="keywords" content="Rwanda wildlife culture combo, Akagera National Park, Big Five safari Rwanda, Kigali cultural tour, Lake Kivu, Rwanda complete tour, wildlife and culture, genocide memorial, Rwanda safari package">
+    <meta name="author" content="Gisu Safaris - Rwanda Complete Experience Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rwanda Wildlife & Culture Combo - Complete 5-Day Experience">
+    <meta property="og:description" content="Experience Rwanda's Big Five wildlife in Akagera National Park combined with rich cultural heritage in Kigali and relaxation at Lake Kivu.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/rwanda-wildlife-culture.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rwanda Wildlife & Culture Combo - Complete 5-Day Experience">
+    <meta name="twitter:description" content="Experience Rwanda's Big Five wildlife in Akagera National Park combined with rich cultural heritage.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/rwanda-wildlife-culture.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        :root {
+            --combo-primary: #FF6B35;
+            --combo-secondary: #F7931E;
+            --combo-accent: #FFD23F;
+            --combo-dark: #004643;
+            --wildlife-green: #228B22;
+        }
+        
+        .combo-gradient {
+            background: linear-gradient(135deg, var(--combo-primary) 0%, var(--combo-secondary) 100%);
+        }
+        
+        .pricing-card {
+            background: var(--combo-gradient);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+        }
+        
+        /* Button visibility fixes */
+        .btn-light {
+            background-color: #ffffff !important;
+            color: #FF6B35 !important;
+            border: 2px solid #ffffff !important;
+        }
+        
+        .btn-light:hover {
+            background-color: #f8f9fa !important;
+            color: #004643 !important;
+        }
+        
+        .btn-outline-light {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff !important;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: #ffffff !important;
+            color: #FF6B35 !important;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-float i {
+            margin-top: 16px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About Us</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Safari Packages</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item active" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 100vh; background: linear-gradient(rgba(255, 107, 53, 0.7), rgba(0, 70, 67, 0.8)), url('https://images.unsplash.com/photo-1549366021-9f761d040a94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1 class="hero-title display-2 fw-bold text-white mb-4">Rwanda Wildlife & Culture Combo</h1>
+                            <p class="hero-description lead text-white mb-5">Complete Rwanda experience combining Big Five safari in Akagera National Park with rich cultural heritage, Kigali city tour, and Lake Kivu relaxation.</p>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3"><i class="fas fa-calendar-plus me-2"></i>Book Now</a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg"><i class="fas fa-route me-2"></i>View Itinerary</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container my-5">
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <section class="mb-5">
+                        <h2 class="display-5 fw-bold mb-4">Complete Rwanda Experience</h2>
+                        <p class="lead">Our comprehensive 5-day tour combines Rwanda's incredible wildlife with its rich cultural heritage, offering the perfect introduction to the Land of a Thousand Hills.</p>
+                    </section>
+
+                    <!-- Detailed Itinerary -->
+                    <section id="itinerary" class="mb-5">
+                        <h2 class="display-5 fw-bold mb-4">5-Day Detailed Itinerary</h2>
+                        
+                        <!-- Day 1 -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header combo-gradient text-white">
+                                <h4 class="mb-0"><i class="fas fa-calendar-day me-2"></i>Day 1: Arrival in Kigali</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="fw-bold">Welcome to the Land of a Thousand Hills</h5>
+                                        <p>Upon arrival at Kigali International Airport, you'll be warmly welcomed by your professional guide. After a brief orientation, begin your Rwanda adventure with a comprehensive Kigali city tour.</p>
+                                        <ul class="mb-3">
+                                            <li>Visit the Kigali Genocide Memorial to understand Rwanda's history and resilience</li>
+                                            <li>Explore the vibrant Kimisagara Market for local crafts and culture</li>
+                                            <li>Tour modern Kigali's clean streets and impressive development</li>
+                                            <li>Visit the Presidential Palace Museum</li>
+                                            <li>Evening welcome dinner with traditional Rwandan cuisine</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-light p-3 rounded">
+                                            <h6 class="fw-bold">Day 1 Details</h6>
+                                            <p class="small mb-2"><i class="fas fa-bed me-2"></i>Accommodation: Kigali Hotel</p>
+                                            <p class="small mb-2"><i class="fas fa-utensils me-2"></i>Meals: Lunch, Dinner</p>
+                                            <p class="small mb-0"><i class="fas fa-route me-2"></i>Distance: Airport to hotel (30min)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header combo-gradient text-white">
+                                <h4 class="mb-0"><i class="fas fa-calendar-day me-2"></i>Day 2: Kigali to Akagera National Park</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="fw-bold">Journey to Rwanda's Big Five Destination</h5>
+                                        <p>After an early breakfast, depart for Akagera National Park, Rwanda's premier wildlife destination. The scenic 2.5-hour drive showcases Rwanda's beautiful countryside.</p>
+                                        <ul class="mb-3">
+                                            <li>Early morning departure through Rwanda's rolling hills</li>
+                                            <li>Arrive at Akagera and check into your safari lodge</li>
+                                            <li>Afternoon game drive in search of the Big Five</li>
+                                            <li>Spot elephants, buffaloes, lions, leopards, and rhinos</li>
+                                            <li>Visit Lake Ihema for hippos and crocodiles</li>
+                                            <li>Over 500 bird species including the rare shoebill stork</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-light p-3 rounded">
+                                            <h6 class="fw-bold">Day 2 Details</h6>
+                                            <p class="small mb-2"><i class="fas fa-bed me-2"></i>Accommodation: Akagera Safari Lodge</p>
+                                            <p class="small mb-2"><i class="fas fa-utensils me-2"></i>Meals: All meals included</p>
+                                            <p class="small mb-0"><i class="fas fa-route me-2"></i>Distance: 110km (2.5 hours)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header combo-gradient text-white">
+                                <h4 class="mb-0"><i class="fas fa-calendar-day me-2"></i>Day 3: Full Day Akagera Safari</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="fw-bold">Complete Big Five Safari Experience</h5>
+                                        <p>Spend a full day exploring Akagera's diverse ecosystems, from savannah plains to wetlands and forests. This is your best chance to spot all of the Big Five animals.</p>
+                                        <ul class="mb-3">
+                                            <li>Early morning game drive during peak wildlife activity</li>
+                                            <li>Visit different habitats: savannah, forest, and wetlands</li>
+                                            <li>Picnic lunch in the park with stunning views</li>
+                                            <li>Afternoon boat safari on Lake Ihema</li>
+                                            <li>Extensive bird watching opportunities</li>
+                                            <li>Evening sundowner with panoramic park views</li>
+                                        </ul>
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle me-2"></i><strong>Wildlife Fact:</strong> Akagera is home to the recently reintroduced lions and black rhinos, making it Rwanda's only Big Five destination.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-light p-3 rounded">
+                                            <h6 class="fw-bold">Day 3 Details</h6>
+                                            <p class="small mb-2"><i class="fas fa-bed me-2"></i>Accommodation: Akagera Safari Lodge</p>
+                                            <p class="small mb-2"><i class="fas fa-utensils me-2"></i>Meals: All meals included</p>
+                                            <p class="small mb-0"><i class="fas fa-clock me-2"></i>Full day in park (12 hours)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header combo-gradient text-white">
+                                <h4 class="mb-0"><i class="fas fa-calendar-day me-2"></i>Day 4: Akagera to Lake Kivu</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="fw-bold">From Safari to Serenity</h5>
+                                        <p>After breakfast, depart Akagera for the stunning Lake Kivu, one of Africa's Great Lakes. The journey takes you through Rwanda's beautiful countryside and coffee plantations.</p>
+                                        <ul class="mb-3">
+                                            <li>Morning departure from Akagera National Park</li>
+                                            <li>Scenic drive through coffee plantations and hills</li>
+                                            <li>Arrive at Lake Kivu and check into lakeside hotel</li>
+                                            <li>Afternoon relaxation by Africa's most beautiful lake</li>
+                                            <li>Optional boat cruise on Lake Kivu</li>
+                                            <li>Visit local fishing villages and markets</li>
+                                            <li>Sunset views over the lake and Congo mountains</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-light p-3 rounded">
+                                            <h6 class="fw-bold">Day 4 Details</h6>
+                                            <p class="small mb-2"><i class="fas fa-bed me-2"></i>Accommodation: Lake Kivu Resort</p>
+                                            <p class="small mb-2"><i class="fas fa-utensils me-2"></i>Meals: All meals included</p>
+                                            <p class="small mb-0"><i class="fas fa-route me-2"></i>Distance: 160km (3 hours)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header combo-gradient text-white">
+                                <h4 class="mb-0"><i class="fas fa-calendar-day me-2"></i>Day 5: Lake Kivu to Kigali - Departure</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="fw-bold">Farewell to the Land of a Thousand Hills</h5>
+                                        <p>Your final day begins with optional activities at Lake Kivu before returning to Kigali for departure or to extend your stay in Rwanda.</p>
+                                        <ul class="mb-3">
+                                            <li>Optional morning activities: kayaking, hiking, or village visit</li>
+                                            <li>Leisurely breakfast by the lake</li>
+                                            <li>Depart for Kigali International Airport</li>
+                                            <li>Stop for last-minute souvenir shopping</li>
+                                            <li>Visit to local cooperatives and craft centers</li>
+                                            <li>Airport transfer for departure or hotel drop-off</li>
+                                        </ul>
+                                        <div class="alert alert-success">
+                                            <i class="fas fa-heart me-2"></i><strong>Farewell Message:</strong> Take with you unforgettable memories of Rwanda's wildlife, culture, and the warmth of its people.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-light p-3 rounded">
+                                            <h6 class="fw-bold">Day 5 Details</h6>
+                                            <p class="small mb-2"><i class="fas fa-plane me-2"></i>Departure or hotel</p>
+                                            <p class="small mb-2"><i class="fas fa-utensils me-2"></i>Meals: Breakfast, Lunch</p>
+                                            <p class="small mb-0"><i class="fas fa-route me-2"></i>Distance: 140km (2.5 hours)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- What's Included/Excluded -->
+                    <section class="mb-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="fw-bold text-success mb-3"><i class="fas fa-check-circle me-2"></i>What's Included</h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>4 nights accommodation (lodge & hotel)</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>All meals (breakfast, lunch, dinner)</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Akagera National Park safari</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Kigali city & cultural tours</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Lake Kivu boat cruise</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Professional guide</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Private 4WD vehicle</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>All park fees</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="fw-bold text-danger mb-3"><i class="fas fa-times-circle me-2"></i>What's Not Included</h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-times text-danger me-2"></i>International flights</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Rwanda visa (if required)</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Travel insurance</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Personal expenses</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Alcoholic beverages</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Tips and gratuities</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Optional activities</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Souvenirs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="pricing-card mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-1">From</h3>
+                            <div class="display-4 fw-bold">$1,699</div>
+                            <p class="mb-0 opacity-75">per person</p>
+                            <hr class="my-4">
+                            <div class="text-start">
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-clock me-2"></i>Duration:</div>
+                                    <div class="col-6 text-end">5 Days</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-users me-2"></i>Group Size:</div>
+                                    <div class="col-6 text-end">2-8 People</div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-6"><i class="fas fa-tag me-2"></i>Style:</div>
+                                    <div class="col-6 text-end">Wildlife & Culture</div>
+                                </div>
+                            </div>
+                            <a href="#booking" class="btn btn-light btn-lg w-100 mb-3">
+                                <i class="fas fa-paper-plane me-2"></i>Book This Safari
+                            </a>
+                            <a href="../contact.html" class="btn btn-outline-light w-100">
+                                <i class="fas fa-phone me-2"></i>Get Custom Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h2 class="display-5 fw-bold">Book Your Rwanda Adventure</h2>
+                            <p class="lead">Ready for the complete Rwanda experience? Fill out this form and we'll get back to you within 24 hours.</p>
+                        </div>
+                        <div class="card shadow-lg">
+                            <div class="card-body p-4">
+                                <form id="bookingForm" onsubmit="sendBookingWhatsApp(event)">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="travelDate" class="form-label">Preferred Travel Date *</label>
+                                            <input type="date" class="form-control" id="travelDate" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="groupSize" class="form-label">Number of Travelers *</label>
+                                            <select class="form-control" id="groupSize" required>
+                                                <option value="">Select group size</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5">5 People</option>
+                                                <option value="6">6 People</option>
+                                                <option value="7">7 People</option>
+                                                <option value="8">8 People</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="specialRequests" class="form-label">Special Requests</label>
+                                        <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special requests or requirements..."></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                                            <i class="fas fa-paper-plane me-2"></i>Send Booking Request
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256781232166?text=Hello! I'm interested in the Rwanda Wildlife & Culture Combo. Can you provide more information?" 
+       class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris" height="40" class="me-2">
+                        <span class="h5 mb-0 fw-bold">Gisu Safaris</span>
+                    </div>
+                    <p class="mb-4">Your trusted partner for unforgettable East African safari experiences.</p>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i>+256 781 232 166</p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function sendBookingWhatsApp(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const travelDate = document.getElementById('travelDate').value;
+            const groupSize = document.getElementById('groupSize').value;
+            const specialRequests = document.getElementById('specialRequests').value || 'None';
+            
+            const message = `ðŸŒ RWANDA WILDLIFE & CULTURE COMBO BOOKING REQUEST
+
+ðŸ“ GUEST DETAILS:
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+
+ðŸ—“ï¸ TRAVEL DETAILS:
+Preferred Date: ${travelDate}
+Group Size: ${groupSize} people
+
+ðŸ’¬ SPECIAL REQUESTS:
+${specialRequests}
+
+Please provide a detailed quote and availability for this Rwanda Wildlife & Culture Combo package. Thank you!`;
+            
+            const whatsappURL = `https://wa.me/256781232166?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('travelDate');
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+        });
+    </script>
+    <!-- Site bootstrap -->
+    <script src="/js/main.js"></script></body>
+</html>
+

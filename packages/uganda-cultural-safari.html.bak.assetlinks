@@ -1,0 +1,895 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Uganda Safari - 6 Days Cultural Immersion | Gisu Safaris</title>
+    <meta name="description" content="6-day cultural Uganda safari exploring diverse tribes, traditions, crafts, and local communities with authentic cultural experiences.">
+    <meta name="keywords" content="Cultural Uganda safari, Uganda tribes, cultural tour Uganda, traditional Uganda, community tourism Uganda, cultural immersion">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
+
+    <style>
+        .hero-carousel {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 193, 7, 0.4), rgba(0, 0, 0, 0.3));
+            display: flex;
+            align-items: center;
+        }
+        
+        .cultural-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 20px !important;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            position: relative;
+            border: none;
+            height: 100%;
+        }
+        
+        .cultural-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important;
+        }
+        
+        .cultural-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffc107, #fd7e14, #dc3545, #e83e8c, #6f42c1);
+            z-index: 1;
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, var(--day-color, #ffc107), var(--day-secondary, #fd7e14));
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .day-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .day-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .activity-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .difficulty-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .location-tag {
+            background: linear-gradient(135deg, var(--day-color, #ffc107), var(--day-secondary, #fd7e14));
+            color: white;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .activity-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .activity-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .activity-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--day-color, #ffc107);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--day-color, #ffc107);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto 8px;
+            font-size: 0.9rem;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+        
+        /* Day-specific color schemes */
+        .day-1 { --day-color: #ffc107; --day-secondary: #fd7e14; }
+        .day-2 { --day-color: #dc3545; --day-secondary: #c82333; }
+        .day-3 { --day-color: #e83e8c; --day-secondary: #d91a72; }
+        .day-4 { --day-color: #6f42c1; --day-secondary: #59359a; }
+        .day-5 { --day-color: #20c997; --day-secondary: #1aa179; }
+        .day-6 { --day-color: #17a2b8; --day-secondary: #138496; }
+        
+        .slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-up:nth-child(1) { animation-delay: 0.1s; }
+        .slide-up:nth-child(2) { animation-delay: 0.2s; }
+        .slide-up:nth-child(3) { animation-delay: 0.3s; }
+        .slide-up:nth-child(4) { animation-delay: 0.4s; }
+        .slide-up:nth-child(5) { animation-delay: 0.5s; }
+        .slide-up:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item" href="travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="visa.html">Visa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section with Carousel -->
+        <header class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1549366021-9f761d040a94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            
+            <div class="hero-overlay">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="uganda.html" class="text-white-50">Uganda Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Cultural Uganda Safari</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">Cultural Uganda Safari</h1>
+                            <p class="hero-description lead text-white mb-5">6 Days immersive cultural journey through traditions</p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-info fs-6 px-3 py-2">6 Days</span>
+                                <span class="badge bg-warning text-dark fs-6 px-3 py-2">Cultural</span>
+                                <span class="badge bg-success fs-6 px-3 py-2">Authentic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Cultural Uganda <span class="text-primary">Safari</span></h2>
+                        <p class="lead mb-4">Immerse yourself in Uganda's rich cultural tapestry with this authentic 6-day journey through diverse communities, traditional practices, and living heritage. Experience the warmth of Ugandan hospitality while learning about ancient traditions, crafts, music, and daily life from various ethnic groups including the Baganda, Batwa, and other indigenous communities.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-users fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Diverse Tribes</h5>
+                                    <p class="small text-muted">Meet and interact with various ethnic communities</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-palette fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Traditional Crafts</h5>
+                                    <p class="small text-muted">Learn pottery, weaving, and traditional art forms</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-music fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Music & Dance</h5>
+                                    <p class="small text-muted">Experience traditional performances and ceremonies</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$749</div>
+                                    <p class="text-muted">per person</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(43 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 6 Days / 5 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Focus:</strong> Cultural Immersion</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Communities:</strong> 5+ Tribes</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Activities:</strong> Hands-on Experiences</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Season:</strong> Year Round</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Day by Day Itinerary -->
+        <section class="py-5 bg-light">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-6 fw-bold">6-Day Cultural Uganda <span class="text-primary">Itinerary</span></h2>
+                    <p class="lead text-muted">Your immersive journey through Uganda's living heritage</p>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Day 1 -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 slide-up">
+                        <div class="cultural-card card shadow-lg day-1">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-crown"></i></div>
+                                <div class="activity-badge">Buganda</div>
+                                <div class="day-number">01</div>
+                                <div class="day-subtitle">Kingdom Culture</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Buganda Kingdom</div>
+                                <h5 class="fw-bold mb-3">Royal Heritage</h5>
+                                <ul class="activity-list">
+                                    <li>Arrival in Kampala</li>
+                                    <li>Kasubi Royal Tombs visit</li>
+                                    <li>Buganda Parliament</li>
+                                    <li>Traditional lunch</li>
+                                    <li>Craft market tour</li>
+                                    <li>Cultural orientation</li>
+                                    <li>Welcome ceremony</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-crown"></i></div>
+                                        <div class="stat-value">Largest</div>
+                                        <div class="stat-label">Kingdom</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                        <div class="stat-value">Baganda</div>
+                                        <div class="stat-label">People</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-home"></i></div>
+                                        <div class="stat-value">UNESCO</div>
+                                        <div class="stat-label">Heritage</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 2 -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 slide-up">
+                        <div class="cultural-card card shadow-lg day-2">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-palette"></i></div>
+                                <div class="activity-badge">Crafts</div>
+                                <div class="day-number">02</div>
+                                <div class="day-subtitle">Traditional Arts</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Mpigi District</div>
+                                <h5 class="fw-bold mb-3">Hands-on Learning</h5>
+                                <ul class="activity-list">
+                                    <li>Pottery workshop</li>
+                                    <li>Basket weaving class</li>
+                                    <li>Traditional painting</li>
+                                    <li>Bark cloth making</li>
+                                    <li>Beadwork session</li>
+                                    <li>Craft demonstration</li>
+                                    <li>Take home creations</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-palette"></i></div>
+                                        <div class="stat-value">5</div>
+                                        <div class="stat-label">Crafts</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-hands"></i></div>
+                                        <div class="stat-value">Hands-on</div>
+                                        <div class="stat-label">Learning</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-gift"></i></div>
+                                        <div class="stat-value">Souvenirs</div>
+                                        <div class="stat-label">Created</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 3 -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 slide-up">
+                        <div class="cultural-card card shadow-lg day-3">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-seedling"></i></div>
+                                <div class="activity-badge">Batwa</div>
+                                <div class="day-number">03</div>
+                                <div class="day-subtitle">Forest People</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Bwindi Area</div>
+                                <h5 class="fw-bold mb-3">Indigenous Culture</h5>
+                                <ul class="activity-list">
+                                    <li>Travel to Bwindi</li>
+                                    <li>Meet Batwa community</li>
+                                    <li>Forest walk experience</li>
+                                    <li>Traditional hunting demo</li>
+                                    <li>Medicinal plants tour</li>
+                                    <li>Fire making skills</li>
+                                    <li>Cultural performances</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                                        <div class="stat-value">Forest</div>
+                                        <div class="stat-label">Dwellers</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+                                        <div class="stat-value">Ancient</div>
+                                        <div class="stat-label">Wisdom</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                        <div class="stat-value">Pygmy</div>
+                                        <div class="stat-label">Heritage</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 4 -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 slide-up">
+                        <div class="cultural-card card shadow-lg day-4">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-music"></i></div>
+                                <div class="activity-badge">Music</div>
+                                <div class="day-number">04</div>
+                                <div class="day-subtitle">Rhythms & Dance</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Fort Portal</div>
+                                <h5 class="fw-bold mb-3">Musical Heritage</h5>
+                                <ul class="activity-list">
+                                    <li>Traditional instrument making</li>
+                                    <li>Drum making workshop</li>
+                                    <li>Music lessons</li>
+                                    <li>Dance tutorials</li>
+                                    <li>Cultural performances</li>
+                                    <li>Storytelling session</li>
+                                    <li>Evening celebration</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-drum"></i></div>
+                                        <div class="stat-value">Drums</div>
+                                        <div class="stat-label">Making</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-music"></i></div>
+                                        <div class="stat-value">5</div>
+                                        <div class="stat-label">Instruments</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                                        <div class="stat-value">Dance</div>
+                                        <div class="stat-label">Learning</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 5 -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 slide-up">
+                        <div class="cultural-card card shadow-lg day-5">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-utensils"></i></div>
+                                <div class="activity-badge">Cuisine</div>
+                                <div class="day-number">05</div>
+                                <div class="day-subtitle">Food Culture</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Local Villages</div>
+                                <h5 class="fw-bold mb-3">Culinary Journey</h5>
+                                <ul class="activity-list">
+                                    <li>Traditional cooking class</li>
+                                    <li>Local market visit</li>
+                                    <li>Food preparation</li>
+                                    <li>Banana beer brewing</li>
+                                    <li>Communal dining</li>
+                                    <li>Recipe exchange</li>
+                                    <li>Harvest participation</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-utensils"></i></div>
+                                        <div class="stat-value">10+</div>
+                                        <div class="stat-label">Dishes</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+                                        <div class="stat-value">Organic</div>
+                                        <div class="stat-label">Ingredients</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-glass-cheers"></i></div>
+                                        <div class="stat-value">Local</div>
+                                        <div class="stat-label">Beverages</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 6 -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 slide-up">
+                        <div class="cultural-card card shadow-lg day-6">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-handshake"></i></div>
+                                <div class="activity-badge">Farewell</div>
+                                <div class="day-number">06</div>
+                                <div class="day-subtitle">Cultural Exchange</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Kampala</div>
+                                <h5 class="fw-bold mb-3">Journey's End</h5>
+                                <ul class="activity-list">
+                                    <li>Cultural center visit</li>
+                                    <li>Final presentations</li>
+                                    <li>Certificate ceremony</li>
+                                    <li>Photo exhibitions</li>
+                                    <li>Gift exchange</li>
+                                    <li>Farewell feast</li>
+                                    <li>Departure preparations</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                                        <div class="stat-value">Awards</div>
+                                        <div class="stat-label">Earned</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-camera"></i></div>
+                                        <div class="stat-value">Memories</div>
+                                        <div class="stat-label">Captured</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                                        <div class="stat-value">Forever</div>
+                                        <div class="stat-label">Connected</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5">
+            <div class="container fade-element">
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold text-success mb-4">
+                                    <i class="fas fa-check-circle me-2"></i>What's Included
+                                </h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cultural guide & interpreter</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All workshop materials</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Traditional meals</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Community visits</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Craft workshops</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cultural performances</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All transfers</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cultural accommodation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold text-danger mb-4">
+                                    <i class="fas fa-times-circle me-2"></i>Not Included
+                                </h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>International flights</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Visa fees</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Travel insurance</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Personal expenses</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Alcoholic beverages</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Tips and gratuities</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Extra craft materials</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Laundry services</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for Cultural Discovery?</h2>
+                    <p class="lead">Book your authentic Uganda cultural experience today</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-4">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Full Name *" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="Email *" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" placeholder="Phone Number">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="3" placeholder="Any special requirements or questions..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p>Your gateway to Uganda's rich cultural heritage.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i>+256 780 950 555</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>Ã°Å¸Å½Â­ Hello! Interested in our Cultural Uganda Safari?</p>
+                    <p>Experience authentic Ugandan cultures, traditional crafts, and community interactions on this 6-day cultural immersion adventure!</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 2000);
+    </script>
+
+    <script>
+        let whatsappChatVisible = false;
+        const phoneNumber = '61470133869';
+        const defaultMessage = 'Ã°Å¸Å½Â­ Hi! I\'m interested in the cultural safari. Could you please provide more information about the traditional experiences and community visits?';
+        
+        function toggleWhatsAppChat() {
+            const whatsappChat = document.getElementById('whatsappChat');
+            const messageInput = document.getElementById('whatsappMessage');
+            
+            if (whatsappChatVisible) {
+                whatsappChat.style.display = 'none';
+                whatsappChatVisible = false;
+                messageInput.disabled = true;
+            } else {
+                whatsappChat.style.display = 'block';
+                whatsappChatVisible = true;
+                messageInput.disabled = false;
+                messageInput.focus();
+            }
+        }
+        
+        function sendWhatsAppMessage() {
+            const messageInput = document.getElementById('whatsappMessage');
+            const userMessage = messageInput.value.trim();
+            const finalMessage = userMessage || defaultMessage;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset and hide chat
+            messageInput.value = '';
+            toggleWhatsAppChat();
+        }
+        
+        // Enable Enter key to send message
+        document.getElementById('whatsappMessage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendWhatsAppMessage();
+            }
+        });
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', function(e) {
+            const whatsappWidget = document.querySelector('.whatsapp-widget');
+            if (!whatsappWidget.contains(e.target) && whatsappChatVisible) {
+                toggleWhatsAppChat();
+            }
+        });
+    </script>
+</body>
+</html>
+
+

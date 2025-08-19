@@ -159,6 +159,206 @@
         }
     }
 
+    // === NORMALIZE WHATSAPP NUMBERS SITE-WIDE ===
+    function normalizeWhatsAppNumbers() {
+        try {
+            const preferred = '+61478914106';
+            const preferredRaw = '61478914106';
+            const legacyNumbers = [
+                '+61470133869', '61470133869',
+                // add any other known legacy variants here if discovered later
+            ];
+
+            // Update hrefs on load
+            const anchors = document.querySelectorAll('a[href]');
+            anchors.forEach(a => {
+                let href = a.getAttribute('href') || '';
+                if (!href) return;
+
+                const lower = href.toLowerCase();
+                const isWA = lower.includes('wa.me') || lower.includes('whatsapp.com/send');
+                const isTel = lower.startsWith('tel:');
+                if (!(isWA || isTel)) return;
+
+                legacyNumbers.forEach(old => {
+                    if (!old) return;
+                    href = href.replaceAll(old, preferredRaw).replaceAll(encodeURIComponent(old), encodeURIComponent(preferredRaw));
+                });
+
+                // Also normalize any leading + encodings
+                href = href.replaceAll('%2B' + preferredRaw, preferredRaw).replaceAll('+' + preferredRaw, preferredRaw);
+
+                // Ensure wa.me uses raw digits only
+                if (isWA) {
+                    href = href.replace(/(wa\.me\/)\+?/i, '$1');
+                }
+
+                a.setAttribute('href', href);
+            });
+
+            // Replace visible text nodes that contain legacy numbers
+            try {
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+                const nodes = [];
+                let n;
+                while ((n = walker.nextNode())) nodes.push(n);
+                nodes.forEach(node => {
+                    let t = node.nodeValue;
+                    if (!t) return;
+                    legacyNumbers.forEach(old => {
+                        if (!old) return;
+                        if (t.includes(old)) t = t.replaceAll(old, preferred);
+                    });
+                    // also cover spaced or formatted variants (basic): 6147 013 3869 -> 61478914106
+                    t = t.replace(/6\s*1\s*4\s*7\s*0\s*1\s*3\s*3\s*8\s*6\s*9/g, preferred);
+                    if (t !== node.nodeValue) node.nodeValue = t;
+                });
+            } catch (_) { /* non-fatal */ }
+
+            // Intercept clicks to enforce preferred number even if DOM changed later
+            if (!window.__waNumberNormalized) {
+                window.__waNumberNormalized = true;
+                document.addEventListener('click', function(e) {
+                    const a = e.target && e.target.closest && e.target.closest('a[href]');
+                    if (!a) return;
+                    let href = a.getAttribute('href') || '';
+                    const lower = href.toLowerCase();
+                    if (!(lower.includes('wa.me') || lower.includes('whatsapp.com/send') || lower.startsWith('tel:'))) return;
+                    legacyNumbers.forEach(old => {
+                        if (!old) return;
+                        href = href.replaceAll(old, preferredRaw).replaceAll(encodeURIComponent(old), encodeURIComponent(preferredRaw));
+                    });
+                    href = href.replace(/(wa\.me\/)\+?/i, '$1');
+                    a.setAttribute('href', href);
+                }, true);
+            }
+        } catch (e) {
+            try { console.warn('normalizeWhatsAppNumbers failed:', e); } catch (_) {}
+        }
+    }
+
+    // === ANALYTICS LOADER (GA4 / GTM) ===
+    function ensureAnalyticsLoaded() {
+        try {
+            if (window.__analyticsLoaded) return;
+
+            const metaGTM = (document.querySelector('meta[name="gtm-id"]')?.getAttribute('content') || '').trim();
+            const metaGA4 = (document.querySelector('meta[name="ga-measurement-id"]')?.getAttribute('content') || '').trim();
+            const GTM = ((window.GTM_CONTAINER_ID || metaGTM) || '').trim();
+            const GA4 = ((window.GA_MEASUREMENT_ID || metaGA4) || '').trim();
+
+            if (GTM) {
+                // Minimal GTM bootstrap
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                const gtm = document.createElement('script');
+                gtm.async = true;
+                gtm.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM)}`;
+                document.head.appendChild(gtm);
+                window.__analyticsLoaded = true;
+                return;
+            }
+
+            if (GA4) {
+                // GA4 loader
+                const ga = document.createElement('script');
+                ga.async = true;
+                ga.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4)}`;
+                document.head.appendChild(ga);
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ window.dataLayer.push(arguments); }
+                window.gtag = window.gtag || gtag;
+                window.gtag('js', new Date());
+                window.gtag('config', GA4);
+                window.__analyticsLoaded = true;
+            }
+        } catch (e) {
+            try { console.warn('ensureAnalyticsLoaded failed:', e); } catch (_) {}
+        }
+    }
+
+    // === BOOKING CTA TRACKING & PREFILL PARAM APPENDER ===
+    function initBookingCtaTracking() {
+        try {
+            document.addEventListener('click', function(e) {
+                const anchor = e.target && e.target.closest && e.target.closest('a');
+                if (!anchor) return;
+
+                const rawHref = anchor.getAttribute('href') || '';
+                if (!rawHref) return;
+
+                const isBookingLink =
+                    rawHref.endsWith('booking/index.html') ||
+                    rawHref.includes('/booking/index.html') ||
+                    rawHref.includes('../booking/index.html') ||
+                    rawHref.includes('./booking/index.html');
+                if (!isBookingLink) return;
+
+                const ctx = (function getPackageContext() {
+                    const withData = e.target.closest('[data-package-title], [data-amount], [data-package-id]');
+                    const dataTitle = withData && withData.getAttribute('data-package-title');
+                    const dataAmount = withData && withData.getAttribute('data-amount');
+                    const dataPkgId = withData && withData.getAttribute('data-package-id');
+
+                    const h1 = (document.querySelector('h1') || {});
+                    const h1Text = (h1.textContent || '').trim();
+                    const og = document.querySelector('meta[property="og:title"]');
+                    const ogTitle = og && og.getAttribute('content') ? og.getAttribute('content').trim() : '';
+                    const docTitle = (document.title || '').trim();
+
+                    const priceEl = document.querySelector('[data-price], .price, .package-price');
+                    const priceText = (dataAmount || (priceEl && (priceEl.getAttribute('data-price') || priceEl.textContent)) || '').trim();
+                    const numMatch = (priceText.match(/[\d,]+(?:\.\d+)?/) || [null])[0];
+                    const amount = numMatch ? numMatch.replace(/,/g, '') : '';
+
+                    const path = (window.location && window.location.pathname) || '';
+                    const file = path.split('/').pop() || '';
+                    const pkgIdFromPath = file.replace(/\.html?$/i, '');
+
+                    return {
+                        title: (dataTitle || h1Text || ogTitle || docTitle || '').substring(0, 120),
+                        amount: amount,
+                        packageId: (dataPkgId || pkgIdFromPath || '').substring(0, 80)
+                    };
+                })();
+
+                try {
+                    const absolute = new URL(anchor.href, window.location.origin);
+                    if (ctx.title) absolute.searchParams.set('title', ctx.title);
+                    if (ctx.amount) absolute.searchParams.set('amount', ctx.amount);
+                    if (ctx.packageId) absolute.searchParams.set('packageId', ctx.packageId);
+                    anchor.href = absolute.toString();
+                } catch (urlErr) {
+                    try { console.warn('Booking CTA URL build failed:', urlErr); } catch (_) {}
+                }
+
+                try {
+                    const payload = {
+                        event: 'booking_cta_click',
+                        package_title: ctx.title || undefined,
+                        amount: ctx.amount || undefined,
+                        package_id: ctx.packageId || undefined,
+                        page_path: (window.location && window.location.pathname) || undefined,
+                        ts: Date.now()
+                    };
+
+                    if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'booking_cta_click', payload);
+                    } else if (Array.isArray(window.dataLayer)) {
+                        window.dataLayer.push(payload);
+                    } else {
+                        try { console.log('[Analytics]', payload); } catch (_) {}
+                    }
+                } catch (trackErr) {
+                    try { console.warn('Analytics dispatch failed:', trackErr); } catch (_) {}
+                }
+            }, true);
+        } catch (e) {
+            console.warn('initBookingCtaTracking failed:', e);
+        }
+    }
+
     // === SMOOTH SCROLL FOR ANCHOR LINKS ===
     function initSmoothScroll() {
         const links = document.querySelectorAll('a[href^="#"]');
@@ -310,6 +510,7 @@
         }
 
         try {
+            if (typeof ensureAnalyticsLoaded === 'function') ensureAnalyticsLoaded();
             if (typeof initNavbarScroll === 'function') initNavbarScroll();
             if (typeof initHeroSlider === 'function') initHeroSlider();
             if (typeof initStorySlider === 'function') initStorySlider();
@@ -318,14 +519,15 @@
             if (typeof initScrollAnimations === 'function') initScrollAnimations();
             if (typeof initLazyLoading === 'function') initLazyLoading();
             if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
-            if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
-            if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
             if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
+            if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
+            if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
             if (typeof initAccessibility === 'function') initAccessibility();
             if (typeof initSafariFeatures === 'function') initSafariFeatures();
             if (typeof initViewAllPackagesButton === 'function') initViewAllPackagesButton();
+            if (typeof initBookingCtaTracking === 'function') initBookingCtaTracking();
+            if (typeof normalizeWhatsAppNumbers === 'function') normalizeWhatsAppNumbers();
             if (typeof optimizePerformance === 'function') optimizePerformance();
-
             console.log('Gisu Safaris website initialized successfully!');
         } catch (error) {
             console.error('Error initializing website:', error);
@@ -949,6 +1151,7 @@
             ensureAISafariBotLoaded && ensureAISafariBotLoaded();
             initAccessibility && initAccessibility();
             initSafariFeatures && initSafariFeatures();
+            initBookingCtaTracking && initBookingCtaTracking();
             optimizePerformance && optimizePerformance();
         } catch (e) {
             console.error('Fallback init error:', e);

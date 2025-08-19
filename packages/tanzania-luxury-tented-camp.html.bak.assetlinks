@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Tanzania Luxury Tented Camp Safari - 8 Days Premium Northern Circuit | Gisu Safaris</title>
+    <meta name="description" content="Experience the ultimate Tanzania luxury safari in exclusive tented camps. 8 days of premium accommodations, butler service, spa treatments, and extraordinary wildlife in Serengeti, Ngorongoro & Tarangire. Book your luxury Tanzania safari today!">
+    <meta name="keywords" content="Tanzania luxury safari, luxury tented camps Tanzania, premium safari Tanzania, Tanzania Northern Circuit luxury, exclusive safari lodges, luxury wildlife tours Tanzania, high-end safari Tanzania">
+    <meta name="author" content="Gisu Safaris - Tanzania Safari Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tanzania Luxury Tented Camp Safari - 8 Days Premium Experience">
+    <meta property="og:description" content="Indulge in Tanzania's most exclusive luxury tented camp safari experience with personalized service, premium accommodations, and unforgettable wildlife encounters.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/tanzania-luxury-tented-camp.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tanzania Luxury Tented Camp Safari - 8 Days Premium">
+    <meta name="twitter:description" content="Experience Tanzania's finest luxury tented camps with personalized butler service, gourmet dining, and world-class wildlife viewing.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/tanzania-luxury-tented-camp.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item active" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="tanzania.html" class="text-white-50">Tanzania Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Luxury Tented Camp Safari</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Tanzania Luxury Tented Camp Safari
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                8 Days of unparalleled luxury in East Africa's finest tented camps. Butler service, gourmet dining, and extraordinary wildlife
+                            </p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-warning fs-6 px-3 py-2">âœ¨ Ultra Luxury</span>
+                                <span class="badge bg-primary fs-6 px-3 py-2">8 Days</span>
+                                <span class="badge bg-success fs-6 px-3 py-2">Butler Service</span>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book This Safari
+                                </a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-map-marked-alt me-2"></i>View Itinerary
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Experience <span class="text-primary">Ultimate Luxury</span> in the Wild</h2>
+                        <p class="lead mb-4">Discover Tanzania's most exclusive safari experience in the world's finest luxury tented camps. This 8-day ultra-premium safari combines extraordinary wildlife encounters with unparalleled service, featuring private butlers, world-class chefs, spa treatments, and the most luxurious accommodations in East Africa. From the endless Serengeti plains to the dramatic Ngorongoro Crater, every moment is crafted to perfection.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-concierge-bell fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Butler Service</h5>
+                                    <p class="small text-muted">Dedicated personal butler attending to your every need, from unpacking to arranging private dining</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-spa fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Spa & Wellness</h5>
+                                    <p class="small text-muted">In-tent massage services and wellness treatments overlooking pristine African wilderness</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-utensils fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Gourmet Dining</h5>
+                                    <p class="small text-muted">World-class chefs creating bespoke culinary experiences with finest wines and champagnes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$4,299</div>
+                                    <p class="text-muted">per person (2 people sharing)</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(156 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 8 Days / 7 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Group Size:</strong> Max 4 people</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Time:</strong> Year-round luxury</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Style:</strong> Ultra Premium</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Includes:</strong> Personal Butler</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                    <a href="https://wa.me/256780950555" class="btn btn-outline-success">
+                                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luxury Features -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-warning fs-6 px-3 py-2 mb-2 d-inline-block">âœ¨ LUXURY FEATURES</span>
+                        <h2 class="display-5 fw-bold">Exclusive <span class="text-warning position-relative">
+                            Amenities
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
+                    <p class="lead">Unparalleled luxury meets African wilderness</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Luxury Features Cards -->
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="card-header bg-primary text-white text-center">
+                                <h5 class="mb-0"><i class="fas fa-user-tie me-2"></i>Personal Butler Service</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block">
+                                        <i class="fas fa-concierge-bell fa-2x text-white"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>24/7 dedicated personal butler</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Unpacking and laundry service</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Private dining arrangements</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Activity coordination</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Personalized wake-up calls</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="card-header bg-success text-white text-center">
+                                <h5 class="mb-0"><i class="fas fa-spa me-2"></i>Wellness & Spa</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block">
+                                        <i class="fas fa-leaf fa-2x text-white"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>In-tent massage services</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Aromatherapy treatments</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Outdoor spa pavilions</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Yoga and meditation sessions</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Wellness consultations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="card-header bg-warning text-dark text-center">
+                                <h5 class="mb-0"><i class="fas fa-utensils me-2"></i>Gourmet Dining</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block">
+                                        <i class="fas fa-wine-glass-alt fa-2x text-white"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Award-winning chefs</li>
+                                    <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Bespoke menu creation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Premium wine cellar</li>
+                                    <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Bush dining experiences</li>
+                                    <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Champagne sundowners</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="card-header bg-info text-white text-center">
+                                <h5 class="mb-0"><i class="fas fa-bed me-2"></i>Luxury Accommodations</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block">
+                                        <i class="fas fa-home fa-2x text-white"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-info me-2"></i>Spacious canvas pavilions</li>
+                                    <li class="mb-2"><i class="fas fa-check text-info me-2"></i>Private ensuite bathrooms</li>
+                                    <li class="mb-2"><i class="fas fa-check text-info me-2"></i>Outdoor bathtubs</li>
+                                    <li class="mb-2"><i class="fas fa-check text-info me-2"></i>Premium furnishings</li>
+                                    <li class="mb-2"><i class="fas fa-check text-info me-2"></i>Private viewing decks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="card-header bg-danger text-white text-center">
+                                <h5 class="mb-0"><i class="fas fa-binoculars me-2"></i>Exclusive Activities</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    <div class="bg-danger bg-gradient rounded-circle p-3 d-inline-block">
+                                        <i class="fas fa-camera fa-2x text-white"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-danger me-2"></i>Private game drives</li>
+                                    <li class="mb-2"><i class="fas fa-check text-danger me-2"></i>Hot air balloon safaris</li>
+                                    <li class="mb-2"><i class="fas fa-check text-danger me-2"></i>Photography workshops</li>
+                                    <li class="mb-2"><i class="fas fa-check text-danger me-2"></i>Cultural experiences</li>
+                                    <li class="mb-2"><i class="fas fa-check text-danger me-2"></i>Walking safaris</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="card-header bg-secondary text-white text-center">
+                                <h5 class="mb-0"><i class="fas fa-concierge-bell me-2"></i>Premium Services</h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    <div class="bg-secondary bg-gradient rounded-circle p-3 d-inline-block">
+                                        <i class="fas fa-star fa-2x text-white"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i>Private helicopter transfers</li>
+                                    <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i>Luxury vehicle fleet</li>
+                                    <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i>Expert naturalist guides</li>
+                                    <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i>VIP airport services</li>
+                                    <li class="mb-2"><i class="fas fa-check text-secondary me-2"></i>24/7 concierge support</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section id="itinerary" class="py-5 position-relative">
+            <!-- Safari pattern background -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath d=%22M15 15L20 5L25 15M75 15L80 5L85 15M15 85L20 95L25 85M75 85L80 95L85 85%22 stroke=%22%23ff6b35%22 stroke-width=%221%22 fill=%22none%22/%3E%3C/svg%3E') center/150px;"></div>
+            
+            <div class="container position-relative">
+                <div class="text-center mb-5 fade-element">
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-warning fs-6 px-3 py-2 mb-2 d-inline-block">ðŸ† LUXURY SAFARI</span>
+                        <h2 class="display-5 fw-bold">Day-by-Day <span class="text-warning position-relative">
+                            Itinerary
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
+                    <p class="lead">Your complete 8-day luxury tented camp experience</p>
+                </div>
+                
+                <!-- Itinerary timeline with enhanced styling -->
+                <div class="position-relative itinerary-timeline mx-auto" style="max-width: 1000px;">
+                    <!-- Vertical timeline line -->
+                    <div class="position-absolute start-50 translate-middle-x" style="top: 0; bottom: 0; width: 4px; background-color: rgba(0,0,0,0.1); z-index: 0;"></div>
+                    
+                    <!-- Day 1 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-plane-arrival"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-primary mb-0">VIP Arrival & Arusha Luxury</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Private helicopter transfer from Kilimanjaro Airport to Tanzania's finest luxury lodge. Meet your personal butler and enjoy a champagne welcome. Gourmet lunch on your private terrace overlooking Mount Meru. Evening spa treatment to prepare for your safari adventure.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸš <span class="text-dark fw-medium">Private helicopter transfer</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ¥‚ <span class="text-dark fw-medium">Champagne welcome & butler introduction</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ’† <span class="text-dark fw-medium">Welcome spa treatment</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-primary me-2"></i>
+                                            <small class="fw-medium">Lunch & Dinner</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-crown text-primary me-2"></i>
+                                            <small class="fw-medium">Luxury Lodge</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">1</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 1</h5>
+                            <div class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
+                                <i class="fas fa-plane me-1"></i>Arrival
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Luxury Lodge">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">VIP Welcome</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-success opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-tree"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-success mb-0">Tarangire Luxury Camp</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Private helicopter to Tarangire's most exclusive tented camp. Your personal butler unpacks while you enjoy champagne brunch. Afternoon private game drive with expert naturalist guide. Evening gourmet dinner under the stars with personal chef and sommelier service.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ˜ <span class="text-dark fw-medium">Private game drive with naturalist</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ¥‚ <span class="text-dark fw-medium">Champagne brunch on arrival</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸŒŸ <span class="text-dark fw-medium">Starlight gourmet dinner</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-success me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-campground text-success me-2"></i>
+                                            <small class="fw-medium">Luxury Tented Camp</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">2</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 2</h5>
+                            <div class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
+                                <i class="fas fa-tree me-1"></i>Tarangire
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1549366021-9f761d040ed6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Luxury Tented Camp">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Tarangire Luxury Camp</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-warning opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-warning text-dark rounded-circle p-2 me-3">
+                                            <i class="fas fa-spa"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-warning mb-0">Tarangire Wellness Day</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Dawn walking safari with Maasai guides followed by bush breakfast. Return for in-tent spa treatments overlooking the river. Afternoon photography workshop with professional guide. Evening cultural experience with local Maasai community and traditional performances.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸš¶ <span class="text-dark fw-medium">Walking safari with Maasai guides</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ’† <span class="text-dark fw-medium">In-tent spa treatments</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸŽ­ <span class="text-dark fw-medium">Maasai cultural experience</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-warning me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-leaf text-warning me-2"></i>
+                                            <small class="fw-medium">Spa Day</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">3</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 3</h5>
+                            <div class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill">
+                                <i class="fas fa-leaf me-1"></i>Wellness
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1570197525120-87f6d0d0de4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Spa Treatment">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Wilderness Spa</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 4 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-danger opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-danger text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-mountain"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-danger mb-0">Ngorongoro Highland Luxury</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Private helicopter transfer to Ngorongoro's most exclusive lodge perched on the crater rim. Check into your luxury suite with personal butler service. Gourmet lunch with panoramic crater views. Afternoon at leisure with spa treatments and wine tasting from the lodge's premium cellar.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-danger">
+                                            <small class="text-muted d-block">ðŸš <span class="text-dark fw-medium">Helicopter to crater rim lodge</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ  <span class="text-dark fw-medium">Crater rim luxury suite</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ· <span class="text-dark fw-medium">Wine tasting & spa treatments</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-danger me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-crown text-danger me-2"></i>
+                                            <small class="fw-medium">Crater Lodge</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">4</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 4</h5>
+                            <div class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill">
+                                <i class="fas fa-mountain me-1"></i>Ngorongoro
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Ngorongoro Crater Lodge">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Crater Rim Lodge</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-info opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-info text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-binoculars"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-info mb-0">Crater Floor Private Safari</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Private descent into the Ngorongoro Crater with exclusive access. Personal chef prepares gourmet picnic lunch by Lake Magadi. Guaranteed Big Five encounters with personal photography guide. Champagne sundowner on the crater rim with spectacular sunset views.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-info">
+                                            <small class="text-muted d-block">ðŸ¦ <span class="text-dark fw-medium">Big Five private safari</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸ½ï¸ <span class="text-dark fw-medium">Lake Magadi gourmet picnic</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ¥‚ <span class="text-dark fw-medium">Crater rim champagne sundowner</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-info me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-camera text-info me-2"></i>
+                                            <small class="fw-medium">Photo Guide</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">5</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 5</h5>
+                            <div class="badge bg-info-subtle text-info px-3 py-2 rounded-pill">
+                                <i class="fas fa-search me-1"></i>Big Five
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Big Five Safari">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Big Five Encounter</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 6 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-secondary text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-globe-africa"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-secondary mb-0">Serengeti Ultra-Luxury</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Helicopter transfer to Serengeti's most exclusive mobile camp, positioned for optimal wildlife viewing. Your palatial tent features butler service, outdoor bathtub, and private deck. Afternoon private game drive with specialized wildlife photographer. Evening stargazing with astronomer and premium telescope.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-secondary">
+                                            <small class="text-muted d-block">ðŸ•ï¸ <span class="text-dark fw-medium">Ultra-luxury mobile camp</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸ› <span class="text-dark fw-medium">Outdoor bathtub & private deck</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">â­ <span class="text-dark fw-medium">Private stargazing with astronomer</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-secondary me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-campground text-secondary me-2"></i>
+                                            <small class="fw-medium">Mobile Camp</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">6</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 6</h5>
+                            <div class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill">
+                                <i class="fas fa-running me-1"></i>Serengeti
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Serengeti Luxury Camp">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Serengeti Ultra-Luxury</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 7 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-success opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-success mb-0">Serengeti Grand Finale</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Dawn hot air balloon safari over the endless Serengeti plains followed by champagne breakfast in the wilderness. Return to camp for final spa treatment. Afternoon private game drive tracking the Great Migration. Farewell gala dinner with live entertainment under the African stars.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">ðŸŽˆ <span class="text-dark fw-medium">Hot air balloon over Serengeti</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-warning">
+                                            <small class="text-muted d-block">ðŸ¥‚ <span class="text-dark fw-medium">Champagne bush breakfast</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸŽ­ <span class="text-dark fw-medium">Farewell gala dinner & entertainment</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-success me-2"></i>
+                                            <small class="fw-medium">All Meals</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-glass-cheers text-success me-2"></i>
+                                            <small class="fw-medium">Gala Dinner</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">7</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 7</h5>
+                            <div class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
+                                <i class="fas fa-star me-1"></i>Grand Finale
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Balloon Safari">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Balloon Safari</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 8 -->
+                    <div class="row mb-5 fade-element">
+                        <div class="col-lg-5 ps-lg-5 order-lg-3 order-2">
+                            <div class="card border-0 shadow-lg rounded-4 h-100 position-relative hover-card overflow-hidden">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10"></div>
+                                <div class="card-body p-4 position-relative">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-dark text-white rounded-circle p-2 me-3">
+                                            <i class="fas fa-plane-departure"></i>
+                                        </div>
+                                        <h4 class="card-title fw-bold text-dark mb-0">Luxury Departure</h4>
+                                    </div>
+                                    
+                                    <p class="card-text">Final sunrise game drive with farewell champagne toast. Your butler assists with packing while you enjoy a gourmet farewell breakfast. Private helicopter transfer to Kilimanjaro Airport with VIP departure lounge access. Depart with memories of the ultimate luxury safari experience.</p>
+                                    
+                                    <div class="mb-4">
+                                        <div class="mb-2 ps-3 border-start border-3 border-dark">
+                                            <small class="text-muted d-block">ðŸŒ… <span class="text-dark fw-medium">Sunrise farewell game drive</span></small>
+                                        </div>
+                                        <div class="mb-2 ps-3 border-start border-3 border-primary">
+                                            <small class="text-muted d-block">ðŸš <span class="text-dark fw-medium">Private helicopter to airport</span></small>
+                                        </div>
+                                        <div class="ps-3 border-start border-3 border-success">
+                                            <small class="text-muted d-block">âœˆï¸ <span class="text-dark fw-medium">VIP departure lounge access</span></small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-3 mt-4 pt-3 border-top">
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-utensils text-dark me-2"></i>
+                                            <small class="fw-medium">Breakfast</small>
+                                        </div>
+                                        <div class="bg-light rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                            <i class="fas fa-plane text-dark me-2"></i>
+                                            <small class="fw-medium">Departure</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-2 mb-4 mb-lg-0 d-flex flex-column align-items-center position-relative order-lg-2 order-1">
+                            <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg position-relative" style="width: 80px; height: 80px; z-index: 1;">
+                                <span class="display-6 fw-bold">8</span>
+                            </div>
+                            <h5 class="mt-3 fw-bold text-center">Day 8</h5>
+                            <div class="badge bg-dark-subtle text-dark px-3 py-2 rounded-pill">
+                                <i class="fas fa-home me-1"></i>Departure
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 pe-lg-5 order-lg-1 order-3 pt-4 pt-lg-0">
+                            <div class="rounded-4 shadow-lg overflow-hidden position-relative h-100" style="min-height: 250px;">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Luxury Departure">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                    <small class="text-white">Farewell Tanzania</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- View full itinerary button -->
+                <div class="text-center mt-5">
+                    <a href="#booking" class="btn btn-lg btn-warning rounded-pill shadow px-5">
+                        <i class="fas fa-calendar-check me-2"></i>Book This Luxury Safari
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="mb-0"><i class="fas fa-check-circle me-2"></i>What's Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 personal butler service</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>7 nights luxury tented camp accommodation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Private helicopter transfers</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All gourmet meals and premium beverages</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Private game drives with expert guides</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All national park entrance fees</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Hot air balloon safari</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>In-tent spa treatments and wellness services</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional photography guide</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cultural experiences and walking safaris</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Champagne and fine wine service</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>VIP airport services and lounge access</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Flying Doctors premium coverage</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Laundry and valet services</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0"><i class="fas fa-times-circle me-2"></i>What's Not Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International flights to/from Tanzania</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tanzania visa fees ($50 for most nationalities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Travel insurance (comprehensive coverage recommended)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal shopping and souvenirs</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tips for guides and staff (recommended $25-30/day)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Medical expenses and prescriptions</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International phone calls and internet</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Additional spa treatments beyond included services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Excess baggage charges</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Items of personal nature</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Additional activities not mentioned in itinerary</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Extensions or changes to the itinerary</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for the Ultimate Luxury Safari?</h2>
+                    <p class="lead">Experience Tanzania's finest luxury tented camps with unparalleled service and exclusive wildlife encounters</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Country</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Travel Date</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Number of Travelers</label>
+                                            <select class="form-select">
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Luxury Preferences & Special Requests</label>
+                                            <textarea class="form-control" rows="3" placeholder="Tell us about your spa preferences, dietary requirements, special celebrations, photography interests, or any other luxury requests to personalize your experience..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                                <i class="fas fa-paper-plane me-2"></i>Request Luxury Quote
+                                            </button>
+                                            <a href="tel:+256780950555" class="btn btn-outline-primary btn-lg">
+                                                <i class="fas fa-phone me-2"></i>Call Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p class="mb-3">Tanzania's premier luxury safari specialists offering the finest tented camp experiences with unparalleled service and exclusive wildlife encounters.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Quick Links</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                                <li class="mb-2"><a href="tanzania.html" class="text-light text-decoration-none">Tanzania Safaris</a></li>
+                                <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                                <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Luxury Safaris</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="tanzania-classic-tour.html" class="text-light text-decoration-none">Tanzania Classic Tour</a></li>
+                                <li class="mb-2"><a href="serengeti-national-park.html" class="text-light text-decoration-none">Serengeti Safari</a></li>
+                                <li class="mb-2"><a href="tanzania-honeymoon.html" class="text-light text-decoration-none">Tanzania Honeymoon</a></li>
+                                <li class="mb-2"><a href="tanzania-beach-safari-combo.html" class="text-light text-decoration-none">Beach & Safari Combo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Connect With Us</h6>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-facebook fa-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </a>
+                                <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>ðŸ¦ Hello! Welcome to Gisu Safaris!</p>
+                    <p>Interested in our Tanzania Luxury Tented Camp Safari? Experience the ultimate in African luxury with personal butler service, spa treatments, and world-class accommodations. Let us create your perfect luxury safari experience!</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <script>
+    function toggleWhatsAppChat() {
+        const chatWidget = document.getElementById('whatsappChat');
+        chatWidget.classList.toggle('active');
+        if (chatWidget.classList.contains('active')) {
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) input.focus();
+            }, 300);
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        if (message === '') return;
+        
+        const phoneNumber = '61470133869';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    </script>
+</body>
+</html>
+

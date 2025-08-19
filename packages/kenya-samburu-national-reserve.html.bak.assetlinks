@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Samburu National Reserve Safari - 4 Days Special Five Wildlife Adventure | Gisu Safaris</title>
+    <meta name="description" content="Discover unique wildlife in Kenya's rugged northern frontier with Gisu Safaris. 4-day Samburu National Reserve safari featuring the Special Five - Grevy's zebra, reticulated giraffe, Beisa oryx, Somali ostrich, and gerenuk. Experience Samburu culture and dramatic landscapes. Book your Kenya northern safari today!">
+    <meta name="keywords" content="Samburu National Reserve safari, Kenya northern safari, Special Five wildlife, Grevy zebra Kenya, reticulated giraffe safari, Samburu culture tours, Kenya wildlife photography, northern Kenya safari, Ewaso Nyiro River safari">
+    <meta name="author" content="Gisu Safaris - Kenya Wildlife Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Samburu National Reserve Safari - 4 Days Special Five Wildlife Adventure">
+    <meta property="og:description" content="Experience Kenya's unique northern wildlife including the Special Five animals found nowhere else, combined with authentic Samburu cultural encounters in dramatic landscapes.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/kenya-samburu-national-reserve.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Samburu National Reserve Safari - Kenya Special Five">
+    <meta name="twitter:description" content="Discover unique wildlife species in Kenya's rugged northern frontier with authentic cultural experiences.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/kenya-samburu-national-reserve.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item active" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="kenya.html" class="text-white-50">Kenya Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Samburu National Reserve</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Samburu National Reserve Safari
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                4 Days in Kenya's rugged northern frontier - Discover the Special Five and experience authentic Samburu warrior culture
+                            </p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-warning text-dark fs-6 px-3 py-2">4 Days</span>
+                                <span class="badge bg-success fs-6 px-3 py-2">Wildlife</span>
+                                <span class="badge bg-primary fs-6 px-3 py-2">Cultural Experience</span>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book This Safari
+                                </a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-map-marked-alt me-2"></i>View Itinerary
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Discover Kenya's <span class="text-primary">Northern Frontier</span></h2>
+                        <p class="lead mb-4">Venture into Kenya's rugged and remote Samburu National Reserve, where dramatic landscapes meet unique wildlife found nowhere else on Earth. This 4-day safari offers encounters with the famous "Special Five" animals - Grevy's zebra, reticulated giraffe, Beisa oryx, Somali ostrich, and gerenuk - while immersing you in the rich culture of the Samburu people, Kenya's proud warrior community.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-paw fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Special Five Wildlife</h5>
+                                    <p class="small text-muted">Unique species found only in northern Kenya - Grevy's zebra, reticulated giraffe, Beisa oryx, Somali ostrich, and gerenuk</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-users fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Samburu Culture</h5>
+                                    <p class="small text-muted">Authentic interactions with Samburu warriors and traditional communities along the Ewaso Nyiro River</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-camera fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Photography Paradise</h5>
+                                    <p class="small text-muted">Stunning landscapes and unique wildlife provide incredible photography opportunities in dramatic settings</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$699</div>
+                                    <p class="text-muted">per person (2 people sharing)</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(203 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 4 Days / 3 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Group Size:</strong> Max 8 people</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Time:</strong> Year-round</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Focus:</strong> Wildlife & Culture</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Activity Level:</strong> Moderate</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                    <a href="https://wa.me/256780950555" class="btn btn-outline-success">
+                                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Five Wildlife Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <h2 class="display-6 fw-bold">Meet the <span class="text-primary">Special Five</span></h2>
+                    <p class="lead">Unique wildlife species found only in Kenya's northern regions</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 200px; background: url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60') center/cover; border-radius: 0.375rem 0 0 0.375rem;"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold text-warning">Grevy's Zebra</h5>
+                                        <p class="card-text small">The largest zebra species with distinctive narrow stripes and rounded ears. Critically endangered with only about 2,000 remaining worldwide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 200px; background: url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60') center/cover; border-radius: 0.375rem 0 0 0.375rem;"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold text-primary">Reticulated Giraffe</h5>
+                                        <p class="card-text small">Distinguished by its net-like pattern of cream lines separating dark patches. Also known as the Somali giraffe, endemic to northern Kenya.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 200px; background: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60') center/cover; border-radius: 0.375rem 0 0 0.375rem;"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold text-success">Beisa Oryx</h5>
+                                        <p class="card-text small">A straight-horned antelope perfectly adapted to arid conditions. Known for its striking black and white facial markings and impressive horns.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 200px; background: url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60') center/cover; border-radius: 0.375rem 0 0 0.375rem;"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold text-info">Gerenuk & Somali Ostrich</h5>
+                                        <p class="card-text small">The "giraffe gazelle" stands on hind legs to reach high branches. Plus the blue-necked Somali ostrich, smaller than its southern cousin.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section id="itinerary" class="py-5 bg-light position-relative">
+            <!-- Safari wildlife pattern background -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-5" style="background: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%223%22 fill=%22%23ffa500%22/%3E%3Ccircle cx=%2280%22 cy=%2280%22 r=%223%22 fill=%22%23ffa500%22/%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%222%22 fill=%22%23ffa500%22/%3E%3C/svg%3E') repeat;"></div>
+            
+            <div class="container position-relative">
+                <div class="text-center mb-5 fade-element">
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-warning text-dark fs-6 px-3 py-2 mb-2 d-inline-block">ðŸ¦’ NORTHERN FRONTIER</span>
+                        <h2 class="display-5 fw-bold">Day-by-Day <span class="text-warning position-relative">
+                            Itinerary
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#ffa500" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
+                    <p class="lead">Your complete 4-day Samburu wilderness adventure</p>
+                </div>
+                
+                <!-- Special Five showcase -->
+                <div class="mb-5 fade-element">
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                        <div class="card-body p-4" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+                            <h5 class="fw-bold mb-4 text-warning text-center">ðŸŽ¯ The Samburu Special Five</h5>
+                            <div class="row g-3">
+                                <div class="col-md-2 text-center">
+                                    <div class="bg-white rounded-3 p-3 shadow-sm h-100">
+                                        <div class="mb-2">ðŸ¦“</div>
+                                        <small class="fw-medium">Grevy's Zebra</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="bg-white rounded-3 p-3 shadow-sm h-100">
+                                        <div class="mb-2">ðŸ¦’</div>
+                                        <small class="fw-medium">Reticulated Giraffe</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="bg-white rounded-3 p-3 shadow-sm h-100">
+                                        <div class="mb-2">ðŸ¦Œ</div>
+                                        <small class="fw-medium">Beisa Oryx</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="bg-white rounded-3 p-3 shadow-sm h-100">
+                                        <div class="mb-2">ðŸ¦</div>
+                                        <small class="fw-medium">Somali Ostrich</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="bg-white rounded-3 p-3 shadow-sm h-100">
+                                        <div class="mb-2">ðŸ¦Œ</div>
+                                        <small class="fw-medium">Gerenuk</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced day-by-day itinerary -->
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <!-- Day 1 -->
+                        <div class="mb-5 fade-element">
+                            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <div class="position-relative h-100" style="min-height: 280px;">
+                                            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Samburu Landscape">
+                                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(255,165,0,0.2), rgba(255,165,0,0.6));"></div>
+                                            <div class="position-absolute top-3 start-3">
+                                                <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold fs-5">1</span>
+                                                </div>
+                                            </div>
+                                            <div class="position-absolute bottom-3 start-3">
+                                                <div class="badge bg-white text-warning fs-6 px-3 py-2">ðŸŒ… Arrival Day</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-warning text-dark rounded-circle p-2 me-3">
+                                                    <i class="fas fa-route"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="card-title fw-bold text-warning mb-0">Nairobi to Samburu National Reserve</h4>
+                                                    <small class="text-muted">Day 1: Journey to the Northern Frontier</small>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="card-text mb-4">Early morning departure from Nairobi for the scenic 5-hour drive north to Samburu National Reserve. Pass through central Kenya's pineapple and coffee plantations, then transition to the arid northern landscapes.</p>
+                                            
+                                            <!-- Safari highlights -->
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-12">
+                                                    <div class="bg-light rounded-3 p-3">
+                                                        <h6 class="fw-bold text-warning mb-3">ðŸŽ¯ Today's Safari Highlights</h6>
+                                                        <div class="row g-2">
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-car text-warning me-2"></i>
+                                                                    <small>5-hour scenic drive north</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-water text-info me-2"></i>
+                                                                    <small>Lodge by Ewaso Nyiro River</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-paw text-success me-2"></i>
+                                                                    <small>First Special Five encounters</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-camera text-primary me-2"></i>
+                                                                    <small>Afternoon game drive</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Trip essentials -->
+                                            <div class="d-flex flex-wrap gap-3 pt-3 border-top">
+                                                <div class="bg-warning bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-utensils text-warning me-2"></i>
+                                                    <small class="fw-medium">Lunch & Dinner</small>
+                                                </div>
+                                                <div class="bg-warning bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-bed text-warning me-2"></i>
+                                                    <small class="fw-medium">Safari Lodge</small>
+                                                </div>
+                                                <div class="bg-warning bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-thermometer-half text-warning me-2"></i>
+                                                    <small class="fw-medium">Warm climate</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">2</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 2</h5>
+                                <small class="text-muted">Full Day Safari</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Special Five Safari & River Activities</h4>
+                                        <p class="card-text">Begin with an early morning game drive when animals are most active. This is prime time to spot the elusive leopards and search for the Special Five. The morning light provides excellent photography opportunities. Return to the lodge for breakfast and a brief rest during the hot midday hours. After lunch, enjoy activities along the Ewaso Nyiro River - watch elephants bathing, hippos lounging, and crocodiles basking. Late afternoon game drive focuses on different areas of the reserve to maximize wildlife sightings. Sundowner drinks in the bush before returning to the lodge.</p>
+                                        
+                                        <div class="alert alert-success mt-3">
+                                            <i class="fas fa-camera me-2"></i>
+                                            <strong>Photography Tip:</strong> Early morning and late afternoon provide the best lighting for wildlife photography in the dramatic Samburu landscapes.
+                                        </div>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> All Meals</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-jeep me-1"></i> Full Day Safari</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">3</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 3</h5>
+                                <small class="text-muted">Cultural Experience</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Samburu Cultural Experience & Wildlife Tracking</h4>
+                                        <p class="card-text">Morning game drive followed by a visit to a traditional Samburu village (manyatta). Meet the Samburu people, known for their colorful dress, intricate beadwork, and warrior traditions. Learn about their semi-nomadic lifestyle, traditional dances, and how they coexist with wildlife. Participate in traditional activities like fire-making and understand their deep connection to the land and animals. Return to the lodge for lunch. Afternoon dedicated to tracking specific animals based on your interests - whether it's following elephant herds, searching for big cats, or focusing on the Special Five species. Evening at leisure with optional night game drive to spot nocturnal species.</p>
+                                        
+                                        <div class="alert alert-info mt-3">
+                                            <i class="fas fa-users me-2"></i>
+                                            <strong>Cultural Respect:</strong> Visits to Samburu communities are conducted with full respect for their traditions and with direct benefit to the community.
+                                        </div>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> All Meals</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-users me-1"></i> Cultural Visit</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-secondary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">4</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 4</h5>
+                                <small class="text-muted">Departure</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Final Game Drive & Return to Nairobi</h4>
+                                        <p class="card-text">Early morning game drive for any final wildlife sightings and photography opportunities. This is often the best time to spot animals you may have missed, including the elusive caracal, African wild dog (if you're lucky), or additional Special Five species. Return to the lodge for a hearty breakfast and check out. Begin the journey back to Nairobi with packed lunch and scenic stops along the way. Arrive in Nairobi by late afternoon with incredible memories of Kenya's northern wilderness, unique wildlife encounters, and authentic cultural experiences that few visitors get to experience.</p>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> Breakfast, Packed Lunch</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-city me-1"></i> Return to Nairobi</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="mb-0"><i class="fas fa-check-circle me-2"></i>What's Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional safari guide and 4WD vehicle</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>3 nights accommodation at safari lodge</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All meals as specified in itinerary</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Park entry fees and conservancy fees</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Transportation Nairobi-Samburu-Nairobi</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Samburu cultural village visit</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All game drives as per itinerary</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bottled water during game drives</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Sundowner drinks in the bush</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Government taxes and service charges</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Flying Doctors emergency evacuation insurance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0"><i class="fas fa-times-circle me-2"></i>What's Not Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International flights to/from Kenya</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Kenya visa fees ($50 for most nationalities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Travel insurance (highly recommended)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Alcoholic beverages and soft drinks</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tips for guide and lodge staff (recommended $10/day)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal expenses and shopping</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Laundry services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Optional night game drives ($40 per person)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Phone calls and internet charges</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Medical expenses</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Items of personal nature</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Any activity not mentioned in inclusions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for Your Samburu Adventure?</h2>
+                    <p class="lead">Book now or get a custom quote for your perfect northern Kenya safari</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Country</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Travel Date</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Number of Travelers</label>
+                                            <select class="form-select">
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5+">5+ People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Safari Interests & Special Requirements</label>
+                                            <textarea class="form-control" rows="3" placeholder="Tell us about your wildlife interests, photography needs, cultural experiences desired, dietary requirements, or any special requests..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                            <a href="tel:+256780950555" class="btn btn-outline-primary btn-lg">
+                                                <i class="fas fa-phone me-2"></i>Call Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p class="mb-3">Kenya's premier northern frontier specialists offering authentic wildlife and cultural experiences in Samburu National Reserve.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Quick Links</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                                <li class="mb-2"><a href="kenya.html" class="text-light text-decoration-none">Kenya Safaris</a></li>
+                                <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                                <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Other Adventures</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="kenya-masai-mara-big-five.html" class="text-light text-decoration-none">Masai Mara Safari</a></li>
+                                <li class="mb-2"><a href="kenya-mount-kenya-hiking.html" class="text-light text-decoration-none">Mount Kenya Hiking</a></li>
+                                <li class="mb-2"><a href="kenya-mombasa-neptune-paradise.html" class="text-light text-decoration-none">Mombasa Beach</a></li>
+                                <li class="mb-2"><a href="kenya-beach-safari-combo.html" class="text-light text-decoration-none">Beach & Safari Combo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Connect With Us</h6>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-facebook fa-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </a>
+                                <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <!-- Chat Window -->
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>ðŸ¦“ Hello! Welcome to Gisu Safaris!</p>
+                    <p>Interested in the Samburu National Reserve Safari? Discover the Special Five wildlife species and authentic Samburu warrior culture in Kenya's rugged northern frontier. How can we help you plan this unique adventure?</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/js/main.js"></script>
+    
+    <!-- WhatsApp Widget JavaScript -->
+    <script>
+    // WhatsApp Chat Widget Functionality
+    function toggleWhatsAppChat() {
+        console.log('Toggle WhatsApp chat clicked');
+        const chatWidget = document.getElementById('whatsappChat');
+        if (!chatWidget) {
+            console.error('WhatsApp chat widget not found!');
+            return;
+        }
+        
+        console.log('Chat widget found, toggling active class');
+        chatWidget.classList.toggle('active');
+        
+        // Focus on input when chat opens
+        if (chatWidget.classList.contains('active')) {
+            console.log('Chat opened, focusing input');
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) {
+                    input.focus();
+                    console.log('Input focused');
+                } else {
+                    console.error('WhatsApp input not found!');
+                }
+            }, 300);
+        } else {
+            console.log('Chat closed');
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        
+        if (message === '') {
+            messageInput.focus();
+            return;
+        }
+        
+        // Create WhatsApp URL with the message
+        const phoneNumber = '61470133869';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        // Open WhatsApp with the message
+        window.open(whatsappUrl, '_blank');
+        
+        // Clear the input and close the chat
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    
+    // Handle Enter key press in the input field
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageInput = document.getElementById('whatsappMessage');
+        if (messageInput) {
+            messageInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendWhatsAppMessage();
+                }
+            });
+            
+            // Enable/disable send button based on input
+            messageInput.addEventListener('input', function() {
+                const sendBtn = document.querySelector('.whatsapp-send-btn');
+                if (sendBtn) {
+                    sendBtn.disabled = this.value.trim() === '';
+                }
+            });
+        }
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatWidget = document.getElementById('whatsappChat');
+            const whatsappWidget = document.querySelector('.whatsapp-widget');
+            
+            if (chatWidget && chatWidget.classList.contains('active') && 
+                !whatsappWidget.contains(event.target)) {
+                chatWidget.classList.remove('active');
+            }
+        });
+        
+        // Prevent chat from closing when clicking inside it
+        const chatWidget = document.getElementById('whatsappChat');
+        if (chatWidget) {
+            chatWidget.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+

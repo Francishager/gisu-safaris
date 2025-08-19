@@ -10,6 +10,8 @@ require_once __DIR__ . '/../includes/email.php';
 
 // Set CORS headers
 setCorsHeaders();
+// Add strict security headers for browser protections
+setSecurityHeaders();
 
 // Check rate limiting
 checkRateLimit();
@@ -20,6 +22,12 @@ initSession();
 // Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     sendJsonResponse(null, 405, 'Method not allowed');
+}
+
+// Enforce JSON requests to reduce CSRF and malformed submissions
+$contentType = $_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? '';
+if (stripos($contentType, 'application/json') === false) {
+    sendJsonResponse(null, 415, 'Unsupported Media Type: application/json required');
 }
 
 /** Normalize ISO country codes to names for dialing checks */
@@ -421,36 +429,37 @@ try {
  * Generate booking admin notification email content
  */
 function generateBookingAdminNotificationEmail($data, $booking_id) {
-    $travel_date = $data['travel_date'] ?: 'Not specified';
-    $phone = $data['phone'] ?: 'Not provided';
-    $budget = $data['budget'] ?: 'Not specified';
-    $accommodation = $data['accommodation_level'] ?: 'Not specified';
+    $h = fn($v) => htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');
+    $travel_date = $h($data['travel_date'] ?: 'Not specified');
+    $phone = $data['phone'] ? $h($data['phone']) : 'Not provided';
+    $budget = $h($data['budget'] ?: 'Not specified');
+    $accommodation = $h($data['accommodation_level'] ?: 'Not specified');
     
     return "
         <h2>New Safari Booking Received</h2>
-        <p><strong>Booking ID:</strong> #{$booking_id}</p>
+        <p><strong>Booking ID:</strong> #{$h($booking_id)}</p>
         <hr>
         
         <h3>Customer Information</h3>
-        <p><strong>Name:</strong> {$data['first_name']} {$data['last_name']}</p>
-        <p><strong>Email:</strong> <a href=\"mailto:{$data['email']}\">{$data['email']}</a></p>
+        <p><strong>Name:</strong> {$h($data['first_name'])} {$h($data['last_name'])}</p>
+        <p><strong>Email:</strong> <a href=\"mailto:{$h($data['email'])}\">{$h($data['email'])}</a></p>
         <p><strong>Phone:</strong> {$phone}</p>
-        <p><strong>Country:</strong> {$data['country']}</p>
-        <p><strong>Nationality:</strong> {$data['nationality']}</p>
-        <p><strong>Passport:</strong> {$data['passport']}</p>
+        <p><strong>Country:</strong> {$h($data['country'])}</p>
+        <p><strong>Nationality:</strong> {$h($data['nationality'])}</p>
+        <p><strong>Passport:</strong> {$h($data['passport'])}</p>
         
         <h3>Booking Details</h3>
-        <p><strong>Package:</strong> {$data['package_name']}</p>
-        <p><strong>Package Type:</strong> {$data['package_type']}</p>
-        <p><strong>Duration:</strong> {$data['duration']}</p>
-        <p><strong>Group Size:</strong> {$data['group_size']} people</p>
+        <p><strong>Package:</strong> {$h($data['package_name'])}</p>
+        <p><strong>Package Type:</strong> {$h($data['package_type'])}</p>
+        <p><strong>Duration:</strong> {$h($data['duration'])}</p>
+        <p><strong>Group Size:</strong> {$h($data['group_size'])} people</p>
         <p><strong>Travel Date:</strong> {$travel_date}</p>
         <p><strong>Budget:</strong> {$budget}</p>
         <p><strong>Accommodation Level:</strong> {$accommodation}</p>
         
-        " . (!empty($data['special_requirements']) ? "<h3>Special Requirements</h3><p>" . nl2br(htmlspecialchars($data['special_requirements'])) . "</p>" : "") . "
+        " . (!empty($data['special_requirements']) ? "<h3>Special Requirements</h3><p>" . nl2br($h($data['special_requirements'])) . "</p>" : "") . "
         
-        " . (!empty($data['message']) ? "<h3>Additional Message</h3><p>" . nl2br(htmlspecialchars($data['message'])) . "</p>" : "") . "
+        " . (!empty($data['message']) ? "<h3>Additional Message</h3><p>" . nl2br($h($data['message'])) . "</p>" : "") . "
         
         <h3>System Information</h3>
         <p><strong>Newsletter Subscription:</strong> " . ($data['newsletter_opt_in'] ? 'Yes' : 'No') . "</p>

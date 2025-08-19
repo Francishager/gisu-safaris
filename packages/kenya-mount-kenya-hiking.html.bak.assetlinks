@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Mount Kenya Hiking Adventure - 5 Days Sirimon & Chogoria Routes | Gisu Safaris</title>
+    <meta name="description" content="Conquer Africa's second-highest peak with Gisu Safaris. 5-day Mount Kenya hiking adventure through diverse landscapes from bamboo forests to alpine meadows. Expert guides, mountain huts, breathtaking sunrise views. Book your Kenya mountain adventure today!">
+    <meta name="keywords" content="Mount Kenya hiking, Kenya mountain trekking, Sirimon route Mount Kenya, Chogoria route hiking, Mount Kenya adventure, Kenya hiking tours, mountain climbing Kenya, alpine trekking Kenya">
+    <meta name="author" content="Gisu Safaris - Kenya Mountain Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mount Kenya Hiking Adventure - 5 Days Mountain Trekking">
+    <meta property="og:description" content="Experience breathtaking mountain adventures on Africa's second-highest peak with diverse landscapes and challenging yet rewarding trekking routes.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/kenya-mount-kenya-hiking.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mount Kenya Hiking Adventure - Kenya">
+    <meta name="twitter:description" content="Challenge yourself on Africa's second-highest peak through spectacular mountain landscapes with expert guides.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/kenya-mount-kenya-hiking.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item active" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 70vh; background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="kenya.html" class="text-white-50">Kenya Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Mount Kenya Hiking</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Mount Kenya Hiking Adventure
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                5 Days conquering Africa's second-highest peak - Journey through diverse ecosystems from bamboo forests to alpine meadows
+                            </p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-success fs-6 px-3 py-2">5 Days</span>
+                                <span class="badge bg-warning text-dark fs-6 px-3 py-2">Adventure</span>
+                                <span class="badge bg-info fs-6 px-3 py-2">Mountain Huts</span>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#booking" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book This Adventure
+                                </a>
+                                <a href="#itinerary" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-map-marked-alt me-2"></i>View Itinerary
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Challenge Yourself on <span class="text-primary">Mount Kenya</span></h2>
+                        <p class="lead mb-4">Embark on an extraordinary 5-day adventure to conquer Africa's second-highest peak. Mount Kenya offers spectacular trekking through diverse ecosystems, from dense bamboo forests to stunning alpine meadows, culminating in breathtaking sunrise views from the summit approaches.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-mountain fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Multiple Routes</h5>
+                                    <p class="small text-muted">Choose from Sirimon and Chogoria routes, each offering unique landscapes and experiences</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-home fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Mountain Huts</h5>
+                                    <p class="small text-muted">Comfortable accommodation in well-equipped mountain huts with spectacular views</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-users fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Expert Guides</h5>
+                                    <p class="small text-muted">Experienced mountain guides ensuring your safety and maximizing your experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$899</div>
+                                    <p class="text-muted">per person (2 people sharing)</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(89 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 5 Days / 4 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Group Size:</strong> Max 8 people</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Time:</strong> Jan-Mar, Jul-Oct</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Difficulty:</strong> Challenging</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Fitness Level:</strong> High</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                    <a href="https://wa.me/256780950555" class="btn btn-outline-success">
+                                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Itinerary -->
+        <section id="itinerary" class="py-5 bg-light position-relative overflow-hidden">
+            <!-- Mountain silhouette background -->
+            <div class="position-absolute top-0 end-0 w-50 h-100 opacity-5">
+                <svg viewBox="0 0 200 100" class="w-100 h-100" fill="currentColor">
+                    <path d="M0 100L20 80L40 60L60 40L80 20L100 25L120 45L140 65L160 85L180 100L200 100Z" fill="#28a745"/>
+                </svg>
+            </div>
+            
+            <div class="container position-relative">
+                <div class="text-center mb-5 fade-element">
+                    <div class="d-inline-block position-relative mb-3">
+                        <span class="badge bg-success fs-6 px-3 py-2 mb-2 d-inline-block">ðŸ”ï¸ MOUNTAIN ADVENTURE</span>
+                        <h2 class="display-5 fw-bold">Day-by-Day <span class="text-success position-relative">
+                            Itinerary
+                            <svg class="position-absolute" style="bottom: -10px; left: 0; width: 100%; height: 8px;" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4C20 1, 40 7, 60 4C80 1, 100 7, 119 4" stroke="#28a745" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span></h2>
+                    </div>
+                    <p class="lead">Your complete 5-day Mount Kenya hiking adventure</p>
+                </div>
+                
+                <!-- Enhanced elevation profile -->
+                <div class="mb-5 fade-element">
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                        <div class="card-body p-4" style="background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h5 class="fw-bold mb-3 text-success">ðŸ—» Mount Kenya Elevation Profile</h5>
+                                    <div class="d-flex align-items-end justify-content-between" style="height: 80px;">
+                                        <div class="text-center flex-fill">
+                                            <div class="bg-success rounded-top" style="height: 30px; margin-bottom: 10px;"></div>
+                                            <small class="fw-medium">Day 1<br>3,300m</small>
+                                        </div>
+                                        <div class="text-center flex-fill">
+                                            <div class="bg-warning rounded-top" style="height: 50px; margin-bottom: 10px;"></div>
+                                            <small class="fw-medium">Day 2<br>4,200m</small>
+                                        </div>
+                                        <div class="text-center flex-fill">
+                                            <div class="bg-danger rounded-top" style="height: 80px; margin-bottom: 10px;"></div>
+                                            <small class="fw-medium">Day 3<br>4,985m</small>
+                                        </div>
+                                        <div class="text-center flex-fill">
+                                            <div class="bg-info rounded-top" style="height: 40px; margin-bottom: 10px;"></div>
+                                            <small class="fw-medium">Day 4<br>3,700m</small>
+                                        </div>
+                                        <div class="text-center flex-fill">
+                                            <div class="bg-secondary rounded-top" style="height: 20px; margin-bottom: 10px;"></div>
+                                            <small class="fw-medium">Day 5<br>Nairobi</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="bg-white rounded-4 p-3 shadow-sm">
+                                        <i class="fas fa-mountain-sun fa-2x text-success mb-2"></i>
+                                        <h6 class="fw-bold">Point Lenana</h6>
+                                        <span class="badge bg-success">4,985m Summit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day-by-day itinerary with mountain theme -->
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <!-- Day 1 -->
+                        <div class="mb-5 fade-element">
+                            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <div class="position-relative h-100" style="min-height: 300px;">
+                                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" class="w-100 h-100 object-fit-cover" alt="Mount Kenya Forest">
+                                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(40,167,69,0.2), rgba(40,167,69,0.6));"></div>
+                                            <div class="position-absolute top-3 start-3">
+                                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                                    <span class="fw-bold fs-5">1</span>
+                                                </div>
+                                            </div>
+                                            <div class="position-absolute bottom-3 start-3">
+                                                <div class="badge bg-white text-success fs-6 px-3 py-2">ðŸŒ² Forest Zone</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-success text-white rounded-circle p-2 me-3">
+                                                    <i class="fas fa-hiking"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="card-title fw-bold text-success mb-0">Nairobi to Sirimon Gate - Old Moses Camp</h4>
+                                                    <small class="text-muted">Day 1: The Journey Begins</small>
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="card-text mb-4">Early morning pick-up from your Nairobi hotel. Drive through Central Kenya's scenic landscapes to Sirimon Gate (2,650m). After park formalities and equipment check, begin your ascent through the dense montane forest.</p>
+                                            
+                                            <!-- Hiking highlights -->
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-12">
+                                                    <div class="bg-light rounded-3 p-3">
+                                                        <h6 class="fw-bold text-success mb-3">ðŸ¥¾ Today's Hiking Highlights</h6>
+                                                        <div class="row g-2">
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-tree text-success me-2"></i>
+                                                                    <small>Dense montane forest trek</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-paw text-warning me-2"></i>
+                                                                    <small>Columbus monkeys & buffalo</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-mountain text-primary me-2"></i>
+                                                                    <small>Altitude gain: 650m</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i class="fas fa-clock text-danger me-2"></i>
+                                                                    <small>5-6 hours hiking</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Trip essentials -->
+                                            <div class="d-flex flex-wrap gap-3 pt-3 border-top">
+                                                <div class="bg-success bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-utensils text-success me-2"></i>
+                                                    <small class="fw-medium">Lunch & Dinner</small>
+                                                </div>
+                                                <div class="bg-success bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-home text-success me-2"></i>
+                                                    <small class="fw-medium">Old Moses Mountain Hut</small>
+                                                </div>
+                                                <div class="bg-success bg-opacity-10 rounded-pill px-3 py-2 d-inline-flex align-items-center">
+                                                    <i class="fas fa-thermometer-half text-success me-2"></i>
+                                                    <small class="fw-medium">Night temp: 5-10Â°C</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 2 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">2</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 2</h5>
+                                <small class="text-muted">Alpine Zone</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Old Moses to Shipton Camp</h4>
+                                        <p class="card-text">Continue through the bamboo and heath zone into the spectacular moorland. Cross the Mackinder Valley with its unique giant groundsels and lobelias. The landscape becomes increasingly dramatic as you approach the alpine zone. Pass several tarns (mountain lakes) and enjoy magnificent views of the main peaks. Arrive at Shipton Camp (4,200m), perfectly positioned for acclimatization.</p>
+                                        
+                                        <div class="alert alert-info mt-3">
+                                            <i class="fas fa-info-circle me-2"></i>
+                                            <strong>Acclimatization:</strong> Today is crucial for altitude adjustment. Stay hydrated and inform guides of any discomfort.
+                                        </div>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> All Meals</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-home me-1"></i> Shipton Mountain Hut</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">3</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 3</h5>
+                                <small class="text-muted">Summit Day</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Summit Attempt - Point Lenana (4,985m)</h4>
+                                        <p class="card-text">Early pre-dawn start (2:30 AM) for the summit attempt. Navigate through scree slopes and rocky terrain in darkness. Reach Point Lenana (4,985m) at sunrise for spectacular 360-degree views and perfect photo opportunities. On clear days, see Kilimanjaro in the distance! Descend via different route to Austrian Hut for rest, then continue down to Chogoria roadhead.</p>
+                                        
+                                        <div class="alert alert-warning mt-3">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            <strong>Summit Day:</strong> The most challenging day requiring mental and physical endurance. Weather conditions can change rapidly.
+                                        </div>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> All Meals</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-home me-1"></i> Mountain Lodge</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">4</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 4</h5>
+                                <small class="text-muted">Descent</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Chogoria Route Descent & Lake Ellis</h4>
+                                        <p class="card-text">Descend through the spectacular Chogoria route, often considered the most beautiful route on Mount Kenya. Pass pristine mountain lakes including Lake Ellis and Lake Michaelson. Walk through the unique bamboo forest and giant heather zone. The descent offers completely different scenery from your ascent route, showcasing Mount Kenya's incredible biodiversity.</p>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> All Meals</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-home me-1"></i> Chogoria Bandas</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="row mb-5 fade-element">
+                            <div class="col-md-3 text-center">
+                                <div class="bg-secondary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <span class="display-6 fw-bold">5</span>
+                                </div>
+                                <h5 class="mt-3 fw-bold">Day 5</h5>
+                                <small class="text-muted">Return</small>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h4 class="card-title fw-bold text-primary">Final Descent & Return to Nairobi</h4>
+                                        <p class="card-text">Complete your descent through the montane forest to Chogoria Gate. Celebrate your achievement with your team and guides. Drive back to Nairobi with stops for lunch and souvenir shopping. Arrive in Nairobi by evening with unforgettable memories of conquering Africa's second-highest peak and experiencing some of the continent's most spectacular mountain scenery.</p>
+                                        
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-utensils me-1"></i> Breakfast, Lunch</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small class="text-muted"><i class="fas fa-city me-1"></i> Return to Nairobi</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="mb-0"><i class="fas fa-check-circle me-2"></i>What's Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional mountain guides and porters</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mountain hut accommodation (4 nights)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All meals during the trek</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Park entry fees and permits</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>4WD transportation Nairobi-mountain-Nairobi</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Camping equipment (sleeping bags, tents if needed)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>First aid kit and emergency oxygen</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Porter services for personal gear</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Certificate of achievement</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Drinking water during trek</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Government taxes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0"><i class="fas fa-times-circle me-2"></i>What's Not Included</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>International flights to/from Kenya</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Kenya visa fees ($50 for most nationalities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Travel insurance (mandatory for mountain activities)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal mountain gear rental</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Tips for guides and porters (recommended $15/day)</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Alcoholic beverages and soft drinks</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Personal expenses and shopping</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Laundry services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Phone calls and internet charges</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Medical expenses</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Items of personal nature</li>
+                                    <li class="mb-2"><i class="fas fa-times text-warning me-2"></i>Any activity not mentioned in inclusions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for Your Mountain Adventure?</h2>
+                    <p class="lead">Book now or get a custom quote for your perfect Mount Kenya experience</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Full Name *</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Country</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Travel Date</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Number of Hikers</label>
+                                            <select class="form-select">
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5+">5+ People</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Hiking Experience & Special Requirements</label>
+                                            <textarea class="form-control" rows="3" placeholder="Tell us about your hiking experience, fitness level, dietary requirements, medical conditions, or any special requests..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                            <a href="tel:+256780950555" class="btn btn-outline-primary btn-lg">
+                                                <i class="fas fa-phone me-2"></i>Call Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p class="mb-3">Kenya's premier mountain adventure specialists offering unforgettable hiking and trekking experiences across East Africa.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Quick Links</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                                <li class="mb-2"><a href="kenya.html" class="text-light text-decoration-none">Kenya Safaris</a></li>
+                                <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                                <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Other Adventures</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="kenya-masai-mara-big-five.html" class="text-light text-decoration-none">Masai Mara Safari</a></li>
+                                <li class="mb-2"><a href="kenya-samburu-national-reserve.html" class="text-light text-decoration-none">Samburu Safari</a></li>
+                                <li class="mb-2"><a href="kenya-mombasa-neptune-paradise.html" class="text-light text-decoration-none">Mombasa Beach</a></li>
+                                <li class="mb-2"><a href="kenya-beach-safari-combo.html" class="text-light text-decoration-none">Beach & Safari Combo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="mb-3">Connect With Us</h6>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-facebook fa-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </a>
+                                <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                                    <i class="fab fa-whatsapp fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved. Designed by Digital Safari Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <!-- Chat Window -->
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <small>Typically replies instantly</small>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <p>ðŸ”ï¸ Hello! Welcome to Gisu Safaris!</p>
+                    <p>Interested in the Mount Kenya Hiking Adventure? Challenge yourself on Africa's second-highest peak with breathtaking views and diverse ecosystems. How can we help you plan this incredible mountain experience?</p>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message..."
+                               maxlength="500">
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/js/main.js"></script>
+    
+    <!-- WhatsApp Widget JavaScript -->
+    <script>
+    // WhatsApp Chat Widget Functionality
+    function toggleWhatsAppChat() {
+        console.log('Toggle WhatsApp chat clicked');
+        const chatWidget = document.getElementById('whatsappChat');
+        if (!chatWidget) {
+            console.error('WhatsApp chat widget not found!');
+            return;
+        }
+        
+        console.log('Chat widget found, toggling active class');
+        chatWidget.classList.toggle('active');
+        
+        // Focus on input when chat opens
+        if (chatWidget.classList.contains('active')) {
+            console.log('Chat opened, focusing input');
+            setTimeout(() => {
+                const input = document.getElementById('whatsappMessage');
+                if (input) {
+                    input.focus();
+                    console.log('Input focused');
+                } else {
+                    console.error('WhatsApp input not found!');
+                }
+            }, 300);
+        } else {
+            console.log('Chat closed');
+        }
+    }
+    
+    function sendWhatsAppMessage() {
+        const messageInput = document.getElementById('whatsappMessage');
+        const message = messageInput.value.trim();
+        
+        if (message === '') {
+            messageInput.focus();
+            return;
+        }
+        
+        // Create WhatsApp URL with the message
+        const phoneNumber = '61470133869';
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        // Open WhatsApp with the message
+        window.open(whatsappUrl, '_blank');
+        
+        // Clear the input and close the chat
+        messageInput.value = '';
+        toggleWhatsAppChat();
+    }
+    
+    // Handle Enter key press in the input field
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageInput = document.getElementById('whatsappMessage');
+        if (messageInput) {
+            messageInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendWhatsAppMessage();
+                }
+            });
+            
+            // Enable/disable send button based on input
+            messageInput.addEventListener('input', function() {
+                const sendBtn = document.querySelector('.whatsapp-send-btn');
+                if (sendBtn) {
+                    sendBtn.disabled = this.value.trim() === '';
+                }
+            });
+        }
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatWidget = document.getElementById('whatsappChat');
+            const whatsappWidget = document.querySelector('.whatsapp-widget');
+            
+            if (chatWidget && chatWidget.classList.contains('active') && 
+                !whatsappWidget.contains(event.target)) {
+                chatWidget.classList.remove('active');
+            }
+        });
+        
+        // Prevent chat from closing when clicking inside it
+        const chatWidget = document.getElementById('whatsappChat');
+        if (chatWidget) {
+            chatWidget.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+
