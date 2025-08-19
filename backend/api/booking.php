@@ -22,8 +22,122 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     sendJsonResponse(null, 405, 'Method not allowed');
 }
 
+/** Normalize ISO country codes to names for dialing checks */
+function bk_normalizeCountry(string $c): string {
+    $c = trim($c);
+    $u = strtoupper($c);
+    $map = [
+        'UG' => 'Uganda', 'UGA' => 'Uganda',
+        'KE' => 'Kenya', 'KEN' => 'Kenya',
+        'TZ' => 'Tanzania', 'TZA' => 'Tanzania',
+        'RW' => 'Rwanda', 'RWA' => 'Rwanda',
+        'US' => 'USA', 'USA' => 'USA', 'UNITED STATES' => 'USA',
+        'GB' => 'UK', 'GBR' => 'UK', 'UK' => 'UK', 'UNITED KINGDOM' => 'UK',
+        'CA' => 'Canada', 'CAN' => 'Canada',
+        'AU' => 'Australia', 'AUS' => 'Australia',
+        'DE' => 'Germany', 'DEU' => 'Germany',
+        'FR' => 'France', 'FRA' => 'France',
+        'NL' => 'Netherlands', 'NLD' => 'Netherlands',
+        'IE' => 'Ireland', 'IRL' => 'Ireland',
+        'ES' => 'Spain', 'ESP' => 'Spain',
+        'CH' => 'Switzerland', 'CHE' => 'Switzerland',
+    ];
+    if (isset($map[$u])) return $map[$u];
+    return $c;
+}
+
+/** Optional nationality + passport validators */
+function bk_nationalityLooksOk(string $v): bool {
+    $v = trim($v);
+    if ($v === '' || strlen($v) < 2 || strlen($v) > 56) return false;
+    if (!preg_match("/^[A-Za-z\s\-']+$/", $v)) return false;
+    if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false;
+    return true;
+}
+
+function bk_passportLooksOk(string $passport, string $nationality): bool {
+    $p = strtoupper(trim($passport));
+    if (!preg_match('/^[A-Z0-9]{8,9}$/', $p)) return false; // general rule
+    $nat = bk_normalizeCountry($nationality);
+    $patterns = [
+        'USA' => '/^[0-9]{9}$/',
+        'UK' => '/^[0-9]{9}$/',
+        'Canada' => '/^[A-Z]{2}[0-9]{6}$/',
+        'India' => '/^[A-Z][0-9]{7}$/',
+    ];
+    if (isset($patterns[$nat])) {
+        return (bool)preg_match($patterns[$nat], $p);
+    }
+    return true;
+}
+
 // Log the request
 logEvent('info', 'Safari booking API accessed', ['method' => 'POST']);
+
+/**
+ * Helpers: name/email/phone validation mirroring client-side rules
+ */
+function bk_nameLooksOk(string $v): bool {
+    $v = trim($v);
+    if ($v === '' || strlen($v) < 2 || strlen($v) > 60) return false;
+    if (!preg_match("/^[A-Za-z'\-\s]+$/", $v)) return false;
+    if (preg_match('/[0-9]/', $v)) return false;
+    if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false; // 4+ consonants
+    return (bool)preg_match('/[AEIOUaeiou]/', $v);
+}
+
+function bk_emailLocalPartLooksOk(string $email): bool {
+    $parts = explode('@', $email);
+    if (count($parts) < 2) return false;
+    $local = $parts[0];
+    if (preg_match('/^[A-Za-z]+$/', $local)) {
+        $vowelCount = preg_match_all('/[AEIOUaeiou]/', $local);
+        if ($vowelCount < 3) return false;
+        if (preg_match('/(?:[^AEIOUaeiou]){3,}/', $local)) return false; // 3+ consonants
+    }
+    return true;
+}
+
+function bk_sanitizePhone(string $v): string {
+    $v = preg_replace('/[^\d+]/', '', $v);
+    $v = preg_replace('/(?!^)\+/', '', $v);
+    if (strpos($v, '+') !== false && $v[0] !== '+') {
+        $v = '+' . str_replace('+', '', $v);
+    }
+    return $v;
+}
+
+function bk_isValidE164(string $v): bool {
+    return (bool)preg_match('/^\+?[1-9]\d{7,14}$/', $v);
+}
+
+function bk_phoneLengthPlausibleForCountry(string $phone, string $country): bool {
+    $map = [
+        'Uganda' => ['+256', 12, 12],
+        'Kenya' => ['+254', 12, 12],
+        'Tanzania' => ['+255', 12, 12],
+        'Rwanda' => ['+250', 12, 12],
+        'USA' => ['+1', 11, 11],
+        'UK' => ['+44', 11, 12],
+        'Canada' => ['+1', 11, 11],
+        'Australia' => ['+61', 11, 11],
+        'Germany' => ['+49', 11, 13],
+        'France' => ['+33', 11, 11],
+        'Netherlands' => ['+31', 11, 11],
+        'Ireland' => ['+353', 12, 12],
+        'Spain' => ['+34', 11, 11],
+        'Switzerland' => ['+41', 11, 11],
+    ];
+    $digits = preg_replace('/\D/', '', $phone);
+    $len = strlen($digits);
+    if (!isset($map[$country])) {
+        return bk_isValidE164($phone);
+    }
+    [$code, $min, $max] = $map[$country];
+    $starts = (strpos($phone, '+') === 0) ? $phone : ('+' . $digits);
+    if (strpos($starts, $code) !== 0) return false;
+    return ($len >= $min && $len <= $max);
+}
 
 try {
     // Get and decode JSON input
@@ -33,8 +147,8 @@ try {
         sendJsonResponse(null, 400, 'Invalid JSON data');
     }
     
-    // Validate required fields
-    $required_fields = ['firstName', 'lastName', 'email', 'country', 'packageName'];
+    // Validate required fields (now requiring nationality and passport)
+    $required_fields = ['firstName', 'lastName', 'email', 'country', 'packageName', 'nationality', 'passport'];
     $missing_fields = [];
     
     foreach ($required_fields as $field) {
@@ -67,10 +181,53 @@ try {
         'message' => sanitizeInput($input['message'] ?? ''),
         'newsletter_opt_in' => !empty($input['newsletter'])
     ];
+    // Required extras
+    $data['nationality'] = isset($input['nationality']) ? sanitizeInput($input['nationality']) : '';
+    $data['passport'] = isset($input['passport']) ? strtoupper(preg_replace('/\s+/', '', sanitizeInput($input['passport']))) : '';
     
-    // Validate email
-    if (!isValidEmail($data['email'])) {
+    // Validate names
+    if (!bk_nameLooksOk($data['first_name'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'first_name', 'reason' => 'name_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid first name');
+    }
+    if (!bk_nameLooksOk($data['last_name'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'last_name', 'reason' => 'name_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid last name');
+    }
+
+    // Validate email with heuristic
+    if (!isValidEmail($data['email']) || !bk_emailLocalPartLooksOk($data['email'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'email', 'reason' => 'format_or_heuristic']);
         sendJsonResponse(null, 400, 'Invalid email address');
+    }
+
+    // Validate phone by country if provided, and normalize
+    if (!empty($data['phone'])) {
+        $normalizedPhone = bk_sanitizePhone($data['phone']);
+        $countryNorm = bk_normalizeCountry($data['country']);
+        if (!bk_isValidE164($normalizedPhone) || !bk_phoneLengthPlausibleForCountry($normalizedPhone, $countryNorm)) {
+            logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'phone', 'reason' => 'e164_or_country_length', 'country' => $countryNorm]);
+            sendJsonResponse(null, 400, 'Invalid phone number for selected country');
+        }
+        $data['phone'] = $normalizedPhone;
+    }
+
+    // Nationality/passport are required
+    if (empty($data['nationality'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'nationality', 'reason' => 'missing']);
+        sendJsonResponse(null, 400, 'Nationality is required');
+    }
+    if (!bk_nationalityLooksOk($data['nationality'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'nationality', 'reason' => 'format_or_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid nationality');
+    }
+    if (empty($data['passport'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'passport', 'reason' => 'missing']);
+        sendJsonResponse(null, 400, 'Passport is required');
+    }
+    if (!bk_passportLooksOk($data['passport'], $data['nationality'] ?: $data['country'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'passport', 'reason' => 'pattern_mismatch', 'nationality' => $data['nationality'] ?: $data['country']]);
+        sendJsonResponse(null, 400, 'Invalid passport number');
     }
     
     // Validate travel date if provided
@@ -98,14 +255,23 @@ try {
         sendJsonResponse(null, 429, 'Duplicate booking detected. Please wait before booking again.');
     }
     
+    // Ensure DB has nationality & passport columns on safari_bookings (idempotent)
+    try {
+        $db->exec("ALTER TABLE safari_bookings ADD COLUMN IF NOT EXISTS nationality VARCHAR(100);");
+        $db->exec("ALTER TABLE safari_bookings ADD COLUMN IF NOT EXISTS passport VARCHAR(20);");
+    } catch (Exception $e) {
+        logEvent('warning', 'safari_bookings alter table failed or skipped', ['error' => $e->getMessage()]);
+    }
+
     // Insert safari booking
     $stmt = $db->prepare("
         INSERT INTO safari_bookings (
             first_name, last_name, email, phone, country, package_name, 
             package_type, duration, group_size, travel_date, budget, 
             accommodation_level, special_requirements, message, 
-            newsletter_opt_in, ip_address, user_agent, referrer_url
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            newsletter_opt_in, ip_address, user_agent, referrer_url,
+            nationality, passport
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         RETURNING id
     ");
     
@@ -127,7 +293,9 @@ try {
         $data['newsletter_opt_in'],
         getClientIp(),
         $_SERVER['HTTP_USER_AGENT'] ?? '',
-        $_SERVER['HTTP_REFERER'] ?? ''
+        $_SERVER['HTTP_REFERER'] ?? '',
+        $data['nationality'],
+        $data['passport']
     ]);
     
     $booking_id = $stmt->fetch()['id'];
@@ -268,6 +436,8 @@ function generateBookingAdminNotificationEmail($data, $booking_id) {
         <p><strong>Email:</strong> <a href=\"mailto:{$data['email']}\">{$data['email']}</a></p>
         <p><strong>Phone:</strong> {$phone}</p>
         <p><strong>Country:</strong> {$data['country']}</p>
+        <p><strong>Nationality:</strong> {$data['nationality']}</p>
+        <p><strong>Passport:</strong> {$data['passport']}</p>
         
         <h3>Booking Details</h3>
         <p><strong>Package:</strong> {$data['package_name']}</p>

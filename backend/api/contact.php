@@ -22,6 +22,139 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     sendJsonResponse(null, 405, 'Method not allowed');
 }
 
+/** Normalize ISO country codes/names to canonical names used in phone map */
+function normalizeCountry(string $c): string {
+    $c = trim($c);
+    $u = strtoupper($c);
+    $map = [
+        'UG' => 'Uganda', 'UGA' => 'Uganda',
+        'KE' => 'Kenya', 'KEN' => 'Kenya',
+        'TZ' => 'Tanzania', 'TZA' => 'Tanzania',
+        'RW' => 'Rwanda', 'RWA' => 'Rwanda',
+        'ZA' => 'South Africa', 'ZAF' => 'South Africa',
+        'NG' => 'Nigeria', 'NGA' => 'Nigeria',
+        'IN' => 'India', 'IND' => 'India',
+        'AE' => 'UAE', 'ARE' => 'UAE',
+        'US' => 'USA', 'USA' => 'USA', 'UNITED STATES' => 'USA',
+        'GB' => 'UK', 'GBR' => 'UK', 'UK' => 'UK', 'UNITED KINGDOM' => 'UK',
+        'CA' => 'Canada', 'CAN' => 'Canada',
+        'AU' => 'Australia', 'AUS' => 'Australia',
+        'DE' => 'Germany', 'DEU' => 'Germany',
+        'FR' => 'France', 'FRA' => 'France',
+        'NL' => 'Netherlands', 'NLD' => 'Netherlands',
+        'IE' => 'Ireland', 'IRL' => 'Ireland',
+        'ES' => 'Spain', 'ESP' => 'Spain',
+        'CH' => 'Switzerland', 'CHE' => 'Switzerland',
+    ];
+    if (isset($map[$u])) return $map[$u];
+    return $c;
+}
+
+/** Optional nationality validator */
+function nationalityLooksOk(string $v): bool {
+    $v = trim($v);
+    if ($v === '' || strlen($v) < 2 || strlen($v) > 56) return false;
+    if (!preg_match("/^[A-Za-z\s\-']+$/", $v)) return false;
+    if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false;
+    return true;
+}
+
+/** Optional passport validator with country patterns */
+function passportLooksOk(string $passport, string $nationality): bool {
+    $p = strtoupper(trim($passport));
+    if (!preg_match('/^[A-Z0-9]{8,9}$/', $p)) return false; // general baseline
+    $nat = normalizeCountry($nationality);
+    $patterns = [
+        'USA' => '/^[0-9]{9}$/',
+        'UK' => '/^[0-9]{9}$/',
+        'Canada' => '/^[A-Z]{2}[0-9]{6}$/',
+        'India' => '/^[A-Z][0-9]{7}$/',
+    ];
+    if (isset($patterns[$nat])) {
+        return (bool)preg_match($patterns[$nat], $p);
+    }
+    return true;
+}
+
+/**
+ * Helper: Validate human-looking names (letters, spaces, hyphen, apostrophe), length, and avoid gibberish
+ */
+function nameLooksOk(string $v): bool {
+    $v = trim($v);
+    if ($v === '' || strlen($v) < 2 || strlen($v) > 60) return false;
+    if (!preg_match("/^[A-Za-z'\-\s]+$/", $v)) return false;
+    if (preg_match('/[0-9]/', $v)) return false;
+    // Reject 4+ consonants in a row (gibberish guard)
+    if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false;
+    // Ensure at least one vowel
+    if (!preg_match('/[AEIOUaeiou]/', $v)) return false;
+    return true;
+}
+
+/**
+ * Helper: Email local-part heuristic (only applied for letters-only local parts)
+ */
+function emailLocalPartLooksOk(string $email): bool {
+    $parts = explode('@', $email);
+    if (count($parts) < 2) return false;
+    $local = $parts[0];
+    if (preg_match('/^[A-Za-z]+$/', $local)) {
+        $vowelCount = preg_match_all('/[AEIOUaeiou]/', $local);
+        if ($vowelCount < 3) return false;
+        if (preg_match('/(?:[^AEIOUaeiou]){3,}/', $local)) return false; // 3+ consonants in a row
+    }
+    return true;
+}
+
+/**
+ * Helper: Sanitize and validate phone numbers
+ */
+function sanitizePhone(string $v): string {
+    $v = preg_replace('/[^\d+]/', '', $v);
+    $v = preg_replace('/(?!^)\+/', '', $v);
+    if (strpos($v, '+') !== false && $v[0] !== '+') {
+        $v = '+' . str_replace('+', '', $v);
+    }
+    return $v;
+}
+
+function isValidE164(string $v): bool {
+    return (bool)preg_match('/^\+?[1-9]\d{7,14}$/', $v);
+}
+
+function phoneLengthPlausibleForCountry(string $phone, string $country): bool {
+    // Determine allowed total digit length by dialing code for a subset of Western countries
+    $map = [
+        'Uganda' => ['+256', 12, 12],
+        'Kenya' => ['+254', 12, 12],
+        'Tanzania' => ['+255', 12, 12],
+        'Rwanda' => ['+250', 12, 12],
+        'South Africa' => ['+27', 11, 12],
+        'Nigeria' => ['+234', 12, 13],
+        'India' => ['+91', 12, 12],
+        'UAE' => ['+971', 12, 12],
+        'USA' => ['+1', 11, 11],
+        'UK' => ['+44', 11, 12],
+        'Canada' => ['+1', 11, 11],
+        'Australia' => ['+61', 11, 11],
+        'Germany' => ['+49', 11, 13],
+        'France' => ['+33', 11, 11],
+        'Netherlands' => ['+31', 11, 11],
+        'Ireland' => ['+353', 12, 12],
+        'Spain' => ['+34', 11, 11],
+        'Switzerland' => ['+41', 11, 11],
+    ];
+    $digits = preg_replace('/\D/', '', $phone);
+    $len = strlen($digits);
+    if (!isset($map[$country])) {
+        return isValidE164($phone); // fallback to generic E.164
+    }
+    [$code, $min, $max] = $map[$country];
+    $starts = (strpos($phone, '+') === 0) ? $phone : ('+' . $digits);
+    if (strpos($starts, $code) !== 0) return false;
+    return ($len >= $min && $len <= $max);
+}
+
 // Log the request
 logEvent('info', 'Contact form API accessed', ['method' => 'POST']);
 
@@ -33,8 +166,8 @@ try {
         sendJsonResponse(null, 400, 'Invalid JSON data');
     }
     
-    // Validate required fields
-    $required_fields = ['firstName', 'lastName', 'email', 'country', 'groupSize', 'destination'];
+    // Validate required fields (now requiring nationality and passport)
+    $required_fields = ['firstName', 'lastName', 'email', 'country', 'groupSize', 'destination', 'nationality', 'passport'];
     $missing_fields = [];
     
     foreach ($required_fields as $field) {
@@ -65,10 +198,53 @@ try {
         'message' => sanitizeInput($input['message'] ?? ''),
         'newsletter_opt_in' => !empty($input['newsletter'])
     ];
+    // required extras
+    $data['nationality'] = isset($input['nationality']) ? sanitizeInput($input['nationality']) : '';
+    $data['passport'] = isset($input['passport']) ? strtoupper(preg_replace('/\s+/', '', sanitizeInput($input['passport']))) : '';
     
-    // Validate email
-    if (!isValidEmail($data['email'])) {
+    // Validate names (anti-gibberish)
+    if (!nameLooksOk($data['first_name'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'first_name', 'reason' => 'name_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid first name');
+    }
+    if (!nameLooksOk($data['last_name'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'last_name', 'reason' => 'name_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid last name');
+    }
+
+    // Validate email with heuristic
+    if (!isValidEmail($data['email']) || !emailLocalPartLooksOk($data['email'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'email', 'reason' => 'format_or_heuristic']);
         sendJsonResponse(null, 400, 'Invalid email address');
+    }
+
+    // Validate phone by country if provided
+    if (!empty($data['phone'])) {
+        $normalizedPhone = sanitizePhone($data['phone']);
+        $countryNorm = normalizeCountry($data['country']);
+        if (!isValidE164($normalizedPhone) || !phoneLengthPlausibleForCountry($normalizedPhone, $countryNorm)) {
+            logEvent('warning', 'validation_failed', ['field' => 'phone', 'reason' => 'e164_or_country_length', 'country' => $countryNorm]);
+            sendJsonResponse(null, 400, 'Invalid phone number for selected country');
+        }
+        $data['phone'] = $normalizedPhone;
+    }
+
+    // Nationality/passport are required
+    if (empty($data['nationality'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'nationality', 'reason' => 'missing']);
+        sendJsonResponse(null, 400, 'Nationality is required');
+    }
+    if (!nationalityLooksOk($data['nationality'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'nationality', 'reason' => 'format_or_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid nationality');
+    }
+    if (empty($data['passport'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'passport', 'reason' => 'missing']);
+        sendJsonResponse(null, 400, 'Passport is required');
+    }
+    if (!passportLooksOk($data['passport'], $data['nationality'] ?: $data['country'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'passport', 'reason' => 'pattern_mismatch', 'nationality' => $data['nationality'] ?: $data['country']]);
+        sendJsonResponse(null, 400, 'Invalid passport number');
     }
     
     // Validate travel date if provided
@@ -91,13 +267,23 @@ try {
         sendJsonResponse(null, 429, 'Duplicate submission detected. Please wait before submitting again.');
     }
     
+    // Ensure DB has nationality & passport columns (safe idempotent migration)
+    try {
+        $db->exec("ALTER TABLE contact_submissions ADD COLUMN IF NOT EXISTS nationality VARCHAR(100);");
+        $db->exec("ALTER TABLE contact_submissions ADD COLUMN IF NOT EXISTS passport VARCHAR(20);");
+    } catch (Exception $e) {
+        // Log but do not fail request; insert below will still work if columns pre-exist
+        logEvent('warning', 'contact_submissions alter table failed or skipped', ['error' => $e->getMessage()]);
+    }
+
     // Insert contact submission
     $stmt = $db->prepare("
         INSERT INTO contact_submissions (
             first_name, last_name, email, phone, country, group_size, 
             destination, duration, budget, travel_date, interests, 
-            message, newsletter_opt_in, ip_address, user_agent, referrer_url
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            message, newsletter_opt_in, ip_address, user_agent, referrer_url,
+            nationality, passport
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         RETURNING id
     ");
     
@@ -117,7 +303,9 @@ try {
         $data['newsletter_opt_in'],
         getClientIp(),
         $_SERVER['HTTP_USER_AGENT'] ?? '',
-        $_SERVER['HTTP_REFERER'] ?? ''
+        $_SERVER['HTTP_REFERER'] ?? '',
+        $data['nationality'],
+        $data['passport']
     ]);
     
     $contact_id = $stmt->fetch()['id'];
@@ -243,6 +431,8 @@ function generateAdminNotificationEmail($data, $contact_id) {
             <p><strong>Email:</strong> {$data['email']}</p>
             <p><strong>Phone:</strong> " . ($data['phone'] ?: 'Not provided') . "</p>
             <p><strong>Country:</strong> {$data['country']}</p>
+            <p><strong>Nationality:</strong> {$data['nationality']}</p>
+            <p><strong>Passport:</strong> {$data['passport']}</p>
         </div>
         
         <div style='background: #e8f5e8; padding: 20px; border-radius: 5px; margin: 20px 0;'>

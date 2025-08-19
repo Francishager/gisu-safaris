@@ -41,6 +41,79 @@ try {
         sendJsonResponse(null, 400, 'bookingId, amount, and customer.email are required');
     }
 
+    // Local helpers for validation
+    $nameOk = function(string $v): bool {
+        $v = trim($v);
+        if ($v === '' || strlen($v) < 2 || strlen($v) > 60) return false;
+        if (!preg_match("/^[A-Za-z'\-\s]+$/", $v)) return false;
+        if (preg_match('/[0-9]/', $v)) return false;
+        if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false; // 4+ consonants
+        return (bool)preg_match('/[AEIOUaeiou]/', $v);
+    };
+    $emailLocalOk = function(string $email): bool {
+        $parts = explode('@', $email);
+        if (count($parts) < 2) return false;
+        $local = $parts[0];
+        if (preg_match('/^[A-Za-z]+$/', $local)) {
+            $vowelCount = preg_match_all('/[AEIOUaeiou]/', $local);
+            if ($vowelCount < 3) return false;
+            if (preg_match('/(?:[^AEIOUaeiou]){3,}/', $local)) return false;
+        }
+        return true;
+    };
+
+    if (!$nameOk($custName)) {
+        sendJsonResponse(null, 400, 'Invalid customer name');
+    }
+    if (!isValidEmail($custEmail) || !$emailLocalOk($custEmail)) {
+        sendJsonResponse(null, 400, 'Invalid customer email');
+    }
+
+    // Require nationality and passport in metadata
+    $nationality = sanitizeInput((string)($metadata['nationality'] ?? ''));
+    $passport = strtoupper(preg_replace('/\s+/', '', sanitizeInput((string)($metadata['passport'] ?? ''))));
+    $natOk = function(string $v): bool {
+        $v = trim($v);
+        if ($v === '' || strlen($v) < 2 || strlen($v) > 56) return false;
+        if (!preg_match("/^[A-Za-z\s\-']+$/", $v)) return false;
+        if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false;
+        return true;
+    };
+    $normCountry = function(string $c): string {
+        $u = strtoupper(trim($c));
+        $map = [ 'US' => 'USA','USA' => 'USA','UNITED STATES' => 'USA', 'UK' => 'UK','GB' => 'UK','GBR' => 'UK','UNITED KINGDOM' => 'UK', 'CANADA' => 'CANADA','CA' => 'CANADA','CAN' => 'CANADA', 'INDIA' => 'INDIA','IN' => 'INDIA','IND' => 'INDIA' ];
+        return $map[$u] ?? $c;
+    };
+    $passOk = function(string $p, string $nat) use ($normCountry): bool {
+        $p = strtoupper(trim($p));
+        if (!preg_match('/^[A-Z0-9]{8,9}$/', $p)) return false;
+        $natN = $normCountry($nat);
+        $patterns = [
+            'USA' => '/^[0-9]{9}$/',
+            'UK' => '/^[0-9]{9}$/',
+            'CANADA' => '/^[A-Z]{2}[0-9]{6}$/',
+            'INDIA' => '/^[A-Z][0-9]{7}$/',
+        ];
+        if (isset($patterns[$natN])) return (bool)preg_match($patterns[$natN], $p);
+        return true;
+    };
+    if (empty($nationality)) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'payments_checkout', 'field' => 'nationality', 'reason' => 'missing']);
+        sendJsonResponse(null, 400, 'Nationality is required');
+    }
+    if (!$natOk($nationality)) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'payments_checkout', 'field' => 'nationality', 'reason' => 'format_or_gibberish']);
+        sendJsonResponse(null, 400, 'Invalid nationality');
+    }
+    if (empty($passport)) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'payments_checkout', 'field' => 'passport', 'reason' => 'missing']);
+        sendJsonResponse(null, 400, 'Passport is required');
+    }
+    if (!$passOk($passport, $nationality)) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'payments_checkout', 'field' => 'passport', 'reason' => 'pattern_mismatch', 'nationality' => $nationality]);
+        sendJsonResponse(null, 400, 'Invalid passport number');
+    }
+
     // Convert amount to cents (Stripe requires integer amount in the smallest currency unit)
     $amountCents = (int)round($amount * 100);
 

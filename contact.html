@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -213,12 +213,16 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="email" class="form-label">Email Address *</label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
+                                            <input type="email" class="form-control" id="email" name="email" required
+                                                   autocomplete="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+                                                   title="Enter a valid email like name@example.com">
                                             <div class="invalid-feedback">Please provide a valid email address.</div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="phone" class="form-label">Phone Number</label>
-                                            <input type="tel" class="form-control" id="phone" name="phone">
+                                            <input type="tel" class="form-control" id="phone" name="phone" inputmode="tel" autocomplete="tel"
+                                                   placeholder="e.g. +14155552671" pattern="^\+?[1-9]\d{7,14}$"
+                                                   title="Enter phone in international format, e.g. +14155552671 (8–15 digits).">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="country" class="form-label">Country *</label>
@@ -234,6 +238,19 @@
                                                 <option value="Other">Other</option>
                                             </select>
                                             <div class="invalid-feedback">Please select your country.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="nationality" class="form-label">Nationality *</label>
+                                            <input type="text" class="form-control" id="nationality" name="nationality" required
+                                                   pattern="^[A-Za-z\s]{2,56}$" title="Enter a valid nationality (letters/spaces only).">
+                                            <div class="invalid-feedback">Please provide your nationality (letters/spaces only).</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="passport" class="form-label">Passport Number *</label>
+                                            <input type="text" class="form-control" id="passport" name="passport" required maxlength="9"
+                                                   pattern="^[A-Za-z0-9]{8,9}$" placeholder="8–9 characters"
+                                                   title="Passport should be 8–9 letters/numbers (no spaces).">
+                                            <div class="invalid-feedback">Please provide a valid passport (8–9 letters/numbers).</div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="groupSize" class="form-label">Group Size *</label>
@@ -639,10 +656,128 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('safariContactForm');
+            const phoneInput = document.getElementById('phone');
+            const emailInput = document.getElementById('email');
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+            const nationalityInput = document.getElementById('nationality');
+            const passportInput = document.getElementById('passport');
+
+            // Helpers
+            const E164 = /^\+?[1-9]\d{7,14}$/;
+            function sanitizePhoneInput(v){
+                v = v.replace(/[^\d+]/g, '');
+                v = v.replace(/(?!^)\+/g, '');
+                if (v.includes('+') && v[0] !== '+') v = '+' + v.replace(/\+/g, '');
+                return v;
+            }
+            function westernPhoneLengthOk(v){
+                const digits = v.replace(/\D/g, '');
+                const starts = v.startsWith('+') ? v : '+' + digits;
+                const len = digits.length;
+                const ranges = [
+                    { code: '+1', min: 11, max: 11 },
+                    { code: '+44', min: 11, max: 12 },
+                    { code: '+33', min: 11, max: 11 },
+                    { code: '+49', min: 11, max: 13 },
+                    { code: '+39', min: 11, max: 12 },
+                    { code: '+31', min: 11, max: 11 },
+                    { code: '+61', min: 11, max: 11 },
+                    { code: '+353', min: 12, max: 12 },
+                    { code: '+34', min: 11, max: 11 },
+                    { code: '+41', min: 11, max: 11 }
+                ];
+                const match = ranges.find(r => starts.startsWith(r.code));
+                if (!match) return E164.test(v);
+                return len >= match.min && len <= match.max;
+            }
+
+            // Live sanitize phone input
+            if (phoneInput) {
+                phoneInput.addEventListener('input', () => {
+                    const cur = phoneInput.value;
+                    const sanitized = sanitizePhoneInput(cur);
+                    if (cur !== sanitized) phoneInput.value = sanitized;
+                });
+            }
+
+            // Live sanitize names
+            function sanitizeName(v){
+                return v.replace(/[^A-Za-z'\-\s]/g, '');
+            }
+            if (firstNameInput) firstNameInput.addEventListener('input', () => {
+                const cleaned = sanitizeName(firstNameInput.value);
+                if (cleaned !== firstNameInput.value) firstNameInput.value = cleaned;
+            });
+            if (lastNameInput) lastNameInput.addEventListener('input', () => {
+                const cleaned = sanitizeName(lastNameInput.value);
+                if (cleaned !== lastNameInput.value) lastNameInput.value = cleaned;
+            });
+            if (nationalityInput) nationalityInput.addEventListener('input', () => {
+                let v = nationalityInput.value.replace(/[^A-Za-z\s]/g, '');
+                if (v.length > 56) v = v.slice(0,56);
+                if (v !== nationalityInput.value) nationalityInput.value = v;
+            });
+            if (passportInput) passportInput.addEventListener('input', () => {
+                let v = passportInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+                if (v.length > 9) v = v.slice(0,9);
+                if (v !== passportInput.value) passportInput.value = v;
+            });
             
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
+                // Extra validation
+                // Email
+                const emailVal = (emailInput?.value || '').trim();
+                const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
+                if (!emailOk) {
+                    alert('Please enter a valid email like name@example.com');
+                    if (emailInput) emailInput.focus();
+                    return;
+                }
+                // Names: block gibberish
+                function nameLooksOk(v){
+                    if (!v) return false;
+                    if (!/^[A-Za-z'\-\s]{2,40}$/.test(v)) return false;
+                    if (/[0-9]/.test(v)) return false;
+                    if (/(?:[^AEIOUaeiou\W]){4,}/.test(v)) return false; // 4+ consonants in a row
+                    const vowels = (v.match(/[AEIOUaeiou]/g) || []).length;
+                    return vowels >= 1;
+                }
+                const firstOk = nameLooksOk((firstNameInput?.value || '').trim());
+                const lastOk = nameLooksOk((lastNameInput?.value || '').trim());
+                if (!firstOk) { alert('Please enter a real first name (letters only, no gibberish).'); firstNameInput?.focus(); return; }
+                if (!lastOk) { alert('Please enter a real last name (letters only, no gibberish).'); lastNameInput?.focus(); return; }
+                // Phone (optional field)
+                if (phoneInput && phoneInput.value.trim()) {
+                    const sanitized = sanitizePhoneInput(phoneInput.value.trim());
+                    phoneInput.value = sanitized;
+                    if (!E164.test(sanitized)) {
+                        alert('Enter phone in international format, e.g. +14155552671 (8–15 digits).');
+                        phoneInput.focus();
+                        return;
+                    }
+                    if (!westernPhoneLengthOk(sanitized)) {
+                        alert('Phone number length does not match the selected country code.');
+                        phoneInput.focus();
+                        return;
+                    }
+                }
+                // Nationality (required)
+                const natVal = (nationalityInput?.value || '').trim();
+                if (!/^[A-Za-z\s]{2,56}$/.test(natVal) || /(?:[^AEIOUaeiou\W]){4,}/.test(natVal)) {
+                    alert('Nationality is required and must be letters/spaces only.');
+                    nationalityInput?.focus();
+                    return;
+                }
+                // Passport (required)
+                const passVal = (passportInput?.value || '').trim().toUpperCase();
+                if (!/^[A-Z0-9]{8,9}$/.test(passVal)) {
+                    alert('Passport is required (8–9 letters/numbers only).');
+                    passportInput?.focus();
+                    return;
+                }
+
                 if (!form.checkValidity()) {
                     e.stopPropagation();
                     form.classList.add('was-validated');
