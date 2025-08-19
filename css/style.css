@@ -209,6 +209,16 @@ body {
     transform: translateY(-8px);
 }
 
+/* About hero rotating text visibility override */
+/* Ensures clear contrast even if .text-white-50 is present */
+.hero-section .hero-rotating {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+.hero-section .hero-rotating .word {
+    color: var(--accent-color) !important; /* Sunset Orange for emphasis */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+
 /* === OUR STORY SLIDER === */
 .story-slider {
     position: relative;
