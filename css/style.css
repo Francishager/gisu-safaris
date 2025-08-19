@@ -1900,3 +1900,54 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
   justify-content: center !important;
   z-index: 10 !important; /* above header contents */
 }
+
+/* === GALLERY PAGE STYLES === */
+/* Hero override for gallery (shorter height with gradient overlay) */
+.hero-section.gallery-hero {
+  height: 60vh;
+  min-height: 420px;
+}
+.hero-section.gallery-hero .hero-slider {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-section.gallery-hero .hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.8s ease, transform 8s ease;
+}
+.hero-section.gallery-hero .hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.hero-section.gallery-hero .hero-overlay {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Masonry-style gallery */
+.gallery-grid { column-count: 1; column-gap: 1rem; }
+.gallery-item { break-inside: avoid; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.12); transform: translateY(0); transition: transform .3s ease, box-shadow .3s ease; }
+.gallery-item:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
+.gallery-item img { width: 100%; height: auto; display: block; }
+.gallery-caption { padding: .75rem 1rem; background: #fff; }
+@media (min-width: 576px) { .gallery-grid { column-count: 2; } }
+@media (min-width: 992px) { .gallery-grid { column-count: 3; } }
+
+/* Filter chips */
+.gallery-filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.gallery-filters .btn { border-radius: 999px; padding: 8px 14px; font-weight: 600; }
+.gallery-filters .btn-outline-secondary { border-color: #ced4da; color: #495057; background: #fff; }
+.gallery-filters .btn-outline-secondary.active, .gallery-filters .btn-outline-secondary:hover { color: #fff; background: var(--primary-color); border-color: var(--primary-color); }
+
+/* Utilities */
+.hidden { display: none !important; }
