@@ -159,6 +159,60 @@
         }
     }
 
+    // === NAVBAR ACTIVE STATE FOR PACKAGE PAGES ===
+    function initNavbarActiveForPackages() {
+        try {
+            const path = (window.location && window.location.pathname || '').toLowerCase();
+            if (!/\/packages\//.test(path)) return; // Only adjust on package pages
+
+            const navbar = document.querySelector('.navbar');
+            if (!navbar) return;
+
+            // Clear any existing active states within navbar to avoid wrong highlights (e.g., Contact Us)
+            navbar.querySelectorAll('.nav-link.active, .dropdown-item.active').forEach(el => {
+                el.classList.remove('active');
+                el.removeAttribute('aria-current');
+            });
+
+            // Find the Safari Packages dropdown toggle by text
+            const toggles = Array.from(navbar.querySelectorAll('.nav-item.dropdown .nav-link.dropdown-toggle'));
+            const packagesToggle = toggles.find(a => (a.textContent || '').trim().toLowerCase().includes('safari packages')) || null;
+            if (packagesToggle) {
+                packagesToggle.classList.add('active');
+                packagesToggle.setAttribute('aria-current', 'page');
+            }
+
+            // Determine which submenu item to activate based on filename
+            const file = path.split('/').pop() || '';
+            let key = '';
+            if (file.startsWith('uganda')) key = 'uganda';
+            else if (file.startsWith('kenya')) key = 'kenya';
+            else if (file.startsWith('tanzania')) key = 'tanzania';
+            else if (file.startsWith('rwanda')) key = 'rwanda';
+            else if (file.startsWith('multi-country')) key = 'multi-country';
+
+            if (key) {
+                const menu = packagesToggle ? packagesToggle.parentElement.querySelector('.dropdown-menu') : navbar.querySelector('.dropdown-menu');
+                if (menu) {
+                    let selector = '';
+                    if (key === 'multi-country') selector = 'a[href*="multi-country.html"]';
+                    else selector = `a[href$="${key}.html"]`;
+                    const link = menu.querySelector(selector);
+                    if (link) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                }
+            }
+
+            // Ensure Contact Us isn't highlighted
+            const contact = Array.from(navbar.querySelectorAll('a.nav-link')).find(a => ((a.textContent || '').trim().toLowerCase().includes('contact')));
+            if (contact) contact.classList.remove('active');
+        } catch (e) {
+            try { console.warn('initNavbarActiveForPackages failed:', e); } catch (_) {}
+        }
+    }
+
     // === NORMALIZE WHATSAPP NUMBERS SITE-WIDE ===
     function normalizeWhatsAppNumbers() {
         try {
@@ -512,6 +566,7 @@
         try {
             if (typeof ensureAnalyticsLoaded === 'function') ensureAnalyticsLoaded();
             if (typeof initNavbarScroll === 'function') initNavbarScroll();
+            if (typeof initNavbarActiveForPackages === 'function') initNavbarActiveForPackages();
             if (typeof initHeroSlider === 'function') initHeroSlider();
             if (typeof initStorySlider === 'function') initStorySlider();
             if (typeof initHeroTextRotator === 'function') initHeroTextRotator();
