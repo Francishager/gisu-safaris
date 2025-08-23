@@ -2120,3 +2120,20 @@ footer img[alt="Gisu Safaris Logo"]:not(.footer-logo) {
   .post-meta { gap: 4px; }
   .card .card-title { font-size: 1.05rem; }
 }
+
+/* === BLOG PAGE NAVBAR-HERO SPACING FIX === */
+/* Remove the extra gap below fixed navbar for blog hero only */
+body.blog-page .hero-section,
+body.blog-page .navbar + section,
+body.blog-page .navbar + .hero-section {
+  margin-top: 0 !important;
+}
+
+/* Center hero content on blog pages */
+body.blog-page .hero-section {
+  display: flex;
+  align-items: center;
+}
+body.blog-page .hero-section > .container {
+  text-align: center;
+}
