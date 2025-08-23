@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Booking - Gisu Safaris</title>
+  <meta name="description" content="Book hotels with Gisu Safaris. Choose dates, rooms, and guest details, then pay deposit or full amount." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    body { padding-top: 72px; }
+    .step { display: none; }
+    .step.active { display: block; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2" />
+        <span>Gisu Safaris</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
+    </div>
+  </nav>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="h3 mb-3">Complete Your Hotel Booking</h1>
+          <div class="alert alert-info" id="hotelSummary" role="alert">
+            <div><strong>Hotel/Title:</strong> <span id="hotelTitle">—</span></div>
+            <div><strong>Base Price (per room/night):</strong> $<span id="baseAmount">0</span></div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <!-- Step 1: Stay details -->
+              <section class="step active" id="step1">
+                <h5 class="mb-3">1) Stay details</h5>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Check-in</label>
+                    <input type="date" class="form-control" id="checkIn" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Check-out</label>
+                    <input type="date" class="form-control" id="checkOut" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Hotel Name</label>
+                    <input type="text" class="form-control" id="hotelName" placeholder="e.g. Serena Kampala" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="e.g. Kampala" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Room Type</label>
+                    <select class="form-select" id="roomType">
+                      <option value="Standard">Standard</option>
+                      <option value="Deluxe">Deluxe</option>
+                      <option value="Suite">Suite</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">Rooms</label>
+                    <input type="number" min="1" value="1" class="form-control" id="rooms" required />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">Guests</label>
+                    <input type="number" min="1" value="1" class="form-control" id="guests" required />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                  <button class="btn btn-primary" id="toStep2">Next</button>
+                </div>
+              </section>
+
+              <!-- Step 2: Guest info -->
+              <section class="step" id="step2">
+                <h5 class="mb-3">2) Guest information</h5>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" required inputmode="tel" autocomplete="tel"
+                           placeholder="e.g. +256701234567" pattern="^\+?[1-9]\d{7,14}$"
+                           title="Enter a valid phone in international format, e.g. +256701234567 (8–15 digits)." />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required autocomplete="email"
+                           pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" title="Enter a valid email like name@example.com" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Nationality</label>
+                    <input type="text" class="form-control" id="nationality" required
+                           pattern="^[A-Za-z\s]{2,56}$"
+                           title="Enter a valid nationality (letters/spaces only)." />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Passport</label>
+                    <input type="text" class="form-control" id="passport" inputmode="text" maxlength="9" required
+                           placeholder="8–9 characters" pattern="^[A-Za-z0-9]{8,9}$"
+                           title="Passport should be 8–9 letters/numbers (no spaces)." />
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Notes (optional)</label>
+                    <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests"></textarea>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                  <button class="btn btn-outline-secondary" id="backTo1">Back</button>
+                  <button class="btn btn-primary" id="toStep3">Next</button>
+                </div>
+              </section>
+
+              <!-- Step 3: Review & payment -->
+              <section class="step" id="step3">
+                <h5 class="mb-3">3) Review & Payment</h5>
+                <div class="border rounded p-3 mb-3">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div><strong>Stay:</strong> <span id="reviewStay">—</span></div>
+                      <div><strong>Rooms:</strong> <span id="reviewRooms">1</span> • <strong>Guests:</strong> <span id="reviewGuests">1</span></div>
+                    </div>
+                    <div class="col-md-6">
+                      <div><strong>Per Room/Night:</strong> $<span id="reviewPerNight">0</span></div>
+                      <div><strong>Estimated Total:</strong> $<span id="reviewTotal">0</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Choose Payment</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payChoice" id="payDeposit" checked />
+                    <label class="form-check-label" for="payDeposit">
+                      Pay 70% Deposit now — $<span id="depositAmount">0</span>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payChoice" id="payFull" />
+                    <label class="form-check-label" for="payFull">
+                      Pay Full Amount now — $<span id="fullAmount">0</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                  <button class="btn btn-outline-secondary" id="backTo2">Back</button>
+                  <button class="btn btn-success" id="confirmPay">
+                    <i class="fas fa-credit-card me-2"></i>Proceed to Payment
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/payment.js"></script>
+  <script>
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const title = params.get('title') || 'Hotel Booking';
+      const base = parseFloat(params.get('amount') || '0') || 0; // price per room/night
+
+      const depositRate = 0.7; // deposits allowed
+
+      // Elements
+      const hotelTitle = document.getElementById('hotelTitle');
+      const baseAmount = document.getElementById('baseAmount');
+      const reviewPerNight = document.getElementById('reviewPerNight');
+      const reviewTotal = document.getElementById('reviewTotal');
+      const depositAmountEl = document.getElementById('depositAmount');
+      const fullAmountEl = document.getElementById('fullAmount');
+      const reviewStay = document.getElementById('reviewStay');
+      const reviewRooms = document.getElementById('reviewRooms');
+      const reviewGuests = document.getElementById('reviewGuests');
+
+      const checkIn = document.getElementById('checkIn');
+      const checkOut = document.getElementById('checkOut');
+      const rooms = document.getElementById('rooms');
+      const guests = document.getElementById('guests');
+      const roomType = document.getElementById('roomType');
+      const hotelName = document.getElementById('hotelName');
+      const city = document.getElementById('city');
+
+      const fullName = document.getElementById('fullName');
+      const phone = document.getElementById('phone');
+      const email = document.getElementById('email');
+      const nationality = document.getElementById('nationality');
+      const passport = document.getElementById('passport');
+      const notes = document.getElementById('notes');
+
+      const step1 = document.getElementById('step1');
+      const step2 = document.getElementById('step2');
+      const step3 = document.getElementById('step3');
+
+      hotelTitle.textContent = title;
+      baseAmount.textContent = base.toFixed(2);
+      reviewPerNight.textContent = base.toFixed(2);
+      fullAmountEl.textContent = base.toFixed(2);
+      depositAmountEl.textContent = (base * depositRate).toFixed(2);
+
+      function go(step){
+        [step1, step2, step3].forEach(s => s.classList.remove('active'));
+        step.classList.add('active');
+      }
+
+      function nightsBetween(a, b){
+        try {
+          const d1 = new Date(a);
+          const d2 = new Date(b);
+          const ms = d2 - d1;
+          const n = Math.ceil(ms / (1000*60*60*24));
+          return isFinite(n) && n > 0 ? n : 0;
+        } catch { return 0; }
+      }
+
+      document.getElementById('toStep2').addEventListener('click', () => {
+        if (!checkIn.value || !checkOut.value || !rooms.value || !guests.value || !hotelName.value || !city.value) {
+          return alert('Please fill check-in/out, rooms, guests, hotel name and city.');
+        }
+        if (nightsBetween(checkIn.value, checkOut.value) <= 0) {
+          return alert('Check-out must be after check-in.');
+        }
+        go(step2);
+      });
+      document.getElementById('backTo1').addEventListener('click', () => go(step1));
+
+      // Validation & sanitization (borrowed from tour booking)
+      const E164 = /^\+?[1-9]\d{7,14}$/;
+      function sanitizePhoneInput(v){
+        v = v.replace(/[^\d+]/g, '');
+        v = v.replace(/(?!^)\+/g, '');
+        if (v.includes('+') && v[0] !== '+') v = '+' + v.replace(/\+/g, '');
+        return v;
+      }
+      function westernPhoneLengthOk(v){
+        const digits = v.replace(/\D/g, '');
+        const starts = v.startsWith('+') ? v : '+' + digits;
+        const len = digits.length;
+        const ranges = [
+          { code: '+1', min: 11, max: 11 },
+          { code: '+44', min: 11, max: 12 },
+          { code: '+33', min: 11, max: 11 },
+          { code: '+49', min: 11, max: 13 },
+          { code: '+39', min: 11, max: 12 },
+          { code: '+31', min: 11, max: 11 },
+          { code: '+61', min: 11, max: 11 },
+          { code: '+353', min: 12, max: 12 },
+          { code: '+34', min: 11, max: 11 },
+          { code: '+41', min: 11, max: 11 }
+        ];
+        const match = ranges.find(r => starts.startsWith(r.code));
+        if (!match) return E164.test(v);
+        return len >= match.min && len <= match.max;
+      }
+
+      phone.addEventListener('input', () => {
+        const cur = phone.value;
+        const sanitized = sanitizePhoneInput(cur);
+        if (cur !== sanitized) phone.value = sanitized;
+      });
+      fullName.addEventListener('input', () => {
+        const cleaned = fullName.value.replace(/[^A-Za-z'\-\s]/g, '');
+        if (cleaned !== fullName.value) fullName.value = cleaned;
+      });
+      passport.addEventListener('input', () => {
+        let v = passport.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        if (v.length > 9) v = v.slice(0,9);
+        if (passport.value !== v) passport.value = v;
+      });
+      nationality.addEventListener('input', () => {
+        let v = nationality.value.replace(/[^A-Za-z\s]/g, '');
+        if (v.length > 56) v = v.slice(0,56);
+        if (v !== nationality.value) nationality.value = v;
+      });
+
+      function validateGuestFields(){
+        const nameVal = fullName.value.trim();
+        if (!nameVal) { fullName.focus(); return 'Full name is required.'; }
+        const nameParts = nameVal.split(/\s+/).filter(Boolean);
+        const nameCharOk = /^[A-Za-z'\-\s]{2,60}$/.test(nameVal);
+        const noDigit = !/[0-9]/.test(nameVal);
+        const noConsonantRuns = !/(?:[^AEIOUaeiou\W]){4,}/.test(nameVal);
+        if (nameParts.length < 2 || !nameCharOk || !noDigit || !noConsonantRuns) {
+          fullName.focus();
+          return 'Enter a real full name (first and last), letters only (hyphen/apostrophe allowed).';
+        }
+        const emailVal = email.value.trim();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
+        if (!emailOk) { email.focus(); return 'Please enter a valid email like name@example.com.'; }
+        const [localPart] = emailVal.split('@');
+        if (/^[A-Za-z]+$/.test(localPart)) {
+          const vowels = (localPart.match(/[AEIOUaeiou]/g) || []).length;
+          const consonantRuns = /(?:[^AEIOUaeiou]){3,}/.test(localPart);
+          if (vowels < 3 || consonantRuns) {
+            email.focus();
+            return 'Please provide a professional email (local part looks random).';
+          }
+        }
+        const phoneVal = sanitizePhoneInput(phone.value.trim());
+        phone.value = phoneVal;
+        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +256701234567 (8–15 digits).'; }
+        if (!westernPhoneLengthOk(phoneVal)) { phone.focus(); return 'Phone number length does not match the selected country code.'; }
+        const passVal = passport.value.trim();
+        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8–9 letters/numbers only).'; }
+        const natVal = (nationality.value || '').trim();
+        if (!/^[A-Za-z\s]{2,56}$/.test(natVal) || /(?:[^AEIOUaeiou\W]){4,}/.test(natVal)) {
+          nationality.focus();
+          return 'Nationality is required and must be letters/spaces only.';
+        }
+        return '';
+      }
+
+      document.getElementById('toStep3').addEventListener('click', () => {
+        const err = validateGuestFields();
+        if (err) { alert(err); return; }
+        const nights = nightsBetween(checkIn.value, checkOut.value);
+        const total = base * nights * Number(rooms.value || 1);
+        reviewStay.textContent = `${checkIn.value} to ${checkOut.value} • ${roomType.value}`;
+        reviewRooms.textContent = rooms.value;
+        reviewGuests.textContent = guests.value;
+        reviewTotal.textContent = total.toFixed(2);
+        fullAmountEl.textContent = total.toFixed(2);
+        depositAmountEl.textContent = (total * depositRate).toFixed(2);
+        go(step3);
+      });
+      document.getElementById('backTo2').addEventListener('click', () => go(step2));
+
+      document.getElementById('confirmPay').addEventListener('click', async () => {
+        const err = validateGuestFields();
+        if (err) { alert(err); return; }
+        const nights = nightsBetween(checkIn.value, checkOut.value);
+        const total = base * nights * Number(rooms.value || 1);
+        const payDeposit = document.getElementById('payDeposit').checked;
+        const payAmount = payDeposit ? (total * depositRate) : total;
+
+        const name = fullName.value.trim();
+        const [first, ...rest] = name.split(/\s+/);
+        const last = rest.join(' ');
+        const customer = { name, email: email.value.trim(), phone: phone.value.trim(), first_name: first, last_name: last };
+        const metadata = {
+          hotelName: hotelName.value,
+          city: city.value,
+          roomType: roomType.value,
+          rooms: rooms.value,
+          guests: guests.value,
+          checkIn: checkIn.value,
+          checkOut: checkOut.value,
+          nationality: nationality.value,
+          passport: passport.value,
+          notes: notes.value
+        };
+
+        try {
+          // Create placeholder booking (package_type: hotel)
+          const resp = await fetch('../backend/api/payments/create_placeholder_booking.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              package_type: 'hotel',
+              title,
+              customer: { first_name: first, last_name: last, email: customer.email },
+              group_size: Number(guests.value || 1),
+              estimated_price: total,
+              metadata
+            })
+          });
+          if (!resp.ok) throw new Error(await resp.text());
+          const data = await resp.json();
+          if (!data || !data.bookingId) throw new Error('No bookingId');
+
+          await initiatePayment({
+            bookingId: data.bookingId,
+            bookingType: 'hotel',
+            title,
+            amount: Number(payAmount.toFixed(2)),
+            deposit: payDeposit,
+            customer: { name: customer.name, email: customer.email },
+            metadata,
+            endpoint: '../backend/api/payments/create_checkout.php'
+          });
+        } catch (e) {
+          console.error(e);
+          alert('Unable to start payment. Please try again.');
+        }
+      });
+
+    })();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -440,9 +440,9 @@
                                         <span class="h5 text-primary fw-bold">$450</span>
                                         <small class="text-muted">/night</small>
                                     </div>
-                                    <button class="btn btn-primary btn-sm">
+                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Serena%20Safari%20Lodge&amount=450" aria-label="Book Serena Safari Lodge">
                                         <i class="fas fa-calendar-check me-1"></i>Book Now
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -493,9 +493,9 @@
                                         <span class="h5 text-primary fw-bold">$380</span>
                                         <small class="text-muted">/night</small>
                                     </div>
-                                    <button class="btn btn-primary btn-sm">
+                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Bwindi%20Lodge&amount=380" aria-label="Book Bwindi Lodge">
                                         <i class="fas fa-calendar-check me-1"></i>Book Now
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -546,9 +546,9 @@
                                         <span class="h5 text-primary fw-bold">$120</span>
                                         <small class="text-muted">/night</small>
                                     </div>
-                                    <button class="btn btn-primary btn-sm">
+                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Nairobi%20Boutique%20Hotel&amount=120" aria-label="Book Nairobi Boutique Hotel">
                                         <i class="fas fa-calendar-check me-1"></i>Book Now
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1017,7 +1017,7 @@
               <div class="card h-100 border-0 shadow-sm hover-card">
                 <div class="position-relative">
                   <div class="card-slider">
-                    ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class=\'active\'':''}>`).join('')}
+                    ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class="active"':''}>`).join('')}
                   </div>
                   <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">${typeLabel(h.type)}</span></div>
                 </div>
@@ -1029,23 +1029,11 @@
                   <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
-                    <button class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book</button>
+                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
                   </div>
                 </div>
               </div>`;
             grid.appendChild(col);
-          });
-          // re-init sliders inside rendered cards
-          const sliders = grid.querySelectorAll('.card-slider');
-          sliders.forEach(slider => {
-            const imgs = slider.querySelectorAll('img');
-            if (imgs.length <= 1) return;
-            let i = 0;
-            setInterval(() => {
-              imgs[i].classList.remove('active');
-              i = (i + 1) % imgs.length;
-              imgs[i].classList.add('active');
-            }, 2000);
           });
         }
 
@@ -1146,7 +1134,7 @@
               <div class="card h-100 border-0 shadow-sm hover-card">
                 <div class="position-relative">
                   <div class="card-slider">
-                    ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class=\'active\'':''}>`).join('')}
+                    ${h.images.map((src, idx) => '<img src="'+src+'" alt="'+h.name+' - Image '+(idx+1)+'" '+(idx===0?'class="active"':'')+'>').join('')}
                   </div>
                   <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">${typeLabelQS(h.type)}</span></div>
                 </div>
@@ -1158,7 +1146,7 @@
                   <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
-                    <button class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book</button>
+                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
                   </div>
                 </div>
               </div>`;
