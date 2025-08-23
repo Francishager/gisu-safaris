@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comments Moderation - Gisu Safaris</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f6f7fb; }
+    .card { border: 0; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    .table td, .table th { vertical-align: middle; }
+    .wrap { white-space: pre-wrap; }
+    .pointer { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">Gisu Safaris Admin</a>
+      <span class="navbar-text">Comments Moderation</span>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <div class="row g-3">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-3">
+                <label class="form-label">API Key</label>
+                <input type="password" id="apiKey" class="form-control" placeholder="Enter API key" />
+                <div class="form-text">Stored locally in your browser.</div>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Status</label>
+                <select id="status" class="form-select">
+                  <option value="pending" selected>pending</option>
+                  <option value="approved">approved</option>
+                  <option value="rejected">rejected</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Page Path (optional)</label>
+                <input type="text" id="page" class="form-control" placeholder="/blog/example.html" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Search</label>
+                <input type="text" id="q" class="form-control" placeholder="keyword" />
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button id="saveKey" class="btn btn-outline-secondary">Save API Key</button>
+                <button id="loadBtn" class="btn btn-primary">Load</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="mb-0">Comments</h5>
+              <div class="text-muted small" id="summary"></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-sm align-middle" id="tbl">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Page</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Comment</th>
+                    <th>Consent</th>
+                    <th>Status</th>
+                    <th class="text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_LIST = '/backend/api/comments_moderate.php';
+
+    function $(sel){ return document.querySelector(sel); }
+    function el(tag, attrs={}, children=[]) {
+      const n = document.createElement(tag);
+      for (const [k,v] of Object.entries(attrs)) {
+        if (k === 'class') n.className = v; else if (k === 'text') n.textContent = v; else n.setAttribute(k, v);
+      }
+      children.forEach(c => n.appendChild(c));
+      return n;
+    }
+
+    function getKey(){ return localStorage.getItem('gisu_admin_api_key') || ''; }
+    function setKey(k){ localStorage.setItem('gisu_admin_api_key', k); }
+
+    async function loadComments() {
+      const tbody = $('#tbl tbody');
+      tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted py-4">Loading...</td></tr>';
+      const params = new URLSearchParams();
+      const status = $('#status').value.trim();
+      const page = $('#page').value.trim();
+      const q = $('#q').value.trim();
+      if (status) params.set('status', status);
+      if (page) params.set('page', page);
+      if (q) params.set('q', q);
+
+      const res = await fetch(API_LIST + '?' + params.toString(), { headers: { 'X-API-Key': getKey() } });
+      const json = await res.json().catch(()=>({}));
+      if (!res.ok || !json?.success) {
+        tbody.innerHTML = '<tr><td colspan="8" class="text-center text-danger py-4">Failed to load comments</td></tr>';
+        return;
+      }
+      const rows = Array.isArray(json.data?.comments) ? json.data.comments : [];
+      $('#summary').textContent = rows.length + ' result(s)';
+      if (!rows.length) {
+        tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted py-4">No results</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = '';
+      rows.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.appendChild(el('td', { class: 'text-nowrap', text: new Date(r.created_at).toLocaleString() }));
+        tr.appendChild(el('td', { class: 'small', text: r.page_path }));
+        tr.appendChild(el('td', { text: r.name || 'Anonymous' }));
+        tr.appendChild(el('td', { class: 'small', text: r.email || '' }));
+        tr.appendChild(el('td', {}, [ el('div', { class: 'wrap small' , text: r.comment }) ]));
+        tr.appendChild(el('td', { text: r.consent ? 'Yes' : 'No' }));
+        tr.appendChild(el('td', { text: r.status }));
+        const actions = el('td', { class: 'text-end' });
+        const approveBtn = el('button', { class: 'btn btn-sm btn-success me-1' }); approveBtn.textContent = 'Approve';
+        const rejectBtn = el('button', { class: 'btn btn-sm btn-outline-danger' }); rejectBtn.textContent = 'Reject';
+        approveBtn.addEventListener('click', ()=> moderate(r.id, 'approve'));
+        rejectBtn.addEventListener('click', ()=> moderate(r.id, 'reject'));
+        if (r.status === 'approved') { approveBtn.disabled = true; }
+        if (r.status === 'rejected') { rejectBtn.disabled = true; }
+        actions.appendChild(approveBtn);
+        actions.appendChild(rejectBtn);
+        tr.appendChild(actions);
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function moderate(id, action) {
+      if (!confirm('Are you sure to ' + action + ' this comment?')) return;
+      const res = await fetch(API_LIST, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-API-Key': getKey() },
+        body: JSON.stringify({ id, action })
+      });
+      const json = await res.json().catch(()=>({}));
+      if (!res.ok || !json?.success) {
+        alert('Failed to update comment: ' + (json.message || '')); return;
+      }
+      await loadComments();
+    }
+
+    // Wire up
+    document.addEventListener('DOMContentLoaded', () => {
+      $('#apiKey').value = getKey();
+      $('#saveKey').addEventListener('click', () => { setKey($('#apiKey').value.trim()); alert('API key saved locally.'); });
+      $('#loadBtn').addEventListener('click', loadComments);
+      $('#status').addEventListener('change', loadComments);
+      $('#page').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); loadComments(); }});
+      $('#q').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); loadComments(); }});
+      loadComments();
+    });
+  </script>
+</body>
+</html>

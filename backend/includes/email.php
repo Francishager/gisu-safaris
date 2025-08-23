@@ -644,7 +644,8 @@ function sendMultipleAdminEmails($subject, $body, $template_data = []) {
     
     foreach ($admin_emails as $admin_email) {
         try {
-            if (sendEmail($admin_email, $subject, $body, $template_data)) {
+            // Correct argument order: sendEmail($to, $name, $subject, $html_body, $text_body = null)
+            if (sendEmail($admin_email, '', $subject, $body)) {
                 $success_count++;
                 $results[$admin_email] = 'success';
                 

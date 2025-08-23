@@ -555,6 +555,84 @@
         }
     }
 
+    // === CARD IMAGE ROTATORS (Multi-Country cards) ===
+    function initCardImageRotators() {
+        try {
+            const rotators = document.querySelectorAll('.image-rotator');
+            if (!rotators.length) return;
+
+            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const el = entry.target;
+                    const ctl = el.__rotatorCtl;
+                    if (!ctl) return;
+                    if (entry.isIntersecting) ctl.start(); else ctl.stop();
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }) : null;
+
+            rotators.forEach(rot => {
+                const imgs = rot.querySelectorAll('img.rotator-img');
+                if (imgs.length < 2) return; // need at least two
+
+                // Ensure base styles
+                imgs.forEach((img, idx) => {
+                    // Ensure smooth transition and stacking
+                    if (!img.style.transition) img.style.transition = 'opacity .9s ease';
+                    if (idx === 0) {
+                        img.style.opacity = '1';
+                        img.style.position = img.style.position || 'relative';
+                        img.style.zIndex = '1';
+                    } else {
+                        img.style.opacity = '0';
+                        img.style.position = 'absolute';
+                        img.style.top = '0';
+                        img.style.left = '0';
+                        img.style.width = '100%';
+                    }
+                });
+
+                let idx = 0;
+                let timer = null;
+                let playing = false;
+
+                const step = () => {
+                    if (prefersReduced) return;
+                    const next = (idx + 1) % imgs.length;
+                    imgs[idx].style.opacity = '0';
+                    imgs[next].style.opacity = '1';
+                    idx = next;
+                };
+
+                const start = () => {
+                    if (playing || prefersReduced) return;
+                    playing = true;
+                    timer = setInterval(step, 2800);
+                };
+
+                const stop = () => {
+                    playing = false;
+                    if (timer) { clearInterval(timer); timer = null; }
+                };
+
+                // Pause/Resume on hover
+                rot.addEventListener('mouseenter', stop);
+                rot.addEventListener('mouseleave', start);
+
+                // Visibility-aware start/stop
+                if (io) {
+                    rot.__rotatorCtl = { start, stop };
+                    io.observe(rot);
+                } else {
+                    start();
+                }
+            });
+        } catch (e) {
+            console.warn('initCardImageRotators failed:', e);
+        }
+    }
+
     // === INITIALIZATION ===
     function init() {
         // Wait for DOM to be ready
@@ -572,6 +650,7 @@
             if (typeof initHeroTextRotator === 'function') initHeroTextRotator();
             if (typeof initSmoothScroll === 'function') initSmoothScroll();
             if (typeof initScrollAnimations === 'function') initScrollAnimations();
+            if (typeof initCardImageRotators === 'function') initCardImageRotators();
             if (typeof initLazyLoading === 'function') initLazyLoading();
             if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
             if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
