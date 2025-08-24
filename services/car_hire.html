@@ -80,7 +80,6 @@
                             <li><a class="dropdown-item" href="./travel_insurance.html">Travel Insurance</a></li>
                             <li><a class="dropdown-item" href="./air_ticketing.html">Air Ticketing</a></li>
                             <li><a class="dropdown-item active" href="./car_hire.html">Car Hire</a></li>
-                            <li><a class="dropdown-item" href="./safaris.html">Safaris</a></li>
                             <li><a class="dropdown-item" href="./visa.html">Visa</a></li>
                         </ul>
                     </li>
@@ -407,6 +406,19 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
+                                            <label for="dropoff-location" class="form-label fw-semibold">Drop-off Location (Optional)</label>
+                                            <select class="form-select" id="dropoff-location">
+                                                <option value="">Same as pickup</option>
+                                                <option value="kampala-airport">Entebbe Airport (Uganda)</option>
+                                                <option value="kampala-city">Kampala City</option>
+                                                <option value="nairobi-airport">Jomo Kenyatta Airport (Kenya)</option>
+                                                <option value="nairobi-city">Nairobi City</option>
+                                                <option value="dar-airport">Julius Nyerere Airport (Tanzania)</option>
+                                                <option value="arusha">Arusha, Tanzania</option>
+                                                <option value="kigali-airport">Kigali Airport (Rwanda)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
                                             <label for="passengers" class="form-label fw-semibold">Number of Passengers</label>
                                             <select class="form-select" id="passengers" required>
                                                 <option value="">Select Passengers</option>
@@ -421,9 +433,29 @@
                                             <label for="special-requirements" class="form-label fw-semibold">Special Requirements (Optional)</label>
                                             <textarea class="form-control" id="special-requirements" rows="3" placeholder="GPS, child seats, roof rack, etc."></textarea>
                                         </div>
-                                        <div class="col-12 text-center">
-                                            <button type="button" class="btn btn-primary btn-lg px-5" onclick="calculateRental()">
+                                        <div class="col-12"><hr class="my-2"></div>
+                                        <div class="col-md-6">
+                                            <label for="full-name" class="form-label fw-semibold">Your Full Name</label>
+                                            <input type="text" class="form-control" id="full-name" placeholder="e.g., Jane Doe" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label fw-semibold">Email</label>
+                                            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label fw-semibold">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone" placeholder="+256..." required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="country" class="form-label fw-semibold">Country</label>
+                                            <input type="text" class="form-control" id="country" placeholder="e.g., Uganda" required>
+                                        </div>
+                                        <div class="col-12 text-center d-flex flex-column flex-sm-row gap-2 justify-content-center mt-2">
+                                            <button type="button" class="btn btn-outline-primary btn-lg px-4" onclick="calculateRental()">
                                                 <i class="fas fa-calculator me-2"></i>Get Quote
+                                            </button>
+                                            <button type="submit" class="btn btn-success btn-lg px-4">
+                                                <i class="fas fa-paper-plane me-2"></i>Submit Request
                                             </button>
                                         </div>
                                     </div>
@@ -608,7 +640,7 @@
                             <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#bookingModal">
                                 <i class="fas fa-car me-2"></i>Rent Vehicle
                             </button>
-                            <a href="tel:+61470133869" class="btn btn-outline-light btn-lg">
+                            <a href="tel:+61478914106" class="btn btn-outline-light btn-lg">
                                 <i class="fas fa-phone me-2"></i>Call Now
                             </a>
                             <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#whatsappModal">
@@ -670,7 +702,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" id="booking-submit-btn">
                             <i class="fas fa-credit-card me-2"></i>Proceed to Payment
                         </button>
                     </div>
@@ -710,7 +742,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-success" id="custom-submit-btn">
                             <i class="fas fa-paper-plane me-2"></i>Send Request
                         </button>
                     </div>
@@ -735,7 +767,7 @@
                         <h5 class="fw-bold mb-3">Chat with us on WhatsApp</h5>
                         <p class="mb-4">Get instant responses to your vehicle rental inquiries and booking questions.</p>
                         <div class="d-grid gap-2">
-                            <a href="https://wa.me/61470133869?text=Hi%20Gisu%20Safaris,%20I'm%20interested%20in%20car%20hire%20services" 
+                            <a href="https://wa.me/61478914106?text=Hi%20Gisu%20Safaris,%20I'm%20interested%20in%20car%20hire%20services" 
                                class="btn btn-success btn-lg" target="_blank">
                                 <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
                             </a>
@@ -805,6 +837,188 @@
             document.getElementById('pickup-date').addEventListener('change', function() {
                 document.getElementById('return-date').min = this.value;
             });
+            
+            // === Backend wiring for Car Hire forms ===
+            const apiUrl = '../backend/api/car_hire.php';
+            
+            // Helper to toggle loading state on a button
+            const setLoading = (btn, isLoading, label) => {
+                if (!btn) return;
+                const original = btn.getAttribute('data-original-text') || btn.innerHTML;
+                if (!btn.getAttribute('data-original-text')) btn.setAttribute('data-original-text', original);
+                btn.disabled = isLoading;
+                btn.innerHTML = isLoading
+                    ? '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' + (label || 'Processing...')
+                    : btn.getAttribute('data-original-text');
+            };
+            
+            // 1) Inline vehicle booking form (#vehicle-booking-form)
+            const vehicleForm = document.getElementById('vehicle-booking-form');
+            if (vehicleForm) {
+                vehicleForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const submitBtn = vehicleForm.querySelector('button[type="submit"]') || vehicleForm.querySelector('button');
+                    const get = id => document.getElementById(id)?.value?.trim();
+                    
+                    const fullName = get('full-name') || get('booking-name') || '';
+                    const email = get('email') || get('booking-email') || '';
+                    const phone = get('phone') || get('booking-phone') || '';
+                    const country = get('country') || get('booking-country') || '';
+                    const vehicleType = document.getElementById('vehicle-type')?.value || '';
+                    const rentalOption = document.getElementById('rental-option')?.value || '';
+                    const pickupDate = document.getElementById('pickup-date')?.value || '';
+                    const returnDate = document.getElementById('return-date')?.value || '';
+                    const passengers = document.getElementById('passengers')?.value || '';
+                    const pickupLocation = document.getElementById('pickup-location')?.value || '';
+                    const dropoffLocation = document.getElementById('dropoff-location')?.value || '';
+                    const license = document.getElementById('booking-license')?.value || '';
+                    const notes = document.getElementById('booking-notes')?.value || '';
+                    
+                    if (!fullName || !email || !phone || !vehicleType || !rentalOption || !pickupDate || !returnDate) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    const [firstName, ...rest] = fullName.split(' ');
+                    const lastName = rest.join(' ');
+                    const subject = 'Car Hire Booking Request';
+                    const message = `Vehicle: ${vehicleType}\nOption: ${rentalOption}\nPickup: ${pickupDate} ${pickupLocation}\nReturn: ${returnDate} ${dropoffLocation}\nPassengers: ${passengers}\nLicense: ${license || 'N/A'}\nNotes: ${notes || 'N/A'}`;
+                    
+                    try {
+                        setLoading(submitBtn, true, 'Submitting...');
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                            body: JSON.stringify({
+                                firstName, lastName, email, phone, country,
+                                subject,
+                                enquiryType: 'car_hire_booking',
+                                vehicleType,
+                                rentalOption,
+                                pickupDate,
+                                returnDate,
+                                passengers,
+                                pickupLocation,
+                                dropoffLocation,
+                                license,
+                                notes,
+                                referrerPage: 'services/car_hire.html'
+                            })
+                        });
+                        const data = await res.json().catch(() => ({}));
+                        if (res.ok) {
+                            alert('Thank you! Your car hire request has been received. Our team will contact you shortly.');
+                            vehicleForm.reset();
+                            document.getElementById('quote-result')?.classList.add('d-none');
+                        } else {
+                            alert(data?.message || 'Sorry, we could not submit your request. Please try again.');
+                        }
+                    } catch (err) {
+                        alert('Network error. Please try again later.');
+                    } finally {
+                        setLoading(submitBtn, false);
+                    }
+                });
+            }
+            
+            // 2) Booking modal form (#booking-form) button handler
+            const bookingForm = document.getElementById('booking-form');
+            const bookingBtn = document.getElementById('booking-submit-btn');
+            if (bookingForm && bookingBtn) {
+                bookingBtn.addEventListener('click', async () => {
+                    const name = document.getElementById('booking-name')?.value?.trim();
+                    const email = document.getElementById('booking-email')?.value?.trim();
+                    const phone = document.getElementById('booking-phone')?.value?.trim();
+                    const country = document.getElementById('booking-country')?.value?.trim();
+                    const pickup = document.getElementById('booking-pickup-date')?.value || document.getElementById('pickup-date')?.value || '';
+                    const ret = document.getElementById('booking-return-date')?.value || document.getElementById('return-date')?.value || '';
+                    const pickupLoc = document.getElementById('booking-pickup-location')?.value || document.getElementById('pickup-location')?.value || '';
+                    const dropLoc = document.getElementById('booking-dropoff-location')?.value || document.getElementById('dropoff-location')?.value || '';
+                    const option = document.getElementById('booking-option')?.value || document.getElementById('rental-option')?.value || '';
+                    const type = document.getElementById('booking-vehicle-type')?.value || document.getElementById('vehicle-type')?.value || '';
+                    const notes = document.getElementById('booking-notes')?.value || '';
+                    
+                    if (!name || !email) { alert('Please provide your name and email.'); return; }
+                    const [firstName, ...rest] = name.split(' '); const lastName = rest.join(' ');
+                    const subject = 'Car Hire Booking (Modal)';
+                    const message = `Vehicle: ${type}\nOption: ${option}\nPickup: ${pickup} ${pickupLoc}\nReturn: ${ret} ${dropLoc}\nNotes: ${notes || 'N/A'}`;
+                    
+                    try {
+                        setLoading(bookingBtn, true, 'Submitting...');
+                        const res = await fetch(apiUrl, {
+                            method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                            body: JSON.stringify({
+                                firstName, lastName, email, phone, country,
+                                subject, enquiryType: 'car_hire_booking',
+                                vehicleType: type,
+                                rentalOption: option,
+                                pickupDate: pickup,
+                                returnDate: ret,
+                                pickupLocation: pickupLoc,
+                                dropoffLocation: dropLoc,
+                                notes,
+                                referrerPage: 'services/car_hire.html'
+                            })
+                        });
+                        const data = await res.json().catch(() => ({}));
+                        if (res.ok) {
+                            alert('Thank you! We have received your booking request.');
+                            const modalEl = document.getElementById('bookingModal');
+                            const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            modal.hide();
+                            bookingForm.reset();
+                        } else {
+                            alert(data?.message || 'Submission failed. Please try again.');
+                        }
+                    } catch (_) {
+                        alert('Network error. Please try again later.');
+                    } finally {
+                        setLoading(bookingBtn, false);
+                    }
+                });
+            }
+            
+            // 3) Custom rental modal form (#custom-rental-form) button handler
+            const customForm = document.getElementById('custom-rental-form');
+            const customBtn = document.getElementById('custom-submit-btn');
+            if (customForm && customBtn) {
+                customBtn.addEventListener('click', async () => {
+                    const name = document.getElementById('custom-name')?.value?.trim();
+                    const email = document.getElementById('custom-email')?.value?.trim();
+                    const phone = document.getElementById('custom-phone')?.value?.trim();
+                    const reqs = document.getElementById('custom-requirements')?.value?.trim();
+                    if (!name || !email || !reqs) { alert('Please provide your name, email and requirements.'); return; }
+                    const [firstName, ...rest] = name.split(' '); const lastName = rest.join(' ');
+                    const subject = 'Custom Car Hire Request';
+                    const message = `Requirements: ${reqs}`;
+                    try {
+                        setLoading(customBtn, true, 'Submitting...');
+                        const res = await fetch(apiUrl, {
+                            method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                            body: JSON.stringify({
+                                firstName, lastName, email, phone,
+                                subject, enquiryType: 'car_hire_custom',
+                                requirements: reqs,
+                                referrerPage: 'services/car_hire.html'
+                            })
+                        });
+                        const data = await res.json().catch(() => ({}));
+                        if (res.ok) {
+                            alert('Thank you! Your customization request has been received.');
+                            const modalEl = document.getElementById('customRentalModal');
+                            const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            modal.hide();
+                            customForm.reset();
+                        } else {
+                            alert(data?.message || 'Submission failed. Please try again.');
+                        }
+                    } catch (_) {
+                        alert('Network error. Please try again later.');
+                    } finally {
+                        setLoading(customBtn, false);
+                    }
+                });
+            }
         });
         </script>
     </main>

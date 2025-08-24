@@ -1246,6 +1246,18 @@
             // Any additional animations or features
         }, 100);
 
+        // Defensive fallback: if fade-in animations didn't trigger, reveal content
+        // This addresses cases where IntersectionObserver fails or scripts are blocked,
+        // ensuring that .fade-element sections (e.g., on contact.html) are visible.
+        setTimeout(() => {
+            try {
+                const hidden = document.querySelectorAll('.fade-element:not(.fade-in)');
+                if (hidden && hidden.length) {
+                    hidden.forEach(el => el.classList.add('fade-in'));
+                }
+            } catch (_) { /* noop */ }
+        }, 1200);
+
         // Safety: re-inject AI bot if it failed to appear after load
         try {
             const reinjectIfMissing = () => {

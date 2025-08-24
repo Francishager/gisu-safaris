@@ -337,6 +337,21 @@ if (file_exists(__DIR__ . '/.env')) {
     }
 }
 
+// Expose OpenAI settings as constants and environment variables
+if (!defined('OPENAI_API_KEY')) {
+    $oaikey = $_ENV['OPENAI_API_KEY'] ?? getenv('OPENAI_API_KEY') ?? '';
+    if ($oaikey) {
+        define('OPENAI_API_KEY', $oaikey);
+        // Ensure downstream getenv() works
+        if (!getenv('OPENAI_API_KEY')) { @putenv('OPENAI_API_KEY=' . $oaikey); }
+    }
+}
+if (!defined('OPENAI_MODEL')) {
+    $oaimodel = $_ENV['OPENAI_MODEL'] ?? getenv('OPENAI_MODEL') ?? 'gpt-4o-mini';
+    define('OPENAI_MODEL', $oaimodel);
+    if (!getenv('OPENAI_MODEL')) { @putenv('OPENAI_MODEL=' . $oaimodel); }
+}
+
 // Ensure upload directory exists
 if (!is_dir(UPLOAD_PATH)) {
     mkdir(UPLOAD_PATH, 0755, true);

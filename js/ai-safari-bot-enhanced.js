@@ -143,6 +143,24 @@ class SafariAIBotEnhancedInternal {
         }
     }
 
+    // Resolve backend API URL consistently across environments
+    computeBackendUrl(relativePath) {
+        try {
+            const host = (typeof location !== 'undefined' ? location.hostname : '');
+            // On GitHub Pages, PHP won't execute; return null to indicate skip
+            if (/github\.io$/.test(host)) return null;
+        } catch (_) { /* ignore */ }
+
+        // Prefer absolute path under current origin
+        try {
+            const base = (typeof location !== 'undefined') ? `${location.protocol}//${location.host}` : '';
+            if (base) return new URL(relativePath, base).toString();
+        } catch (_) { /* ignore */ }
+
+        // Fallback to relative path
+        return relativePath;
+    }
+
     async getExchangeRates() {
         // Check cache first (cache for 1 hour)
         const now = Date.now();
@@ -352,7 +370,7 @@ class SafariAIBotEnhancedInternal {
                         </div>
                         <div class="ai-info">
                             <h4>Safari AI Assistant</h4>
-                            <small>Powered by Live Data APIs</small>
+                            <small>Powered by Gisu Safaris</small>
                         </div>
                         <button class="ai-close-btn">
                             <i class="fas fa-times"></i>
@@ -1484,17 +1502,66 @@ class SafariAIBotEnhancedInternal {
             this.handleClimateQuestions();
             
         } else {
-            // Enhanced default intelligent response with API mention
-            const responses = [
-                "🤔 That's a fascinating question! I'm powered by live APIs for real-time data about East Africa.",
-                "🌍 Interesting! I can fetch live information from global APIs to give you the most current data.",
-                "🦁 Great question! Let me help you with real-time information from my API connections.",
-                "✨ I'm excited to help! I have access to live exchange rates, country data, and current information."
-            ];
-            
-            this.addBotMessage(responses[Math.floor(Math.random() * responses.length)]);
-            this.addBotMessage("I can provide real-time data on exchange rates, country information, populations, and more. What would you like to explore?");
-            this.showQuickActions(['Live Exchange Rates', 'Country Info', 'Safari Planning', 'Current Leaders', 'Population Data', 'Travel Tips']);
+            // Fallback: call backend LLM with RAG
+            const loadingText = "🤖 Thinking about that for you... <span class='loading-indicator'></span>";
+            this.addBotMessage(loadingText);
+
+            // Get reference to the last bot message to update in-place
+            const messagesContainer = document.getElementById('aiChatMessages');
+            const loadingEl = messagesContainer?.lastElementChild;
+
+            const url = this.computeBackendUrl('/backend/api/ai_answer.php');
+            if (!url) {
+                if (loadingEl) loadingEl.innerHTML = "⚠️ AI answer is unavailable in this environment. Please test on a PHP-enabled host.";
+                this.showQuickActions(['Live Exchange Rates', 'Country Info', 'Safari Planning', 'Current Leaders', 'Population Data', 'Travel Tips']);
+                return;
+            }
+
+            try {
+                const history = (this.conversationHistory || []).slice(-10).map(m => ({
+                    role: m.sender === 'user' ? 'user' : 'assistant',
+                    content: m.message.replace(/<[^>]*>/g, '')
+                }));
+
+                const payload = {
+                    question: message,
+                    history,
+                    visitor: this.visitor || {},
+                    preferences: this.userPreferences || {}
+                };
+
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-API-Key': 'gisu_safaris_api_key_2024' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error(`ai_answer failed: ${res.status}`);
+                const data = await res.json();
+
+                const answer = (data && data.answer) ? data.answer : "Sorry, I couldn't find an answer right now.";
+                let html = answer;
+
+                // Optional citations/context
+                if (data && (data.citations || data.context)) {
+                    const cites = data.citations || data.context;
+                    if (Array.isArray(cites) && cites.length) {
+                        const items = cites.slice(0, 3).map(c => {
+                            const title = c.title || c.source || 'Source';
+                            const snippet = (c.snippet || c.text || '').toString().slice(0, 180);
+                            return `<li><strong>${title}</strong>${snippet ? ` — <em>${snippet}</em>` : ''}</li>`;
+                        }).join('');
+                        html += `\n<div class="api-data-highlight"><strong>Sources:</strong><ul>${items}</ul></div>`;
+                    }
+                }
+
+                if (loadingEl) loadingEl.innerHTML = html;
+                this.showQuickActions(['Ask another question', 'Safari Planning', 'Contact WhatsApp']);
+            } catch (err) {
+                console.error('AI answer error', err);
+                if (loadingEl) loadingEl.innerHTML = "⚠️ I had trouble getting an AI answer. Please try again or choose an option below.";
+                this.showQuickActions(['Live Exchange Rates', 'Country Info', 'Safari Planning', 'Contact WhatsApp']);
+            }
         }
     }
 

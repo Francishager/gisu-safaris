@@ -8,6 +8,9 @@ SET TIME ZONE 'UTC';
 -- Enable UUID extension if not already enabled
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Enable pgvector for semantic search (RAG)
+CREATE EXTENSION IF NOT EXISTS vector;
+
 -- Create admin users table for backend access
 CREATE TABLE IF NOT EXISTS admin_users (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -19,6 +22,33 @@ CREATE TABLE IF NOT EXISTS admin_users (
     role VARCHAR(50) DEFAULT 'admin',
     is_active BOOLEAN DEFAULT true,
     last_login TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Car Hire Enquiries
+CREATE TABLE IF NOT EXISTS car_hire_enquiries (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100),
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50),
+    country VARCHAR(100),
+    subject VARCHAR(200) NOT NULL,
+    enquiry_type VARCHAR(50) NOT NULL, -- car_hire_booking | car_hire_custom
+    vehicle_type VARCHAR(50),
+    rental_option VARCHAR(50),
+    pickup_date DATE,
+    return_date DATE,
+    passengers VARCHAR(20),
+    pickup_location VARCHAR(100),
+    dropoff_location VARCHAR(100),
+    license VARCHAR(100),
+    notes TEXT,
+    requirements TEXT,
+    referrer_page TEXT,
+    ip_address INET,
+    user_agent TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
@@ -176,6 +206,60 @@ CREATE INDEX idx_contact_submissions_created_at ON contact_submissions(created_a
 CREATE INDEX idx_contact_submissions_status ON contact_submissions(status);
 CREATE INDEX idx_contact_submissions_destination ON contact_submissions(destination);
 
+-- Car hire enquiries indexes
+CREATE INDEX IF NOT EXISTS idx_car_hire_enquiries_email ON car_hire_enquiries(email);
+CREATE INDEX IF NOT EXISTS idx_car_hire_enquiries_created_at ON car_hire_enquiries(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_car_hire_enquiries_type ON car_hire_enquiries(enquiry_type);
+
+-- Chat analytics tables
+CREATE TABLE IF NOT EXISTS chat_sessions (
+    session_id VARCHAR(64) PRIMARY KEY,
+    visitor_name VARCHAR(120),
+    visitor_email VARCHAR(255),
+    consent_transcript BOOLEAN DEFAULT false,
+    marketing_consent BOOLEAN DEFAULT false,
+    page TEXT,
+    referrer TEXT,
+    utm_source VARCHAR(120),
+    utm_medium VARCHAR(120),
+    utm_campaign VARCHAR(200),
+    utm_term VARCHAR(200),
+    utm_content VARCHAR(200),
+    device TEXT,
+    locale VARCHAR(20),
+    tz_offset_minutes INTEGER,
+    ip_address INET,
+    user_agent TEXT,
+    started_at TIMESTAMP WITH TIME ZONE,
+    ended_at TIMESTAMP WITH TIME ZONE,
+    duration_seconds INTEGER,
+    messages_total INTEGER,
+    user_msgs INTEGER,
+    bot_msgs INTEGER,
+    lead_score INTEGER,
+    booking_intent BOOLEAN,
+    package_interest VARCHAR(200),
+    preferences JSONB DEFAULT '{}'::jsonb,
+    meta JSONB DEFAULT '{}'::jsonb,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chat_messages (
+    id BIGSERIAL PRIMARY KEY,
+    session_id VARCHAR(64) NOT NULL REFERENCES chat_sessions(session_id) ON DELETE CASCADE,
+    sender VARCHAR(10) NOT NULL CHECK (sender IN ('user','bot')),
+    message TEXT NOT NULL,
+    occurred_at TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Chat indexes
+CREATE INDEX IF NOT EXISTS idx_chat_sessions_started_at ON chat_sessions(started_at DESC);
+CREATE INDEX IF NOT EXISTS idx_chat_sessions_email ON chat_sessions(visitor_email);
+CREATE INDEX IF NOT EXISTS idx_chat_messages_session ON chat_messages(session_id);
+CREATE INDEX IF NOT EXISTS idx_chat_messages_time ON chat_messages(occurred_at DESC);
+
 -- Package bookings indexes
 CREATE INDEX idx_package_bookings_email ON package_bookings(email);
 CREATE INDEX idx_package_bookings_package_type ON package_bookings(package_type);
@@ -226,6 +310,12 @@ $$ language 'plpgsql';
 
 -- Apply trigger to all tables with updated_at
 CREATE TRIGGER update_contact_submissions_updated_at BEFORE UPDATE ON contact_submissions
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_car_hire_enquiries_updated_at BEFORE UPDATE ON car_hire_enquiries
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_chat_sessions_updated_at BEFORE UPDATE ON chat_sessions
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_package_bookings_updated_at BEFORE UPDATE ON package_bookings
@@ -480,3 +570,39 @@ FROM chat_sessions_daily d
 ORDER BY d.day DESC;
 
 COMMIT;
+
+-- =============================================
+-- RAG KNOWLEDGE BASE (DOCUMENTS + CHUNKS)
+-- =============================================
+
+-- Documents metadata table
+CREATE TABLE IF NOT EXISTS knowledge_documents (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    source VARCHAR(80) NOT NULL, -- 'website','blog','package','faq','manual'
+    title TEXT NOT NULL,
+    url TEXT,
+    language VARCHAR(10) DEFAULT 'en',
+    tags TEXT[],
+    checksum VARCHAR(64), -- for dedupe
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Chunked content with embeddings (1536-dim for text-embedding-3-small)
+CREATE TABLE IF NOT EXISTS knowledge_chunks (
+    doc_id UUID NOT NULL REFERENCES knowledge_documents(id) ON DELETE CASCADE,
+    chunk_index INTEGER NOT NULL,
+    content TEXT NOT NULL,
+    embedding vector(1536),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (doc_id, chunk_index)
+);
+
+-- Vector index for fast ANN search (requires pgvector >= 0.5)
+CREATE INDEX IF NOT EXISTS idx_knowledge_chunks_embedding ON knowledge_chunks USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+CREATE INDEX IF NOT EXISTS idx_knowledge_chunks_doc ON knowledge_chunks(doc_id);
+
+-- Triggers
+CREATE TRIGGER update_knowledge_documents_updated_at BEFORE UPDATE ON knowledge_documents
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();

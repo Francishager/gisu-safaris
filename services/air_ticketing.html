@@ -79,7 +79,6 @@
                             <li><a class="dropdown-item" href="./travel_insurance.html">Travel Insurance</a></li>
                             <li><a class="dropdown-item active" href="./air_ticketing.html">Air Ticketing</a></li>
                             <li><a class="dropdown-item" href="./car_hire.html">Car Hire</a></li>
-                            <li><a class="dropdown-item" href="./safaris.html">Safaris</a></li>
                             <li><a class="dropdown-item" href="./visa.html">Visa</a></li>
                         </ul>
                     </li>
@@ -770,7 +769,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="customFlightForm">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="custom-name" class="form-label">Full Name *</label>
@@ -803,7 +802,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" id="customFlightSubmitBtn">
                             <i class="fas fa-paper-plane me-2"></i>Send Request
                         </button>
                     </div>
@@ -820,7 +819,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="bookingForm">
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label for="booking-route" class="form-label">Selected Route</label>
@@ -861,7 +860,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-success" id="bookingSubmitBtn">
                             <i class="fas fa-phone me-2"></i>Request Callback
                         </button>
                     </div>
@@ -1022,25 +1021,49 @@
 
         <script>
         function searchFlights() {
+            const tripType = document.querySelector('input[name="trip-type"]:checked')?.value || 'round-trip';
             const departure = document.getElementById('departure-city').value;
             const arrival = document.getElementById('arrival-city').value;
             const departureDate = document.getElementById('departure-date').value;
+            const returnDateEl = document.getElementById('return-date');
+            const returnDate = returnDateEl.value;
             const passengers = document.getElementById('passengers').value;
-            
+
+            // Basic required checks
             if (!departure || !arrival || !departureDate || !passengers) {
                 alert('Please fill in all required fields');
                 return;
             }
-            
-            // Show results
-            document.getElementById('flight-results').classList.remove('d-none');
-            
-            // Scroll to results
-            document.getElementById('flight-results').scrollIntoView({ behavior: 'smooth' });
+
+            // Prevent same route
+            if (departure === arrival) {
+                alert('Departure and destination cannot be the same.');
+                return;
+            }
+
+            // Round-trip validations
+            if (tripType === 'round-trip') {
+                if (!returnDate) {
+                    alert('Please select a return date for a round trip.');
+                    return;
+                }
+                if (new Date(returnDate) < new Date(departureDate)) {
+                    alert('Return date cannot be earlier than departure date.');
+                    return;
+                }
+            }
+
+            // Show results with a brief summary
+            const results = document.getElementById('flight-results');
+            results.classList.remove('d-none');
+
+            // Smooth scroll to results
+            results.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Populate booking modal with selected route
+        // Setup form UX and populate booking modal with selected route
         document.addEventListener('DOMContentLoaded', () => {
+            // Populate booking route from buttons
             const routeButtons = document.querySelectorAll('.route-check-btn');
             const routeInput = document.getElementById('booking-route');
             routeButtons.forEach(btn => {
@@ -1049,6 +1072,167 @@
                     if (routeInput) routeInput.value = route;
                 });
             });
+
+            // Set min date to today for date pickers
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const todayStr = `${yyyy}-${mm}-${dd}`;
+            const depEl = document.getElementById('departure-date');
+            const retEl = document.getElementById('return-date');
+            if (depEl) depEl.min = todayStr;
+            if (retEl) retEl.min = todayStr;
+
+            // Toggle return date based on trip type
+            const tripTypeInputs = document.querySelectorAll('input[name="trip-type"]');
+            const setReturnState = () => {
+                const type = document.querySelector('input[name="trip-type"]:checked')?.value;
+                if (!retEl) return;
+                if (type === 'one-way') {
+                    retEl.value = '';
+                    retEl.disabled = true;
+                } else {
+                    retEl.disabled = false;
+                    // Ensure return min is at least departure date
+                    if (depEl && depEl.value) {
+                        retEl.min = depEl.value;
+                    }
+                }
+            };
+            tripTypeInputs.forEach(input => input.addEventListener('change', setReturnState));
+            if (depEl && retEl) {
+                depEl.addEventListener('change', () => {
+                    // Keep return date not earlier than departure
+                    retEl.min = depEl.value || todayStr;
+                    if (retEl.value && retEl.value < retEl.min) {
+                        retEl.value = retEl.min;
+                    }
+                });
+            }
+            setReturnState();
+
+            // --- Modal submission wiring ---
+            const apiUrl = '../backend/api/enquiry.php';
+
+            // Helper to toggle loading state
+            const setLoading = (btn, isLoading) => {
+                if (!btn) return;
+                btn.disabled = isLoading;
+                const icon = btn.querySelector('i');
+                const original = btn.getAttribute('data-original-text') || btn.textContent;
+                if (!btn.getAttribute('data-original-text')) btn.setAttribute('data-original-text', original);
+                if (isLoading) {
+                    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+                } else {
+                    btn.innerHTML = icon ? icon.outerHTML + original.replace(/^[^A-Za-z]*/, ' ') : original;
+                }
+            };
+
+            // Booking modal submit
+            const bookingForm = document.getElementById('bookingForm');
+            const bookingBtn = document.getElementById('bookingSubmitBtn');
+            if (bookingForm && bookingBtn) {
+                bookingBtn.addEventListener('click', async () => {
+                    const name = document.getElementById('booking-name')?.value.trim();
+                    const email = document.getElementById('booking-email')?.value.trim();
+                    const phone = document.getElementById('booking-phone')?.value.trim();
+                    const pref = document.getElementById('preferred-contact')?.value || '';
+                    const urgent = document.getElementById('urgent-booking')?.checked ? 'Yes' : 'No';
+                    const route = document.getElementById('booking-route')?.value || '';
+
+                    if (!name || !email) {
+                        alert('Please provide your name and email.');
+                        return;
+                    }
+
+                    const firstName = name.split(' ')[0];
+                    const lastName = name.split(' ').slice(1).join(' ');
+                    const subject = 'Flight Quote Request';
+                    const message = `Route: ${route}\nPreferred contact: ${pref || 'Anytime'}\nUrgent: ${urgent}`;
+
+                    try {
+                        setLoading(bookingBtn, true);
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                firstName, lastName, email, phone,
+                                subject,
+                                enquiryType: 'booking',
+                                message,
+                                referrerPage: 'services/air_ticketing.html'
+                            })
+                        });
+                        const data = await res.json().catch(() => ({}));
+                        if (res.ok) {
+                            alert('Thank you! We have received your request. Our agent will contact you shortly.');
+                            const modalEl = document.getElementById('bookingModal');
+                            const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            modal.hide();
+                            bookingForm.reset();
+                        } else {
+                            alert(data?.message || 'Sorry, we could not submit your request. Please try again.');
+                        }
+                    } catch (e) {
+                        alert('Network error. Please check your connection and try again.');
+                    } finally {
+                        setLoading(bookingBtn, false);
+                    }
+                });
+            }
+
+            // Custom flight request submit
+            const customForm = document.getElementById('customFlightForm');
+            const customBtn = document.getElementById('customFlightSubmitBtn');
+            if (customForm && customBtn) {
+                customBtn.addEventListener('click', async () => {
+                    const name = document.getElementById('custom-name')?.value.trim();
+                    const email = document.getElementById('custom-email')?.value.trim();
+                    const phone = document.getElementById('custom-phone')?.value.trim();
+                    const budget = document.getElementById('travel-budget')?.value || '';
+                    const reqs = document.getElementById('flight-requirements')?.value || '';
+
+                    if (!name || !email) {
+                        alert('Please provide your name and email.');
+                        return;
+                    }
+
+                    const firstName = name.split(' ')[0];
+                    const lastName = name.split(' ').slice(1).join(' ');
+                    const subject = 'Custom Flight Request';
+                    const message = `Budget: ${budget || 'Not specified'}\nRequirements: ${reqs || 'N/A'}`;
+
+                    try {
+                        setLoading(customBtn, true);
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                firstName, lastName, email, phone,
+                                subject,
+                                enquiryType: 'customization',
+                                message,
+                                referrerPage: 'services/air_ticketing.html'
+                            })
+                        });
+                        const data = await res.json().catch(() => ({}));
+                        if (res.ok) {
+                            alert('Thanks! Your custom request has been submitted. We will reach out soon.');
+                            const modalEl = document.getElementById('customFlightModal');
+                            const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            modal.hide();
+                            customForm.reset();
+                        } else {
+                            alert(data?.message || 'Submission failed. Please try again.');
+                        }
+                    } catch (e) {
+                        alert('Network error. Please try again later.');
+                    } finally {
+                        setLoading(customBtn, false);
+                    }
+                });
+            }
         });
         </script>
     </main>
