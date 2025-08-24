@@ -523,6 +523,66 @@
         }
     }
 
+    // === POLICY FOOTER LINKS NORMALIZER ===
+    function initPolicyFooterLinks() {
+        try {
+            const pathname = (window.location && window.location.pathname) || '';
+            // Compute depth-based prefix to reach site root
+            const parts = pathname.split('/').filter(Boolean); // e.g., ['packages','tanzania.html']
+            const depth = Math.max(0, parts.length - 1);
+            const prefix = depth > 0 ? Array(depth).fill('..').join('/') + '/' : './';
+
+            const footer = document.querySelector('footer');
+            const anchors = footer ? footer.querySelectorAll('a') : [];
+            let foundPrivacy = false;
+            let foundTerms = false;
+            anchors.forEach(a => {
+                const label = (a.textContent || '').trim().toLowerCase();
+                if (label === 'privacy policy') {
+                    const target = prefix + 'privacy.html';
+                    if (a.getAttribute('href') !== target) a.setAttribute('href', target);
+                    foundPrivacy = true;
+                } else if (label === 'terms of service' || label === 'terms & conditions' || label === 'terms') {
+                    const target = prefix + 'terms.html';
+                    if (a.getAttribute('href') !== target) a.setAttribute('href', target);
+                    foundTerms = true;
+                }
+            });
+
+            // If footer exists but links are missing, inject a compact link row at the end
+            if (footer && (!foundPrivacy || !foundTerms)) {
+                // Find a suitable container in footer
+                const container = footer.querySelector('.container') || footer;
+                const linkWrap = document.createElement('div');
+                linkWrap.className = 'mt-2 text-md-end';
+                // Build links, reusing prefix
+                const privacyA = document.createElement('a');
+                privacyA.href = prefix + 'privacy.html';
+                privacyA.className = 'text-white-50 text-decoration-none me-3';
+                privacyA.textContent = 'Privacy Policy';
+                const termsA = document.createElement('a');
+                termsA.href = prefix + 'terms.html';
+                termsA.className = 'text-white-50 text-decoration-none';
+                termsA.textContent = 'Terms of Service';
+
+                if (!foundPrivacy) linkWrap.appendChild(privacyA);
+                if (!foundTerms) {
+                    if (!foundPrivacy) {
+                        // add a small space handled by classes; nothing else needed
+                    }
+                    linkWrap.appendChild(termsA);
+                }
+
+                // Append only if at least one was missing
+                if (linkWrap.childNodes.length) {
+                    container.appendChild(linkWrap);
+                }
+            }
+        } catch (e) {
+            try { console.warn('initPolicyFooterLinks failed:', e); } catch (_) {}
+        }
+    }
+
     // === SAFE STUBS FOR OPTIONAL FEATURES ===
     function showNotification(message, type = 'info') {
         try { console.log(`[Notify:${type}]`, message); } catch (_) {}
@@ -650,6 +710,7 @@
             if (typeof initCardImageRotators === 'function') initCardImageRotators();
             if (typeof initViewAllPackagesButton === 'function') initViewAllPackagesButton();
             if (typeof initBookingCtaTracking === 'function') initBookingCtaTracking();
+            if (typeof initPolicyFooterLinks === 'function') initPolicyFooterLinks();
             if (typeof normalizeWhatsAppNumbers === 'function') normalizeWhatsAppNumbers();
             if (typeof optimizePerformance === 'function') optimizePerformance();
             console.log('Gisu Safaris website initialized successfully!');
