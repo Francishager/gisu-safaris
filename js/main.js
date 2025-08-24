@@ -1255,6 +1255,25 @@
         setTimeout(() => {
             // Any additional animations or features
         }, 100);
+
+        // Safety: re-inject AI bot if it failed to appear after load
+        try {
+            const reinjectIfMissing = () => {
+                try {
+                    const hasWidget = !!document.getElementById('ai-safari-bot');
+                    if (!hasWidget && typeof ensureAISafariBotLoaded === 'function') {
+                        console.warn('[AI Bot] widget missing post-load; attempting reinjection');
+                        ensureAISafariBotLoaded();
+                    }
+                } catch (e) {
+                    try { console.warn('AI Bot safety check failed:', e); } catch (_) {}
+                }
+            };
+            setTimeout(reinjectIfMissing, 800);
+            setTimeout(reinjectIfMissing, 3000);
+        } catch (e) {
+            try { console.warn('AI Bot post-load safety hook failed:', e); } catch (_) {}
+        }
     });
 
     // === ERROR HANDLING ===
