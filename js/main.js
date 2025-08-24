@@ -555,32 +555,31 @@
         }
     }
 
-    // === CARD IMAGE ROTATORS (Multi-Country cards) ===
+    // === CARD IMAGE ROTATORS (Vehicle fleet, generic use) ===
     function initCardImageRotators() {
         try {
             const rotators = document.querySelectorAll('.image-rotator');
             if (!rotators.length) return;
 
-            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // Intersection observer to start/stop when visible
+            const io = ('IntersectionObserver' in window)
+                ? new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const el = entry.target;
+                        const ctl = el.__rotatorCtl;
+                        if (!ctl) return;
+                        if (entry.isIntersecting) ctl.start(); else ctl.stop();
+                    });
+                }, { threshold: 0.1 })
+                : null;
 
-            const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const el = entry.target;
-                    const ctl = el.__rotatorCtl;
-                    if (!ctl) return;
-                    if (entry.isIntersecting) ctl.start(); else ctl.stop();
-                });
-            }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }) : null;
+            rotators.forEach((rot) => {
+                const imgs = Array.from(rot.querySelectorAll('img'));
+                if (imgs.length < 2) return; // need at least 2 to rotate
 
-            rotators.forEach(rot => {
-                const imgs = rot.querySelectorAll('img.rotator-img');
-                if (imgs.length < 2) return; // need at least two
-
-                // Ensure base styles
-                imgs.forEach((img, idx) => {
-                    // Ensure smooth transition and stacking
-                    if (!img.style.transition) img.style.transition = 'opacity .9s ease';
-                    if (idx === 0) {
+                // Initial styles for crossfade
+                imgs.forEach((img, i) => {
+                    if (i === 0) {
                         img.style.opacity = '1';
                         img.style.position = img.style.position || 'relative';
                         img.style.zIndex = '1';
@@ -597,8 +596,8 @@
                 let timer = null;
                 let playing = false;
 
+                // Force rotation every 2s regardless of reduced-motion for these rotators
                 const step = () => {
-                    if (prefersReduced) return;
                     const next = (idx + 1) % imgs.length;
                     imgs[idx].style.opacity = '0';
                     imgs[next].style.opacity = '1';
@@ -606,9 +605,9 @@
                 };
 
                 const start = () => {
-                    if (playing || prefersReduced) return;
+                    if (playing) return;
                     playing = true;
-                    timer = setInterval(step, 2800);
+                    timer = setInterval(step, 2000);
                 };
 
                 const stop = () => {
@@ -641,12 +640,14 @@
             return;
         }
 
+        try {
             if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
             if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
             if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
             if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
             if (typeof initAccessibility === 'function') initAccessibility();
             if (typeof initSafariFeatures === 'function') initSafariFeatures();
+            if (typeof initCardImageRotators === 'function') initCardImageRotators();
             if (typeof initViewAllPackagesButton === 'function') initViewAllPackagesButton();
             if (typeof initBookingCtaTracking === 'function') initBookingCtaTracking();
             if (typeof normalizeWhatsAppNumbers === 'function') normalizeWhatsAppNumbers();
@@ -1293,6 +1294,7 @@
             ensureAISafariBotLoaded && ensureAISafariBotLoaded();
             initAccessibility && initAccessibility();
             initSafariFeatures && initSafariFeatures();
+            initCardImageRotators && initCardImageRotators();
             initBookingCtaTracking && initBookingCtaTracking();
             optimizePerformance && optimizePerformance();
         } catch (e) {
