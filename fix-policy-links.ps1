@@ -21,7 +21,8 @@ function Replace-Privacy([string]$html, [string]$prefix) {
 }
 
 function Replace-Terms([string]$html, [string]$prefix) {
-    $pattern = '(?is)(<a\b[^>]*?href=")([^"]*)("[^>]*>\s*Terms\s*(?:of\s*Service|&amp;\s*Conditions|&\s*Conditions)?\s*</a>)'
+    # Supports: Terms of Service, Terms & Conditions, Terms &amp; Conditions, Terms and Conditions
+    $pattern = '(?is)(<a\b[^>]*?href=")([^"]*)("[^>]*>\s*Terms\s*(?:of\s*Service|&amp;\s*Conditions|&\s*Conditions|and\s*Conditions)\s*</a>)'
     return [regex]::Replace($html, $pattern, { param($m) $m.Groups[1].Value + ($prefix + 'terms.html') + $m.Groups[3].Value })
 }
 
