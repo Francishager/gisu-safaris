@@ -82,7 +82,6 @@
                 </div>
               </section>
 
-              <!-- Step 2: Guest info -->
               <section class="step" id="step2">
                 <h5 class="mb-3">2) Guest information</h5>
                 <div class="row g-3">
@@ -175,11 +174,10 @@
     (function(){
       const params = new URLSearchParams(location.search);
       const title = params.get('title') || 'Hotel Booking';
-      const base = parseFloat(params.get('amount') || '0') || 0; // price per room/night
+      const base = parseFloat(params.get('amount') || '0') || 0;
 
-      const depositRate = 0.7; // deposits allowed
+      const depositRate = 0.7;
 
-      // Elements
       const hotelTitle = document.getElementById('hotelTitle');
       const baseAmount = document.getElementById('baseAmount');
       const reviewPerNight = document.getElementById('reviewPerNight');

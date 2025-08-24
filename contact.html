@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -93,9 +93,7 @@
                     </li>
                 </ul>
                 <div class="ms-3">
-                    <a href="#contact-form" class="btn btn-primary btn-sm">
-                        <i class="fas fa-calendar-check me-1"></i>Book Now
-                    </a>
+                    <a href="./booking/index.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
                 </div>
             </div>
 
@@ -144,7 +142,7 @@
                                 <h4 class="card-title fw-bold">Call Us</h4>
                                 <p class="card-text mb-3">Speak directly with our safari experts</p>
                                 <div class="contact-details">
-                                    <p class="mb-2"><strong>Australia:</strong> <a href="tel:+254712345678" class="text-primary">+614 7891 4106</a></p>
+                                    <p class="mb-2"><strong>Australia:</strong> <a href="tel:+61478914106" class="text-primary">+614 7891 4106</a></p>
                                     <p class="mb-2"><strong>Uganda:</strong> <a href="tel:+256780950555" class="text-primary">+256 780 950 555</a></p>
                                 </div>
                             </div>
@@ -380,7 +378,7 @@
                 
                 <div class="row g-4 justify-content-center">
                     <div class="col-lg-4 col-md-6 fade-element">
-                        <a href="https://wa.me/256780950555?text=Hi! I'm interested in booking a safari with Gisu Safaris." target="_blank" class="text-decoration-none">
+                        <a href="https://wa.me/61470133869?text=Hi! I'm interested in booking a safari with Gisu Safaris." target="_blank" class="text-decoration-none">
                             <div class="card border-0 shadow-sm hover-card h-100">
                                 <div class="card-body text-center p-4">
                                     <div class="bg-success rounded-circle p-3 d-inline-block mb-3">
@@ -577,7 +575,7 @@
                         <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
                             <i class="fab fa-youtube fa-lg"></i>
                         </a>
-                        <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                        <a href="https://wa.me/61470133869" class="text-light" target="_blank">
                             <i class="fab fa-whatsapp fa-lg"></i>
                         </a>
                     </div>
@@ -663,7 +661,6 @@
             const nationalityInput = document.getElementById('nationality');
             const passportInput = document.getElementById('passport');
 
-            // Helpers
             const E164 = /^\+?[1-9]\d{7,14}$/;
             function sanitizePhoneInput(v){
                 v = v.replace(/[^\d+]/g, '');
@@ -692,7 +689,6 @@
                 return len >= match.min && len <= match.max;
             }
 
-            // Live sanitize phone input
             if (phoneInput) {
                 phoneInput.addEventListener('input', () => {
                     const cur = phoneInput.value;
@@ -701,7 +697,6 @@
                 });
             }
 
-            // Live sanitize names
             function sanitizeName(v){
                 return v.replace(/[^A-Za-z'\-\s]/g, '');
             }
@@ -726,8 +721,7 @@
             
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                // Extra validation
-                // Email
+
                 const emailVal = (emailInput?.value || '').trim();
                 const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
                 if (!emailOk) {
@@ -735,7 +729,7 @@
                     if (emailInput) emailInput.focus();
                     return;
                 }
-                // Names: block gibberish
+
                 function nameLooksOk(v){
                     if (!v) return false;
                     if (!/^[A-Za-z'\-\s]{2,40}$/.test(v)) return false;
@@ -748,7 +742,7 @@
                 const lastOk = nameLooksOk((lastNameInput?.value || '').trim());
                 if (!firstOk) { alert('Please enter a real first name (letters only, no gibberish).'); firstNameInput?.focus(); return; }
                 if (!lastOk) { alert('Please enter a real last name (letters only, no gibberish).'); lastNameInput?.focus(); return; }
-                // Phone (optional field)
+
                 if (phoneInput && phoneInput.value.trim()) {
                     const sanitized = sanitizePhoneInput(phoneInput.value.trim());
                     phoneInput.value = sanitized;
@@ -763,14 +757,12 @@
                         return;
                     }
                 }
-                // Nationality (required)
                 const natVal = (nationalityInput?.value || '').trim();
                 if (!/^[A-Za-z\s]{2,56}$/.test(natVal) || /(?:[^AEIOUaeiou\W]){4,}/.test(natVal)) {
                     alert('Nationality is required and must be letters/spaces only.');
                     nationalityInput?.focus();
                     return;
                 }
-                // Passport (required)
                 const passVal = (passportInput?.value || '').trim().toUpperCase();
                 if (!/^[A-Z0-9]{8,9}$/.test(passVal)) {
                     alert('Passport is required (8–9 letters/numbers only).');
@@ -936,3 +928,5 @@
 
     </body>
     </html>
+
+

@@ -91,9 +91,7 @@
                     </li>
                 </ul>
                 <div class="ms-3">
-                    <a href="#contact-form" class="btn btn-primary btn-sm">
-                        <i class="fas fa-calendar-check me-1"></i>Book Now
-                    </a>
+                    <a href="./booking/index.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
                 </div>
             </div>
         </div>
@@ -438,7 +436,7 @@
                         <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
                             <i class="fab fa-youtube fa-lg"></i>
                         </a>
-                        <a href="https://wa.me/256780950555" class="text-light" target="_blank">
+                        <a href="https://wa.me/61470133869" class="text-light" target="_blank">
                             <i class="fab fa-whatsapp fa-lg"></i>
                         </a>
                     </div>
@@ -460,20 +458,24 @@
             <hr class="my-4">
             
             <div class="row align-items-center">
-                <div class="col-md-8">
-                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                    </div>
                 </div>
-                <div class="col-md-4 text-md-end">
-                    <p class="mb-0">Designed by <strong>Digital Safari Solutions</strong></p>
+                <div class="col-md-7 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Chat Widget -->
     <div class="floating-whatsapp">
         <div class="whatsapp-widget">
-            <!-- Chat Window -->
             <div class="whatsapp-chat" id="whatsappChat">
                 <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
                     <i class="fas fa-times"></i>
@@ -500,22 +502,17 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- WhatsApp Button -->
+
             <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
                 <i class="fab fa-whatsapp"></i>
             </button>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript (relative path for consistency with other pages) -->
     <script src="./js/main.js"></script>
-    
-    <!-- WhatsApp Chat Widget Script -->
+
     <script>
-    // WhatsApp Chat Widget Functionality
     function toggleWhatsAppChat() {
         const chatWidget = document.getElementById('whatsappChat');
         if (!chatWidget) {
@@ -524,8 +521,7 @@
         }
         
         chatWidget.classList.toggle('active');
-        
-        // Focus on input when chat opens
+
         if (chatWidget.classList.contains('active')) {
             setTimeout(() => {
                 const input = document.getElementById('whatsappMessage');
@@ -544,21 +540,17 @@
             messageInput.focus();
             return;
         }
-        
-        // Create WhatsApp URL with the message
-        const phoneNumber = '256780950555';
+  
+        const phoneNumber = '61470133869';
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        
-        // Open WhatsApp with the message
+
         window.open(whatsappUrl, '_blank');
-        
-        // Clear the input and close the chat
+
         messageInput.value = '';
         toggleWhatsAppChat();
     }
-    
-    // Handle Enter key press and other interactions
+
     document.addEventListener('DOMContentLoaded', function() {
         const messageInput = document.getElementById('whatsappMessage');
         const chatWidget = document.getElementById('whatsappChat');
@@ -571,8 +563,7 @@
                     sendWhatsAppMessage();
                 }
             });
-            
-            // Enable/disable send button based on input
+
             messageInput.addEventListener('input', function() {
                 const sendBtn = document.querySelector('.whatsapp-send-btn');
                 if (sendBtn) {
@@ -580,16 +571,14 @@
                 }
             });
         }
-        
-        // Close chat when clicking outside
+
         document.addEventListener('click', function(event) {
             if (chatWidget && chatWidget.classList.contains('active') && 
                 whatsappWidget && !whatsappWidget.contains(event.target)) {
                 chatWidget.classList.remove('active');
             }
         });
-        
-        // Prevent chat from closing when clicking inside it
+
         if (chatWidget) {
             chatWidget.addEventListener('click', function(event) {
                 event.stopPropagation();
@@ -599,4 +588,6 @@
     </script>
 </body>
 </html>
+
+
 

@@ -1,0 +1,1011 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Rwanda Golden Monkey & Nature Tour - 3 Days Volcanoes National Park | Gisu Safaris</title>
+    <meta name="description" content="Track endangered golden monkeys in Rwanda's bamboo forests. 3-day nature tour with canopy walks, bird watching, and pristine montane ecosystems in Volcanoes National Park. Expert guides, luxury accommodations, conservation focus.">
+    <meta name="keywords" content="Rwanda golden monkey tracking, Volcanoes National Park, bamboo forest, canopy walk, bird watching Rwanda, nature tour Rwanda, golden monkeys, wildlife photography, Rwanda primates, nature conservation">
+    <meta name="author" content="Gisu Safaris - Rwanda Nature Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rwanda Golden Monkey & Nature Tour - Volcanoes National Park">
+    <meta property="og:description" content="Track endangered golden monkeys and explore Rwanda's pristine bamboo forests with expert guides. Canopy walks, bird watching, and nature photography adventures.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/rwanda-golden-monkey.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rwanda Golden Monkey & Nature Tour - Volcanoes National Park">
+    <meta name="twitter:description" content="Track endangered golden monkeys and explore Rwanda's pristine bamboo forests with expert guides.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/rwanda-golden-monkey.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        :root {
+            --nature-primary: #228B22;
+            --nature-secondary: #32CD32;
+            --nature-accent: #FFD700;
+            --nature-dark: #006400;
+            --bamboo-green: #8FBC8F;
+        }
+        
+        .nature-gradient {
+            background: linear-gradient(135deg, var(--nature-primary) 0%, var(--nature-secondary) 100%);
+        }
+        
+        .golden-highlight {
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(50, 205, 50, 0.1));
+            border-left: 4px solid var(--nature-accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .day-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(34, 139, 34, 0.1);
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(34, 139, 34, 0.2);
+        }
+        
+        .itinerary-timeline {
+            position: relative;
+        }
+        
+        .itinerary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--nature-primary), var(--nature-secondary));
+        }
+        
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: var(--nature-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(34, 139, 34, 0.3);
+        }
+        
+        .nature-badge {
+            background: var(--bamboo-green);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .wildlife-facts {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-float i {
+            margin-top: 16px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .pricing-card {
+            background: var(--nature-gradient);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .highlight-box {
+            background: rgba(34, 139, 34, 0.05);
+            border: 1px solid rgba(34, 139, 34, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .canopy-experience {
+            background: linear-gradient(135deg, rgba(143, 188, 143, 0.1), rgba(50, 205, 50, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .photography-tips {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .conservation-impact {
+            background: linear-gradient(45deg, rgba(34, 139, 34, 0.1), rgba(143, 188, 143, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+        
+        /* Button visibility fixes */
+        .btn-light {
+            background-color: #ffffff !important;
+            color: #228B22 !important;
+            border: 2px solid #ffffff !important;
+        }
+        
+        .btn-light:hover {
+            background-color: #f8f9fa !important;
+            color: #006400 !important;
+        }
+        
+        .btn-outline-light {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff !important;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: #ffffff !important;
+            color: #228B22 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item active" href="rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Destinations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../destinations/uganda.html">Uganda</a></li>
+                            <li><a class="dropdown-item" href="../destinations/kenya.html">Kenya</a></li>
+                            <li><a class="dropdown-item" href="../destinations/tanzania.html">Tanzania</a></li>
+                            <li><a class="dropdown-item" href="../destinations/rwanda.html">Rwanda</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../contact.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 100vh; background: linear-gradient(rgba(34, 139, 34, 0.7), rgba(0, 100, 0, 0.8)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="rwanda.html" class="text-white-50">Rwanda</a></li>
+                                    <li class="breadcrumb-item active text-white" aria-current="page">Golden Monkey Tour</li>
+                                </ol>
+                            </nav>
+                            
+                            <span class="badge bg-warning fs-6 mb-3">
+                                <i class="fas fa-leaf me-1"></i>Nature & Wildlife Experience
+                            </span>
+                            
+                            <h1 class="hero-title display-2 fw-bold text-white mb-4">
+                                Rwanda Golden Monkey & Nature Tour
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                Discover Rwanda's endangered golden monkeys in their pristine bamboo forest habitat. Experience canopy walks, exceptional bird watching, and the serene beauty of montane ecosystems in Volcanoes National Park.
+                            </p>
+                            <div class="hero-buttons">
+                                <a href="#itinerary" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-route me-2"></i>View Itinerary
+                                </a>
+                                <a href="#booking" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-calendar-plus me-2"></i>Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container my-5">
+            <div class="row">
+                <!-- Main Content Column -->
+                <div class="col-lg-8">
+                    <!-- Package Overview -->
+                    <section class="mb-5">
+                        <h2 class="display-5 fw-bold mb-4">Explore Rwanda's Pristine Forest Ecosystems</h2>
+                        
+                        <div class="conservation-impact">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="mb-3"><i class="fas fa-paw text-warning me-2"></i>Endangered Species Conservation</h4>
+                                    <p class="mb-0">Golden monkeys are found only in the Virunga Mountains and are classified as endangered. Your visit directly supports their conservation and habitat protection.</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <i class="fas fa-tree fa-4x text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="lead">Our expertly designed 3-day nature tour offers intimate encounters with Rwanda's rare golden monkeys while exploring the breathtaking biodiversity of Volcanoes National Park. Experience thrilling canopy walks, exceptional bird watching, and learn about forest conservation in one of Africa's most pristine montane ecosystems.</p>
+                        
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-6">
+                                <div class="highlight-box">
+                                    <h5><i class="fas fa-binoculars text-primary me-2"></i>Wildlife Tracking</h5>
+                                    <p class="mb-0">Expert guides help you track golden monkeys through bamboo forests while spotting other rare primates and forest wildlife.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="highlight-box">
+                                    <h5><i class="fas fa-camera text-warning me-2"></i>Photography Paradise</h5>
+                                    <p class="mb-0">Capture stunning wildlife and landscape photography in perfect lighting conditions within the misty mountain forests.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Golden Monkey Facts -->
+                    <section class="wildlife-facts mb-5">
+                        <h3 class="fw-bold mb-4"><i class="fas fa-info-circle text-primary me-2"></i>Golden Monkey Facts</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Endangered species with ~4,000 individuals remaining</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Found only in Virunga Mountains (Rwanda, Uganda, DRC)</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Live in bamboo forests at 2,500-4,000m altitude</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Distinctive golden-orange fur patches</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Highly social with groups of 30-80 individuals</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Primarily eat bamboo shoots and leaves</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>More active and playful than mountain gorillas</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Excellent subjects for wildlife photography</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Detailed Itinerary -->
+                    <section id="itinerary" class="mb-5">
+                        <h2 class="display-6 fw-bold mb-4">Detailed 3-Day Nature Itinerary</h2>
+                        
+                        <div class="itinerary-timeline">
+                            <!-- Day 1 -->
+                            <div class="row mb-5">
+                                <div class="col-auto">
+                                    <div class="timeline-dot">
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-card card h-100">
+                                        <div class="card-header nature-gradient text-white">
+                                            <h4 class="card-title mb-0">
+                                                <i class="fas fa-plane-arrival me-2"></i>Day 1: Arrival & Forest Introduction
+                                                <span class="nature-badge float-end">Orientation</span>
+                                            </h4>
+                                            <p class="mb-0 opacity-75">Kigali to Volcanoes National Park</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5><i class="fas fa-morning text-primary me-2"></i>Morning (8:00 AM - 12:00 PM)</h5>
+                                                    <ul>
+                                                        <li><strong>Airport pickup:</strong> Collection from Kigali International Airport</li>
+                                                        <li><strong>Scenic drive to Volcanoes NP:</strong> 2.5-hour journey through Rwanda's rolling hills</li>
+                                                        <li><strong>Lodge check-in:</strong> Luxury eco-lodge with forest views</li>
+                                                        <li><strong>Welcome briefing:</strong> Introduction to golden monkey behavior and forest ecology</li>
+                                                    </ul>
+                                                    
+                                                    <h5><i class="fas fa-afternoon text-primary me-2"></i>Afternoon (2:00 PM - 6:00 PM)</h5>
+                                                    <ul>
+                                                        <li><strong>Nature walk:</strong> Easy hike around lodge area for acclimatization</li>
+                                                        <li><strong>Bird watching introduction:</strong> Spot Rwenzori turaco and other endemic species</li>
+                                                        <li><strong>Photography workshop:</strong> Tips for wildlife photography in forest conditions</li>
+                                                        <li><strong>Cultural village visit:</strong> Meet local conservation champions</li>
+                                                    </ul>
+                                                    
+                                                    <div class="photography-tips">
+                                                        <h6><i class="fas fa-camera me-2"></i>Photography Preparation</h6>
+                                                        <p class="mb-0">Evening session on camera settings for forest photography, lens recommendations, and ethical wildlife photography practices.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" 
+                                                         alt="Volcanoes National Park forest" class="img-fluid rounded shadow-sm">
+                                                    <div class="mt-3">
+                                                        <h6><i class="fas fa-bed me-1"></i> Accommodation</h6>
+                                                        <p class="small mb-0">Eco-luxury mountain lodge</p>
+                                                        <h6 class="mt-2"><i class="fas fa-utensils me-1"></i> Meals</h6>
+                                                        <p class="small mb-0">Lunch, Dinner</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Day 2 -->
+                            <div class="row mb-5">
+                                <div class="col-auto">
+                                    <div class="timeline-dot">
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-card card h-100">
+                                        <div class="card-header nature-gradient text-white">
+                                            <h4 class="card-title mb-0">
+                                                <i class="fas fa-paw me-2"></i>Day 2: Golden Monkey Tracking Adventure
+                                                <span class="badge bg-warning text-dark float-end">Main Highlight</span>
+                                            </h4>
+                                            <p class="mb-0 opacity-75">Bamboo Forest Expedition</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5><i class="fas fa-sunrise text-primary me-2"></i>Early Morning Adventure</h5>
+                                                    <ul>
+                                                        <li><strong>6:00 AM:</strong> Early breakfast and gear preparation</li>
+                                                        <li><strong>7:00 AM:</strong> Drive to park headquarters for briefing</li>
+                                                        <li><strong>8:00 AM:</strong> Begin golden monkey tracking in bamboo forests</li>
+                                                        <li><strong>Tracking experience:</strong> 1-4 hours depending on monkey location</li>
+                                                        <li><strong>Monkey encounter:</strong> 1 hour with the golden monkey group</li>
+                                                        <li><strong>Photography session:</strong> Capture incredible moments with these playful primates</li>
+                                                    </ul>
+                                                    
+                                                    <h5><i class="fas fa-leaf text-primary me-2"></i>Afternoon Forest Exploration</h5>
+                                                    <ul>
+                                                        <li><strong>Bamboo forest walk:</strong> Learn about unique ecosystem</li>
+                                                        <li><strong>Bird watching:</strong> Spot endemic Albertine Rift species</li>
+                                                        <li><strong>Medicinal plant tour:</strong> Traditional forest medicine with local guides</li>
+                                                        <li><strong>Conservation center visit:</strong> Learn about habitat protection efforts</li>
+                                                    </ul>
+                                                    
+                                                    <div class="alert alert-info">
+                                                        <h6><i class="fas fa-exclamation-triangle me-2"></i>Tracking Guidelines</h6>
+                                                        <p class="mb-0">Golden monkeys are very active and fast-moving. Good physical fitness recommended. Maximum group size: 8 people.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" 
+                                                         alt="Golden monkey in bamboo forest" class="img-fluid rounded shadow-sm">
+                                                    <div class="mt-3">
+                                                        <h6><i class="fas fa-hiking me-1"></i> Difficulty</h6>
+                                                        <p class="small mb-0">Moderate mountain hiking</p>
+                                                        <h6 class="mt-2"><i class="fas fa-clock me-1"></i> Duration</h6>
+                                                        <p class="small mb-0">4-6 hours total activity</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Day 3 -->
+                            <div class="row mb-5">
+                                <div class="col-auto">
+                                    <div class="timeline-dot">
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-card card h-100">
+                                        <div class="card-header nature-gradient text-white">
+                                            <h4 class="card-title mb-0">
+                                                <i class="fas fa-tree me-2"></i>Day 3: Canopy Walk & Departure
+                                                <span class="badge bg-success float-end">Adventure Finale</span>
+                                            </h4>
+                                            <p class="mb-0 opacity-75">Aerial Forest Experience</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5><i class="fas fa-cloud text-primary me-2"></i>Canopy Walk Experience</h5>
+                                                    <ul>
+                                                        <li><strong>Morning departure:</strong> Transfer to Nyungwe Forest (optional)</li>
+                                                        <li><strong>Canopy walkway:</strong> 160m suspended walkway 70m above ground</li>
+                                                        <li><strong>Bird's eye view:</strong> Stunning forest canopy and distant volcanoes</li>
+                                                        <li><strong>Primate spotting:</strong> Colobus monkeys and other forest inhabitants</li>
+                                                        <li><strong>Forest floor exploration:</strong> Unique flora and fauna discoveries</li>
+                                                    </ul>
+                                                    
+                                                    <h5><i class="fas fa-feather text-primary me-2"></i>Final Bird Watching</h5>
+                                                    <ul>
+                                                        <li><strong>Endemic species:</strong> Target Rwenzori turaco, handsome francolin</li>
+                                                        <li><strong>Forest specialists:</strong> Strange weaver, Kivu ground thrush</li>
+                                                        <li><strong>Photography finale:</strong> Last chance for perfect shots</li>
+                                                        <li><strong>Nature reflection:</strong> Peaceful moments in pristine wilderness</li>
+                                                        <li><strong>Return to Kigali:</strong> Scenic drive with photo stops</li>
+                                                    </ul>
+                                                    
+                                                    <div class="alert alert-success">
+                                                        <h6><i class="fas fa-certificate me-2"></i>Conservation Certificate</h6>
+                                                        <p class="mb-0">Receive a personalized conservation participation certificate and digital photo collection of your golden monkey encounter.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" 
+                                                         alt="Forest canopy walkway" class="img-fluid rounded shadow-sm">
+                                                    <div class="mt-3">
+                                                        <h6><i class="fas fa-height me-1"></i> Canopy Walk</h6>
+                                                        <p class="small mb-0">70m above forest floor</p>
+                                                        <h6 class="mt-2"><i class="fas fa-plane me-1"></i> Departure</h6>
+                                                        <p class="small mb-0">Flights after 5:00 PM</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Nature Highlights -->
+                    <section class="canopy-experience mb-5">
+                        <h3 class="display-6 fw-bold mb-4">Nature & Wildlife Highlights</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="golden-highlight">
+                                    <h5><i class="fas fa-paw text-warning me-2"></i>Primate Encounters</h5>
+                                    <ul class="list-unstyled mb-0">
+                                        <li><i class="fas fa-check text-success me-2"></i>Golden monkey tracking & observation</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Colobus monkey sightings</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Blue monkey spotting</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Vervet monkey interactions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="golden-highlight">
+                                    <h5><i class="fas fa-feather text-info me-2"></i>Bird Watching</h5>
+                                    <ul class="list-unstyled mb-0">
+                                        <li><i class="fas fa-check text-success me-2"></i>Rwenzori turaco (endemic)</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Handsome francolin</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Strange weaver</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Over 200 species recorded</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- What's Included/Excluded -->
+                    <section class="mb-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="fw-bold text-success mb-3">
+                                    <i class="fas fa-check-circle me-2"></i>What's Included
+                                </h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>Golden monkey tracking permits</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>2 nights eco-luxury lodge accommodation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>All meals (breakfast, lunch, dinner)</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Expert naturalist guide</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Private 4WD safari vehicle</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Airport transfers</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Canopy walk experience</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Bird watching activities</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Photography workshop</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Conservation center visits</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Park entrance fees</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Bottled water throughout</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="fw-bold text-danger mb-3">
+                                    <i class="fas fa-times-circle me-2"></i>What's Not Included
+                                </h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-times text-danger me-2"></i>International flights</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Rwanda visa (if required)</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Travel insurance</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Personal expenses</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Alcoholic beverages</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Tips and gratuities</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Optional activities</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Laundry services</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Camera/binocular rental</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Medical expenses</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Souvenirs</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Items of personal nature</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Pricing Card -->
+                    <div class="pricing-card mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-1">From</h3>
+                            <div class="display-4 fw-bold">$1,299</div>
+                            <p class="mb-0 opacity-75">per person</p>
+                            
+                            <hr class="my-4">
+                            
+                            <div class="text-start">
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <div class="col-6 text-end">4.7/5 (73 reviews)</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-clock me-2"></i>Duration:</div>
+                                    <div class="col-6 text-end">3 Days</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-users me-2"></i>Group Size:</div>
+                                    <div class="col-6 text-end">2-8 People</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-calendar me-2"></i>Best Time:</div>
+                                    <div class="col-6 text-end">Year Round</div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-6"><i class="fas fa-tag me-2"></i>Style:</div>
+                                    <div class="col-6 text-end">Nature & Wildlife</div>
+                                </div>
+                            </div>
+                            
+                            <a href="#booking" class="btn btn-light btn-lg w-100 mb-3">
+                                <i class="fas fa-paper-plane me-2"></i>Book This Safari
+                            </a>
+                            <a href="../contact.html" class="btn btn-outline-light w-100">
+                                <i class="fas fa-phone me-2"></i>Get Custom Quote
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Special Features -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-leaf me-2 text-success"></i>Nature Features</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="fas fa-paw text-warning me-2"></i><strong>Golden Monkeys:</strong> Endangered species tracking</li>
+                                <li class="mb-2"><i class="fas fa-tree text-success me-2"></i><strong>Canopy Walk:</strong> 70m above forest floor</li>
+                                <li class="mb-2"><i class="fas fa-feather text-info me-2"></i><strong>Bird Watching:</strong> 200+ species recorded</li>
+                                <li class="mb-2"><i class="fas fa-camera text-primary me-2"></i><strong>Photography:</strong> Expert workshops included</li>
+                                <li><i class="fas fa-leaf text-success me-2"></i><strong>Conservation:</strong> Supporting habitat protection</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-headset me-2 text-info"></i>Nature Specialists</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-3">Our wildlife experts can help customize this tour based on your specific interests in primate behavior, bird watching, or forest ecology.</p>
+                            <div class="d-grid gap-2">
+                                <a href="tel:+256781232166" class="btn btn-outline-primary">
+                                    <i class="fas fa-phone me-2"></i>Call Now
+                                </a>
+                                <a href="mailto:info@gisusafaris.com" class="btn btn-outline-primary">
+                                    <i class="fas fa-envelope me-2"></i>Email Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h2 class="display-5 fw-bold">Book Your Golden Monkey Adventure</h2>
+                            <p class="lead">Ready to track endangered golden monkeys? Fill out this form and we'll get back to you within 24 hours.</p>
+                        </div>
+                        
+                        <div class="card shadow-lg">
+                            <div class="card-body p-4">
+                                <form id="bookingForm" onsubmit="sendBookingWhatsApp(event)">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="travelDate" class="form-label">Preferred Travel Date *</label>
+                                            <input type="date" class="form-control" id="travelDate" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="groupSize" class="form-label">Number of Travelers *</label>
+                                            <select class="form-control" id="groupSize" required>
+                                                <option value="">Select group size</option>
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5">5 People</option>
+                                                <option value="6">6 People</option>
+                                                <option value="7">7 People</option>
+                                                <option value="8">8 People</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="accommodationLevel" class="form-label">Lodge Preference</label>
+                                        <select class="form-control" id="accommodationLevel">
+                                            <option value="eco-luxury">Eco-Luxury Lodge (Included)</option>
+                                            <option value="premium">Premium Upgrade (+$200/night)</option>
+                                            <option value="standard">Standard Option (-$100/night)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Nature Interests (Optional)</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="photography" value="Wildlife photography focus">
+                                            <label class="form-check-label" for="photography">
+                                                Wildlife photography workshops
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="birdwatching" value="Extended bird watching">
+                                            <label class="form-check-label" for="birdwatching">
+                                                Extended bird watching sessions
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="conservation" value="Conservation education focus">
+                                            <label class="form-check-label" for="conservation">
+                                                Conservation education programs
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="canopy" value="Extended canopy experience">
+                                            <label class="form-check-label" for="canopy">
+                                                Extended canopy walk experience
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="specialRequests" class="form-label">Special Requests or Requirements</label>
+                                        <textarea class="form-control" id="specialRequests" rows="3" 
+                                                  placeholder="Any special interests, equipment needs, dietary restrictions, mobility concerns, or other requirements..."></textarea>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                                            <i class="fas fa-paper-plane me-2"></i>Send Booking Request
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256781232166?text=Hello! I'm interested in the Rwanda Golden Monkey & Nature Tour. Can you provide more information?" 
+       class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris" height="40" class="me-2">
+                        <span class="h5 mb-0 fw-bold">Gisu Safaris</span>
+                    </div>
+                    <p class="mb-4">Your trusted partner for unforgettable East African safari experiences. Specializing in Rwanda, Uganda, Kenya, and Tanzania adventures.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" aria-label="Facebook">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li><a href="../about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li><a href="../gallery.html" class="text-white-50 text-decoration-none">Gallery</a></li>
+                        <li><a href="../contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Safari Packages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="uganda.html" class="text-white-50 text-decoration-none">Uganda Safaris</a></li>
+                        <li><a href="kenya.html" class="text-white-50 text-decoration-none">Kenya Safaris</a></li>
+                        <li><a href="tanzania.html" class="text-white-50 text-decoration-none">Tanzania Safaris</a></li>
+                        <li><a href="rwanda.html" class="text-white-50 text-decoration-none">Rwanda Safaris</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Kampala, Uganda
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            +256 781 232 166
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@gisusafaris.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        function sendBookingWhatsApp(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const travelDate = document.getElementById('travelDate').value;
+            const groupSize = document.getElementById('groupSize').value;
+            const accommodation = document.getElementById('accommodationLevel').value;
+            const specialRequests = document.getElementById('specialRequests').value || 'None';
+            
+            // Get selected interests
+            const interests = [];
+            if (document.getElementById('photography').checked) interests.push('Wildlife photography focus');
+            if (document.getElementById('birdwatching').checked) interests.push('Extended bird watching');
+            if (document.getElementById('conservation').checked) interests.push('Conservation education focus');
+            if (document.getElementById('canopy').checked) interests.push('Extended canopy experience');
+            
+            const interestsText = interests.length > 0 ? interests.join(', ') : 'General nature tour';
+            
+            const message = `ðŸ’ RWANDA GOLDEN MONKEY & NATURE TOUR BOOKING REQUEST
+
+ðŸ“ GUEST DETAILS:
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+
+ðŸ—“ï¸ TRAVEL DETAILS:
+Preferred Date: ${travelDate}
+Group Size: ${groupSize} people
+Lodge Preference: ${accommodation}
+
+ðŸŒ¿ NATURE INTERESTS:
+${interestsText}
+
+ðŸ’¬ SPECIAL REQUESTS:
+${specialRequests}
+
+Please provide a detailed quote and availability for this Rwanda Golden Monkey & Nature Tour package. Thank you!`;
+            
+            const whatsappURL = `https://wa.me/256781232166?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        // Fade in elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.day-card, .highlight-box, .wildlife-facts, .canopy-experience');
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Set minimum date to tomorrow
+            const dateInput = document.getElementById('travelDate');
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+        });
+    </script>
+    <!-- Site bootstrap -->
+    <script src="../js/main.js"></script></body>
+</html>
+
+

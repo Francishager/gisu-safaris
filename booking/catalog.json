@@ -1,0 +1,154 @@
+﻿{
+    "safariCatalog":  {
+                          "rwanda":  [
+                                         {
+                                             "id":  "rwanda-golden-monkey",
+                                             "title":  "Rwanda Golden Monkey \u0026 Nature Tour",
+                                             "amount":  1299
+                                         },
+                                         {
+                                             "id":  "rwanda-gorilla-trekking",
+                                             "title":  "Rwanda Gorilla Trekking Safari",
+                                             "amount":  1500
+                                         },
+                                         {
+                                             "id":  "rwanda-kigali-cultural",
+                                             "title":  "Kigali City \u0026 Cultural Tour",
+                                             "amount":  899
+                                         },
+                                         {
+                                             "id":  "rwanda-uganda",
+                                             "title":  "Rwanda \u0026 Uganda Gorilla Adventure",
+                                             "amount":  4200
+                                         },
+                                         {
+                                             "id":  "rwanda-wildlife-culture",
+                                             "title":  "Rwanda Wildlife \u0026 Culture Combo",
+                                             "amount":  1699
+                                         }
+                                     ],
+                          "tanzania":  [
+                                           {
+                                               "id":  "tanzania-classic-tour",
+                                               "title":  "Tanzania Classic Safari Tour",
+                                               "amount":  1899
+                                           },
+                                           {
+                                               "id":  "tanzania-honeymoon",
+                                               "title":  "Tanzania Honeymoon Safari",
+                                               "amount":  2199
+                                           },
+                                           {
+                                               "id":  "tanzania-luxury-tented-camp",
+                                               "title":  "Tanzania Luxury Tented Camp Safari",
+                                               "amount":  4299
+                                           }
+                                       ],
+                          "kenya":  [
+                                        {
+                                            "id":  "kenya-beach-safari-combo",
+                                            "title":  "Ultimate Kenya Beach \u0026 Safari Combo",
+                                            "amount":  2299
+                                        },
+                                        {
+                                            "id":  "kenya-masai-mara-big-five",
+                                            "title":  "Masai Mara Big Five Safari",
+                                            "amount":  1599
+                                        },
+                                        {
+                                            "id":  "kenya-mombasa-neptune-paradise",
+                                            "title":  "Mombasa Neptune Paradise Resort",
+                                            "amount":  899
+                                        },
+                                        {
+                                            "id":  "kenya-mount-kenya-hiking",
+                                            "title":  "Mount Kenya Hiking Adventure",
+                                            "amount":  899
+                                        },
+                                        {
+                                            "id":  "kenya-samburu-national-reserve",
+                                            "title":  "Samburu National Reserve Safari",
+                                            "amount":  699
+                                        }
+                                    ],
+                          "uganda":  [
+                                         {
+                                             "id":  "uganda-big-five",
+                                             "title":  "Big Five Adventure Safari",
+                                             "amount":  1899
+                                         },
+                                         {
+                                             "id":  "uganda-budget-safari",
+                                             "title":  "Budget Uganda Explorer",
+                                             "amount":  899
+                                         },
+                                         {
+                                             "id":  "uganda-chimpanzee-tracking",
+                                             "title":  "Chimpanzee Tracking Safari",
+                                             "amount":  899
+                                         },
+                                         {
+                                             "id":  "uganda-complete-safari",
+                                             "title":  "Complete Uganda Safari",
+                                             "amount":  3299
+                                         },
+                                         {
+                                             "id":  "uganda-cultural-safari",
+                                             "title":  "Cultural Uganda Safari",
+                                             "amount":  749
+                                         },
+                                         {
+                                             "id":  "uganda-gorilla-trekking",
+                                             "title":  "Ultimate Gorilla Trekking Safari",
+                                             "amount":  700
+                                         },
+                                         {
+                                             "id":  "uganda-kenya",
+                                             "title":  "Uganda \u0026 Kenya Safari",
+                                             "amount":  3500
+                                         },
+                                         {
+                                             "id":  "uganda-kibale-national-park",
+                                             "title":  "Kibale National Park Safari",
+                                             "amount":  699
+                                         },
+                                         {
+                                             "id":  "uganda-luxury-tour",
+                                             "title":  "Ultimate Uganda Luxury Safari",
+                                             "amount":  4999
+                                         },
+                                         {
+                                             "id":  "uganda-murchison-falls",
+                                             "title":  "Murchison Falls Safari",
+                                             "amount":  1399
+                                         },
+                                         {
+                                             "id":  "uganda-queen-elizabeth",
+                                             "title":  "Queen Elizabeth Safari",
+                                             "amount":  1199
+                                         },
+                                         {
+                                             "id":  "uganda-rwenzori-hike",
+                                             "title":  "Rwenzori Mountain Hike",
+                                             "amount":  1899
+                                         },
+                                         {
+                                             "id":  "uganda-sasa-trail-mount-elgon",
+                                             "title":  "Sasa Trail - Mount Elgon",
+                                             "amount":  899
+                                         },
+                                         {
+                                             "id":  "uganda-tanzania",
+                                             "title":  "Uganda \u0026 Tanzania Safari",
+                                             "amount":  3800
+                                         }
+                                     ]
+                      },
+    "servicePrices":  {
+                          "hotel-reservation":  450,
+                          "air-ticketing":  300,
+                          "car-hire":  120,
+                          "travel-insurance":  60,
+                          "visa-processing":  100
+                      }
+}

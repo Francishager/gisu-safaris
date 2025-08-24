@@ -693,8 +693,19 @@
                 </div>
             </div>
             <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                  </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                  <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                  <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -764,20 +775,17 @@
             const finalMessage = userMessage || defaultMessage;
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
             window.open(whatsappUrl, '_blank');
-            
-            // Reset and hide chat
+
             messageInput.value = '';
             toggleWhatsAppChat();
         }
-        
-        // Enable Enter key to send message
+
         document.getElementById('whatsappMessage').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 sendWhatsAppMessage();
             }
         });
-        
-        // Close chat when clicking outside
+
         document.addEventListener('click', function(e) {
             const whatsappWidget = document.querySelector('.whatsapp-widget');
             if (!whatsappWidget.contains(e.target) && whatsappChatVisible) {
@@ -786,7 +794,6 @@
         });
     </script>
     <script>
-        // Hero carousel functionality
         const slides = document.querySelectorAll('.hero-slide');
         let currentSlide = 0;
         
@@ -799,8 +806,7 @@
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
-        
-        // Auto-advance slides every 2 seconds
+
         setInterval(nextSlide, 2000);
     </script>
 </body>

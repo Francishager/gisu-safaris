@@ -1,0 +1,996 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Kigali City & Cultural Tour - 3 Days Rwanda Heritage Experience | Gisu Safaris</title>
+    <meta name="description" content="Explore Kigali's rich history and vibrant culture with our comprehensive 3-day city tour. Visit Genocide Memorial, experience traditional arts, modern architecture, and Rwanda's remarkable transformation. Cultural immersion with expert local guides.">
+    <meta name="keywords" content="Kigali city tour, Rwanda cultural tour, genocide memorial, Kigali history, Rwanda culture, traditional crafts, modern Rwanda, cultural experience, Rwanda heritage, Kigali attractions">
+    <meta name="author" content="Gisu Safaris - Rwanda Cultural Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kigali City & Cultural Tour - Rwanda Heritage Experience">
+    <meta property="og:description" content="Discover Kigali's transformation from tragedy to triumph. Experience Rwanda's culture, history, and modern development with expert local guides.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/rwanda-kigali-cultural.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kigali City & Cultural Tour - Rwanda Heritage Experience">
+    <meta name="twitter:description" content="Discover Kigali's transformation from tragedy to triumph. Experience Rwanda's culture, history, and modern development.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/packages/rwanda-kigali-cultural.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        :root {
+            --cultural-primary: #FF7F00;
+            --cultural-secondary: #FF6347;
+            --cultural-accent: #FFD700;
+            --cultural-dark: #8B4513;
+            --memorial-gray: #696969;
+        }
+        
+        .cultural-gradient {
+            background: linear-gradient(135deg, var(--cultural-primary) 0%, var(--cultural-secondary) 100%);
+        }
+        
+        .memorial-section {
+            background: linear-gradient(45deg, rgba(105, 105, 105, 0.1), rgba(169, 169, 169, 0.1));
+            border-left: 4px solid var(--memorial-gray);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .cultural-highlight {
+            background: linear-gradient(45deg, rgba(255, 127, 0, 0.1), rgba(255, 215, 0, 0.1));
+            border-left: 4px solid var(--cultural-primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .day-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 127, 0, 0.1);
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 127, 0, 0.2);
+        }
+        
+        .itinerary-timeline {
+            position: relative;
+        }
+        
+        .itinerary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--cultural-primary), var(--cultural-secondary));
+        }
+        
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: var(--cultural-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(255, 127, 0, 0.3);
+        }
+        
+        .heritage-badge {
+            background: var(--cultural-accent);
+            color: var(--cultural-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .modern-rwanda {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-float i {
+            margin-top: 16px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .pricing-card {
+            background: var(--cultural-gradient);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .highlight-box {
+            background: rgba(255, 127, 0, 0.05);
+            border: 1px solid rgba(255, 127, 0, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .transformation-story {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 127, 0, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .memorial-respect {
+            background: rgba(105, 105, 105, 0.1);
+            border: 1px solid rgba(105, 105, 105, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .cultural-activities {
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 99, 71, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item active" href="rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Destinations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../destinations/uganda.html">Uganda</a></li>
+                            <li><a class="dropdown-item" href="../destinations/kenya.html">Kenya</a></li>
+                            <li><a class="dropdown-item" href="../destinations/tanzania.html">Tanzania</a></li>
+                            <li><a class="dropdown-item" href="../destinations/rwanda.html">Rwanda</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 100vh; background: linear-gradient(rgba(255, 127, 0, 0.7), rgba(139, 69, 19, 0.8)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="rwanda.html" class="text-white-50">Rwanda</a></li>
+                                    <li class="breadcrumb-item active text-white" aria-current="page">Kigali Cultural Tour</li>
+                                </ol>
+                            </nav>
+                            
+                            <span class="badge bg-info fs-6 mb-3">
+                                <i class="fas fa-heart me-1"></i>Cultural Heritage Experience
+                            </span>
+                            
+                            <h1 class="hero-title display-2 fw-bold text-white mb-4">
+                                Kigali City & Cultural Tour
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                Discover Rwanda's remarkable transformation through Kigali's modern cityscape, profound history, and vibrant culture. Experience the journey from tragedy to triumph while immersing yourself in authentic Rwandan traditions.
+                            </p>
+                            <div class="hero-buttons">
+                                <a href="#itinerary" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-route me-2"></i>View Itinerary
+                                </a>
+                                <a href="#booking" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-calendar-plus me-2"></i>Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container my-5">
+            <div class="row">
+                <!-- Main Content Column -->
+                <div class="col-lg-8">
+                    <!-- Package Overview -->
+                    <section class="mb-5">
+                        <h2 class="display-5 fw-bold mb-4">Discover Modern Rwanda's Cultural Heritage</h2>
+                        
+                        <div class="transformation-story">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="mb-3"><i class="fas fa-heart text-danger me-2"></i>Africa's Greatest Success Story</h4>
+                                    <p class="mb-0">Experience Rwanda's extraordinary transformation from a nation recovering from genocide to a model of unity, progress, and hope. Kigali exemplifies this remarkable journey of healing and development.</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <i class="fas fa-city fa-4x text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="lead">Our comprehensive 3-day cultural tour takes you through Kigali's evolution from its painful past to its inspiring present. You'll visit significant historical sites, experience authentic Rwandan culture, and witness the incredible progress of Africa's cleanest and safest capital city.</p>
+                        
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-6">
+                                <div class="highlight-box">
+                                    <h5><i class="fas fa-monument text-primary me-2"></i>Historical Significance</h5>
+                                    <p class="mb-0">Visit the Genocide Memorial and learn about Rwanda's history with respect and understanding, guided by knowledgeable local experts.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="highlight-box">
+                                    <h5><i class="fas fa-palette text-warning me-2"></i>Living Culture</h5>
+                                    <p class="mb-0">Experience vibrant traditional arts, crafts, music, and dance while interacting with local artisans and cultural performers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Rwanda Cultural Facts -->
+                    <section class="modern-rwanda mb-5">
+                        <h3 class="fw-bold mb-4"><i class="fas fa-info-circle text-primary me-2"></i>Rwanda Today</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Africa's cleanest and safest capital city</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>First country with female-majority parliament</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Banned plastic bags since 2008</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Fastest growing economy in East Africa</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Home to 3 official languages: Kinyarwanda, English, French</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Monthly community service (Umuganda)</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Technology hub of East Africa</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Model of gender equality and unity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Detailed Itinerary -->
+                    <section id="itinerary" class="mb-5">
+                        <h2 class="display-6 fw-bold mb-4">Detailed 3-Day Cultural Itinerary</h2>
+                        
+                        <div class="itinerary-timeline">
+                            <!-- Day 1 -->
+                            <div class="row mb-5">
+                                <div class="col-auto">
+                                    <div class="timeline-dot">
+                                        <span>1</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-card card h-100">
+                                        <div class="card-header cultural-gradient text-white">
+                                            <h4 class="card-title mb-0">
+                                                <i class="fas fa-plane-arrival me-2"></i>Day 1: Kigali Historical Journey
+                                                <span class="heritage-badge float-end">Historical Sites</span>
+                                            </h4>
+                                            <p class="mb-0 opacity-75">Genocide Memorial & City Overview</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5><i class="fas fa-clock text-primary me-2"></i>Morning (9:00 AM - 12:00 PM)</h5>
+                                                    <ul>
+                                                        <li><strong>Airport pickup & hotel check-in</strong></li>
+                                                        <li><strong>Kigali Genocide Memorial:</strong> Respectful visit to learn about the 1994 genocide and Rwanda's journey of reconciliation</li>
+                                                        <li><strong>Memorial gardens & exhibits:</strong> Understanding the history through survivor testimonies and educational displays</li>
+                                                        <li><strong>Reflection time:</strong> Moment of silence and respect</li>
+                                                    </ul>
+                                                    
+                                                    <h5><i class="fas fa-utensils text-primary me-2"></i>Afternoon (1:00 PM - 5:00 PM)</h5>
+                                                    <ul>
+                                                        <li><strong>Traditional Rwandan lunch:</strong> Experience authentic cuisine</li>
+                                                        <li><strong>Kigali city center tour:</strong> Modern architecture and urban planning</li>
+                                                        <li><strong>Kimironko Market:</strong> Bustling local market experience</li>
+                                                        <li><strong>Craft shops visit:</strong> Traditional Rwandan handicrafts</li>
+                                                    </ul>
+                                                    
+                                                    <div class="memorial-respect">
+                                                        <h6><i class="fas fa-hands-praying me-2"></i>Memorial Visit Guidelines</h6>
+                                                        <p class="mb-0">This visit requires appropriate dress code, respectful behavior, and sensitivity to the profound nature of the site. Our guides provide historical context with dignity.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" 
+                                                         alt="Kigali Genocide Memorial" class="img-fluid rounded shadow-sm">
+                                                    <div class="mt-3">
+                                                        <h6><i class="fas fa-bed me-1"></i> Accommodation</h6>
+                                                        <p class="small mb-0">Central Kigali hotel</p>
+                                                        <h6 class="mt-2"><i class="fas fa-utensils me-1"></i> Meals</h6>
+                                                        <p class="small mb-0">Lunch, Dinner</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Day 2 -->
+                            <div class="row mb-5">
+                                <div class="col-auto">
+                                    <div class="timeline-dot">
+                                        <span>2</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-card card h-100">
+                                        <div class="card-header cultural-gradient text-white">
+                                            <h4 class="card-title mb-0">
+                                                <i class="fas fa-palette me-2"></i>Day 2: Cultural Immersion
+                                                <span class="badge bg-warning text-dark float-end">Cultural Activities</span>
+                                            </h4>
+                                            <p class="mb-0 opacity-75">Traditional Arts, Crafts & Performances</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5><i class="fas fa-sun text-primary me-2"></i>Morning Cultural Experience</h5>
+                                                    <ul>
+                                                        <li><strong>Nyamirambo Cultural Walk:</strong> Explore vibrant Muslim quarter</li>
+                                                        <li><strong>Traditional craft workshops:</strong> Learn basket weaving (Agaseke)</li>
+                                                        <li><strong>Local artisan visits:</strong> Meet pottery and wood carving artists</li>
+                                                        <li><strong>Coffee ceremony:</strong> Traditional Rwandan coffee preparation</li>
+                                                        <li><strong>Hair salon experience:</strong> Traditional hair braiding (optional)</li>
+                                                    </ul>
+                                                    
+                                                    <h5><i class="fas fa-music text-primary me-2"></i>Afternoon Performances</h5>
+                                                    <ul>
+                                                        <li><strong>Intore dancing lessons:</strong> Learn traditional warrior dances</li>
+                                                        <li><strong>Drumming session:</strong> Experience Rwandan rhythms</li>
+                                                        <li><strong>Cultural storytelling:</strong> Ancient legends and proverbs</li>
+                                                        <li><strong>Traditional games:</strong> Participate in local sports</li>
+                                                        <li><strong>Community dinner:</strong> Feast with local families</li>
+                                                    </ul>
+                                                    
+                                                    <div class="cultural-activities">
+                                                        <h6><i class="fas fa-hands-helping me-2"></i>Interactive Experiences</h6>
+                                                        <p class="mb-0">All cultural activities are hands-on experiences where you participate alongside local community members, creating authentic connections.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" 
+                                                         alt="Traditional Rwandan dancing" class="img-fluid rounded shadow-sm">
+                                                    <div class="mt-3">
+                                                        <h6><i class="fas fa-users me-1"></i> Group Size</h6>
+                                                        <p class="small mb-0">Small groups for intimate experience</p>
+                                                        <h6 class="mt-2"><i class="fas fa-language me-1"></i> Language</h6>
+                                                        <p class="small mb-0">English & Kinyarwanda guides</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Day 3 -->
+                            <div class="row mb-5">
+                                <div class="col-auto">
+                                    <div class="timeline-dot">
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-card card h-100">
+                                        <div class="card-header cultural-gradient text-white">
+                                            <h4 class="card-title mb-0">
+                                                <i class="fas fa-building me-2"></i>Day 3: Modern Rwanda & Departure
+                                                <span class="badge bg-info float-end">Modern Kigali</span>
+                                            </h4>
+                                            <p class="mb-0 opacity-75">Contemporary Culture & Innovation</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5><i class="fas fa-city text-primary me-2"></i>Modern Kigali Exploration</h5>
+                                                    <ul>
+                                                        <li><strong>Kigali Convention Centre:</strong> Modern architectural marvel</li>
+                                                        <li><strong>Art galleries:</strong> Contemporary Rwandan artists</li>
+                                                        <li><strong>Innovation hubs:</strong> Tech startups and modern businesses</li>
+                                                        <li><strong>Green spaces:</strong> Parks and environmental initiatives</li>
+                                                        <li><strong>Shopping centers:</strong> Modern retail and local brands</li>
+                                                    </ul>
+                                                    
+                                                    <h5><i class="fas fa-globe text-primary me-2"></i>Cultural Integration</h5>
+                                                    <ul>
+                                                        <li><strong>Language exchange:</strong> Learn basic Kinyarwanda phrases</li>
+                                                        <li><strong>Modern Rwandan lunch:</strong> Fusion cuisine experience</li>
+                                                        <li><strong>Souvenir shopping:</strong> High-quality local crafts</li>
+                                                        <li><strong>Photography session:</strong> Capture memories of your journey</li>
+                                                        <li><strong>Airport transfer:</strong> Departure with cultural gifts</li>
+                                                    </ul>
+                                                    
+                                                    <div class="alert alert-success">
+                                                        <h6><i class="fas fa-gift me-2"></i>Cultural Gifts</h6>
+                                                        <p class="mb-0">Receive traditional Rwandan gifts as mementos of your cultural journey, including handcrafted items made by local artisans.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" 
+                                                         alt="Modern Kigali skyline" class="img-fluid rounded shadow-sm">
+                                                    <div class="mt-3">
+                                                        <h6><i class="fas fa-car me-1"></i> Transport</h6>
+                                                        <p class="small mb-0">Private vehicle with AC</p>
+                                                        <h6 class="mt-2"><i class="fas fa-clock me-1"></i> Flight Time</h6>
+                                                        <p class="small mb-0">Depart after 3:00 PM</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cultural Highlights -->
+                    <section class="mb-5">
+                        <h3 class="display-6 fw-bold mb-4">Cultural Highlights</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="cultural-highlight">
+                                    <h5><i class="fas fa-drum text-primary me-2"></i>Traditional Arts</h5>
+                                    <ul class="list-unstyled mb-0">
+                                        <li><i class="fas fa-check text-success me-2"></i>Intore warrior dancing</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Traditional drumming</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Basket weaving (Agaseke)</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Pottery and wood carving</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cultural-highlight">
+                                    <h5><i class="fas fa-utensils text-primary me-2"></i>Culinary Experiences</h5>
+                                    <ul class="list-unstyled mb-0">
+                                        <li><i class="fas fa-check text-success me-2"></i>Traditional Rwandan cuisine</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Coffee ceremony participation</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Local market food tasting</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Community feast dining</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- What's Included/Excluded -->
+                    <section class="mb-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="fw-bold text-success mb-3">
+                                    <i class="fas fa-check-circle me-2"></i>What's Included
+                                </h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>2 nights luxury hotel accommodation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>All meals (breakfast, lunch, dinner)</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Professional cultural guide</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Private air-conditioned vehicle</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Airport transfers</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>All cultural activities</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Genocide Memorial visit</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Traditional craft workshops</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Cultural performances</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Market tours</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Cultural gifts and certificates</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Bottled water throughout</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="fw-bold text-danger mb-3">
+                                    <i class="fas fa-times-circle me-2"></i>What's Not Included
+                                </h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-times text-danger me-2"></i>International flights</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Rwanda visa (if required)</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Travel insurance</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Personal expenses</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Alcoholic beverages</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Tips and gratuities</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Optional spa treatments</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Laundry services</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Souvenirs beyond included gifts</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Medical expenses</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Photography fees at some sites</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i>Items of personal nature</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Pricing Card -->
+                    <div class="pricing-card mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-1">From</h3>
+                            <div class="display-4 fw-bold">$899</div>
+                            <p class="mb-0 opacity-75">per person</p>
+                            
+                            <hr class="my-4">
+                            
+                            <div class="text-start">
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="col-6 text-end">4.8/5 (89 reviews)</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-clock me-2"></i>Duration:</div>
+                                    <div class="col-6 text-end">3 Days</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-users me-2"></i>Group Size:</div>
+                                    <div class="col-6 text-end">2-12 People</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6"><i class="fas fa-calendar me-2"></i>Best Time:</div>
+                                    <div class="col-6 text-end">Year Round</div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-6"><i class="fas fa-tag me-2"></i>Style:</div>
+                                    <div class="col-6 text-end">Cultural</div>
+                                </div>
+                            </div>
+                            
+                            <a href="#booking" class="btn btn-light btn-lg w-100 mb-3">
+                                <i class="fas fa-paper-plane me-2"></i>Book This Tour
+                            </a>
+                            <a href="../contact.html" class="btn btn-outline-light w-100">
+                                <i class="fas fa-phone me-2"></i>Get Custom Quote
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Special Features -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-heart me-2 text-danger"></i>Cultural Features</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="fas fa-monument text-primary me-2"></i><strong>Historical:</strong> Genocide Memorial visit</li>
+                                <li class="mb-2"><i class="fas fa-palette text-primary me-2"></i><strong>Arts:</strong> Traditional craft workshops</li>
+                                <li class="mb-2"><i class="fas fa-music text-success me-2"></i><strong>Performance:</strong> Dancing and drumming</li>
+                                <li class="mb-2"><i class="fas fa-utensils text-warning me-2"></i><strong>Culinary:</strong> Authentic cuisine experiences</li>
+                                <li><i class="fas fa-city text-info me-2"></i><strong>Modern:</strong> Contemporary Rwanda tour</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-headset me-2 text-info"></i>Cultural Consultation</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-3">Our cultural specialists can customize this tour to focus on specific aspects of Rwandan culture that interest you most.</p>
+                            <div class="d-grid gap-2">
+                                <a href="tel:+256123456789" class="btn btn-outline-primary">
+                                    <i class="fas fa-phone me-2"></i>Call Expert
+                                </a>
+                                <a href="mailto:info@gisusafaris.com" class="btn btn-outline-primary">
+                                    <i class="fas fa-envelope me-2"></i>Email Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h2 class="display-5 fw-bold">Book Your Kigali Cultural Experience</h2>
+                            <p class="lead">Ready to discover Rwanda's rich heritage? Complete this form and we'll contact you within 24 hours.</p>
+                        </div>
+                        
+                        <div class="card shadow-lg">
+                            <div class="card-body p-4">
+                                <form id="bookingForm" onsubmit="sendBookingWhatsApp(event)">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="travelDate" class="form-label">Preferred Travel Date *</label>
+                                            <input type="date" class="form-control" id="travelDate" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="groupSize" class="form-label">Number of Travelers *</label>
+                                            <select class="form-control" id="groupSize" required>
+                                                <option value="">Select group size</option>
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3">3 People</option>
+                                                <option value="4">4 People</option>
+                                                <option value="5">5 People</option>
+                                                <option value="6">6 People</option>
+                                                <option value="7-8">7-8 People</option>
+                                                <option value="9-12">9-12 People</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="accommodationLevel" class="form-label">Hotel Preference</label>
+                                        <select class="form-control" id="accommodationLevel">
+                                            <option value="standard">Standard Hotel (Included)</option>
+                                            <option value="luxury">Luxury Hotel (+$150/night)</option>
+                                            <option value="boutique">Boutique Hotel (+$100/night)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Cultural Interests (Optional)</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="history" value="Historical focus">
+                                            <label class="form-check-label" for="history">
+                                                Historical sites and storytelling
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="arts" value="Arts and crafts focus">
+                                            <label class="form-check-label" for="arts">
+                                                Traditional arts and crafts workshops
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="music" value="Music and dance focus">
+                                            <label class="form-check-label" for="music">
+                                                Music, dance, and performances
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="modern" value="Modern Rwanda focus">
+                                            <label class="form-check-label" for="modern">
+                                                Modern Rwanda and innovation
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="specialRequests" class="form-label">Special Requests or Requirements</label>
+                                        <textarea class="form-control" id="specialRequests" rows="3" 
+                                                  placeholder="Any dietary restrictions, accessibility needs, specific cultural interests, or other requirements..."></textarea>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                                            <i class="fas fa-paper-plane me-2"></i>Send Booking Request
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256123456789?text=Hello! I'm interested in the Kigali City & Cultural Tour. Can you provide more information?" 
+       class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris" height="40" class="me-2">
+                        <span class="h5 mb-0 fw-bold">Gisu Safaris</span>
+                    </div>
+                    <p class="mb-4">Your trusted partner for unforgettable East African safari experiences. Specializing in Rwanda, Uganda, Kenya, and Tanzania adventures.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" aria-label="Facebook">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li><a href="../about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li><a href="../gallery.html" class="text-white-50 text-decoration-none">Gallery</a></li>
+                        <li><a href="../contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Safari Packages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="uganda.html" class="text-white-50 text-decoration-none">Uganda Safaris</a></li>
+                        <li><a href="kenya.html" class="text-white-50 text-decoration-none">Kenya Safaris</a></li>
+                        <li><a href="tanzania.html" class="text-white-50 text-decoration-none">Tanzania Safaris</a></li>
+                        <li><a href="rwanda.html" class="text-white-50 text-decoration-none">Rwanda Safaris</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Kampala, Uganda
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            +256 123 456 789
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@gisusafaris.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        function sendBookingWhatsApp(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const travelDate = document.getElementById('travelDate').value;
+            const groupSize = document.getElementById('groupSize').value;
+            const accommodation = document.getElementById('accommodationLevel').value;
+            const specialRequests = document.getElementById('specialRequests').value || 'None';
+            
+            // Get selected interests
+            const interests = [];
+            if (document.getElementById('history').checked) interests.push('Historical focus');
+            if (document.getElementById('arts').checked) interests.push('Arts and crafts focus');
+            if (document.getElementById('music').checked) interests.push('Music and dance focus');
+            if (document.getElementById('modern').checked) interests.push('Modern Rwanda focus');
+            
+            const interestsText = interests.length > 0 ? interests.join(', ') : 'General cultural tour';
+            
+            const message = `ðŸ›ï¸ KIGALI CITY & CULTURAL TOUR BOOKING REQUEST
+
+ðŸ“ GUEST DETAILS:
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+
+ðŸ—“ï¸ TRAVEL DETAILS:
+Preferred Date: ${travelDate}
+Group Size: ${groupSize} people
+Hotel Preference: ${accommodation}
+
+ðŸŽ­ CULTURAL INTERESTS:
+${interestsText}
+
+ðŸ’¬ SPECIAL REQUESTS:
+${specialRequests}
+
+Please provide a detailed quote and availability for this Kigali City & Cultural Tour package. Thank you!`;
+            
+            const whatsappURL = `https://wa.me/256123456789?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        // Fade in elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.day-card, .highlight-box, .modern-rwanda, .cultural-activities');
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Set minimum date to tomorrow
+            const dateInput = document.getElementById('travelDate');
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+        });
+    </script>
+    <!-- Site bootstrap -->
+    <script src="../js/main.js"></script></body>
+</html>
+
+
+

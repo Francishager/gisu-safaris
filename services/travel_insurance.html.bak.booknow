@@ -1,0 +1,863 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Travel Insurance Services - Gisu Safaris | Comprehensive Safari Coverage</title>
+    <meta name="description" content="Comprehensive travel insurance services by Gisu Safaris. Protect your East African safari adventure with medical, trip cancellation, and emergency coverage.">
+    <meta name="keywords" content="travel insurance, safari insurance, medical coverage, trip protection, East Africa travel insurance, emergency coverage">
+    <meta name="author" content="Gisu Safaris - East Africa Safari Specialists">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Travel Insurance Services - Gisu Safaris">
+    <meta property="og:description" content="Comprehensive travel insurance coverage for your East African safari adventure.">
+    <meta property="og:url" content="https://gisusafaris.com/services/travel_insurance.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gisusafaris.com/services/travel_insurance.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../packages/uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="../packages/kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="../packages/tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="../packages/rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../packages/multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item active" href="./travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="./air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="./car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="./safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="./visa.html">Visa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../contact.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero-section" style="height: 60vh; background: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-8 fade-element">
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Travel Insurance Services
+                            </h1>
+                            <p class="hero-description lead text-white mb-0">
+                                Comprehensive protection for your East African safari adventure
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Service Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 fade-element">
+                        <h2 class="display-5 fw-bold mb-4">Complete <span class="text-primary">Protection</span></h2>
+                        <p class="lead mb-4">Travel with confidence knowing you're protected by comprehensive insurance coverage tailored specifically for East African safari adventures.</p>
+                        <p class="mb-4">Our travel insurance services provide peace of mind with medical coverage, trip protection, and emergency assistance throughout your journey.</p>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                                    <span>Medical Coverage</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-plane text-primary me-2"></i>
+                                    <span>Trip Cancellation</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-ambulance text-primary me-2"></i>
+                                    <span>Emergency Evacuation</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-clock text-primary me-2"></i>
+                                    <span>24/7 Assistance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-element">
+                        <img src="../images/img/air-ticketing.jpg" alt="Travel insurance protection" class="img-fluid rounded-3 shadow hover-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coverage Types -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Insurance <span class="text-primary">Coverage</span></h2>
+                    <p class="lead">Comprehensive protection for every aspect of your safari</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-sm hover-card">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-user-md fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Medical & Health</h5>
+                                <p class="card-text">Comprehensive medical coverage including emergency treatment, hospitalization, and prescription medications.</p>
+                                <ul class="list-unstyled text-start">
+                                    <li><i class="fas fa-check text-success me-2"></i>Emergency Medical Treatment</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Hospital Coverage</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Prescription Drugs</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Pre-existing Conditions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-sm hover-card">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-calendar-times fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Trip Protection</h5>
+                                <p class="card-text">Protection against trip cancellation, interruption, and delays due to unforeseen circumstances.</p>
+                                <ul class="list-unstyled text-start">
+                                    <li><i class="fas fa-check text-success me-2"></i>Trip Cancellation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Trip Interruption</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Travel Delays</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Missed Connections</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-sm hover-card">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-helicopter fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title fw-bold">Emergency Services</h5>
+                                <p class="card-text">Emergency evacuation, repatriation, and 24/7 assistance services when you need them most.</p>
+                                <ul class="list-unstyled text-start">
+                                    <li><i class="fas fa-check text-success me-2"></i>Medical Evacuation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Repatriation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>24/7 Hotline</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Emergency Assistance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Our Insurance -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Why Choose Our <span class="text-primary">Insurance</span></h2>
+                    <p class="lead">Specialized coverage designed for African safari adventures</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 fade-element">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-globe-africa fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="fw-bold">Africa Specialist Coverage</h5>
+                                <p>Insurance plans specifically designed for East African travel, covering unique risks and activities like gorilla trekking and safari adventures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-element">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-handshake fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="fw-bold">Trusted Partners</h5>
+                                <p>We work with leading international insurance providers with proven track records in African travel coverage and claims processing.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-element">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-dollar-sign fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="fw-bold">Competitive Rates</h5>
+                                <p>Get the best coverage at competitive prices with group discounts available for safari tour bookings through Gisu Safaris.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-element">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-headset fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="fw-bold">Expert Support</h5>
+                                <p>Our team provides expert guidance in selecting the right coverage and assists with claims processing throughout your journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insurance Quote Calculator -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Get Instant <span class="text-primary">Quote</span></h2>
+                    <p class="lead">Calculate your travel insurance premium in seconds</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow-lg border-0">
+                            <div class="card-body p-4">
+                                <form id="quoteForm" class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="destination" class="form-label fw-semibold">Destination</label>
+                                        <select class="form-select" id="destination" required>
+                                            <option value="">Select destination...</option>
+                                            <option value="uganda">Uganda</option>
+                                            <option value="kenya">Kenya</option>
+                                            <option value="tanzania">Tanzania</option>
+                                            <option value="rwanda">Rwanda</option>
+                                            <option value="multi-country">Multi-Country Tour</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="trip-duration" class="form-label fw-semibold">Trip Duration</label>
+                                        <select class="form-select" id="trip-duration" required>
+                                            <option value="">Select duration...</option>
+                                            <option value="1-3">1-3 days</option>
+                                            <option value="4-7">4-7 days</option>
+                                            <option value="8-14">8-14 days</option>
+                                            <option value="15-21">15-21 days</option>
+                                            <option value="22+">22+ days</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="age-group" class="form-label fw-semibold">Age Group</label>
+                                        <select class="form-select" id="age-group" required>
+                                            <option value="">Select age...</option>
+                                            <option value="18-30">18-30 years</option>
+                                            <option value="31-50">31-50 years</option>
+                                            <option value="51-65">51-65 years</option>
+                                            <option value="65+">65+ years</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="coverage-level" class="form-label fw-semibold">Coverage Level</label>
+                                        <select class="form-select" id="coverage-level" required>
+                                            <option value="">Select coverage...</option>
+                                            <option value="basic">Basic Coverage</option>
+                                            <option value="standard">Standard Coverage</option>
+                                            <option value="comprehensive">Comprehensive Coverage</option>
+                                            <option value="premium">Premium Coverage</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="adventure-activities">
+                                            <label class="form-check-label" for="adventure-activities">
+                                                Include adventure activities (gorilla trekking, mountain climbing, etc.)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="button" class="btn btn-primary btn-lg px-5" onclick="calculateQuote()">
+                                            <i class="fas fa-calculator me-2"></i>Calculate Quote
+                                        </button>
+                                    </div>
+                                </form>
+                                <div id="quote-result" class="mt-4 d-none">
+                                    <div class="alert alert-success text-center">
+                                        <h5 class="mb-2">Your Estimated Premium</h5>
+                                        <div class="display-6 fw-bold text-primary" id="quote-amount">$0</div>
+                                        <p class="mb-3">*Final premium may vary based on specific requirements</p>
+                                        <button class="btn btn-success btn-lg me-2" data-bs-toggle="modal" data-bs-target="#purchaseModal">
+                                            <i class="fas fa-shopping-cart me-2"></i>Purchase Now
+                                        </button>
+                                        <button class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#customizeModal">
+                                            <i class="fas fa-cog me-2"></i>Customize Coverage
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insurance Plans -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Insurance <span class="text-primary">Plans</span></h2>
+                    <p class="lead">Choose the perfect coverage for your safari adventure</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg">
+                            <div class="card-header bg-white text-center py-4 border-0">
+                                <h4 class="fw-bold text-primary">Basic</h4>
+                                <div class="display-4 fw-bold text-dark">$25<small class="fs-6 text-muted">/day</small></div>
+                                <p class="text-muted mb-0">Essential protection</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Medical coverage up to $50,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Trip cancellation up to $5,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Emergency evacuation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 assistance</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>Adventure activities</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>Pre-existing conditions</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-outline-primary btn-lg w-100">
+                                    <i class="fas fa-shield-alt me-2"></i>Select Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg">
+                            <div class="card-header bg-info text-white text-center py-4 border-0">
+                                <h4 class="fw-bold">Standard</h4>
+                                <div class="display-4 fw-bold">$45<small class="fs-6">/day</small></div>
+                                <p class="mb-0">Balanced coverage</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Medical coverage up to $100,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Trip cancellation up to $10,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Emergency evacuation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 assistance</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Baggage protection</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>Pre-existing conditions</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-info btn-lg w-100">
+                                    <i class="fas fa-star me-2"></i>Select Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card h-100 border-primary shadow-lg position-relative">
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <span class="badge bg-primary fs-6 px-3 py-2">Most Popular</span>
+                            </div>
+                            <div class="card-header bg-primary text-white text-center py-4 border-0">
+                                <h4 class="fw-bold">Comprehensive</h4>
+                                <div class="display-4 fw-bold">$75<small class="fs-6">/day</small></div>
+                                <p class="mb-0">Complete protection</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Medical coverage up to $250,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Trip cancellation up to $25,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Emergency evacuation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 assistance</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Adventure activities</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Pre-existing conditions</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-crown me-2"></i>Select Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg">
+                            <div class="card-header bg-dark text-white text-center py-4 border-0">
+                                <h4 class="fw-bold">Premium</h4>
+                                <div class="display-4 fw-bold">$120<small class="fs-6">/day</small></div>
+                                <p class="mb-0">Ultimate coverage</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Medical coverage up to $500,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Trip cancellation up to $50,000</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Emergency evacuation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 concierge service</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All adventure activities</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cancel for any reason</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-dark btn-lg w-100">
+                                    <i class="fas fa-gem me-2"></i>Select Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Claims Process -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Simple <span class="text-primary">Claims Process</span></h2>
+                    <p class="lead">Easy steps to file and track your insurance claims</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-phone fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">1. Report Incident</h5>
+                        <p>Contact our 24/7 emergency hotline immediately to report any incident or emergency.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-file-alt fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">2. Submit Documents</h5>
+                        <p>Upload required documents and receipts through our secure online portal or mobile app.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-search fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">3. Claim Review</h5>
+                        <p>Our expert team reviews your claim and may request additional information if needed.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-money-check-alt fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">4. Get Reimbursed</h5>
+                        <p>Receive your reimbursement via bank transfer or check within 5-10 business days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-5 bg-primary text-white">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-5 fw-bold mb-4">Protect Your Safari Adventure</h2>
+                        <p class="lead mb-4">Don't let unexpected events ruin your dream safari. Get comprehensive travel insurance coverage today.</p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <a href="../contact.html" class="btn btn-light btn-lg">
+                                <i class="fas fa-shield-alt me-2"></i>Get Coverage
+                            </a>
+                            <a href="tel:+256123456789" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-phone me-2"></i>Call Expert
+                            </a>
+                            <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#whatsappModal">
+                                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purchase Modal -->
+        <div class="modal fade" id="purchaseModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title"><i class="fas fa-shopping-cart me-2"></i>Purchase Travel Insurance</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="purchase-name" class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" id="purchase-name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="purchase-email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="purchase-email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="purchase-phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="purchase-phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="purchase-dob" class="form-label">Date of Birth *</label>
+                                    <input type="date" class="form-control" id="purchase-dob" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="travel-start" class="form-label">Travel Start Date *</label>
+                                    <input type="date" class="form-control" id="travel-start" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="travel-end" class="form-label">Travel End Date *</label>
+                                    <input type="date" class="form-control" id="travel-end" required>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="terms-agree" required>
+                                        <label class="form-check-label" for="terms-agree">
+                                            I agree to the <a href="#" class="text-primary">Terms and Conditions</a> and <a href="#" class="text-primary">Privacy Policy</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-success">
+                            <i class="fas fa-credit-card me-2"></i>Proceed to Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customize Coverage Modal -->
+        <div class="modal fade" id="customizeModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="fas fa-cog me-2"></i>Customize Your Coverage</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <h6 class="fw-bold">Additional Coverage Options</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rental-car">
+                                        <label class="form-check-label" for="rental-car">
+                                            Rental Car Coverage (+$15/day)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="electronics">
+                                        <label class="form-check-label" for="electronics">
+                                            Electronics Protection (+$10/day)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="business-equipment">
+                                        <label class="form-check-label" for="business-equipment">
+                                            Business Equipment (+$20/day)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cancel-any-reason">
+                                        <label class="form-check-label" for="cancel-any-reason">
+                                            Cancel for Any Reason (+$25/day)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="special-requirements" class="form-label">Special Requirements</label>
+                                    <textarea class="form-control" id="special-requirements" rows="3" placeholder="Any specific coverage needs or medical conditions to consider..."></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-calculator me-2"></i>Recalculate Quote
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Modal -->
+        <div class="modal fade" id="whatsappModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title"><i class="fab fa-whatsapp me-2"></i>Contact via WhatsApp</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="mb-4">
+                            <i class="fab fa-whatsapp text-success" style="font-size: 4rem;"></i>
+                        </div>
+                        <h5>Get instant assistance!</h5>
+                        <p class="text-muted">Chat with our travel insurance specialists on WhatsApp for immediate support and personalized quotes.</p>
+                        <div class="d-grid gap-2">
+                            <a href="https://wa.me/256123456789?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20travel%20insurance%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
+                                <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        function calculateQuote() {
+            const destination = document.getElementById('destination').value;
+            const duration = document.getElementById('trip-duration').value;
+            const age = document.getElementById('age-group').value;
+            const coverage = document.getElementById('coverage-level').value;
+            const adventure = document.getElementById('adventure-activities').checked;
+            
+            if (!destination || !duration || !age || !coverage) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Simple quote calculation logic
+            let baseRate = 25;
+            
+            // Coverage multipliers
+            const coverageRates = {
+                'basic': 1,
+                'standard': 1.8,
+                'comprehensive': 3,
+                'premium': 4.8
+            };
+            
+            // Duration multipliers
+            const durationRates = {
+                '1-3': 3,
+                '4-7': 6,
+                '8-14': 12,
+                '15-21': 18,
+                '22+': 25
+            };
+            
+            // Age multipliers
+            const ageRates = {
+                '18-30': 1,
+                '31-50': 1.2,
+                '51-65': 1.5,
+                '65+': 2
+            };
+            
+            let quote = baseRate * coverageRates[coverage] * durationRates[duration] * ageRates[age];
+            
+            if (adventure) {
+                quote *= 1.3; // 30% surcharge for adventure activities
+            }
+            
+            document.getElementById('quote-amount').textContent = '$' + Math.round(quote);
+            document.getElementById('quote-result').classList.remove('d-none');
+        }
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">Gisu Safaris</h5>
+                    <p>Your trusted partner for extraordinary East African wildlife adventures and comprehensive travel protection services.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="../about.html" class="text-light text-decoration-none">About</a></li>
+                        <li><a href="../packages.html" class="text-light text-decoration-none">Packages</a></li>
+                        <li><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="./hotel-reservation.html" class="text-light text-decoration-none">Hotel Reservation</a></li>
+                        <li><a href="./travel_insurance.html" class="text-light text-decoration-none">Travel Insurance</a></li>
+                        <li><a href="./air_ticketing.html" class="text-light text-decoration-none">Air Ticketing</a></li>
+                        <li><a href="./visa.html" class="text-light text-decoration-none">Visa Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda</p>
+                    <p><i class="fas fa-phone me-2"></i>+256 123 456 789</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    
+    <!-- Fade Animation Script -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all fade elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-element');
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        
+        // Mobile menu improvements
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.querySelector('.navbar');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navbar.contains(e.target) && navbarCollapse.classList.contains('show')) {
+                    navbarToggler.click();
+                }
+            });
+            
+            // Close mobile menu when clicking on nav links
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Site bootstrap -->
+    <script src="../js/main.js"></script></body>
+</html>
+

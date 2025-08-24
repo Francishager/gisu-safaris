@@ -272,6 +272,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1; /* ensure content sits above animated layers */
 }
 
 .hero-title {
@@ -312,6 +313,126 @@ body {
     background: rgba(0,0,0,0.3);
     border-radius: 25px;
     backdrop-filter: blur(10px);
+}
+
+/* === Cinematic Hero Effects (Ken Burns + Vignette) === */
+.hero-kenburns {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated layer uses parent's background for smooth zoom/pan */
+.hero-kenburns::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;             /* reuse inline background image */
+    background-size: cover;
+    background-position: center;
+    transform: scale(1) translateZ(0);
+    will-change: transform, background-position;
+    animation: kenburns-zoom 22s ease-in-out infinite alternate;
+    z-index: 0;
+    filter: saturate(1.05) contrast(1.05) brightness(0.95);
+}
+
+/* Soft vignette for cinematic depth */
+.hero-vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
+    z-index: 0;
+}
+
+/* Animated sky layers (behind overlay, above base image) */
+.hero-sky {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0; /* sits with background layers */
+}
+
+.hero-sky .sun-glow {
+    position: absolute;
+    width: 80vmin;
+    height: 80vmin;
+    top: -20vmin;
+    right: -10vmin;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 214, 140, 0.45) 0%, rgba(255, 176, 59, 0.25) 35%, rgba(255, 150, 0, 0.12) 55%, rgba(255, 140, 0, 0) 70%);
+    filter: blur(2px) saturate(1.05);
+    animation: sun-glow-pulse 8s ease-in-out infinite alternate;
+}
+
+.hero-sky .clouds {
+    position: absolute;
+    inset: 0;
+    opacity: 0.33;
+    background-repeat: repeat;
+    background-size: 1600px 600px;
+    /* Soft cloud blobs constructed via layered radial-gradients */
+    background-image:
+      radial-gradient(ellipse at 10% 30%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.0) 60%),
+      radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.0) 55%),
+      radial-gradient(ellipse at 55% 35%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.0) 60%),
+      radial-gradient(ellipse at 75% 25%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.0) 55%),
+      radial-gradient(ellipse at 90% 30%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.0) 60%),
+      radial-gradient(ellipse at 20% 65%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.0) 55%),
+      radial-gradient(ellipse at 45% 70%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.0) 60%),
+      radial-gradient(ellipse at 70% 65%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.0) 55%);
+}
+
+.hero-sky .clouds.layer-1 {
+    animation: clouds-drift-1 60s linear infinite;
+}
+
+.hero-sky .clouds.layer-2 {
+    opacity: 0.22;
+    filter: blur(1px);
+    background-size: 1200px 450px;
+    animation: clouds-drift-2 35s linear infinite;
+}
+
+@keyframes clouds-drift-1 {
+    0%   { background-position: 0 0; }
+    100% { background-position: -1600px 0; }
+}
+
+@keyframes clouds-drift-2 {
+    0%   { background-position: 0 0; }
+    100% { background-position: -1200px 0; }
+}
+
+@keyframes sun-glow-pulse {
+    0%   { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.08); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-sky .clouds,
+    .hero-sky .sun-glow {
+        animation: none !important;
+    }
+}
+
+@keyframes kenburns-zoom {
+    0% {
+        transform: scale(1) translate(0, 0);
+        background-position: 50% 50%;
+    }
+    100% {
+        transform: scale(1.12) translate(-1%, -1%);
+        background-position: 48% 52%;
+    }
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hero-kenburns::before {
+        animation: none !important;
+        transform: none !important;
+    }
 }
 
 /* Rotating text on hero (modern fade/slide) */

@@ -8,10 +8,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
+  <!-- Optional JS fallback with full catalog for file:// contexts -->
+  <script src="catalog.js"></script>
   <style>
     body { padding-top: 72px; }
     .step { display: none; }
     .step.active { display: block; }
+    .small-muted { font-size: 0.9rem; color: #6c757d; }
   </style>
 </head>
 <body>
@@ -34,12 +37,76 @@
         <div class="col-lg-8 mx-auto">
           <h1 class="h3 mb-3">Complete Your Booking</h1>
           <div class="alert alert-info" id="pkgSummary" role="alert">
-            <div><strong>Package:</strong> <span id="pkgTitle">—</span></div>
+            <div><strong>Selection:</strong> <span id="pkgTitle">—</span> <span class="small-muted" id="summaryType"></span></div>
             <div><strong>Base Price (per person):</strong> $<span id="pkgAmount">0</span></div>
           </div>
 
           <div class="card shadow-sm">
             <div class="card-body">
+              <!-- Step 0: Choose booking type and item -->
+              <section class="step" id="step0">
+                <h5 class="mb-3">0) What would you like to book?</h5>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label">Booking Type</label>
+                    <div class="d-flex gap-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="bookingType" id="typeSafari" value="safari" checked>
+                        <label class="form-check-label" for="typeSafari">Safari Package</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="bookingType" id="typeService" value="service">
+                        <label class="form-check-label" for="typeService">Service</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12" id="safariSelectWrap">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label">Country</label>
+                        <select class="form-select" id="safariCountry">
+                          <option value="" selected>Choose a country…</option>
+                          <!-- options will be populated dynamically from catalog (plus 'All') -->
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Safari Package</label>
+                        <select class="form-select" id="safariPackage">
+                          <option value="" selected>Choose a package…</option>
+                        </select>
+                        <div class="form-text">You can also enter a custom title and amount below.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 d-none" id="serviceSelectWrap">
+                    <label class="form-label">Service</label>
+                    <select class="form-select" id="serviceSelect">
+                      <option value="" selected>Choose a service…</option>
+                      <option value="hotel-reservation">Hotel Reservation</option>
+                      <option value="air-ticketing">Air Ticketing</option>
+                      <option value="car-hire">Car Hire</option>
+                      <option value="travel-insurance">Travel Insurance</option>
+                      <option value="visa-processing">Visa Processing</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" id="customTitle" placeholder="e.g. Custom Safari or Service" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Base Price (per person)</label>
+                    <input type="number" min="0" step="0.01" class="form-control" id="customAmount" placeholder="e.g. 1200" />
+                    <div class="form-text">For services, enter the estimated per-person price if applicable.</div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                  <button class="btn btn-primary" id="toStep1">Continue</button>
+                </div>
+              </section>
+
               <!-- Step 1: Trip details -->
               <section class="step active" id="step1">
                 <h5 class="mb-3">1) Trip details</h5>
@@ -158,9 +225,13 @@
   <script>
     (function(){
       const params = new URLSearchParams(location.search);
-      const packageId = params.get('packageId') || 'custom';
-      const title = params.get('title') || 'Gisu Safaris Booking';
-      const amount = parseFloat(params.get('amount') || '0') || 0;
+      let bookingType = (params.get('bookingType') === 'service') ? 'service' : 'safari';
+      let packageId = params.get('packageId') || 'custom';
+      let title = params.get('title') || 'Gisu Safaris Booking';
+      let amount = parseFloat(params.get('amount') || '0') || 0;
+      const serviceIdParam = params.get('serviceId') || '';
+      // Lock service controls when user clicked a preselected plan/button (has title/amount or serviceId)
+      let lockService = (bookingType === 'service') && (params.has('title') || params.has('amount') || params.has('serviceId'));
 
       // 70% deposit rule
       const depositRate = 0.7;
@@ -168,12 +239,135 @@
       // Elements
       const pkgTitle = document.getElementById('pkgTitle');
       const pkgAmount = document.getElementById('pkgAmount');
+      const summaryType = document.getElementById('summaryType');
       const reviewPerPerson = document.getElementById('reviewPerPerson');
       const reviewTotal = document.getElementById('reviewTotal');
       const depositAmountEl = document.getElementById('depositAmount');
       const fullAmountEl = document.getElementById('fullAmount');
       const reviewDates = document.getElementById('reviewDates');
       const reviewTravelers = document.getElementById('reviewTravelers');
+
+      // Step 0 controls
+      const step0 = document.getElementById('step0');
+      const typeSafari = document.getElementById('typeSafari');
+      const typeService = document.getElementById('typeService');
+      const safariSelectWrap = document.getElementById('safariSelectWrap');
+      const safariCountry = document.getElementById('safariCountry');
+      const safariPackage = document.getElementById('safariPackage');
+      const serviceSelectWrap = document.getElementById('serviceSelectWrap');
+      const serviceSelect = document.getElementById('serviceSelect');
+      const customTitle = document.getElementById('customTitle');
+      const customAmount = document.getElementById('customAmount');
+
+      // Catalogs and price maps (moved into script)
+      let safariCatalog = {
+        uganda: [
+          { id: 'gorilla-5d', title: 'Gorilla Trekking Safari - Bwindi (5 Days)', amount: 1200 },
+          { id: 'murchison-4d', title: 'Murchison Falls Wildlife (4 Days)', amount: 800 },
+          { id: 'queen-4d', title: 'Queen Elizabeth Park (4 Days)', amount: 950 }
+        ],
+        kenya: [
+          { id: 'masai-5d', title: 'Masai Mara Classic (5 Days)', amount: 1400 }
+        ],
+        tanzania: [
+          { id: 'serengeti-5d', title: 'Serengeti Explorer (5 Days)', amount: 1500 }
+        ],
+        rwanda: [
+          { id: 'volcanoes-3d', title: 'Volcanoes NP Gorillas (3 Days)', amount: 1300 }
+        ]
+      };
+
+      let servicePrices = {
+        'hotel-reservation': 450,
+        'air-ticketing': 300,
+        'car-hire': 120,
+        'travel-insurance': 60,
+        'visa-processing': 100
+      };
+
+      function populateCountries() {
+        if (!safariCountry) return;
+        // Preserve first placeholder option
+        const placeholder = safariCountry.querySelector('option[value=""]') || (() => {
+          const opt = document.createElement('option');
+          opt.value = '';
+          opt.selected = true;
+          opt.textContent = 'Choose a country…';
+          return opt;
+        })();
+        safariCountry.innerHTML = '';
+        safariCountry.appendChild(placeholder);
+        const allOpt = document.createElement('option');
+        allOpt.value = 'all';
+        allOpt.textContent = 'All Countries';
+        safariCountry.appendChild(allOpt);
+        Object.keys(safariCatalog).sort().forEach(k => {
+          if (Array.isArray(safariCatalog[k]) && safariCatalog[k].length) {
+            const opt = document.createElement('option');
+            opt.value = k;
+            opt.textContent = k.charAt(0).toUpperCase() + k.slice(1);
+            safariCountry.appendChild(opt);
+          }
+        });
+      }
+
+      function populateSafariPackages(country){
+        // Clear
+        safariPackage.innerHTML = '<option value="" selected>Choose a package…</option>';
+        let list = [];
+        if (!country) return;
+        if (country === 'all') {
+          for (const k in safariCatalog) { if (Array.isArray(safariCatalog[k])) list = list.concat(safariCatalog[k]); }
+        } else if (safariCatalog[country]) {
+          list = safariCatalog[country];
+        }
+        list.forEach(p => {
+          const opt = document.createElement('option');
+          opt.value = p.id;
+          opt.textContent = `${p.title} — $${p.amount}`;
+          opt.setAttribute('data-amount', String(p.amount));
+          safariPackage.appendChild(opt);
+        });
+      }
+
+      // If JS fallback loaded first, prefer it
+      if (window.__SAFARI_CATALOG__) {
+        safariCatalog = window.__SAFARI_CATALOG__;
+        if (window.__SERVICE_PRICES__) servicePrices = window.__SERVICE_PRICES__;
+      }
+      // Populate countries immediately from current catalog (works offline or if fetch fails)
+      populateCountries();
+
+      // Attempt to fetch dynamic catalog (booking/catalog.json). Graceful fallback to built-in.
+      (async () => {
+        try {
+          const resp = await fetch('catalog.json', { cache: 'no-store' });
+          if (resp.ok) {
+            const data = await resp.json();
+            if (data && typeof data === 'object') {
+              if (data.safariCatalog && typeof data.safariCatalog === 'object') {
+                safariCatalog = data.safariCatalog;
+              }
+              if (data.servicePrices && typeof data.servicePrices === 'object') {
+                servicePrices = data.servicePrices;
+              }
+              // Re-populate country dropdown from loaded catalog
+              populateCountries();
+              // If a country is already selected (or from params), re-populate packages
+              if (safariCountry && safariCountry.value) {
+                populateSafariPackages(safariCountry.value);
+              }
+            }
+          }
+        } catch {
+          // On failure, ensure countries are still available from built-in catalog
+          if (window.__SAFARI_CATALOG__) {
+            safariCatalog = window.__SAFARI_CATALOG__;
+            if (window.__SERVICE_PRICES__) servicePrices = window.__SERVICE_PRICES__;
+          }
+          populateCountries();
+        }
+      })();
 
       const startDate = document.getElementById('startDate');
       const endDate = document.getElementById('endDate');
@@ -192,16 +386,185 @@
       const step3 = document.getElementById('step3');
 
       // Initialize summary
-      pkgTitle.textContent = title;
-      pkgAmount.textContent = amount.toFixed(2);
-      reviewPerPerson.textContent = amount.toFixed(2);
-      fullAmountEl.textContent = amount.toFixed(2);
-      depositAmountEl.textContent = (amount * depositRate).toFixed(2);
+      function refreshSummary(){
+        pkgTitle.textContent = title;
+        pkgAmount.textContent = amount.toFixed(2);
+        summaryType.textContent = bookingType ? `(${bookingType})` : '';
+        reviewPerPerson.textContent = amount.toFixed(2);
+        fullAmountEl.textContent = amount.toFixed(2);
+        depositAmountEl.textContent = (amount * depositRate).toFixed(2);
+      }
+      refreshSummary();
 
       function go(step){
         [step1, step2, step3].forEach(s => s.classList.remove('active'));
         step.classList.add('active');
       }
+
+      // Show Step 0 if no explicit title/amount provided (general booking entry)
+      // Always show Step 0 first so users can choose Safari Package or Service.
+      // If URL params exist, we prefill but still let the user change.
+      step0.classList.add('active');
+      step1.classList.remove('active');
+
+      // Prefill from URL (without forcing progression)
+      if (params.has('bookingType')) {
+        if (bookingType === 'service') {
+          typeService.checked = true;
+        } else {
+          typeSafari.checked = true;
+        }
+        updateTypeUI();
+      }
+      if (params.has('title')) {
+        customTitle.value = title;
+      }
+      if (params.has('amount')) {
+        customAmount.value = amount.toString();
+      }
+      // If arriving with a preselected service plan, set service value and disable controls
+      if (lockService) {
+        // Show service selector block (in case it was hidden)
+        safariSelectWrap.classList.add('d-none');
+        serviceSelectWrap.classList.remove('d-none');
+        // Try to select matching service option
+        if (serviceIdParam) {
+          const idx = Array.from(serviceSelect.options).findIndex(o => o.value === serviceIdParam);
+          if (idx >= 0) serviceSelect.selectedIndex = idx;
+          packageId = serviceIdParam;
+        } else {
+          packageId = 'service-custom';
+        }
+        // Disable service and amount editing to keep the chosen plan intact
+        serviceSelect.setAttribute('disabled', 'disabled');
+        customAmount.setAttribute('disabled', 'disabled');
+        serviceSelect.title = 'Disabled: plan preselected from previous page';
+        customAmount.title = 'Disabled: price set by selected plan';
+      }
+      if (params.has('packageId') && bookingType === 'safari') {
+        // find package across all countries
+        const targetId = packageId;
+        let foundCountry = '';
+        for (const c in safariCatalog) {
+          if (safariCatalog[c].some(p => p.id === targetId)) { foundCountry = c; break; }
+        }
+        if (foundCountry) {
+          safariCountry.value = foundCountry;
+          populateSafariPackages(foundCountry);
+          const idx = Array.from(safariPackage.options).findIndex(o => o.value === targetId);
+          if (idx >= 0) {
+            safariPackage.selectedIndex = idx;
+            const opt = safariPackage.options[idx];
+            const amt = parseFloat(opt.getAttribute('data-amount') || '0') || 0;
+            amount = amt;
+            title = opt.textContent.replace(/\s—\s\$.*$/, '');
+            refreshSummary();
+          }
+        }
+      }
+
+      // Toggle UI on type switch
+      function updateTypeUI(){
+        bookingType = typeService.checked ? 'service' : 'safari';
+        if (bookingType === 'safari') {
+          safariSelectWrap.classList.remove('d-none');
+          serviceSelectWrap.classList.add('d-none');
+        } else {
+          safariSelectWrap.classList.add('d-none');
+          serviceSelectWrap.classList.remove('d-none');
+        }
+      }
+      typeSafari.addEventListener('change', updateTypeUI);
+      typeService.addEventListener('change', updateTypeUI);
+      updateTypeUI();
+
+      // Country -> populate packages
+      safariCountry.addEventListener('change', () => {
+        populateSafariPackages(safariCountry.value);
+        // reset selection
+        packageId = 'custom';
+        title = 'Gisu Safaris Booking';
+        amount = 0;
+        refreshSummary();
+      });
+
+      // Selecting a package sets title/amount
+      safariPackage.addEventListener('change', () => {
+        const opt = safariPackage.options[safariPackage.selectedIndex];
+        if (opt && opt.value) {
+          packageId = opt.value;
+          const amt = parseFloat(opt.getAttribute('data-amount') || '0') || 0;
+          amount = amt;
+          title = opt.textContent.replace(/\s—\s\$.*$/, '');
+          refreshSummary();
+        }
+      });
+
+      // Service selection sets default price when known
+      serviceSelect.addEventListener('change', () => {
+        const v = serviceSelect.value;
+        if (v) {
+          const known = servicePrices[v];
+          if (typeof known === 'number') {
+            amount = known;
+            customAmount.value = String(known);
+          }
+          const sel = serviceSelect.options[serviceSelect.selectedIndex];
+          title = sel ? sel.textContent : 'Service Booking';
+          refreshSummary();
+        }
+      });
+
+      // Continue from Step 0
+      document.getElementById('toStep1').addEventListener('click', () => {
+        // If custom provided, prefer that
+        const custTitle = (customTitle.value || '').trim();
+        const custAmount = parseFloat(customAmount.value || 'NaN');
+        if (custTitle) title = custTitle;
+        if (!Number.isNaN(custAmount)) amount = Math.max(0, custAmount);
+
+        if (bookingType === 'safari') {
+          // Require either a selected country+package or a custom title
+          const country = safariCountry.value;
+          const pkgVal = safariPackage.value;
+          if ((!country || !pkgVal) && !custTitle) {
+            alert('Please choose a country and safari package, or enter a custom title.');
+            return;
+          }
+          if (pkgVal) {
+            const opt = safariPackage.options[safariPackage.selectedIndex];
+            packageId = pkgVal;
+            const amt = parseFloat(opt.getAttribute('data-amount') || '0') || 0;
+            amount = amt; // enforce auto-pricing
+            title = opt.textContent.replace(/\s—\s\$.*$/, '');
+          }
+        } else {
+          // Service: require a selection or custom title
+          if (!lockService) {
+            if (!serviceSelect.value && !custTitle) {
+              alert('Please choose a service or enter a custom title.');
+              return;
+            }
+          }
+          if (!custTitle) {
+            const sel = serviceSelect.options[serviceSelect.selectedIndex];
+            title = sel ? sel.textContent : 'Service Booking';
+          }
+          packageId = lockService ? (serviceIdParam || 'service-custom') : (serviceSelect.value || 'service-custom');
+          // If known price exists, enforce it
+          const key = lockService ? serviceIdParam : serviceSelect.value;
+          const known = servicePrices[key];
+          if (typeof known === 'number' && !params.has('amount')) {
+            // Only override if URL didn't provide an explicit amount
+            amount = known;
+            customAmount.value = String(known);
+          }
+        }
+        refreshSummary();
+        // Proceed to trip details
+        step0.classList.remove('active');
+        go(step1);
+      });
 
       document.getElementById('toStep2').addEventListener('click', () => {
         if (!startDate.value || !endDate.value || !travelers.value) return alert('Please fill dates and number of travelers.');
@@ -345,7 +708,7 @@
           const resp = await fetch('../backend/api/payments/create_placeholder_booking.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ bookingType: 'safari', title, customer, metadata })
+            body: JSON.stringify({ bookingType, title, customer, metadata })
           });
           if (!resp.ok) throw new Error(await resp.text());
           const data = await resp.json();
@@ -356,7 +719,7 @@
 
           await initiatePayment({
             bookingId: data.bookingId,
-            bookingType: 'safari',
+            bookingType,
             title,
             amount: Number(payAmount.toFixed(2)),
             deposit: payDeposit,

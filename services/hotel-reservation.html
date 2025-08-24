@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +16,10 @@
     <meta property="og:url" content="https://gisusafaris.com/services/hotel-reservation.html">
     <meta property="og:site_name" content="Gisu Safaris">
     <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
 
     <link rel="canonical" href="https://gisusafaris.com/services/hotel-reservation.html">
     
@@ -69,7 +73,7 @@
                             <li><a class="dropdown-item" href="travel_insurance.html">Travel Insurance</a></li>
                             <li><a class="dropdown-item" href="air_ticketing.html">Air Ticketing</a></li>
                             <li><a class="dropdown-item" href="car_hire.html">Car Hire</a></li>
-                            <li><a class="dropdown-item" href="safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="../safaris.html">Safaris</a></li>
                             <li><a class="dropdown-item" href="visa.html">Visa</a></li>
                         </ul>
                     </li>
@@ -84,9 +88,7 @@
                     </li>
                 </ul>
                 <div class="ms-3">
-                    <a href="../contact.html" class="btn btn-primary btn-sm">
-                        <i class="fas fa-calendar-check me-1"></i>Book Now
-                    </a>
+                    <a href="../booking/index.html?bookingType=service&serviceId=hotel-reservation" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
                 </div>
             </div>
         </div>
@@ -440,7 +442,7 @@
                                         <span class="h5 text-primary fw-bold">$450</span>
                                         <small class="text-muted">/night</small>
                                     </div>
-                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Serena%20Safari%20Lodge&amount=450" aria-label="Book Serena Safari Lodge">
+                                    <a class="btn btn-primary btn-sm" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=Serena%20Safari%20Lodge&amount=450" aria-label="Book Serena Safari Lodge">
                                         <i class="fas fa-calendar-check me-1"></i>Book Now
                                     </a>
                                 </div>
@@ -493,7 +495,7 @@
                                         <span class="h5 text-primary fw-bold">$380</span>
                                         <small class="text-muted">/night</small>
                                     </div>
-                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Bwindi%20Lodge&amount=380" aria-label="Book Bwindi Lodge">
+                                    <a class="btn btn-primary btn-sm" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=Bwindi%20Lodge&amount=380" aria-label="Book Bwindi Lodge">
                                         <i class="fas fa-calendar-check me-1"></i>Book Now
                                     </a>
                                 </div>
@@ -546,7 +548,7 @@
                                         <span class="h5 text-primary fw-bold">$120</span>
                                         <small class="text-muted">/night</small>
                                     </div>
-                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Nairobi%20Boutique%20Hotel&amount=120" aria-label="Book Nairobi Boutique Hotel">
+                                    <a class="btn btn-primary btn-sm" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=Nairobi%20Boutique%20Hotel&amount=120" aria-label="Book Nairobi Boutique Hotel">
                                         <i class="fas fa-calendar-check me-1"></i>Book Now
                                     </a>
                                 </div>
@@ -609,9 +611,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-outline-primary btn-lg w-100">
+                                <a class="btn btn-outline-primary btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=Budget%20Explorer&amount=80" aria-label="Select Budget Explorer">
                                     <i class="fas fa-shopping-cart me-2"></i>Select Package
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -637,9 +639,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-primary btn-lg w-100">
+                                <a class="btn btn-primary btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=Safari%20Comfort&amount=250" aria-label="Select Safari Comfort">
                                     <i class="fas fa-crown me-2"></i>Select Package
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -662,9 +664,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-dark btn-lg w-100">
+                                <a class="btn btn-dark btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=Luxury%20Premium&amount=500" aria-label="Select Luxury Premium">
                                     <i class="fas fa-gem me-2"></i>Select Package
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -745,7 +747,6 @@
             </div>
         </div>
 
-        <!-- WhatsApp Modal -->
         <div class="modal fade" id="whatsappModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -760,7 +761,7 @@
                         <h5>Get instant assistance!</h5>
                         <p class="text-muted">Chat with our hotel booking specialists on WhatsApp for immediate support and personalized recommendations.</p>
                         <div class="d-grid gap-2">
-                            <a href="https://wa.me/61478914106?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20hotel%20reservations%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
+                            <a href="https://wa.me/61470133869?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20hotel%20reservations%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
                                 <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
                             </a>
                         </div>
@@ -810,20 +811,27 @@
                 </div>
             </div>
             <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                  </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                  <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                  <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
     <script src="../js/script.js"></script>
-    
-    <!-- Fade Animation Script -->
+
     <script>
-        // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -838,29 +846,25 @@
                 }
             });
         }, observerOptions);
-        
-        // Observe all fade elements
+
         document.addEventListener('DOMContentLoaded', () => {
             const fadeElements = document.querySelectorAll('.fade-element');
             fadeElements.forEach(element => {
                 observer.observe(element);
             });
         });
-        
-        // Mobile menu improvements
+
         document.addEventListener('DOMContentLoaded', () => {
             const navbar = document.querySelector('.navbar');
             const navbarToggler = document.querySelector('.navbar-toggler');
             const navbarCollapse = document.querySelector('.navbar-collapse');
-            
-            // Close mobile menu when clicking outside
+
             document.addEventListener('click', (e) => {
                 if (!navbar.contains(e.target) && navbarCollapse.classList.contains('show')) {
                     navbarToggler.click();
                 }
             });
-            
-            // Close mobile menu when clicking on nav links
+
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -871,8 +875,7 @@
             });
         });
     </script>
-    
-    <!-- Card Slider Autoplay (2s, no arrows) -->
+
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const sliders = document.querySelectorAll('.card-slider, .auto-slider');
@@ -889,17 +892,14 @@
       });
     </script>
 
-    <!-- View All Hotels: render and filter in-page -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const allHotelsSection = document.getElementById('all-hotels');
         const viewAllBtn = document.getElementById('viewAllHotelsBtn');
         const grid = document.getElementById('hotelsGrid');
 
-        // Generate dataset: realistic types per destination (no safari camps in cities like Kampala, etc.)
         function generateHotels() {
           const types = ['luxury-lodge','safari-camp','boutique-hotel','budget-friendly'];
-          // Canonical destination list with allowed types (must align with destinationToFilter and select options)
           const DESTS = [
             // Uganda
             {country:'uganda', city:'Kampala',          allowed:['luxury-lodge','boutique-hotel','budget-friendly']},
@@ -1029,7 +1029,7 @@
                   <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
-                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
+                    <a class="btn btn-primary btn-sm" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
                   </div>
                 </div>
               </div>`;
@@ -1146,7 +1146,7 @@
                   <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
-                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
+                    <a class="btn btn-primary btn-sm" href="../booking/index.html?bookingType=service&serviceId=hotel-reservation&title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
                   </div>
                 </div>
               </div>`;
@@ -1228,120 +1228,8 @@
     </script>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="d-flex align-items-center mb-3">
-              <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
-              <h5 class="mb-0">Gisu Safaris</h5>
-            </div>
-            <p class="mb-3">East Africa's premier safari company specializing in wildlife adventures across Uganda, Kenya, Tanzania, and Rwanda.</p>
-            <div class="contact-info">
-              <p class="mb-2">
-                <i class="fas fa-envelope me-2"></i>
-                <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
-              </p>
-              <p class="mb-2">
-                <i class="fas fa-phone me-2"></i>
-                <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
-              </p>
-              <p class="mb-2">
-                <i class="fas fa-phone me-2"></i>
-                <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
-              </p>
-              <p class="mb-0">
-                <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-2">
-            <h6 class="mb-3">Quick Links</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
-              <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
-              <li class="mb-2"><a href="../packages/index.html" class="text-light text-decoration-none">Safari Packages</a></li>
-              <li class="mb-2"><a href="../destinations/index.html" class="text-light text-decoration-none">Destinations</a></li>
-              <li class="mb-2"><a href="../gallery.html" class="text-light text-decoration-none">Gallery</a></li>
-              <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3">
-            <h6 class="mb-3">Safari Destinations</h6>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="../packages/uganda.html" class="text-light text-decoration-none">
-                  <i class="fas fa-leaf me-2"></i>Uganda Safaris
-                </a>
-              </li>
-              <li class="mb-2">
-                <a href="../packages/kenya.html" class="text-light text-decoration-none">
-                  <i class="fas fa-paw me-2"></i>Kenya Safaris
-                </a>
-              </li>
-              <li class="mb-2">
-                <a href="../packages/tanzania.html" class="text-light text-decoration-none">
-                  <i class="fas fa-mountain me-2"></i>Tanzania Safaris
-                </a>
-              </li>
-              <li class="mb-2">
-                <a href="../packages/rwanda.html" class="text-light text-decoration-none">
-                  <i class="fas fa-users me-2"></i>Rwanda Safaris
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3">
-            <h6 class="mb-3">Connect With Us</h6>
-            <div class="social-icons mb-3">
-              <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
-                <i class="fab fa-facebook fa-lg"></i>
-              </a>
-              <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
-                <i class="fab fa-instagram fa-lg"></i>
-              </a>
-              <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank">
-                <i class="fab fa-x fa-lg"></i>
-              </a>
-              <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
-                <i class="fab fa-youtube fa-lg"></i>
-              </a>
-              <a href="https://wa.me/61478914106" class="text-light" target="_blank">
-                <i class="fab fa-whatsapp fa-lg"></i>
-              </a>
-            </div>
-            <div class="newsletter">
-              <h6>Newsletter</h6>
-              <form>
-                <div class="input-group mb-2">
-                  <input type="email" class="form-control" placeholder="Your email" required>
-                  <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-paper-plane"></i>
-                  </button>
-                </div>
-                <small class="text-muted">Get safari tips & exclusive offers</small>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <hr class="my-4">
-
-        <div class="row align-items-center">
-          <div class="col-md-8">
-            <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
-          </div>
-          <div class="col-md-4 text-md-end">
-            <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-      <!-- Site bootstrap -->
     <script src="../js/main.js"></script></body>
 </html>
+
+
 

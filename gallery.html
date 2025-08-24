@@ -334,7 +334,6 @@
             <figcaption class="gallery-caption">Kenya – Safari Land Cruiser</figcaption>
           </figure>
 
-          <!-- Tanzania images -->
           <figure class="gallery-item" data-country="tanzania">
             <a href="./images/top-safari-packages/serengeti-safari-3.jpg" class="glightbox" data-gallery="safari" data-title="Tanzania – Serengeti (Migration)">
               <img src="./images/top-safari-packages/serengeti-safari-3.jpg" alt="Tanzania Serengeti migration" loading="lazy">
@@ -402,7 +401,6 @@
             <figcaption class="gallery-caption">Tanzania – Savannah Landscape</figcaption>
           </figure>
 
-          <!-- Rwanda images -->
           <figure class="gallery-item" data-country="rwanda">
             <a href="./images/top-safari-packages/rwanda-safari-2.jpg" class="glightbox" data-gallery="safari" data-title="Rwanda – Volcanoes National Park Gorillas">
               <img src="./images/top-safari-packages/rwanda-safari-2.jpg" alt="Rwanda Volcanoes National Park gorillas" loading="lazy">
@@ -473,7 +471,6 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="py-5 bg-primary text-white">
       <div class="container">
         <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
@@ -490,7 +487,6 @@
     </section>
   </main>
 
-  <!-- Footer (brief) -->
   <footer class="bg-dark text-white py-5">
     <div class="container">
       <div class="row g-4">
@@ -524,10 +520,8 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Floating Widget (consistent with about.html) -->
   <div class="floating-whatsapp">
         <div class="whatsapp-widget">
-            <!-- Chat Window -->
             <div class="whatsapp-chat" id="whatsappChat">
                 <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
                     <i class="fas fa-times"></i>
@@ -554,21 +548,18 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- WhatsApp Button -->
+
             <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
                 <i class="fab fa-whatsapp"></i>
             </button>
         </div>
   </div>
-  
-  <!-- Scripts -->
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script src="./js/ai-safari-bot-enhanced.js"></script>
   <script src="./js/main.js"></script>
   <script>
-    // Simple hero slider rotation (every 3s)
     (function(){
       const slides = Array.from(document.querySelectorAll('#galleryHeroSlider .hero-slide'));
       let idx = 0;
@@ -579,10 +570,8 @@
       }, 3000);
     })();
 
-    // GLightbox init
     const lightbox = GLightbox({ selector: '.glightbox' });
 
-    // Filter chips logic
     (function(){
       const buttons = Array.from(document.querySelectorAll('.gallery-filters [data-filter]'));
       const items = Array.from(document.querySelectorAll('.gallery-grid .gallery-item'));
@@ -597,7 +586,6 @@
       }));
     })();
 
-    // WhatsApp Chat Widget Functionality (matching about.html)
     function toggleWhatsAppChat() {
         const chatWidget = document.getElementById('whatsappChat');
         if (!chatWidget) {
@@ -606,8 +594,7 @@
         }
         
         chatWidget.classList.toggle('active');
-        
-        // Focus on input when chat opens
+
         if (chatWidget.classList.contains('active')) {
             setTimeout(() => {
                 const input = document.getElementById('whatsappMessage');
@@ -626,21 +613,17 @@
             messageInput.focus();
             return;
         }
-        
-        // Create WhatsApp URL with the message
-        const phoneNumber = '256780950555';
+
+        const phoneNumber = '61470133869';
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        
-        // Open WhatsApp with the message
+
         window.open(whatsappUrl, '_blank');
-        
-        // Clear the input and close the chat
+
         messageInput.value = '';
         toggleWhatsAppChat();
     }
-    
-    // Handle Enter key press and other interactions
+
     document.addEventListener('DOMContentLoaded', function() {
         const messageInput = document.getElementById('whatsappMessage');
         const chatWidget = document.getElementById('whatsappChat');
@@ -653,8 +636,7 @@
                     sendWhatsAppMessage();
                 }
             });
-            
-            // Enable/disable send button based on input
+
             messageInput.addEventListener('input', function() {
                 const sendBtn = document.querySelector('.whatsapp-send-btn');
                 if (sendBtn) {
@@ -662,16 +644,14 @@
                 }
             });
         }
-        
-        // Close chat when clicking outside
+
         document.addEventListener('click', function(event) {
             if (chatWidget && chatWidget.classList.contains('active') && 
                 whatsappWidget && !whatsappWidget.contains(event.target)) {
                 chatWidget.classList.remove('active');
             }
         });
-        
-        // Prevent chat from closing when clicking inside it
+
         if (chatWidget) {
             chatWidget.addEventListener('click', function(event) {
                 event.stopPropagation();

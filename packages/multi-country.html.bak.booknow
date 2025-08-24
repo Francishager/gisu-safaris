@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Country Safari Tours | East Africa Grand Adventures | Gisu Safaris</title>
+    <meta name="description" content="Experience the ultimate East African adventure with our multi-country safari tours. Combine Uganda, Kenya, Tanzania & Rwanda in one epic journey. See gorillas, Big Five, Great Migration & more. Expert guides, luxury accommodations.">
+    <meta name="keywords" content="multi-country safari tours, East Africa grand tour, Uganda Kenya Tanzania safari, gorilla tracking tour, Great Migration safari, multi-country packages, cross-border safari, East Africa adventure">
+    <meta name="author" content="Gisu Safaris - Multi-Country Safari Specialists">
+    <meta name="robots" content="index, follow">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Multi-Country Safari Tours - Ultimate East Africa Adventure">
+    <meta property="og:description" content="Experience the ultimate East African safari adventure combining Uganda, Kenya, Tanzania & Rwanda. See gorillas, Big Five, Great Migration and more in one epic journey.">
+    <meta property="og:url" content="https://gisusafaris.com/packages/multi-country.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Multi-Country Safari Tours - East Africa Grand Adventure">
+    <meta name="twitter:description" content="Experience the ultimate East African safari combining multiple countries in one epic journey.">
+    <meta name="twitter:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <link rel="canonical" href="https://gisusafaris.com/packages/multi-country.html">
+    
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item active" aria-current="page" href="multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item" href="travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="visa.html">Visa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="#contact-form" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <header class="hero-section" style="height: 80vh; position: relative; overflow: hidden;">
+            <div class="video-background" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+                <iframe 
+                    src="https://www.youtube.com/embed/siqAfzwCVuw?start=102&autoplay=1&mute=1&controls=0&loop=1&playlist=siqAfzwCVuw&modestbranding=1&playsinline=1&rel=0"
+                    title="Multi-Country Safari Video"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    style="position:absolute; top:50%; left:50%; width:120%; height:120%; transform: translate(-50%, -50%); pointer-events:none;">
+                </iframe>
+            </div>
+            <div class="hero-overlay d-flex align-items-center" style="position: relative; z-index: 1; background: transparent;">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-10 fade-element">
+                            <h1 class="hero-title display-2 fw-bold text-white mb-4">
+                                Multi-Country Safari Tours
+                            </h1>
+                            <p class="hero-description lead text-white mb-5">
+                                Experience the ultimate East African adventure by combining the best of Uganda, Kenya, Tanzania, and Rwanda in one epic safari journey. From gorilla tracking to the Great Migration, create memories that will last a lifetime.
+                            </p>
+                            <div class="hero-buttons">
+                                <a href="#tour-combinations" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-globe-africa me-2"></i>Explore Combinations
+                                </a>
+                                <a href="#booking-form" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-calendar-plus me-2"></i>Book Your Adventure
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Why Multi-Country Tours -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <h2 class="display-5 fw-bold">Why Choose <span class="text-primary">Multi-Country</span> Safaris?</h2>
+                    <p class="lead">Maximize your East African experience with cross-border adventures</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-primary bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-route fa-2x text-white"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Maximum Coverage</h4>
+                                <p class="card-text">Experience multiple countries and diverse ecosystems in a single, comprehensive journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-dollar-sign fa-2x text-white"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Better Value</h4>
+                                <p class="card-text">Cost-effective compared to separate trips, with shared logistics and group benefits.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-passport fa-2x text-white"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Seamless Logistics</h4>
+                                <p class="card-text">We handle all border crossings, permits, and inter-country transfers for a hassle-free experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6 fade-element">
+                        <div class="card border-0 shadow-sm h-100 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                    <i class="fas fa-star fa-2x text-white"></i>
+                                </div>
+                                <h4 class="card-title fw-bold">Unique Experiences</h4>
+                                <p class="card-text">Access exclusive multi-country itineraries and cross-border wildlife experiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Combinations -->
+        <section id="tour-combinations" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <h2 class="display-5 fw-bold">Choose Your <span class="text-primary">Adventure</span> Combination</h2>
+                    <p class="lead">Select from our carefully crafted multi-country safari packages</p>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Uganda-Kenya Combination -->
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="position-relative image-rotator">
+                                <img src="../images/multi-country/uganda-kenya-safari-1.jpg" 
+                                     class="card-img-top rotator-img img-a" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-kenya-safari-2.jpg" 
+                                     class="card-img-top rotator-img img-b" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-kenya-safari-3.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-kenya-safari-4.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-kenya-safari-5.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-kenya-safari-6.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Kenya Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
+                                    <span class="badge bg-primary fs-6">Popular Choice</span>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <h3 class="card-title fw-bold text-primary">Uganda & Kenya Safari</h3>
+                                <p class="card-text">Combine Uganda's gorilla tracking with Kenya's Great Migration and Big Five experience. Perfect blend of primates and plains game.</p>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bwindi Gorilla Tracking</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Masai Mara Big Five</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Queen Elizabeth National Park</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Lake Nakuru Flamingos</li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">From <strong class="text-primary h5">$3,500</strong>/person</span>
+                                    <a href="uganda-kenya.html" class="btn btn-primary" data-package-title="Uganda & Kenya Safari" data-package-id="uganda-kenya">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Uganda-Tanzania Combination -->
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="position-relative image-rotator">
+                                <img src="../images/multi-country/uganda-tanzania-safari-1.jpg" 
+                                     class="card-img-top rotator-img img-a" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-tanzania-safari-2.jpg" 
+                                     class="card-img-top rotator-img img-b" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-tanzania-safari-3.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-tanzania-safari-4.jpeg" 
+                                     class="card-img-top rotator-img" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-tanzania-safari-5.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/uganda-tanzania-safari-6.jpg" 
+                                     class="card-img-top rotator-img" alt="Uganda Tanzania Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
+                                    <span class="badge bg-success fs-6">Best Wildlife</span>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <h3 class="card-title fw-bold text-primary">Uganda & Tanzania Safari</h3>
+                                <p class="card-text">Experience Uganda's primates and Tanzania's legendary Serengeti. The perfect combination of forest and savanna wildlife encounters.</p>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mountain Gorilla Tracking</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Serengeti Great Migration</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Ngorongoro Crater</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Tree-climbing Lions</li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">From <strong class="text-primary h5">$3,800</strong>/person</span>
+                                    <a href="uganda-tanzania.html" class="btn btn-primary" data-package-title="Uganda & Tanzania Safari" data-package-id="uganda-tanzania">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rwanda-Uganda Combination -->
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="position-relative image-rotator">
+                                <img src="../images/multi-country/rwanda-uganda-gorilla-adventure-1.jpg" 
+                                     class="card-img-top rotator-img img-a" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/rwanda-uganda-gorilla-adventure-2.jpg" 
+                                     class="card-img-top rotator-img img-b" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/rwanda-uganda-gorilla-adventure-3.jpg" 
+                                     class="card-img-top rotator-img" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/rwanda-uganda-gorilla-adventure-4.jpg" 
+                                     class="card-img-top rotator-img" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/rwanda-uganda-gorilla-adventure-5.jpg" 
+                                     class="card-img-top rotator-img" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/rwanda-uganda-gorilla-adventure-6.jpg" 
+                                     class="card-img-top rotator-img" alt="Rwanda Uganda Gorilla Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
+                                    <span class="badge bg-warning fs-6">Gorilla Special</span>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <h3 class="card-title fw-bold text-primary">Rwanda & Uganda Gorilla Adventure</h3>
+                                <p class="card-text">The ultimate primate experience combining both Virunga and Bwindi gorilla populations with golden monkeys and chimpanzees.</p>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Volcanoes National Park Gorillas</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bwindi Gorilla Families</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Golden Monkey Tracking</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Kibale Chimpanzee Trekking</li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">From <strong class="text-primary h5">$4,200</strong>/person</span>
+                                    <a href="rwanda-uganda.html" class="btn btn-primary" data-package-title="Rwanda & Uganda Gorilla Adventure" data-package-id="rwanda-uganda-gorilla-adventure">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- East Africa Grand Tour -->
+                    <div class="col-lg-6 fade-element">
+                        <div class="card border-0 shadow-lg h-100 hover-card">
+                            <div class="position-relative image-rotator">
+                                <img src="../images/multi-country/east-africa-grand-tour-1.jpg" 
+                                     class="card-img-top rotator-img img-a" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: relative; z-index: 1; opacity: 1; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/east-africa-grand-tour-2.jpg" 
+                                     class="card-img-top rotator-img img-b" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/east-africa-grand-tour-3.jpg" 
+                                     class="card-img-top rotator-img" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/east-africa-grand-tour-4.jpg" 
+                                     class="card-img-top rotator-img" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/east-africa-grand-tour-5.jpg" 
+                                     class="card-img-top rotator-img" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <img src="../images/multi-country/east-africa-grand-tour-6.jpg" 
+                                     class="card-img-top rotator-img" alt="East Africa Grand Safari"
+                                     style="height: 300px; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transition: opacity .8s ease;">
+                                <div class="position-absolute top-0 start-0 m-3" style="z-index: 2;">
+                                    <span class="badge bg-danger fs-6">Ultimate Adventure</span>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <h3 class="card-title fw-bold text-primary">East Africa Grand Tour</h3>
+                                <p class="card-text">The ultimate East African safari experience covering Uganda, Kenya, Tanzania & Rwanda. Everything from gorillas to the Great Migration.</p>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All Big Five & Gorillas</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Great Migration Crossing</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cultural Encounters</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>4 Countries, 21 Days</li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">From <strong class="text-primary h5">$7,500</strong>/person</span>
+                                    <a href="east-africa-grand.html" class="btn btn-primary" data-package-title="East Africa Grand Tour" data-package-id="east-africa-grand-tour">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-4">
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow h-100 text-center">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-primary">Kenya & Tanzania</h4>
+                                <p class="card-text">Classic East African safari combining Masai Mara and Serengeti ecosystems.</p>
+                                <span class="text-muted">From <strong class="text-primary">$3,200</strong>/person</span>
+                                <div class="mt-3">
+                                    <a href="../booking/index.html?packageId=kenya-tanzania&title=Kenya%20%26%20Tanzania&amount=3200" class="btn btn-outline-primary btn-sm">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow h-100 text-center">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-primary">Kenya & Rwanda</h4>
+                                <p class="card-text">Combine Kenya's wildlife with Rwanda's gorillas and cultural experiences.</p>
+                                <span class="text-muted">From <strong class="text-primary">$4,000</strong>/person</span>
+                                <div class="mt-3">
+                                    <a href="../booking/index.html?packageId=kenya-rwanda&title=Kenya%20%26%20Rwanda&amount=4000" class="btn btn-outline-primary btn-sm">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow h-100 text-center">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-primary">Tanzania & Rwanda</h4>
+                                <p class="card-text">Experience Tanzania's vast plains with Rwanda's mountain gorillas.</p>
+                                <span class="text-muted">From <strong class="text-primary">$4,100</strong>/person</span>
+                                <div class="mt-3">
+                                    <a href="../booking/index.html?packageId=tanzania-rwanda&title=Tanzania%20%26%20Rwanda&amount=4100" class="btn btn-outline-primary btn-sm">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">What's <span class="text-primary">Included</span> in Our Multi-Country Tours</h2>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-success rounded-circle p-2 me-3">
+                                        <i class="fas fa-plane text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">International & Domestic Flights</h6>
+                                        <small class="text-muted">All inter-country transfers and domestic flights</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-primary rounded-circle p-2 me-3">
+                                        <i class="fas fa-bed text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">Premium Accommodations</h6>
+                                        <small class="text-muted">Luxury lodges and safari camps in all countries</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-warning rounded-circle p-2 me-3">
+                                        <i class="fas fa-id-card text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">All Permits & Visas</h6>
+                                        <small class="text-muted">Gorilla permits, park fees, and visa assistance</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-info rounded-circle p-2 me-3">
+                                        <i class="fas fa-users text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">Expert Local Guides</h6>
+                                        <small class="text-muted">Professional guides in each country</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 fade-element">
+                        <div class="rounded shadow" id="includedVideoWrapper" style="position: relative; overflow: hidden; width: 100%; padding-top: 56.25%;">
+                            <iframe 
+                                id="includedVideo"
+                                src="https://www.youtube.com/embed/siqAfzwCVuw?start=102&autoplay=0&mute=1&controls=0&loop=1&playlist=siqAfzwCVuw&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&disablekb=1"
+                                title="What's Included - Multi-Country Safari"
+                                frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
+                            </iframe>
+
+                            <div class="video-controls d-flex gap-2" style="position:absolute; bottom:10px; left:10px; z-index:3;">
+                                <button id="includedVideoPlayBtn" type="button" class="btn btn-light btn-sm" aria-label="Play video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button id="includedVideoPauseBtn" type="button" class="btn btn-light btn-sm" aria-label="Pause video">
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <button id="includedVideoStopBtn" type="button" class="btn btn-light btn-sm" aria-label="Stop video">
+                                    <i class="fas fa-stop"></i>
+                                </button>
+                                <button id="includedVideoMuteToggle" type="button" class="btn btn-light btn-sm" aria-label="Unmute video">
+                                    <i class="fas fa-volume-mute"></i>
+                                    <span class="ms-1">Unmute</span>
+                                </button>
+                                <button id="includedVideoFullscreenBtn" type="button" class="btn btn-light btn-sm" aria-label="Enter fullscreen">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Form -->
+        <section id="booking-form" class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow-lg border-0">
+                            <div class="card-header bg-primary text-white text-center py-4">
+                                <h2 class="mb-0 fw-bold">Book Your Multi-Country Safari</h2>
+                                <p class="mb-0">Start planning your ultimate East African adventure</p>
+                            </div>
+                            <div class="card-body p-5">
+                                <form id="multiCountryBookingForm" novalidate>
+                                    <div class="row g-3">
+                                        <!-- Personal Information -->
+                                        <div class="col-md-6">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" name="first_name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" name="last_name" required>
+                                        </div>
+                                        
+                                        <!-- Contact Information -->
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" name="email" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone">
+                                        </div>
+                                        
+                                        <!-- Country -->
+                                        <div class="col-md-6">
+                                            <label for="country" class="form-label">Country of Residence *</label>
+                                            <select class="form-select" id="country" name="country" required>
+                                                <option value="">Select your country</option>
+                                                <option value="United States">United States</option>
+                                                <option value="United Kingdom">United Kingdom</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="Germany">Germany</option>
+                                                <option value="France">France</option>
+                                                <option value="Netherlands">Netherlands</option>
+                                                <option value="Switzerland">Switzerland</option>
+                                                <option value="Belgium">Belgium</option>
+                                                <option value="Italy">Italy</option>
+                                                <option value="Spain">Spain</option>
+                                                <option value="South Africa">South Africa</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Tour Combination -->
+                                        <div class="col-md-6">
+                                            <label for="tourCombination" class="form-label">Tour Combination *</label>
+                                            <select class="form-select" id="tourCombination" name="tour_combination" required>
+                                                <option value="">Select tour combination</option>
+                                                <option value="uganda-kenya">Uganda & Kenya Safari</option>
+                                                <option value="uganda-tanzania">Uganda & Tanzania Safari</option>
+                                                <option value="uganda-rwanda">Uganda & Rwanda Gorilla Adventure</option>
+                                                <option value="kenya-tanzania">Kenya & Tanzania Safari</option>
+                                                <option value="kenya-rwanda">Kenya & Rwanda Safari</option>
+                                                <option value="tanzania-rwanda">Tanzania & Rwanda Safari</option>
+                                                <option value="uganda-kenya-tanzania">Uganda, Kenya & Tanzania (3 Countries)</option>
+                                                <option value="uganda-kenya-rwanda">Uganda, Kenya & Rwanda (3 Countries)</option>
+                                                <option value="uganda-tanzania-rwanda">Uganda, Tanzania & Rwanda (3 Countries)</option>
+                                                <option value="kenya-tanzania-rwanda">Kenya, Tanzania & Rwanda (3 Countries)</option>
+                                                <option value="east-africa-grand-tour">East Africa Grand Tour (4 Countries)</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Duration -->
+                                        <div class="col-md-6">
+                                            <label for="duration" class="form-label">Preferred Duration</label>
+                                            <select class="form-select" id="duration" name="duration">
+                                                <option value="">Select duration</option>
+                                                <option value="7-10 days">7-10 days</option>
+                                                <option value="11-14 days">11-14 days</option>
+                                                <option value="15-18 days">15-18 days</option>
+                                                <option value="19-21 days">19-21 days</option>
+                                                <option value="21+ days">21+ days</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Group Size -->
+                                        <div class="col-md-6">
+                                            <label for="groupSize" class="form-label">Group Size *</label>
+                                            <select class="form-select" id="groupSize" name="group_size" required>
+                                                <option value="">Select group size</option>
+                                                <option value="2 people">2 people</option>
+                                                <option value="3-4 people">3-4 people</option>
+                                                <option value="5-6 people">5-6 people</option>
+                                                <option value="7-8 people">7-8 people</option>
+                                                <option value="9+ people">9+ people</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Travel Date -->
+                                        <div class="col-md-6">
+                                            <label for="travelDate" class="form-label">Preferred Travel Date *</label>
+                                            <input type="date" class="form-control" id="travelDate" name="travel_date" required>
+                                        </div>
+
+                                        <!-- Budget Range -->
+                                        <div class="col-md-6">
+                                            <label for="budgetRange" class="form-label">Budget Range (per person)</label>
+                                            <select class="form-select" id="budgetRange" name="budget_range">
+                                                <option value="">Select budget range</option>
+                                                <option value="$2,000 - $3,500">$2,000 - $3,500</option>
+                                                <option value="$3,500 - $5,000">$3,500 - $5,000</option>
+                                                <option value="$5,000 - $7,500">$5,000 - $7,500</option>
+                                                <option value="$7,500 - $10,000">$7,500 - $10,000</option>
+                                                <option value="$10,000+">$10,000+</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Accommodation Level -->
+                                        <div class="col-12">
+                                            <label for="accommodationLevel" class="form-label">Accommodation Level</label>
+                                            <select class="form-select" id="accommodationLevel" name="accommodation_level">
+                                                <option value="mid-range">Mid-range</option>
+                                                <option value="luxury">Luxury</option>
+                                                <option value="ultra-luxury">Ultra-luxury</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Primary Interests -->
+                                        <div class="col-12">
+                                            <label class="form-label">Primary Interests (select all that apply)</label>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="primary_interests[]" value="gorilla_tracking" id="gorillaTracking">
+                                                        <label class="form-check-label" for="gorillaTracking">Gorilla Tracking</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="primary_interests[]" value="big_five" id="bigFive">
+                                                        <label class="form-check-label" for="bigFive">Big Five Safari</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="primary_interests[]" value="great_migration" id="greatMigration">
+                                                        <label class="form-check-label" for="greatMigration">Great Migration</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="primary_interests[]" value="chimpanzee_tracking" id="chimpTracking">
+                                                        <label class="form-check-label" for="chimpTracking">Chimpanzee Tracking</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="primary_interests[]" value="cultural_experiences" id="culturalExp">
+                                                        <label class="form-check-label" for="culturalExp">Cultural Experiences</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="primary_interests[]" value="photography" id="photography">
+                                                        <label class="form-check-label" for="photography">Wildlife Photography</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Gorilla Permit -->
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="gorilla_permit_required" value="true" id="gorillaPermit">
+                                                <label class="form-check-label" for="gorillaPermit">
+                                                    I require gorilla tracking permits (additional $600-800 per permit)
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="specialRequirements" class="form-label">Special Requirements</label>
+                                            <textarea class="form-control" id="specialRequirements" name="special_requirements" rows="2" placeholder="Any special requests, accessibility needs, etc."></textarea>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="dietaryRequirements" class="form-label">Dietary Requirements</label>
+                                            <input type="text" class="form-control" id="dietaryRequirements" name="dietary_requirements" placeholder="Vegetarian, allergies, etc.">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="mobilityRequirements" class="form-label">Mobility Requirements</label>
+                                            <input type="text" class="form-control" id="mobilityRequirements" name="mobility_requirements" placeholder="Walking limitations, etc.">
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="message" class="form-label">Additional Message</label>
+                                            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Tell us more about your dream multi-country safari..."></textarea>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="newsletter_opt_in" value="true" id="newsletter" checked>
+                                                <label class="form-check-label" for="newsletter">
+                                                    Subscribe to our newsletter for safari tips and special offers
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 text-center mt-4">
+                                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                                <i class="fas fa-paper-plane me-2"></i>Request Your Multi-Country Safari
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5 fade-element">
+                    <h2 class="display-6 fw-bold">Frequently Asked <span class="text-primary">Questions</span></h2>
+                    <p class="lead">Everything you need to know about multi-country safaris</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3 fade-element">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        How do visa requirements work for multi-country tours?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        We assist with all visa applications and provide guidance on requirements for each country. Most nationalities can get visas on arrival or apply online. We handle all the paperwork and ensure you have the right documentation for seamless border crossings.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-0 shadow-sm mb-3 fade-element">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        How far in advance should I book gorilla permits?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Gorilla permits should be booked at least 3-6 months in advance, especially for peak seasons (June-September and December-February). We recommend booking as early as possible as permits are limited and in high demand.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-0 shadow-sm mb-3 fade-element">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        What's the best time for multi-country safaris?
+                                    </button>
+                                </h3>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The dry seasons (June-September and December-February) are ideal for most activities. However, we can customize tours year-round based on your interests. For Great Migration, timing varies by location. We'll advise on the best months for your specific combination.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border-0 shadow-sm mb-3 fade-element">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        Are multi-country tours suitable for first-time safari visitors?
+                                    </button>
+                                </h3>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Absolutely! Multi-country tours offer incredible variety and value for first-time visitors. Our experienced guides and comprehensive support make it easy to experience multiple destinations without the complexity of planning separate trips.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+                        <h5 class="mb-0 fw-bold">Gisu Safaris</h5>
+                    </div>
+                    <p class="text-light">Creating unforgettable multi-country safari experiences across East Africa. Expert guides, premium accommodations, and seamless logistics.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Safari Packages</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="./uganda.html" class="text-light text-decoration-none">Uganda Safaris</a></li>
+                        <li class="mb-2"><a href="./kenya.html" class="text-light text-decoration-none">Kenya Safaris</a></li>
+                        <li class="mb-2"><a href="./tanzania.html" class="text-light text-decoration-none">Tanzania Safaris</a></li>
+                        <li class="mb-2"><a href="./rwanda.html" class="text-light text-decoration-none">Rwanda Safaris</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Multi-Country</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="./uganda-kenya.html" class="text-light text-decoration-none">Uganda & Kenya</a></li>
+                        <li class="mb-2"><a href="./uganda-tanzania.html" class="text-light text-decoration-none">Uganda & Tanzania</a></li>
+                        <li class="mb-2"><a href="./rwanda-uganda.html" class="text-light text-decoration-none">Rwanda & Uganda</a></li>
+                        <li class="mb-2"><a href="./east-africa-grand.html" class="text-light text-decoration-none">Grand Tour</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                        <li class="mb-2"><a href="../gallery.html" class="text-light text-decoration-none">Gallery</a></li>
+                        <li class="mb-2"><a href="../blog/index.html" class="text-light text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Newsletter</h6>
+                    <p class="text-light">Subscribe for safari tips and special offers.</p>
+                    <form id="footerNewsletterForm" class="mt-3">
+                        <div class="input-group input-group-sm">
+                            <input type="email" name="email" class="form-control" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('multiCountryBookingForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        const travelDate = document.getElementById('travelDate');
+        const minDate = new Date();
+        minDate.setDate(minDate.getDate() + 30);
+        travelDate.min = minDate.toISOString().split('T')[0];
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+            
+            const formData = new FormData(form);
+            const interests = [];
+            document.querySelectorAll('input[name="primary_interests[]"]:checked').forEach(cb => {
+                interests.push(cb.value);
+            });
+
+            const data = {
+                first_name: formData.get('first_name'),
+                last_name: formData.get('last_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                country: formData.get('country'),
+                tour_combination: formData.get('tour_combination'),
+                duration: formData.get('duration'),
+                group_size: formData.get('group_size'),
+                travel_date: formData.get('travel_date'),
+                budget_range: formData.get('budget_range'),
+                accommodation_level: formData.get('accommodation_level'),
+                primary_interests: interests,
+                gorilla_permit_required: formData.get('gorilla_permit_required') === 'true',
+                special_requirements: formData.get('special_requirements'),
+                dietary_requirements: formData.get('dietary_requirements'),
+                mobility_requirements: formData.get('mobility_requirements'),
+                message: formData.get('message'),
+                newsletter_opt_in: formData.get('newsletter_opt_in') === 'true'
+            };
+            
+            try {
+                const response = await fetch('../backend/api/multi-country.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAlert('success', 'Booking Request Sent!', result.message);
+                    form.reset();
+                } else {
+                    if (result.errors && result.errors.length > 0) {
+                        showAlert('danger', 'Please correct the following errors:', result.errors.join('<br>'));
+                    } else {
+                        showAlert('danger', 'Booking Error', result.message);
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('danger', 'Connection Error', 'There was a problem connecting to our servers. Please try again or contact us directly.');
+            } finally {
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+
+        function showAlert(type, title, message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                <h6 class="alert-heading">${title}</h6>
+                <div>${message}</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            form.parentNode.insertBefore(alertDiv, form);
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    alertDiv.remove();
+                }, 8000);
+            }
+            alertDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const newsletterForm = document.getElementById('footerNewsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const emailInput = newsletterForm.querySelector('input[name="email"]');
+                const submitButton = newsletterForm.querySelector('button[type="submit"]');
+                const originalBtnHtml = submitButton.innerHTML;
+                
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                try {
+                    const response = await fetch('../backend/api/newsletter.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: emailInput.value,
+                            source: 'multi-country-footer'
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showAlert('success', 'Subscribed!', 'Thank you for subscribing to our newsletter.');
+                        newsletterForm.reset();
+                    } else {
+                        showAlert('warning', 'Subscription Failed', result.message);
+                    }
+                } catch (error) {
+                    showAlert('danger', 'Error', 'Failed to subscribe. Please try again.');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalBtnHtml;
+                }
+            });
+        }
+        
+        document.querySelectorAll('.image-rotator').forEach(rotator => {
+            let images = [];
+            try {
+                const raw = rotator.getAttribute('data-images') || '[]';
+                images = JSON.parse(raw);
+            } catch (e) {
+                images = [];
+            }
+            if (!images || images.length < 2) return;
+            
+            const imgA = rotator.querySelector('.img-a');
+            const imgB = rotator.querySelector('.img-b');
+            if (!imgA || !imgB) return;
+            imgA.src = images[0];
+            imgB.src = images[1];
+            let index = 1;
+            let showingA = true;
+            
+            setInterval(() => {
+                index = (index + 1) % images.length;
+                const hidden = showingA ? imgB : imgA;
+                const visible = showingA ? imgA : imgB;
+                hidden.src = images[index];
+                hidden.style.opacity = '1';
+                visible.style.opacity = '0';
+                showingA = !showingA;
+            }, 2000);
+        });
+        
+        const unmuteBtn = document.getElementById('includedVideoUnmuteBtn');
+        const includedIframe = document.getElementById('includedVideo');
+        if (includedIframe) {
+            try {
+                const url = new URL(includedIframe.src);
+                if (!url.searchParams.has('origin')) {
+                    url.searchParams.set('origin', window.location.origin);
+                    includedIframe.src = url.toString();
+                }
+            } catch (e) {}
+        }
+        const ytOrigin = 'https://www.youtube.com';
+        let includedYTPlayer = null;
+        let playerReady = false;
+        const sendYT = (func, args = []) => {
+            if (!includedIframe) return;
+            try {
+                includedIframe.contentWindow.postMessage(
+                    JSON.stringify({ event: 'command', func, args }),
+                    ytOrigin
+                );
+            } catch (e) { console.debug('sendYT error', e); }
+        };
+        const sendYTRetry = (func, args = [], retries = 3, delay = 150) => {
+            sendYT(func, args);
+            if (retries <= 0) return;
+            setTimeout(() => sendYTRetry(func, args, retries - 1, delay), delay);
+        };
+
+        const runWhenReady = (fn, fallback) => {
+            if (playerReady && includedYTPlayer) { fn(includedYTPlayer); return; }
+            let attempts = 15;
+            const t = setInterval(() => {
+                if (playerReady && includedYTPlayer) {
+                    clearInterval(t);
+                    fn(includedYTPlayer);
+                } else if (--attempts <= 0) {
+                    clearInterval(t);
+                    if (typeof fallback === 'function') fallback();
+                }
+            }, 150);
+        };
+
+        if (unmuteBtn && includedIframe) {
+            unmuteBtn.addEventListener('click', () => {
+                console.debug('Unmute clicked');
+                runWhenReady((p) => { try { p.unMute(); p.playVideo(); } catch(e) {} }, () => { sendYT('unMute'); sendYT('playVideo'); });
+                unmuteBtn.disabled = true;
+                unmuteBtn.style.opacity = '0.6';
+                setTimeout(() => { unmuteBtn.style.display = 'none'; }, 600);
+            });
+        }
+
+        const playBtn = document.getElementById('includedVideoPlayBtn');
+        const pauseBtn = document.getElementById('includedVideoPauseBtn');
+        const stopBtn = document.getElementById('includedVideoStopBtn');
+        const muteToggleBtn = document.getElementById('includedVideoMuteToggle');
+        let isMuted = true;
+
+        if (playBtn && includedIframe) {
+            playBtn.addEventListener('click', () => {
+                console.debug('Play clicked');
+                runWhenReady((p) => { try { p.unMute(); p.playVideo(); } catch(e) {} }, () => { sendYTRetry('unMute'); sendYTRetry('playVideo'); });
+                if (typeof isMuted !== 'undefined' && isMuted === true) {
+                    const icon = muteToggleBtn?.querySelector('i');
+                    const text = muteToggleBtn?.querySelector('span');
+                    muteToggleBtn?.setAttribute('aria-label', 'Mute video');
+                    if (icon) { icon.classList.remove('fa-volume-mute'); icon.classList.add('fa-volume-up'); }
+                    if (text) { text.textContent = 'Mute'; }
+                    isMuted = false;
+                }
+            });
+        }
+        if (pauseBtn && includedIframe) {
+            pauseBtn.addEventListener('click', () => {
+                console.debug('Pause clicked');
+                runWhenReady((p) => { try { p.pauseVideo(); } catch(e) {} }, () => { sendYT('pauseVideo'); });
+            });
+        }
+        if (stopBtn && includedIframe) {
+            stopBtn.addEventListener('click', () => {
+                console.debug('Stop clicked');
+                runWhenReady((p) => { try { p.pauseVideo(); p.seekTo(0, true); } catch(e) {} }, () => { sendYT('pauseVideo'); sendYT('seekTo', [0, true]); });
+            });
+        }
+        if (muteToggleBtn && includedIframe) {
+            muteToggleBtn.addEventListener('click', () => {
+                console.debug('Mute toggle clicked');
+                if (isMuted) {
+                    runWhenReady((p) => { try { p.unMute(); } catch(e) {} }, () => { sendYT('unMute'); });
+                    muteToggleBtn.setAttribute('aria-label', 'Mute video');
+                    const icon = muteToggleBtn.querySelector('i');
+                    const text = muteToggleBtn.querySelector('span');
+                    if (icon) { icon.classList.remove('fa-volume-mute'); icon.classList.add('fa-volume-up'); }
+                    if (text) { text.textContent = 'Mute'; }
+                    isMuted = false;
+                } else {
+                    runWhenReady((p) => { try { p.mute(); } catch(e) {} }, () => { sendYT('mute'); });
+                    muteToggleBtn.setAttribute('aria-label', 'Unmute video');
+                    const icon = muteToggleBtn.querySelector('i');
+                    const text = muteToggleBtn.querySelector('span');
+                    if (icon) { icon.classList.remove('fa-volume-up'); icon.classList.add('fa-volume-mute'); }
+                    if (text) { text.textContent = 'Unmute'; }
+                    isMuted = true;
+                }
+            });
+        }
+
+        const initIncludedYTPlayer = () => {
+            try {
+                includedYTPlayer = new YT.Player('includedVideo', {
+                    events: {
+                        onReady: (e) => {
+                            playerReady = true;
+                            console.debug('YT Player ready');
+                            try { e.target.mute(); } catch (err) {}
+                            try { e.target.pauseVideo(); } catch (err) {}
+                        }
+                    }
+                });
+            } catch (e) {}
+        };
+        const ensureYTApi = () => {
+            if (window.YT && typeof window.YT.Player === 'function') {
+                initIncludedYTPlayer();
+                return;
+            }
+            const prev = window.onYouTubeIframeAPIReady;
+            window.onYouTubeIframeAPIReady = function() {
+                if (typeof prev === 'function') try { prev(); } catch(e) {}
+                initIncludedYTPlayer();
+            };
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.appendChild(tag);
+        };
+        ensureYTApi();
+
+        const fsBtn = document.getElementById('includedVideoFullscreenBtn');
+        const fsWrapper = document.getElementById('includedVideoWrapper');
+        if (fsBtn && fsWrapper) {
+            const updateFSIcon = () => {
+                const icon = fsBtn.querySelector('i');
+                if (document.fullscreenElement) {
+                    if (icon) { icon.classList.remove('fa-expand'); icon.classList.add('fa-compress'); }
+                    fsBtn.setAttribute('aria-label', 'Exit fullscreen');
+                } else {
+                    if (icon) { icon.classList.remove('fa-compress'); icon.classList.add('fa-expand'); }
+                    fsBtn.setAttribute('aria-label', 'Enter fullscreen');
+                }
+            };
+            fsBtn.addEventListener('click', async () => {
+                try {
+                    if (!document.fullscreenElement) {
+                        await fsWrapper.requestFullscreen();
+                    } else {
+                        await document.exitFullscreen();
+                    }
+                } catch (e) {}
+                updateFSIcon();
+            });
+            document.addEventListener('fullscreenchange', updateFSIcon);
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-element').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    });
+    </script>
+    <script src="../js/main.js"></script></body>
+</html>
+

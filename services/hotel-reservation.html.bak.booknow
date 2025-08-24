@@ -1,0 +1,1350 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Reservation Services - Gisu Safaris | Luxury Accommodation Booking</title>
+    <meta name="description" content="Professional hotel reservation services by Gisu Safaris. Book luxury lodges, safari camps, and hotels across East Africa. Expert accommodation booking for your safari adventure.">
+    <meta name="keywords" content="hotel reservation, safari lodges, accommodation booking, East Africa hotels, luxury camps, safari accommodation">
+    <meta name="author" content="Gisu Safaris - East Africa Safari Specialists">
+    <meta name="robots" content="index, follow">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotel Reservation Services - Gisu Safaris">
+    <meta property="og:description" content="Professional hotel reservation services for luxury safari accommodation across East Africa.">
+    <meta property="og:url" content="https://gisusafaris.com/services/hotel-reservation.html">
+    <meta property="og:site_name" content="Gisu Safaris">
+    <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
+
+    <link rel="canonical" href="https://gisusafaris.com/services/hotel-reservation.html">
+    
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../packages/uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="../packages/kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="../packages/tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="../packages/rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../packages/multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item" href="travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="visa.html">Visa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../contact.html" class="btn btn-primary btn-sm">
+                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <header class="hero-section" style="height: 60vh; background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <div class="hero-overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-8 fade-element">
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">
+                                Hotel Reservation Services
+                            </h1>
+                            <p class="hero-description lead text-white mb-0">
+                                Premium accommodation booking across East Africa's finest lodges and hotels
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 fade-element">
+                        <h2 class="display-5 fw-bold mb-4">Luxury <span class="text-primary">Accommodation</span></h2>
+                        <p class="lead mb-4">Let us handle your accommodation needs with our extensive network of premium hotels, luxury safari lodges, and exclusive camps across East Africa.</p>
+                        <p class="mb-4">Our hotel reservation service ensures you stay in the finest accommodations that match your preferences and budget, from boutique lodges to world-class resorts.</p>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    <span>Best Rate Guarantee</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    <span>24/7 Support</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    <span>Instant Confirmation</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    <span>Free Cancellation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-element">
+                        <div class="auto-slider ratio-4x3 rounded-3 shadow">
+                            <img src="../images/img/hotel_reservation.jpg" alt="Luxury Accommodation - View 1" class="active">
+                            <img src="../images/img/hotel.jpg" alt="Luxury Accommodation - View 2">
+                            <img src="../images/img/sheratonkampalahotel4.jpg" alt="Luxury Accommodation - View 3">
+                            <img src="../images/top-safari-packages/about_gisu_safaris2.jpg" alt="Luxury Accommodation - View 4">
+                            <img src="../images/img/neptune_paradise_resort.jpg" alt="Luxury Accommodation - View 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accommodation Types -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Accommodation <span class="text-primary">Types</span></h2>
+                    <p class="lead">Choose from our carefully selected range of accommodations</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-sm hover-card">
+                            <div class="card-slider">
+                                <img src="../images/img/Best-accommodation-in-bwindi-Impenetrable-forest-national-park.jpg" alt="Luxury Safari Lodge - View 1" class="active">
+                                <img src="../images/img/hotel.jpg" alt="Luxury Safari Lodge - View 2">
+                                <img src="../images/img/sheratonkampalahotel4.jpg" alt="Luxury Safari Lodge - View 3">
+                                <img src="../images/uganda/Queen-Elizabeth-National.jpg" alt="Luxury Safari Lodge - View 4">
+                                <img src="../images/top-safari-packages/Serengeti-safaris-2.webp" alt="Luxury Safari Lodge - View 5">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Luxury Safari Lodges</h5>
+                                <p class="card-text">Premium lodges with stunning views, exceptional service, and world-class amenities in prime wildlife locations.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-star text-warning me-2"></i>5-Star Service</li>
+                                    <li><i class="fas fa-utensils text-primary me-2"></i>Gourmet Dining</li>
+                                    <li><i class="fas fa-spa text-success me-2"></i>Spa Services</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-sm hover-card">
+                            <div class="card-slider">
+                                <img src="../images/img/Tanzania_Luxury_Tented_Camp.avif" alt="Tented Safari Camps - View 1" class="active">
+                                <img src="../images/top-safari-packages/Serengeti-safaris-2.webp" alt="Tented Safari Camps - View 2">
+                                <img src="../images/uganda/6-Days-Jinja-sipi-falls-and-Kidepo-valley-1200x675.webp" alt="Tented Safari Camps - View 3">
+                                <img src="../images/uganda/Sipi-waterfall-jpg.webp" alt="Tented Safari Camps - View 4">
+                                <img src="../images/img/Abseiling-3.jpg" alt="Tented Safari Camps - View 5">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Tented Safari Camps</h5>
+                                <p class="card-text">Authentic safari experience with comfortable tented accommodation in the heart of the wilderness.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-campground text-warning me-2"></i>Authentic Experience</li>
+                                    <li><i class="fas fa-bed text-primary me-2"></i>Comfortable Beds</li>
+                                    <li><i class="fas fa-fire text-success me-2"></i>Campfire Dining</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-sm hover-card">
+                            <div class="card-slider">
+                                <img src="../images/img/sheratonkampalahotel4.jpg" alt="Boutique Hotels - View 1" class="active">
+                                <img src="../images/img/neptune_paradise_resort.jpg" alt="Boutique Hotels - View 2">
+                                <img src="../images/img/hotel.jpg" alt="Boutique Hotels - View 3">
+                                <img src="../images/top-safari-packages/about_gisu_safaris2.jpg" alt="Boutique Hotels - View 4">
+                                <img src="../images/img/3-days-queen-elizabeth-national-park-safari-with-tree-climbing-tour.jpg" alt="Boutique Hotels - View 5">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Boutique Hotels</h5>
+                                <p class="card-text">Unique, stylish hotels in major cities and towns, perfect for pre and post-safari stays.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-building text-warning me-2"></i>Prime Locations</li>
+                                    <li><i class="fas fa-wifi text-primary me-2"></i>Modern Amenities</li>
+                                    <li><i class="fas fa-concierge-bell text-success me-2"></i>Concierge Service</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Process -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Simple <span class="text-primary">Booking Process</span></h2>
+                    <p class="lead">Easy steps to secure your perfect accommodation</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-search fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">1. Tell Us Your Needs</h5>
+                        <p>Share your travel dates, preferences, and budget requirements with our team.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-list fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">2. Get Recommendations</h5>
+                        <p>Receive curated accommodation options that match your criteria and preferences.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-credit-card fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">3. Secure Booking</h5>
+                        <p>Confirm your selection and we'll handle all booking details and payments.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center fade-element">
+                        <div class="mb-3">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="fas fa-check fa-2x"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold">4. Enjoy Your Stay</h5>
+                        <p>Relax and enjoy your accommodation with our 24/7 support throughout your stay.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Booking Form -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Quick <span class="text-primary">Hotel Search</span></h2>
+                    <p class="lead">Find and book your perfect accommodation instantly</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="card shadow-lg border-0">
+                            <div class="card-body p-4">
+                                <form id="quickHotelSearchForm" class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="destination" class="form-label fw-semibold">Destination</label>
+                                        <select class="form-select" id="destination" required>
+                                            <option value="">Choose destination...</option>
+                                            <!-- Uganda -->
+                                            <option value="kampala">Kampala, Uganda</option>
+                                            <option value="entebbe">Entebbe, Uganda</option>
+                                            <option value="jinja">Jinja, Uganda</option>
+                                            <option value="fort-portal">Fort Portal, Uganda</option>
+                                            <option value="mbale">Mbale, Uganda</option>
+                                            <option value="bwindi">Bwindi, Uganda</option>
+                                            <option value="queen-elizabeth-np">Queen Elizabeth NP, Uganda</option>
+                                            <option value="murchison-falls">Murchison Falls, Uganda</option>
+                                            <option value="kidepo-valley">Kidepo Valley, Uganda</option>
+                                            <!-- Kenya -->
+                                            <option value="nairobi">Nairobi, Kenya</option>
+                                            <option value="masai-mara">Masai Mara, Kenya</option>
+                                            <option value="amboseli">Amboseli, Kenya</option>
+                                            <option value="tsavo">Tsavo, Kenya</option>
+                                            <option value="nakuru">Nakuru, Kenya</option>
+                                            <option value="naivasha">Naivasha, Kenya</option>
+                                            <option value="diani-beach">Diani Beach, Kenya</option>
+                                            <option value="mombasa">Mombasa, Kenya</option>
+                                            <!-- Tanzania -->
+                                            <option value="arusha">Arusha, Tanzania</option>
+                                            <option value="moshi">Moshi, Tanzania</option>
+                                            <option value="serengeti">Serengeti, Tanzania</option>
+                                            <option value="tarangire">Tarangire, Tanzania</option>
+                                            <option value="zanzibar">Zanzibar, Tanzania</option>
+                                            <!-- Rwanda -->
+                                            <option value="kigali">Kigali, Rwanda</option>
+                                            <option value="musanze">Musanze, Rwanda</option>
+                                            <option value="gisenyi">Gisenyi, Rwanda</option>
+                                            <option value="huye">Huye, Rwanda</option>
+                                            <option value="akagera-np">Akagera NP, Rwanda</option>
+                                            <option value="volcanoes">Volcanoes, Rwanda</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="checkin" class="form-label fw-semibold">Check-in</label>
+                                        <input type="date" class="form-control" id="checkin" required>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="checkout" class="form-label fw-semibold">Check-out</label>
+                                        <input type="date" class="form-control" id="checkout" required>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="guests" class="form-label fw-semibold">Guests</label>
+                                        <select class="form-select" id="guests" required>
+                                            <option value="">Guests</option>
+                                            <option value="1">1 Guest</option>
+                                            <option value="2">2 Guests</option>
+                                            <option value="3">3 Guests</option>
+                                            <option value="4">4 Guests</option>
+                                            <option value="5+">5+ Guests</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="accommodation-type" class="form-label fw-semibold">Type</label>
+                                        <select class="form-select" id="accommodation-type">
+                                            <option value="">Any type</option>
+                                            <option value="luxury-lodge">Luxury Lodge</option>
+                                            <option value="safari-camp">Safari Camp</option>
+                                            <option value="boutique-hotel">Boutique Hotel</option>
+                                            <option value="budget-friendly">Budget Friendly</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                                            <i class="fas fa-search me-2"></i>Search Hotels
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-lg px-4 ms-3" data-bs-toggle="modal" data-bs-target="#customRequestModal">
+                                            <i class="fas fa-concierge-bell me-2"></i>Custom Request
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Search Results (in-page) -->
+        <section id="search-results" class="py-4 d-none">
+            <div class="container">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-3 gap-3">
+                    <div>
+                        <h2 id="searchTitle" class="h4 fw-bold mb-1">Search Results</h2>
+                        <p id="searchSubtitle" class="text-muted mb-0"></p>
+                    </div>
+                    <div class="text-muted small" id="searchCount"></div>
+                </div>
+                <div id="searchGrid" class="row g-4"></div>
+            </div>
+        </section>
+
+        <!-- Featured Hotels -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Featured <span class="text-primary">Hotels & Lodges</span></h2>
+                    <p class="lead">Handpicked accommodations for unforgettable experiences</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg hover-card">
+                            <div class="position-relative">
+                                <div class="card-slider">
+                                    <img src="../images/img/hotel.jpg" alt="Serena Safari Lodge - View 1" class="active">
+                                    <img src="../images/top-safari-packages/Serengeti-safaris-2.webp" alt="Serena Safari Lodge - View 2">
+                                    <img src="../images/img/3-days-queen-elizabeth-national-park-safari-with-tree-climbing-tour.jpg" alt="Serena Safari Lodge - View 3">
+                                    <img src="../images/Sipi-falls-2-1024x576.png" alt="Serena Safari Lodge - View 4">
+                                    <img src="../images/top-safari-packages/about_gisu_safaris2.jpg" alt="Serena Safari Lodge - View 5">
+                                </div>
+                                <div class="position-absolute top-0 end-0 m-3">
+                                    <span class="badge bg-success fs-6">Best Value</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold mb-0">Serena Safari Lodge</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Serengeti National Park, Tanzania</p>
+                                <p class="card-text">Luxury safari lodge overlooking the endless plains of Serengeti with exceptional wildlife viewing.</p>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-wifi text-primary me-1"></i>Free WiFi</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-swimming-pool text-primary me-1"></i>Pool</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-utensils text-primary me-1"></i>Restaurant</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-spa text-primary me-1"></i>Spa</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="h5 text-primary fw-bold">$450</span>
+                                        <small class="text-muted">/night</small>
+                                    </div>
+                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Serena%20Safari%20Lodge&amount=450" aria-label="Book Serena Safari Lodge">
+                                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg hover-card">
+                            <div class="position-relative">
+                                <div class="card-slider">
+                                    <img src="../images/img/bwindi_mpenetrable_forest.jpg" alt="Bwindi Lodge - View 1" class="active">
+                                    <img src="../images/img/Best-accommodation-in-bwindi-Impenetrable-forest-national-park.jpg" alt="Bwindi Lodge - View 2">
+                                    <img src="../images/uganda/6-Days-Jinja-sipi-falls-and-Kidepo-valley-1200x675.webp" alt="Bwindi Lodge - View 3">
+                                    <img src="../images/uganda/Queen-Elizabeth-National.jpg" alt="Bwindi Lodge - View 4">
+                                    <img src="../images/top-safari-packages/3-Day-Luxury-Gorilla-Trekking-Safari-in-Uganda-Bwindi-Gorilla-Tour.jpg" alt="Bwindi Lodge - View 5">
+                                </div>
+                                <div class="position-absolute top-0 end-0 m-3">
+                                    <span class="badge bg-warning text-dark fs-6">Popular</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold mb-0">Bwindi Lodge</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Bwindi Impenetrable Forest, Uganda</p>
+                                <p class="card-text">Eco-luxury lodge perfect for gorilla trekking adventures with stunning forest views.</p>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-leaf text-success me-1"></i>Eco-Friendly</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-binoculars text-primary me-1"></i>Wildlife View</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-fire text-warning me-1"></i>Fireplace</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-hiking text-success me-1"></i>Guided Tours</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="h5 text-primary fw-bold">$380</span>
+                                        <small class="text-muted">/night</small>
+                                    </div>
+                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Bwindi%20Lodge&amount=380" aria-label="Book Bwindi Lodge">
+                                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg hover-card">
+                            <div class="position-relative">
+                                <div class="card-slider">
+                                    <img src="../images/img/neptune_paradise_resort.jpg" alt="Nairobi Boutique Hotel - View 1" class="active">
+                                    <img src="../images/img/sheratonkampalahotel4.jpg" alt="Nairobi Boutique Hotel - View 2">
+                                    <img src="../images/img/hotel.jpg" alt="Nairobi Boutique Hotel - View 3">
+                                    <img src="../images/top-safari-packages/about_gisu_safaris2.jpg" alt="Nairobi Boutique Hotel - View 4">
+                                    <img src="../images/img/Abseiling-3.jpg" alt="Nairobi Boutique Hotel - View 5">
+                                </div>
+                                <div class="position-absolute top-0 end-0 m-3">
+                                    <span class="badge bg-info fs-6">City Center</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold mb-0">Nairobi Boutique Hotel</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Nairobi City Center, Kenya</p>
+                                <p class="card-text">Modern boutique hotel in the heart of Nairobi, perfect for business and leisure travelers.</p>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-building text-primary me-1"></i>City View</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-dumbbell text-success me-1"></i>Fitness Center</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-car text-warning me-1"></i>Parking</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-cocktail text-info me-1"></i>Bar</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="h5 text-primary fw-bold">$120</span>
+                                        <small class="text-muted">/night</small>
+                                    </div>
+                                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=Nairobi%20Boutique%20Hotel&amount=120" aria-label="Book Nairobi Boutique Hotel">
+                                        <i class="fas fa-calendar-check me-1"></i>Book Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <button id="viewAllHotelsBtn" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-th-large me-2"></i>View All Hotels
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Hotels (Revealed on click) -->
+        <section id="all-hotels" class="py-5 bg-light d-none">
+            <div class="container">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-3">
+                    <div>
+                        <h2 class="h3 fw-bold mb-1">All Hotels</h2>
+                        <p class="text-muted mb-0">Uganda, Kenya, Tanzania, Rwanda</p>
+                    </div>
+                    <div class="btn-group flex-wrap" role="group" aria-label="Filter hotels by country">
+                        <button class="btn btn-sm btn-primary" data-filter="all">All</button>
+                        <button class="btn btn-sm btn-outline-primary" data-filter="uganda">Uganda</button>
+                        <button class="btn btn-sm btn-outline-primary" data-filter="kenya">Kenya</button>
+                        <button class="btn btn-sm btn-outline-primary" data-filter="tanzania">Tanzania</button>
+                        <button class="btn btn-sm btn-outline-primary" data-filter="rwanda">Rwanda</button>
+                    </div>
+                </div>
+                <div id="hotelsGrid" class="row g-4"></div>
+            </div>
+        </section>
+
+        <!-- Pricing Packages -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Accommodation <span class="text-primary">Packages</span></h2>
+                    <p class="lead">Choose the perfect package for your East African adventure</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 fade-element">
+                        <div class="card h-100 border-0 shadow-lg">
+                            <div class="card-header bg-white text-center py-4 border-0">
+                                <h4 class="fw-bold text-primary">Budget Explorer</h4>
+                                <div class="display-4 fw-bold text-dark">$80<small class="fs-6 text-muted">/night</small></div>
+                                <p class="text-muted mb-0">Perfect for budget-conscious travelers</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Clean & comfortable rooms</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Shared facilities</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic breakfast included</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Free WiFi</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 reception</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>No spa services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>No room service</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-outline-primary btn-lg w-100">
+                                    <i class="fas fa-shopping-cart me-2"></i>Select Package
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 fade-element">
+                        <div class="card h-100 border-primary shadow-lg position-relative">
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <span class="badge bg-primary fs-6 px-3 py-2">Most Popular</span>
+                            </div>
+                            <div class="card-header bg-primary text-white text-center py-4 border-0">
+                                <h4 class="fw-bold">Safari Comfort</h4>
+                                <div class="display-4 fw-bold">$250<small class="fs-6">/night</small></div>
+                                <p class="mb-0">Best value for safari experiences</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Private en-suite rooms</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All meals included</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Game drive activities</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional guide</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Airport transfers</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Laundry service</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 support</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-crown me-2"></i>Select Package
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 fade-element">
+                        <div class="card h-100 border-0 shadow-lg">
+                            <div class="card-header bg-dark text-white text-center py-4 border-0">
+                                <h4 class="fw-bold">Luxury Premium</h4>
+                                <div class="display-4 fw-bold">$500<small class="fs-6">/night</small></div>
+                                <p class="mb-0">Ultimate luxury experience</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Luxury suites with views</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Gourmet dining experience</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Private safari vehicles</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Expert naturalist guides</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Spa & wellness treatments</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Butler service</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Helicopter transfers</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <button class="btn btn-dark btn-lg w-100">
+                                    <i class="fas fa-gem me-2"></i>Select Package
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-5 bg-primary text-white">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-5 fw-bold mb-4">Ready to Book Your Perfect Stay?</h2>
+                        <p class="lead mb-4">Let our experts find and book the ideal accommodation for your East African adventure.</p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <a href="../contact.html" class="btn btn-light btn-lg">
+                                <i class="fas fa-envelope me-2"></i>Get Quote
+                            </a>
+                            <a href="tel:+256123456789" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-phone me-2"></i>Call Now
+                            </a>
+                            <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#whatsappModal">
+                                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Request Modal -->
+        <div class="modal fade" id="customRequestModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="fas fa-concierge-bell me-2"></i>Custom Accommodation Request</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="modal-name" class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" id="modal-name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="modal-email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="modal-email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="modal-phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="modal-phone">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="modal-budget" class="form-label">Budget Range</label>
+                                    <select class="form-select" id="modal-budget">
+                                        <option value="">Select budget...</option>
+                                        <option value="under-100">Under $100/night</option>
+                                        <option value="100-250">$100-250/night</option>
+                                        <option value="250-500">$250-500/night</option>
+                                        <option value="over-500">Over $500/night</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="modal-requirements" class="form-label">Special Requirements</label>
+                                    <textarea class="form-control" id="modal-requirements" rows="4" placeholder="Tell us about your specific needs, preferences, dietary requirements, accessibility needs, etc."></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i>Send Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="whatsappModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title"><i class="fab fa-whatsapp me-2"></i>Contact via WhatsApp</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="mb-4">
+                            <i class="fab fa-whatsapp text-success" style="font-size: 4rem;"></i>
+                        </div>
+                        <h5>Get instant assistance!</h5>
+                        <p class="text-muted">Chat with our hotel booking specialists on WhatsApp for immediate support and personalized recommendations.</p>
+                        <div class="d-grid gap-2">
+                            <a href="https://wa.me/61470133869?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20hotel%20reservations%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
+                                <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">Gisu Safaris</h5>
+                    <p>Your trusted partner for extraordinary East African wildlife adventures and premium accommodation services.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="../about.html" class="text-light text-decoration-none">About</a></li>
+                        <li><a href="../packages.html" class="text-light text-decoration-none">Packages</a></li>
+                        <li><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="./hotel-reservation.html" class="text-light text-decoration-none">Hotel Reservation</a></li>
+                        <li><a href="./air_ticketing.html" class="text-light text-decoration-none">Air Ticketing</a></li>
+                        <li><a href="./car_hire.html" class="text-light text-decoration-none">Car Hire</a></li>
+                        <li><a href="./visa.html" class="text-light text-decoration-none">Visa Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda</p>
+                    <p><i class="fas fa-phone me-2"></i>+256 123 456 789</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                  </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                  <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                  <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-element');
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.querySelector('.navbar');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+
+            document.addEventListener('click', (e) => {
+                if (!navbar.contains(e.target) && navbarCollapse.classList.contains('show')) {
+                    navbarToggler.click();
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const sliders = document.querySelectorAll('.card-slider, .auto-slider');
+        sliders.forEach(slider => {
+          const images = slider.querySelectorAll('img');
+          if (images.length <= 1) return;
+          let i = 0;
+          setInterval(() => {
+            images[i].classList.remove('active');
+            i = (i + 1) % images.length;
+            images[i].classList.add('active');
+          }, 2000);
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const allHotelsSection = document.getElementById('all-hotels');
+        const viewAllBtn = document.getElementById('viewAllHotelsBtn');
+        const grid = document.getElementById('hotelsGrid');
+
+        function generateHotels() {
+          const types = ['luxury-lodge','safari-camp','boutique-hotel','budget-friendly'];
+          const DESTS = [
+            // Uganda
+            {country:'uganda', city:'Kampala',          allowed:['luxury-lodge','boutique-hotel','budget-friendly']},
+            {country:'uganda', city:'Entebbe',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'uganda', city:'Jinja',            allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'uganda', city:'Fort Portal',      allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'uganda', city:'Mbale',            allowed:['boutique-hotel','budget-friendly']},
+            {country:'uganda', city:'Bwindi',           allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'uganda', city:'Queen Elizabeth NP', allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'uganda', city:'Murchison Falls',  allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'uganda', city:'Kidepo Valley',    allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            // Kenya
+            {country:'kenya',  city:'Nairobi',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Masai Mara',       allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'kenya',  city:'Amboseli',         allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'kenya',  city:'Tsavo',            allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'kenya',  city:'Nakuru',           allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Naivasha',         allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Diani Beach',      allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'kenya',  city:'Mombasa',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            // Tanzania
+            {country:'tanzania', city:'Arusha',         allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'tanzania', city:'Moshi',          allowed:['boutique-hotel','budget-friendly']},
+            {country:'tanzania', city:'Serengeti',      allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'tanzania', city:'Tarangire',      allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'tanzania', city:'Zanzibar',       allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            // Rwanda
+            {country:'rwanda', city:'Kigali',           allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'rwanda', city:'Musanze',          allowed:['luxury-lodge','budget-friendly']},
+            {country:'rwanda', city:'Gisenyi',          allowed:['boutique-hotel','budget-friendly','luxury-lodge']},
+            {country:'rwanda', city:'Huye',             allowed:['boutique-hotel','budget-friendly']},
+            {country:'rwanda', city:'Akagera NP',       allowed:['safari-camp','luxury-lodge','budget-friendly']},
+            {country:'rwanda', city:'Volcanoes',        allowed:['safari-camp','luxury-lodge','budget-friendly']}
+          ];
+          const imagesCommon = [
+            '../images/img/hotel.jpg',
+            '../images/img/sheratonkampalahotel4.jpg',
+            '../images/img/Best-accommodation-in-bwindi-Impenetrable-forest-national-park.jpg',
+            '../images/top-safari-packages/Serengeti-safaris-2.webp'
+          ];
+          const priceBase = {
+            'luxury-lodge': 280,
+            'safari-camp': 160,
+            'boutique-hotel': 130,
+            'budget-friendly': 60
+          };
+          const priceRange = {
+            'luxury-lodge': 250,
+            'safari-camp': 120,
+            'boutique-hotel': 60,
+            'budget-friendly': 40
+          };
+          function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);} 
+          const out = [];
+          DESTS.forEach((loc) => {
+            loc.allowed.forEach((t) => {
+              for (let i = 0; i < 12; i++) {
+                const name = `${loc.city} ${t.replace('-', ' ')} ${i+1}`.replace(/\b\w/g, c=>c.toUpperCase());
+                const price = priceBase[t] + ((i*17)%priceRange[t]);
+                const rating = t==='budget-friendly' ? 3.5 + (i%3)*0.5 : 4 + (i%3)*0.5;
+                out.push({
+                  name,
+                  type: t,
+                  country: loc.country,
+                  location: `${loc.city}, ${cap(loc.country)}`,
+                  price,
+                  rating: Math.min(5, rating),
+                  images: imagesCommon
+                });
+              }
+            });
+          });
+          return out;
+        }
+
+        // Build hotels and expose
+        const HOTELS = generateHotels();
+        // expose globally for reuse (quick search)
+        window.GISU_HOTELS = HOTELS;
+        window.generateHotels = generateHotels;
+        // expose globally for reuse (quick search)
+        window.GISU_HOTELS = HOTELS;
+
+        function starIcons(rating) {
+          const full = Math.floor(rating);
+          const half = rating % 1 >= 0.5;
+          let html = '';
+          for (let i = 0; i < full; i++) html += '<i class="fas fa-star"></i>';
+          if (half) html += '<i class="fas fa-star-half-alt"></i>';
+          for (let i = full + (half?1:0); i < 5; i++) html += '<i class="far fa-star"></i>';
+          return html;
+        }
+
+        function typeLabel(type) {
+          switch (type) {
+            case 'luxury-lodge': return 'Luxury Lodge';
+            case 'safari-camp': return 'Safari Camp';
+            case 'boutique-hotel': return 'Boutique Hotel';
+            case 'budget-friendly': return 'Budget Friendly';
+            default: return 'Hotel';
+          }
+        }
+
+        function render(filter = 'all') {
+          grid.innerHTML = '';
+          const list = HOTELS.filter(h => filter === 'all' ? true : h.country === filter);
+          if (!list.length) {
+            grid.innerHTML = '<div class="col-12 text-center text-muted">No hotels available.</div>';
+            return;
+          }
+          list.forEach(h => {
+            const col = document.createElement('div');
+            col.className = 'col-xl-3 col-lg-4 col-md-6';
+            col.innerHTML = `
+              <div class="card h-100 border-0 shadow-sm hover-card">
+                <div class="position-relative">
+                  <div class="card-slider">
+                    ${h.images.map((src, idx) => `<img src="${src}" alt="${h.name} - Image ${idx+1}" ${idx===0?'class="active"':''}>`).join('')}
+                  </div>
+                  <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">${typeLabel(h.type)}</span></div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="fw-bold mb-0">${h.name}</h6>
+                    <div class="text-warning">${starIcons(h.rating)}</div>
+                  </div>
+                  <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
+                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
+                  </div>
+                </div>
+              </div>`;
+            grid.appendChild(col);
+          });
+        }
+
+        if (viewAllBtn) {
+          viewAllBtn.setAttribute('aria-expanded', 'false');
+          const defaultHTML = '<i class="fas fa-th-large me-2"></i>View All Hotels';
+          const hideHTML = '<i class="fas fa-times me-2"></i>Hide All Hotels';
+          viewAllBtn.addEventListener('click', () => {
+            const isHidden = allHotelsSection.classList.contains('d-none');
+            if (isHidden) {
+              // Show section
+              allHotelsSection.classList.remove('d-none');
+              viewAllBtn.innerHTML = hideHTML;
+              viewAllBtn.setAttribute('aria-expanded', 'true');
+              // Reset filter buttons to All
+              const filterBtns = allHotelsSection.querySelectorAll('button[data-filter]');
+              filterBtns.forEach((b) => b.classList.replace('btn-primary','btn-outline-primary'));
+              const allBtn = allHotelsSection.querySelector('button[data-filter="all"]');
+              allBtn?.classList.remove('btn-outline-primary');
+              allBtn?.classList.add('btn-primary');
+              render('all');
+              allHotelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              // Hide section
+              allHotelsSection.classList.add('d-none');
+              viewAllBtn.innerHTML = defaultHTML;
+              viewAllBtn.setAttribute('aria-expanded', 'false');
+              // Scroll back to button for context
+              viewAllBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+        }
+
+        // Filter handling
+        allHotelsSection?.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[data-filter]');
+          if (!btn) return;
+          // update active styles
+          allHotelsSection.querySelectorAll('button[data-filter]').forEach(b => b.classList.replace('btn-primary','btn-outline-primary'));
+          btn.classList.remove('btn-outline-primary');
+          btn.classList.add('btn-primary');
+          render(btn.getAttribute('data-filter'));
+        });
+      });
+    </script>
+
+    <!-- Quick Hotel Search: prevent navigation and render results inline -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('quickHotelSearchForm');
+        const resultsSection = document.getElementById('search-results');
+        const titleEl = document.getElementById('searchTitle');
+        const subtitleEl = document.getElementById('searchSubtitle');
+        const countEl = document.getElementById('searchCount');
+        const grid = document.getElementById('searchGrid');
+
+        if (!form) return;
+
+        const DS = () => (
+          Array.isArray(window.GISU_HOTELS) ? window.GISU_HOTELS :
+          (typeof window.generateHotels === 'function' ? window.generateHotels() : [])
+        );
+
+        function initSliders(container) {
+          const sliders = container.querySelectorAll('.card-slider');
+          sliders.forEach(slider => {
+            const imgs = slider.querySelectorAll('img');
+            if (imgs.length <= 1) return;
+            let i = 0;
+            setInterval(() => {
+              imgs[i].classList.remove('active');
+              i = (i + 1) % imgs.length;
+              imgs[i].classList.add('active');
+            }, 2000);
+          });
+        }
+
+        function typeLabelQS(type) {
+          switch (type) {
+            case 'luxury-lodge': return 'Luxury Lodge';
+            case 'safari-camp': return 'Safari Camp';
+            case 'boutique-hotel': return 'Boutique Hotel';
+            case 'budget-friendly': return 'Budget Friendly';
+            default: return 'Hotel';
+          }
+        }
+
+        function renderCards(list) {
+          grid.innerHTML = '';
+          if (!list.length) {
+            grid.innerHTML = '<div class="col-12 text-center text-muted">No matching hotels found. Try a broader destination.</div>';
+            return;
+          }
+          list.forEach(h => {
+            const col = document.createElement('div');
+            col.className = 'col-xl-3 col-lg-4 col-md-6';
+            col.innerHTML = `
+              <div class="card h-100 border-0 shadow-sm hover-card">
+                <div class="position-relative">
+                  <div class="card-slider">
+                    ${h.images.map((src, idx) => '<img src="'+src+'" alt="'+h.name+' - Image '+(idx+1)+'" '+(idx===0?'class="active"':'')+'>').join('')}
+                  </div>
+                  <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">${typeLabelQS(h.type)}</span></div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="fw-bold mb-0">${h.name}</h6>
+                    <div class="text-warning">${(function(r){const f=Math.floor(r),half=r%1>=0.5;let html='';for(let i=0;i<f;i++)html+='<i class=\'fas fa-star\'></i>';if(half)html+='<i class=\'fas fa-star-half-alt\'></i>';for(let i=f+(half?1:0);i<5;i++)html+='<i class=\'far fa-star\'></i>';return html;})(h.rating)}</div>
+                  </div>
+                  <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>${h.location}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div><span class="text-primary fw-bold">$${h.price}</span><small class="text-muted">/night</small></div>
+                    <a class="btn btn-primary btn-sm" href="../booking/hotel-booking.html?title=${encodeURIComponent(h.name)}&amount=${encodeURIComponent(h.price)}" aria-label="Book ${h.name}"><i class="fas fa-calendar-check me-1"></i>Book</a>
+                  </div>
+                </div>
+              </div>`;
+            grid.appendChild(col);
+          });
+          initSliders(grid);
+        }
+
+        function destinationToFilter(dest) {
+          switch (dest) {
+            case 'kampala': return { country: 'uganda', city: 'Kampala' };
+            case 'entebbe': return { country: 'uganda', city: 'Entebbe' };
+            case 'jinja': return { country: 'uganda', city: 'Jinja' };
+            case 'fort-portal': return { country: 'uganda', city: 'Fort Portal' };
+            case 'mbale': return { country: 'uganda', city: 'Mbale' };
+            case 'bwindi': return { country: 'uganda', city: 'Bwindi' };
+            case 'queen-elizabeth-np': return { country: 'uganda', city: 'Queen Elizabeth NP' };
+            case 'murchison-falls': return { country: 'uganda', city: 'Murchison Falls' };
+            case 'kidepo-valley': return { country: 'uganda', city: 'Kidepo Valley' };
+
+            case 'nairobi': return { country: 'kenya', city: 'Nairobi' };
+            case 'masai-mara': return { country: 'kenya', city: 'Masai Mara' };
+            case 'amboseli': return { country: 'kenya', city: 'Amboseli' };
+            case 'tsavo': return { country: 'kenya', city: 'Tsavo' };
+            case 'nakuru': return { country: 'kenya', city: 'Nakuru' };
+            case 'naivasha': return { country: 'kenya', city: 'Naivasha' };
+            case 'diani-beach': return { country: 'kenya', city: 'Diani Beach' };
+            case 'mombasa': return { country: 'kenya', city: 'Mombasa' };
+
+            case 'arusha': return { country: 'tanzania', city: 'Arusha' };
+            case 'moshi': return { country: 'tanzania', city: 'Moshi' };
+            case 'serengeti': return { country: 'tanzania', city: 'Serengeti' };
+            case 'tarangire': return { country: 'tanzania', city: 'Tarangire' };
+            case 'zanzibar': return { country: 'tanzania', city: 'Zanzibar' };
+
+            case 'kigali': return { country: 'rwanda', city: 'Kigali' };
+            case 'musanze': return { country: 'rwanda', city: 'Musanze' };
+            case 'gisenyi': return { country: 'rwanda', city: 'Gisenyi' };
+            case 'huye': return { country: 'rwanda', city: 'Huye' };
+            case 'akagera-np': return { country: 'rwanda', city: 'Akagera NP' };
+            case 'volcanoes': return { country: 'rwanda', city: 'Volcanoes' };
+            default: return { country: null, city: null };
+          }
+        }
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const destination = (document.getElementById('destination').value || '').trim();
+          const checkin = (document.getElementById('checkin').value || '').trim();
+          const checkout = (document.getElementById('checkout').value || '').trim();
+          const guests = (document.getElementById('guests').value || '').trim();
+          const type = (document.getElementById('accommodation-type').value || '').trim();
+
+          const { country, city } = destinationToFilter(destination);
+          let results = DS();
+          if (country) {
+            results = results.filter(h => h.country === country);
+          }
+          if (city) {
+            const lc = city.toLowerCase();
+            results = results.filter(h => h.location.toLowerCase().includes(lc));
+          }
+          if (type) {
+            results = results.filter(h => h.type === type);
+          }
+
+          titleEl.textContent = 'Search Results';
+          const prettyCity = city ? ` in ${city}` : '';
+          const prettyCountry = country ? ` (${country.charAt(0).toUpperCase()+country.slice(1)})` : '';
+          const typeText = type ? ` Ã¢â‚¬Â¢ ${typeLabelQS(type)}` : '';
+          subtitleEl.textContent = `Showing matches${typeText}${prettyCity}${prettyCountry}`;
+          countEl.textContent = `${results.length} result${results.length===1?'':'s'}`;
+
+          resultsSection.classList.remove('d-none');
+          renderCards(results);
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
+              <h5 class="mb-0">Gisu Safaris</h5>
+            </div>
+            <p class="mb-3">East Africa's premier safari company specializing in wildlife adventures across Uganda, Kenya, Tanzania, and Rwanda.</p>
+            <div class="contact-info">
+              <p class="mb-2">
+                <i class="fas fa-envelope me-2"></i>
+                <a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a>
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-phone me-2"></i>
+                <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-phone me-2"></i>
+                <a href="tel:+256780950555" class="text-light text-decoration-none">+256 780 950 555</a>
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <h6 class="mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="../index.html" class="text-light text-decoration-none">Home</a></li>
+              <li class="mb-2"><a href="../about.html" class="text-light text-decoration-none">About Us</a></li>
+              <li class="mb-2"><a href="../packages/index.html" class="text-light text-decoration-none">Safari Packages</a></li>
+              <li class="mb-2"><a href="../destinations/index.html" class="text-light text-decoration-none">Destinations</a></li>
+              <li class="mb-2"><a href="../gallery.html" class="text-light text-decoration-none">Gallery</a></li>
+              <li class="mb-2"><a href="../contact.html" class="text-light text-decoration-none">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3">
+            <h6 class="mb-3">Safari Destinations</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="../packages/uganda.html" class="text-light text-decoration-none">
+                  <i class="fas fa-leaf me-2"></i>Uganda Safaris
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="../packages/kenya.html" class="text-light text-decoration-none">
+                  <i class="fas fa-paw me-2"></i>Kenya Safaris
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="../packages/tanzania.html" class="text-light text-decoration-none">
+                  <i class="fas fa-mountain me-2"></i>Tanzania Safaris
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="../packages/rwanda.html" class="text-light text-decoration-none">
+                  <i class="fas fa-users me-2"></i>Rwanda Safaris
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3">
+            <h6 class="mb-3">Connect With Us</h6>
+            <div class="social-icons mb-3">
+              <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-facebook fa-lg"></i>
+              </a>
+              <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-instagram fa-lg"></i>
+              </a>
+              <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-x fa-lg"></i>
+              </a>
+              <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank">
+                <i class="fab fa-youtube fa-lg"></i>
+              </a>
+              <a href="https://wa.me/61470133869" class="text-light" target="_blank">
+                <i class="fab fa-whatsapp fa-lg"></i>
+              </a>
+            </div>
+            <div class="newsletter">
+              <h6>Newsletter</h6>
+              <form>
+                <div class="input-group mb-2">
+                  <input type="email" class="form-control" placeholder="Your email" required>
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+                <small class="text-muted">Get safari tips & exclusive offers</small>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row align-items-center">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+              </div>
+              <div class="col-md-4 text-md-end">
+                <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+              </div>
+            </div>
+            <div class="col-md-7 text-md-end">
+              <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+              <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+            </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script></body>
+</html>
+

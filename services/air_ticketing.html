@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,12 +19,13 @@
     <meta property="og:url" content="https://gisusafaris.com/services/air_ticketing.html">
     <meta property="og:site_name" content="Gisu Safaris">
     <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
-    
-    <!-- Canonical URL -->
+
     <link rel="canonical" href="https://gisusafaris.com/services/air_ticketing.html">
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -93,9 +94,7 @@
                     </li>
                 </ul>
                 <div class="ms-3">
-                    <a href="../contact.html" class="btn btn-primary btn-sm">
-                        <i class="fas fa-calendar-check me-1"></i>Book Now
-                    </a>
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
                 </div>
             </div>
         </div>
@@ -104,7 +103,13 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <header class="hero-section" style="height: 60vh; background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+        <header class="hero-section hero-kenburns hero-vignette" style="height: 60vh; background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+            <!-- Animated sky layers -->
+            <div class="hero-sky" aria-hidden="true">
+                <div class="sun-glow"></div>
+                <div class="clouds layer-1"></div>
+                <div class="clouds layer-2"></div>
+            </div>
             <div class="hero-overlay d-flex align-items-center">
                 <div class="container">
                     <div class="row justify-content-center text-center">
@@ -276,7 +281,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 fade-element">
-                        <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Commercial aircraft" class="img-fluid rounded-3 shadow hover-image">
+                        <img src="../images/air-ticketing/major-international-airlines.jpg" alt="Commercial aircraft" class="img-fluid rounded-3 shadow hover-image">
                     </div>
                 </div>
             </div>
@@ -443,8 +448,8 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-start mb-3">
                                     <div>
-                                        <h5 class="card-title fw-bold mb-1">London â†’ Nairobi</h5>
-                                        <p class="text-muted small mb-0">LHR â†’ NBO</p>
+                                        <h5 class="card-title fw-bold mb-1">London → Nairobi</h5>
+                                        <p class="text-muted small mb-0">LHR → NBO</p>
                                     </div>
                                     <div class="text-end">
                                         <div class="h5 text-primary fw-bold mb-0">From $650</div>
@@ -465,7 +470,7 @@
                                         <small class="text-muted"><i class="fas fa-star text-info me-1"></i>Kenya Airways</small>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-sm w-100">
+                                <button class="btn btn-primary btn-sm w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="London (LHR) → Nairobi (NBO) — Kenya Airways — From $650">
                                     <i class="fas fa-search me-1"></i>Check Availability
                                 </button>
                             </div>
@@ -476,8 +481,8 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-start mb-3">
                                     <div>
-                                        <h5 class="card-title fw-bold mb-1">Dubai â†’ Kampala</h5>
-                                        <p class="text-muted small mb-0">DXB â†’ EBB</p>
+                                        <h5 class="card-title fw-bold mb-1">Dubai → Kampala</h5>
+                                        <p class="text-muted small mb-0">DXB → EBB</p>
                                     </div>
                                     <div class="text-end">
                                         <div class="h5 text-primary fw-bold mb-0">From $580</div>
@@ -498,7 +503,7 @@
                                         <small class="text-muted"><i class="fas fa-star text-info me-1"></i>Emirates</small>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-sm w-100">
+                                <button class="btn btn-primary btn-sm w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Dubai (DXB) → Kampala (EBB) — Emirates — From $580">
                                     <i class="fas fa-search me-1"></i>Check Availability
                                 </button>
                             </div>
@@ -509,8 +514,8 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-start mb-3">
                                     <div>
-                                        <h5 class="card-title fw-bold mb-1">Amsterdam â†’ Kilimanjaro</h5>
-                                        <p class="text-muted small mb-0">AMS â†’ JRO</p>
+                                        <h5 class="card-title fw-bold mb-1">Amsterdam → Kilimanjaro</h5>
+                                        <p class="text-muted small mb-0">AMS → JRO</p>
                                     </div>
                                     <div class="text-end">
                                         <div class="h5 text-primary fw-bold mb-0">From $720</div>
@@ -531,7 +536,107 @@
                                         <small class="text-muted"><i class="fas fa-star text-info me-1"></i>KLM</small>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-sm w-100">
+                                <button class="btn btn-primary btn-sm w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Amsterdam (AMS) → Kilimanjaro (JRO) — KLM — From $720">
+                                    <i class="fas fa-search me-1"></i>Check Availability
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg hover-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title fw-bold mb-1">Entebbe → Nairobi</h5>
+                                        <p class="text-muted small mb-0">EBB → NBO</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="h5 text-primary fw-bold mb-0">From $220</div>
+                                        <small class="text-muted">one way</small>
+                                    </div>
+                                </div>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-clock text-primary me-1"></i>1h 15m</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-plane text-success me-1"></i>Direct</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-calendar text-warning me-1"></i>Daily</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-star text-info me-1"></i>Kenya Airways</small>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Nairobi (NBO) — Kenya Airways — From $220">
+                                    <i class="fas fa-search me-1"></i>Check Availability
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Featured Tanzania and International routes from Entebbe -->
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg hover-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title fw-bold mb-1">Entebbe → Dar es Salaam</h5>
+                                        <p class="text-muted small mb-0">EBB → DAR</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="h5 text-primary fw-bold mb-0">From $260</div>
+                                        <small class="text-muted">one way</small>
+                                    </div>
+                                </div>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-clock text-primary me-1"></i>1h 45m</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-plane text-success me-1"></i>Direct</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-calendar text-warning me-1"></i>Daily</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-star text-info me-1"></i>Air Tanzania</small>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Dar es Salaam (DAR) — Air Tanzania — From $260">
+                                    <i class="fas fa-search me-1"></i>Check Availability
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 fade-element">
+                        <div class="card h-100 border-0 shadow-lg hover-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h5 class="card-title fw-bold mb-1">Entebbe → Dubai</h5>
+                                        <p class="text-muted small mb-0">EBB → DXB</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="h5 text-primary fw-bold mb-0">From $520</div>
+                                        <small class="text-muted">one way</small>
+                                    </div>
+                                </div>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-clock text-primary me-1"></i>5h 30m</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-plane text-success me-1"></i>Direct</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-calendar text-warning me-1"></i>3x/week</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted"><i class="fas fa-star text-info me-1"></i>Uganda Airlines</small>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Dubai (DXB) — Uganda Airlines — From $520">
                                     <i class="fas fa-search me-1"></i>Check Availability
                                 </button>
                             </div>
@@ -572,7 +677,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-outline-primary btn-lg w-100">
+                                <button class="btn btn-outline-primary btn-lg w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Package: Economy Plus — $850 per person (Economy flights, transfers, insurance, 24/7 support, flexible dates)">
                                     <i class="fas fa-plane me-2"></i>Book Package
                                 </button>
                             </div>
@@ -599,7 +704,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-primary btn-lg w-100">
+                                <button class="btn btn-primary btn-lg w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Package: Business Select — $2,400 per person (Business flights, priority check-in, lounge access, premium transfers, comprehensive insurance, concierge)">
                                     <i class="fas fa-crown me-2"></i>Book Package
                                 </button>
                             </div>
@@ -623,7 +728,7 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-dark btn-lg w-100">
+                                <button class="btn btn-dark btn-lg w-100 route-check-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Package: First Class Luxury — $4,200 per person (First class flights, private transfers, VIP lounge, personal assistant, premium insurance, luxury amenities)">
                                     <i class="fas fa-gem me-2"></i>Book Package
                                 </button>
                             </div>
@@ -644,7 +749,7 @@
                             <a href="../contact.html" class="btn btn-light btn-lg">
                                 <i class="fas fa-plane me-2"></i>Book Flights
                             </a>
-                            <a href="tel:+256123456789" class="btn btn-outline-light btn-lg">
+                            <a href="tel:+61478914106" class="btn btn-outline-light btn-lg">
                                 <i class="fas fa-phone me-2"></i>Call Agent
                             </a>
                             <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#whatsappModal">
@@ -717,6 +822,10 @@
                     <div class="modal-body">
                         <form>
                             <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="booking-route" class="form-label">Selected Route</label>
+                                    <input type="text" class="form-control" id="booking-route" readonly placeholder="Route will appear here when you click Check Availability">
+                                </div>
                                 <div class="col-md-6">
                                     <label for="booking-name" class="form-label">Full Name *</label>
                                     <input type="text" class="form-control" id="booking-name" required>
@@ -760,6 +869,133 @@
             </div>
         </div>
 
+        <!-- All Routes Modal -->
+        <div class="modal fade" id="allRoutesModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="fas fa-route me-2"></i>All Routes</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="list-group">
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Nairobi (NBO)</div>
+                                    <small class="text-muted">Kenya Airways — From $220</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Nairobi (NBO) — Kenya Airways — From $220">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Kigali (KGL)</div>
+                                    <small class="text-muted">RwandAir — From $180</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Kigali (KGL) — RwandAir — From $180">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Addis Ababa (ADD)</div>
+                                    <small class="text-muted">Ethiopian Airlines — From $210</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Addis Ababa (ADD) — Ethiopian Airlines — From $210">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Dubai (DXB) → Kampala (EBB)</div>
+                                    <small class="text-muted">Emirates — From $580</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Dubai (DXB) → Kampala (EBB) — Emirates — From $580">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">London (LHR) → Nairobi (NBO)</div>
+                                    <small class="text-muted">Kenya Airways — From $650</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="London (LHR) → Nairobi (NBO) — Kenya Airways — From $650">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Amsterdam (AMS) → Kilimanjaro (JRO)</div>
+                                    <small class="text-muted">KLM — From $720</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Amsterdam (AMS) → Kilimanjaro (JRO) — KLM — From $720">Select</button>
+                            </div>
+
+                            <!-- Tanzania routes from Entebbe (EBB) -->
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Dar es Salaam (DAR)</div>
+                                    <small class="text-muted">Air Tanzania — From $260</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Dar es Salaam (DAR) — Air Tanzania — From $260">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Zanzibar (ZNZ)</div>
+                                    <small class="text-muted">Precision Air — From $240</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Zanzibar (ZNZ) — Precision Air — From $240">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Kilimanjaro (JRO)</div>
+                                    <small class="text-muted">Air Tanzania — From $230</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Kilimanjaro (JRO) — Air Tanzania — From $230">Select</button>
+                            </div>
+
+                            <!-- International routes from Entebbe (EBB) -->
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Dubai (DXB)</div>
+                                    <small class="text-muted">Emirates — From $580</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Dubai (DXB) — Emirates — From $580">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Doha (DOH)</div>
+                                    <small class="text-muted">Qatar Airways — From $560</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Doha (DOH) — Qatar Airways — From $560">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Istanbul (IST)</div>
+                                    <small class="text-muted">Turkish Airlines — From $620</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Istanbul (IST) — Turkish Airlines — From $620">Select</button>
+                            </div>
+
+                            <!-- Uganda Airlines routes from Entebbe (EBB) -->
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Dubai (DXB)</div>
+                                    <small class="text-muted">Uganda Airlines — From $520</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Dubai (DXB) — Uganda Airlines — From $520">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Johannesburg (JNB)</div>
+                                    <small class="text-muted">Uganda Airlines — From $400</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Johannesburg (JNB) — Uganda Airlines — From $400">Select</button>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold">Entebbe (EBB) → Mumbai (BOM)</div>
+                                    <small class="text-muted">Uganda Airlines — From $650</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary route-check-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#bookingModal" data-route="Entebbe (EBB) → Mumbai (BOM) — Uganda Airlines — From $650">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- WhatsApp Modal -->
         <div class="modal fade" id="whatsappModal" tabindex="-1">
             <div class="modal-dialog">
@@ -775,7 +1011,7 @@
                         <h5>Get instant flight assistance!</h5>
                         <p class="text-muted">Chat with our flight booking specialists on WhatsApp for immediate support and personalized flight quotes.</p>
                         <div class="d-grid gap-2">
-                            <a href="https://wa.me/256123456789?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20booking%20flights%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
+                            <a href="https://wa.me/61470133869?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20booking%20flights%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
                                 <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
                             </a>
                         </div>
@@ -802,6 +1038,18 @@
             // Scroll to results
             document.getElementById('flight-results').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Populate booking modal with selected route
+        document.addEventListener('DOMContentLoaded', () => {
+            const routeButtons = document.querySelectorAll('.route-check-btn');
+            const routeInput = document.getElementById('booking-route');
+            routeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const route = btn.getAttribute('data-route') || '';
+                    if (routeInput) routeInput.value = route;
+                });
+            });
+        });
         </script>
     </main>
 
@@ -810,11 +1058,14 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5 class="fw-bold mb-3">Gisu Safaris</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
                     <p>Your trusted partner for extraordinary East African wildlife adventures and professional flight booking services.</p>
                     <div class="d-flex gap-2">
                         <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-x"></i></a>
                         <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-youtube"></i></a>
                     </div>
@@ -840,13 +1091,25 @@
                 <div class="col-lg-3">
                     <h6 class="fw-bold mb-3">Contact Info</h6>
                     <p><i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda</p>
-                    <p><i class="fas fa-phone me-2"></i>+256 123 456 789</p>
+                    <p><i class="fas fa-phone me-2"></i>+61 478 914 106</p>
+                    <p><i class="fas fa-phone me-2"></i>+256 780 950 555</p>
                     <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
                 </div>
             </div>
             <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                  </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                  <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                  <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -909,4 +1172,6 @@
     <!-- Site bootstrap -->
     <script src="../js/main.js"></script></body>
 </html>
+
+
 

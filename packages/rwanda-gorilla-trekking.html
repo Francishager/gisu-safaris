@@ -229,9 +229,7 @@
                     </li>
                 </ul>
                 <div class="ms-3">
-                    <a href="#contact-form" class="btn btn-primary btn-sm">
-                        <i class="fas fa-calendar-check me-1"></i>Book Now
-                    </a>
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
                 </div>
             </div>
         </div>
@@ -787,7 +785,7 @@
     </main>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/256123456789?text=Hello! I'm interested in the Rwanda Gorilla Trekking Safari. Can you provide more information?" 
+    <a href="https://wa.me/61470133869?text=Hello! I'm interested in the Rwanda Gorilla Trekking Safari. Can you provide more information?" 
        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -916,11 +914,10 @@ ${specialRequests}
 
 Please provide a detailed quote and availability for this Rwanda Gorilla Trekking Safari package. Thank you!`;
             
-            const whatsappURL = `https://wa.me/256123456789?text=${encodeURIComponent(message)}`;
+            const whatsappURL = `https://wa.me/6170133869?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
         }
-        
-        // Fade in elements on scroll
+
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -943,8 +940,7 @@ Please provide a detailed quote and availability for this Rwanda Gorilla Trekkin
                 el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(el);
             });
-            
-            // Set minimum date to tomorrow
+
             const dateInput = document.getElementById('travelDate');
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
@@ -952,9 +948,10 @@ Please provide a detailed quote and availability for this Rwanda Gorilla Trekkin
         });
     </script>
 
-    <!-- Site bootstrap -->
     <script src="../js/main.js"></script></body>
 </html>
+
+
 
 
 

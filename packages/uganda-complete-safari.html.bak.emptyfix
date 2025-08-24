@@ -1,0 +1,1079 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Uganda Safari - 12 Days Ultimate Adventure | Gisu Safaris</title>
+    <meta name="description" content="12-day comprehensive Uganda safari covering gorillas, chimps, Big 5, and all major national parks for the ultimate wildlife experience.">
+    <meta name="keywords" content="Complete Uganda safari, 12 day Uganda tour, gorilla trekking, chimp tracking, Big 5, Uganda national parks">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
+
+    <style>
+        .hero-carousel {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 193, 7, 0.4), rgba(0, 0, 0, 0.3));
+            display: flex;
+            align-items: center;
+        }
+        
+        .complete-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 20px !important;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            position: relative;
+            border: none;
+            height: 100%;
+        }
+        
+        .complete-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important;
+        }
+        
+        .complete-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffc107, #fd7e14, #dc3545, #e83e8c, #6f42c1);
+            z-index: 1;
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, var(--day-color, #ffc107), var(--day-secondary, #fd7e14));
+            padding: 20px 15px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .day-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 3px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .day-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .activity-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .difficulty-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .location-tag {
+            background: linear-gradient(135deg, var(--day-color, #ffc107), var(--day-secondary, #fd7e14));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .activity-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .activity-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .activity-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--day-color, #ffc107);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--day-color, #ffc107);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto 6px;
+            font-size: 0.8rem;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 0.85rem;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+        
+        /* Day-specific color schemes */
+        .day-1 { --day-color: #ffc107; --day-secondary: #fd7e14; }
+        .day-2 { --day-color: #dc3545; --day-secondary: #c82333; }
+        .day-3 { --day-color: #e83e8c; --day-secondary: #d91a72; }
+        .day-4 { --day-color: #6f42c1; --day-secondary: #59359a; }
+        .day-5 { --day-color: #20c997; --day-secondary: #1aa179; }
+        .day-6 { --day-color: #17a2b8; --day-secondary: #138496; }
+        .day-7 { --day-color: #fd7e14; --day-secondary: #e5680e; }
+        .day-8 { --day-color: #28a745; --day-secondary: #218838; }
+        .day-9 { --day-color: #6610f2; --day-secondary: #5a0cd3; }
+        .day-10 { --day-color: #ff6b6b; --day-secondary: #e55353; }
+        .day-11 { --day-color: #4ecdc4; --day-secondary: #39b2a7; }
+        .day-12 { --day-color: #45b7d1; --day-secondary: #3498db; }
+        
+        .slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-up:nth-child(1) { animation-delay: 0.05s; }
+        .slide-up:nth-child(2) { animation-delay: 0.1s; }
+        .slide-up:nth-child(3) { animation-delay: 0.15s; }
+        .slide-up:nth-child(4) { animation-delay: 0.2s; }
+        .slide-up:nth-child(5) { animation-delay: 0.25s; }
+        .slide-up:nth-child(6) { animation-delay: 0.3s; }
+        .slide-up:nth-child(7) { animation-delay: 0.35s; }
+        .slide-up:nth-child(8) { animation-delay: 0.4s; }
+        .slide-up:nth-child(9) { animation-delay: 0.45s; }
+        .slide-up:nth-child(10) { animation-delay: 0.5s; }
+        .slide-up:nth-child(11) { animation-delay: 0.55s; }
+        .slide-up:nth-child(12) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Safari Packages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="uganda.html">Uganda Safaris</a></li>
+                            <li><a class="dropdown-item" href="kenya.html">Kenya Safaris</a></li>
+                            <li><a class="dropdown-item" href="tanzania.html">Tanzania Safaris</a></li>
+                            <li><a class="dropdown-item" href="rwanda.html">Rwanda Safaris</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="multi-country.html">Multi-Country Tours</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="hotel-reservation.html">Hotel Reservation</a></li>
+                            <li><a class="dropdown-item" href="travel_insurance.html">Travel Insurance</a></li>
+                            <li><a class="dropdown-item" href="air_ticketing.html">Air Ticketing</a></li>
+                            <li><a class="dropdown-item" href="car_hire.html">Car Hire</a></li>
+                            <li><a class="dropdown-item" href="safaris.html">Safaris</a></li>
+                            <li><a class="dropdown-item" href="visa.html">Visa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/index.html">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section with Carousel -->
+        <header class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1549366021-9f761d040a94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+            
+            <div class="hero-overlay">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center fade-element">
+                            <nav aria-label="breadcrumb" class="mb-4">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="../index.html" class="text-white-50">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="uganda.html" class="text-white-50">Uganda Safaris</a></li>
+                                    <li class="breadcrumb-item active text-white">Complete Uganda Safari</li>
+                                </ol>
+                            </nav>
+                            <h1 class="hero-title display-3 fw-bold text-white mb-4">Complete Uganda Safari</h1>
+                            <p class="hero-description lead text-white mb-5">12 Days ultimate adventure covering all highlights</p>
+                            <div class="hero-badges d-flex justify-content-center gap-3 mb-4">
+                                <span class="badge bg-danger fs-6 px-3 py-2">12 Days</span>
+                                <span class="badge bg-warning text-dark fs-6 px-3 py-2">All Highlights</span>
+                                <span class="badge bg-info fs-6 px-3 py-2">Ultimate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Package Overview -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 fade-element">
+                        <h2 class="display-6 fw-bold mb-4">Complete Uganda <span class="text-primary">Adventure</span></h2>
+                        <p class="lead mb-4">Experience the best of Uganda with this comprehensive 12-day safari covering mountain gorillas, chimpanzees, the Big Five, tree-climbing lions, and all major national parks. The ultimate wildlife adventure combining primate encounters, game drives, cultural experiences, and scenic beauty.</p>
+                        
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-success bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-paw fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Gorillas & Chimps</h5>
+                                    <p class="small text-muted">Close encounters with mountain gorillas and chimpanzees</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-warning bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-crown fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">Big Five Safari</h5>
+                                    <p class="small text-muted">Lions, leopards, elephants, buffalo, and rhinos</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-info bg-gradient rounded-circle p-3 d-inline-block mb-3">
+                                        <i class="fas fa-mountain fa-2x text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold">5 National Parks</h5>
+                                    <p class="small text-muted">Comprehensive tour of Uganda's best wildlife destinations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 fade-element">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-center mb-4">Package Details</h4>
+                                <div class="pricing-section text-center mb-4">
+                                    <div class="display-4 fw-bold text-primary">$3,299</div>
+                                    <p class="text-muted">per person</p>
+                                    <div class="rating mb-3">
+                                        <span class="text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </span>
+                                        <small class="text-muted d-block">(89 reviews)</small>
+                                    </div>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Duration:</strong> 12 Days / 11 Nights</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Parks:</strong> 5 National Parks</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Highlights:</strong> Gorillas, Big 5</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Activities:</strong> All Inclusive</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i><strong>Best Season:</strong> Year Round</li>
+                                </ul>
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="../booking/index.html" class="btn btn-primary btn-lg">
+                                    </a>
+                                    <a href="tel:+256780950555" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone me-2"></i>Call Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Day by Day Itinerary -->
+        <section class="py-5 bg-light">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-6 fw-bold">12-Day Complete Uganda <span class="text-primary">Itinerary</span></h2>
+                    <p class="lead text-muted">Your comprehensive journey through Uganda's wildlife wonderland</p>
+                </div>
+                
+                <div class="row g-3">
+                    <!-- Day 1 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-1">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-plane"></i></div>
+                                <div class="activity-badge">Arrival</div>
+                                <div class="day-number">01</div>
+                                <div class="day-subtitle">Kampala</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Entebbe/Kampala</div>
+                                <h6 class="fw-bold mb-2">Safari Welcome</h6>
+                                <ul class="activity-list">
+                                    <li>Airport pickup</li>
+                                    <li>City tour</li>
+                                    <li>Safari briefing</li>
+                                    <li>Hotel check-in</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                        <div class="stat-value">Half Day</div>
+                                        <div class="stat-label">Duration</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-home"></i></div>
+                                        <div class="stat-value">Hotel</div>
+                                        <div class="stat-label">Stay</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 2 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-2">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-route"></i></div>
+                                <div class="activity-badge">Transfer</div>
+                                <div class="day-number">02</div>
+                                <div class="day-subtitle">To Murchison</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Murchison Falls</div>
+                                <h6 class="fw-bold mb-2">Journey North</h6>
+                                <ul class="activity-list">
+                                    <li>Rhino sanctuary</li>
+                                    <li>Scenic drive</li>
+                                    <li>Top of falls</li>
+                                    <li>Lodge arrival</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-route"></i></div>
+                                        <div class="stat-value">305km</div>
+                                        <div class="stat-label">Distance</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                                        <div class="stat-value">Rhinos</div>
+                                        <div class="stat-label">First</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 3 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-3">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-paw"></i></div>
+                                <div class="activity-badge">Game Drive</div>
+                                <div class="day-number">03</div>
+                                <div class="day-subtitle">Murchison</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Murchison Falls NP</div>
+                                <h6 class="fw-bold mb-2">Big Game</h6>
+                                <ul class="activity-list">
+                                    <li>Morning safari</li>
+                                    <li>Boat to falls</li>
+                                    <li>Hippos & crocs</li>
+                                    <li>Evening drive</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                                        <div class="stat-value">Big 5</div>
+                                        <div class="stat-label">Hunting</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-ship"></i></div>
+                                        <div class="stat-value">Boat</div>
+                                        <div class="stat-label">Safari</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 4 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-4">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-route"></i></div>
+                                <div class="activity-badge">Transfer</div>
+                                <div class="day-number">04</div>
+                                <div class="day-subtitle">To Kibale</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Kibale Forest</div>
+                                <h6 class="fw-bold mb-2">Primate Capital</h6>
+                                <ul class="activity-list">
+                                    <li>Forest drive</li>
+                                    <li>Tea estates</li>
+                                    <li>Village visit</li>
+                                    <li>Lodge arrival</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                                        <div class="stat-value">Forest</div>
+                                        <div class="stat-label">Ecosystem</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                        <div class="stat-value">Culture</div>
+                                        <div class="stat-label">Visit</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 5 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-5">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-hiking"></i></div>
+                                <div class="activity-badge">Chimps</div>
+                                <div class="day-number">05</div>
+                                <div class="day-subtitle">Tracking</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Kibale Forest NP</div>
+                                <h6 class="fw-bold mb-2">Chimp Trek</h6>
+                                <ul class="activity-list">
+                                    <li>Forest tracking</li>
+                                    <li>Chimp encounter</li>
+                                    <li>Bigodi swamp</li>
+                                    <li>Bird watching</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-paw"></i></div>
+                                        <div class="stat-value">13</div>
+                                        <div class="stat-label">Primates</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-feather"></i></div>
+                                        <div class="stat-value">375</div>
+                                        <div class="stat-label">Birds</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 6 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-6">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-route"></i></div>
+                                <div class="activity-badge">Transfer</div>
+                                <div class="day-number">06</div>
+                                <div class="day-subtitle">To QENP</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Queen Elizabeth</div>
+                                <h6 class="fw-bold mb-2">Medley Park</h6>
+                                <ul class="activity-list">
+                                    <li>Crater lakes</li>
+                                    <li>Scenic drive</li>
+                                    <li>Park arrival</li>
+                                    <li>Evening drive</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                                        <div class="stat-value">Craters</div>
+                                        <div class="stat-label">Lakes</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-camera"></i></div>
+                                        <div class="stat-value">Views</div>
+                                        <div class="stat-label">Scenic</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 7 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-7">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-water"></i></div>
+                                <div class="activity-badge">Boat</div>
+                                <div class="day-number">07</div>
+                                <div class="day-subtitle">Kazinga</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Kazinga Channel</div>
+                                <h6 class="fw-bold mb-2">Water Safari</h6>
+                                <ul class="activity-list">
+                                    <li>Morning drive</li>
+                                    <li>Boat cruise</li>
+                                    <li>Hippos & birds</li>
+                                    <li>Sunset drive</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-ship"></i></div>
+                                        <div class="stat-value">2hrs</div>
+                                        <div class="stat-label">Cruise</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                                        <div class="stat-value">Hippos</div>
+                                        <div class="stat-label">Hundreds</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 8 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-8">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-crown"></i></div>
+                                <div class="activity-badge">Tree Lions</div>
+                                <div class="day-number">08</div>
+                                <div class="day-subtitle">Ishasha</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Ishasha Sector</div>
+                                <h6 class="fw-bold mb-2">Climbing Lions</h6>
+                                <ul class="activity-list">
+                                    <li>Full day drive</li>
+                                    <li>Tree lions</li>
+                                    <li>Bush lunch</li>
+                                    <li>Photography</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                                        <div class="stat-value">Lions</div>
+                                        <div class="stat-label">In Trees</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-camera"></i></div>
+                                        <div class="stat-value">Unique</div>
+                                        <div class="stat-label">Photos</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 9 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-9">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-route"></i></div>
+                                <div class="activity-badge">Transfer</div>
+                                <div class="day-number">09</div>
+                                <div class="day-subtitle">To Bwindi</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Bwindi Forest</div>
+                                <h6 class="fw-bold mb-2">Gorilla Land</h6>
+                                <ul class="activity-list">
+                                    <li>Forest drive</li>
+                                    <li>Mountain views</li>
+                                    <li>Village visit</li>
+                                    <li>Lodge arrival</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-mountain"></i></div>
+                                        <div class="stat-value">2607m</div>
+                                        <div class="stat-label">Altitude</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                                        <div class="stat-value">Ancient</div>
+                                        <div class="stat-label">Forest</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 10 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-10">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-paw"></i></div>
+                                <div class="activity-badge">Gorillas</div>
+                                <div class="day-number">10</div>
+                                <div class="day-subtitle">Trekking</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Bwindi Forest NP</div>
+                                <h6 class="fw-bold mb-2">Gorilla Trek</h6>
+                                <ul class="activity-list">
+                                    <li>Early briefing</li>
+                                    <li>Forest trekking</li>
+                                    <li>Gorilla encounter</li>
+                                    <li>Community visit</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-paw"></i></div>
+                                        <div class="stat-value">400</div>
+                                        <div class="stat-label">Gorillas</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                        <div class="stat-value">1hr</div>
+                                        <div class="stat-label">With Them</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 11 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-11">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-water"></i></div>
+                                <div class="activity-badge">Lakes</div>
+                                <div class="day-number">11</div>
+                                <div class="day-subtitle">To Bunyonyi</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Lake Bunyonyi</div>
+                                <h6 class="fw-bold mb-2">Relaxation</h6>
+                                <ul class="activity-list">
+                                    <li>Scenic transfer</li>
+                                    <li>Canoe ride</li>
+                                    <li>Island hopping</li>
+                                    <li>Cultural show</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-water"></i></div>
+                                        <div class="stat-value">29</div>
+                                        <div class="stat-label">Islands</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-mountain"></i></div>
+                                        <div class="stat-value">1962m</div>
+                                        <div class="stat-label">Above Sea</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 12 -->
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 slide-up">
+                        <div class="complete-card card shadow-lg day-12">
+                            <div class="day-header">
+                                <div class="difficulty-icon"><i class="fas fa-home"></i></div>
+                                <div class="activity-badge">Departure</div>
+                                <div class="day-number">12</div>
+                                <div class="day-subtitle">Return</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="location-tag">Back to Kampala</div>
+                                <h6 class="fw-bold mb-2">Journey's End</h6>
+                                <ul class="activity-list">
+                                    <li>Morning relaxation</li>
+                                    <li>Equator stop</li>
+                                    <li>Lunch en route</li>
+                                    <li>Airport drop</li>
+                                </ul>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-route"></i></div>
+                                        <div class="stat-value">420km</div>
+                                        <div class="stat-label">Distance</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                                        <div class="stat-value">Memories</div>
+                                        <div class="stat-label">Forever</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inclusions & Exclusions -->
+        <section class="py-5">
+            <div class="container fade-element">
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold text-success mb-4">
+                                    <i class="fas fa-check-circle me-2"></i>What's Included
+                                </h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All park entry fees</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Gorilla tracking permits</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Chimp tracking permits</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional safari guide</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>4WD safari vehicle</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Full board accommodation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All game drives</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Boat cruises</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>All transfers</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bottled water</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold text-danger mb-4">
+                                    <i class="fas fa-times-circle me-2"></i>Not Included
+                                </h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>International flights</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Visa fees</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Travel insurance</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Personal expenses</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Alcoholic beverages</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Tips and gratuities</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Optional activities</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Laundry services</li>
+                                    <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Souvenirs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="py-5 bg-primary text-white">
+            <div class="container fade-element">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Ready for the Ultimate Safari?</h2>
+                    <p class="lead">Book your complete Uganda adventure today</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-4">
+                                <form class="booking-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Full Name *" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="Email *" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" placeholder="Phone Number">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="3" placeholder="Any special requirements or questions..."></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-paper-plane me-2"></i>Send Inquiry
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="35" class="me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
+                    <p>Your gateway to the complete Uganda wildlife experience.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i>+256 780 950 555</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                  </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                  <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                  <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Chat Widget -->
+    <div class="floating-whatsapp">
+        <div class="whatsapp-widget">
+            <div class="whatsapp-chat" id="whatsappChat">
+                <button class="whatsapp-close-btn" onclick="toggleWhatsAppChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="whatsapp-chat-header">
+                    <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris" class="whatsapp-avatar">
+                    <div class="whatsapp-chat-info">
+                        <h6>Gisu Safaris</h6>
+                        <span>Typically replies instantly</span>
+                    </div>
+                </div>
+                <div class="whatsapp-chat-body">
+                    <div class="chat-message">
+                        <p>ðŸ‡ºðŸ‡¬ Hello! Welcome to Gisu Safaris!</p>
+                        <p>Interested in our Complete Uganda Safari experience?</p>
+                    </div>
+                    <div class="whatsapp-input-group">
+                        <input type="text" 
+                               class="whatsapp-input" 
+                               id="whatsappMessage" 
+                               placeholder="Type your message here..."
+                               disabled>
+                        <button class="whatsapp-send-btn" onclick="sendWhatsAppMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- WhatsApp Button -->
+            <button class="whatsapp-btn" onclick="toggleWhatsAppChat()">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Hero carousel functionality
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 2000);
+
+        let whatsappChatVisible = false;
+        const phoneNumber = '61470133869';
+        const defaultMessage = 'ðŸ‡ºðŸ‡¬ Hi! I\'m interested in the Complete Uganda Safari experience. Could you please provide more information about availability and pricing?';
+        
+        function toggleWhatsAppChat() {
+            const whatsappChat = document.getElementById('whatsappChat');
+            const messageInput = document.getElementById('whatsappMessage');
+            
+            if (whatsappChatVisible) {
+                whatsappChat.style.display = 'none';
+                whatsappChatVisible = false;
+                messageInput.disabled = true;
+            } else {
+                whatsappChat.style.display = 'block';
+                whatsappChatVisible = true;
+                messageInput.disabled = false;
+                messageInput.focus();
+            }
+        }
+        
+        function sendWhatsAppMessage() {
+            const messageInput = document.getElementById('whatsappMessage');
+            const userMessage = messageInput.value.trim();
+            const finalMessage = userMessage || defaultMessage;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
+            window.open(whatsappUrl, '_blank');
+
+            messageInput.value = '';
+            toggleWhatsAppChat();
+        }
+        
+        // Enable Enter key to send message
+        document.getElementById('whatsappMessage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendWhatsAppMessage();
+            }
+        });
+        
+        // Close chat when clicking outside
+        document.addEventListener('click', function(e) {
+            const whatsappWidget = document.querySelector('.whatsapp-widget');
+            if (!whatsappWidget.contains(e.target) && whatsappChatVisible) {
+                toggleWhatsAppChat();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+

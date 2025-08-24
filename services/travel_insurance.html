@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,12 +19,13 @@
     <meta property="og:url" content="https://gisusafaris.com/services/travel_insurance.html">
     <meta property="og:site_name" content="Gisu Safaris">
     <meta property="og:image" content="https://gisusafaris.com/img/gisu_safaris.png">
-    
-    <!-- Canonical URL -->
+
     <link rel="canonical" href="https://gisusafaris.com/services/travel_insurance.html">
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" href="images/logo-gisu-safaris.png" type="image/svg+xml">
+    <link rel="alternate icon" href="https://gisusafaris.com/img/gisu_safaris.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://gisusafaris.com/img/gisu_safaris.png">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +35,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+      /* Subtle video-like hero animation */
+      .hero-section.hero-animate {
+        position: relative;
+        overflow: hidden;
+        background-size: cover; /* ensure animatable */
+        animation: kenburns-hero 24s ease-in-out infinite alternate;
+        will-change: background-size, background-position;
+      }
+      .hero-section.hero-animate::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 20% -10%, rgba(255,255,255,0.08), transparent 40%),
+          radial-gradient(circle at 80% 110%, rgba(255,255,255,0.06), transparent 40%);
+        animation: hero-glow 18s ease-in-out infinite alternate;
+      }
+      @keyframes kenburns-hero {
+        0%   { background-size: 100% 100%; background-position: center center; }
+        50%  { background-size: 112% 112%; background-position: center 48%; }
+        100% { background-size: 120% 120%; background-position: center 45%; }
+      }
+      @keyframes hero-glow {
+        0%   { opacity: 0.22; transform: translate3d(0,0,0) scale(1); }
+        100% { opacity: 0.38; transform: translate3d(0,-1%,0) scale(1.02); }
+      }
+      /* Respect users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .hero-section.hero-animate, .hero-section.hero-animate::after {
+          animation: none !important;
+        }
+      }
+    </style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -93,9 +129,7 @@
                     </li>
                 </ul>
                 <div class="ms-3">
-                    <a href="../contact.html" class="btn btn-primary btn-sm">
-                        <i class="fas fa-calendar-check me-1"></i>Book Now
-                    </a>
+                    <a href="../booking/index.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
                 </div>
             </div>
         </div>
@@ -104,7 +138,7 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <header class="hero-section" style="height: 60vh; background: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
+        <header class="hero-section hero-animate" style="height: 60vh; background: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;">
             <div class="hero-overlay d-flex align-items-center">
                 <div class="container">
                     <div class="row justify-content-center text-center">
@@ -128,7 +162,8 @@
                     <div class="col-lg-6 fade-element">
                         <h2 class="display-5 fw-bold mb-4">Complete <span class="text-primary">Protection</span></h2>
                         <p class="lead mb-4">Travel with confidence knowing you're protected by comprehensive insurance coverage tailored specifically for East African safari adventures.</p>
-                        <p class="mb-4">Our travel insurance services provide peace of mind with medical coverage, trip protection, and emergency assistance throughout your journey.</p>
+                        <p class="mb-4">While Gisu Safaris does not underwrite or issue insurance policies, we partner with reputable, licensed insurance companies to arrange the right cover for your trip. Our travel insurance services provide peace of mind with medical coverage, trip protection, and emergency assistance throughout your journey.</p>
+                        <p class="text-muted mb-4"><small>Policies are issued and administered by the respective insurers. Terms, conditions, limits, and exclusions apply.</small></p>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center">
@@ -157,7 +192,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 fade-element">
-                        <img src="../images/img/air-ticketing.jpg" alt="Travel insurance protection" class="img-fluid rounded-3 shadow hover-image">
+                        <img src="../images/travel-insurance/insurance-coverage.avif" alt="Travel insurance protection" class="img-fluid rounded-3 shadow hover-image">
                     </div>
                 </div>
             </div>
@@ -231,7 +266,7 @@
             <div class="container">
                 <div class="text-center mb-5">
                     <h2 class="display-5 fw-bold">Why Choose Our <span class="text-primary">Insurance</span></h2>
-                    <p class="lead">Specialized coverage designed for African safari adventures</p>
+                    <p class="lead">Specialized coverage for African safari adventures, offered through our licensed insurance partners</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-6 fade-element">
@@ -243,7 +278,7 @@
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5 class="fw-bold">Africa Specialist Coverage</h5>
-                                <p>Insurance plans specifically designed for East African travel, covering unique risks and activities like gorilla trekking and safari adventures.</p>
+                                <p>Plans tailored for East African travel—developed with licensed insurers—to cover unique risks and activities like gorilla trekking and safari adventures.</p>
                             </div>
                         </div>
                     </div>
@@ -256,7 +291,7 @@
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5 class="fw-bold">Trusted Partners</h5>
-                                <p>We work with leading international insurance providers with proven track records in African travel coverage and claims processing.</p>
+                                <p>We work with leading international insurers with proven track records in African travel. Policies are issued and administered directly by the insurers.</p>
                             </div>
                         </div>
                     </div>
@@ -282,7 +317,7 @@
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5 class="fw-bold">Expert Support</h5>
-                                <p>Our team provides expert guidance in selecting the right coverage and assists with claims processing throughout your journey.</p>
+                                <p>Our team provides independent guidance to help you select appropriate cover and coordinate with insurers. We do not issue policies or make claims decisions.</p>
                             </div>
                         </div>
                     </div>
@@ -404,9 +439,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-outline-primary btn-lg w-100">
+                                <a class="btn btn-outline-primary btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=travel-insurance&title=Basic&amount=25" aria-label="Select Basic Plan">
                                     <i class="fas fa-shield-alt me-2"></i>Select Plan
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -428,9 +463,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-info btn-lg w-100">
+                                <a class="btn btn-info btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=travel-insurance&title=Standard&amount=45" aria-label="Select Standard Plan">
                                     <i class="fas fa-star me-2"></i>Select Plan
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -455,9 +490,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-primary btn-lg w-100">
+                                <a class="btn btn-primary btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=travel-insurance&title=Comprehensive&amount=75" aria-label="Select Comprehensive Plan">
                                     <i class="fas fa-crown me-2"></i>Select Plan
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -479,9 +514,9 @@
                                 </ul>
                             </div>
                             <div class="card-footer bg-white border-0 text-center">
-                                <button class="btn btn-dark btn-lg w-100">
+                                <a class="btn btn-dark btn-lg w-100" href="../booking/index.html?bookingType=service&serviceId=travel-insurance&title=Premium&amount=120" aria-label="Select Premium Plan">
                                     <i class="fas fa-gem me-2"></i>Select Plan
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -494,7 +529,7 @@
             <div class="container">
                 <div class="text-center mb-5">
                     <h2 class="display-5 fw-bold">Simple <span class="text-primary">Claims Process</span></h2>
-                    <p class="lead">Easy steps to file and track your insurance claims</p>
+                    <p class="lead">Easy steps to file and track claims with our partner insurers</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6 text-center fade-element">
@@ -503,8 +538,8 @@
                                 <i class="fas fa-phone fa-2x"></i>
                             </div>
                         </div>
-                        <h5 class="fw-bold">1. Report Incident</h5>
-                        <p>Contact our 24/7 emergency hotline immediately to report any incident or emergency.</p>
+                        <h5 class="fw-bold">1. Contact Insurer Assistance</h5>
+                        <p>Use the insurer's 24/7 emergency assistance line listed in your policy documents. Gisu Safaris can help you locate the correct contact if needed.</p>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center fade-element">
                         <div class="mb-3">
@@ -512,8 +547,8 @@
                                 <i class="fas fa-file-alt fa-2x"></i>
                             </div>
                         </div>
-                        <h5 class="fw-bold">2. Submit Documents</h5>
-                        <p>Upload required documents and receipts through our secure online portal or mobile app.</p>
+                        <h5 class="fw-bold">2. Submit Documents to Insurer</h5>
+                        <p>Provide required forms, receipts, and reports via the insurer’s claims portal or as instructed in your policy. We can furnish trip confirmations upon request.</p>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center fade-element">
                         <div class="mb-3">
@@ -521,8 +556,8 @@
                                 <i class="fas fa-search fa-2x"></i>
                             </div>
                         </div>
-                        <h5 class="fw-bold">3. Claim Review</h5>
-                        <p>Our expert team reviews your claim and may request additional information if needed.</p>
+                        <h5 class="fw-bold">3. Insurer Claim Review</h5>
+                        <p>The insurer assesses your claim and may request additional information. Gisu Safaris supports with relevant travel documentation where applicable.</p>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center fade-element">
                         <div class="mb-3">
@@ -530,8 +565,8 @@
                                 <i class="fas fa-money-check-alt fa-2x"></i>
                             </div>
                         </div>
-                        <h5 class="fw-bold">4. Get Reimbursed</h5>
-                        <p>Receive your reimbursement via bank transfer or check within 5-10 business days.</p>
+                        <h5 class="fw-bold">4. Reimbursement by Insurer</h5>
+                        <p>Approved claims are paid directly by the insurer via their designated payment methods and timelines.</p>
                     </div>
                 </div>
             </div>
@@ -694,7 +729,7 @@
                         <h5>Get instant assistance!</h5>
                         <p class="text-muted">Chat with our travel insurance specialists on WhatsApp for immediate support and personalized quotes.</p>
                         <div class="d-grid gap-2">
-                            <a href="https://wa.me/256123456789?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20travel%20insurance%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
+                            <a href="https://wa.me/61470133869?text=Hi%20Gisu%20Safaris!%20I'm%20interested%20in%20travel%20insurance%20for%20my%20East%20African%20safari." class="btn btn-success btn-lg" target="_blank">
                                 <i class="fab fa-whatsapp me-2"></i>Start WhatsApp Chat
                             </a>
                         </div>
@@ -761,7 +796,10 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5 class="fw-bold mb-3">Gisu Safaris</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
+                        <h5 class="mb-0">Gisu Safaris</h5>
+                    </div>
                     <p>Your trusted partner for extraordinary East African wildlife adventures and comprehensive travel protection services.</p>
                     <div class="d-flex gap-2">
                         <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-facebook-f"></i></a>
@@ -791,13 +829,25 @@
                 <div class="col-lg-3">
                     <h6 class="fw-bold mb-3">Contact Info</h6>
                     <p><i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda</p>
-                    <p><i class="fas fa-phone me-2"></i>+256 123 456 789</p>
+                    <p><i class="fas fa-phone me-2"></i>+614 7891 4106</p>
+                    <p><i class="fas fa-phone me-2"></i>+256 780 950 555</p>
                     <p><i class="fas fa-envelope me-2"></i>info@gisusafaris.com</p>
                 </div>
             </div>
             <hr class="my-4">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2024 Gisu Safaris. All rights reserved.</p>
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end">
+                    <p class="mb-0">Designed by <strong>Kairos Technologies</strong></p>
+                  </div>
+                </div>
+                <div class="col-md-7 text-md-end">
+                  <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                  <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -860,4 +910,6 @@
     <!-- Site bootstrap -->
     <script src="../js/main.js"></script></body>
 </html>
+
+
 
