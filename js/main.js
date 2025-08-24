@@ -527,8 +527,16 @@
     function initPolicyFooterLinks() {
         try {
             const pathname = (window.location && window.location.pathname) || '';
-            // Compute depth-based prefix to reach site root
-            const parts = pathname.split('/').filter(Boolean); // e.g., ['packages','tanzania.html']
+            // Compute depth-based prefix to reach site root.
+            // On GitHub Pages project sites, paths are like /<repo-name>/page.html.
+            // We should ignore the repo folder when computing depth so that
+            // /<repo>/index.html gets './' (not '../').
+            let parts = pathname.split('/').filter(Boolean); // e.g., ['gisu-safaris','packages','tanzania.html']
+            const isGhPages = /\.github\.io$/i.test(window.location && window.location.hostname || '');
+            if (isGhPages && parts.length > 0) {
+                // Treat first segment as repo base for project sites
+                parts = parts.slice(1);
+            }
             const depth = Math.max(0, parts.length - 1);
             const prefix = depth > 0 ? Array(depth).fill('..').join('/') + '/' : './';
 
@@ -542,7 +550,7 @@
                     const target = prefix + 'privacy.html';
                     if (a.getAttribute('href') !== target) a.setAttribute('href', target);
                     foundPrivacy = true;
-                } else if (label === 'terms of service' || label === 'terms & conditions' || label === 'terms') {
+                } else if (label === 'terms of service' || label === 'terms & conditions' || label === 'terms and conditions' || label === 'terms') {
                     const target = prefix + 'terms.html';
                     if (a.getAttribute('href') !== target) a.setAttribute('href', target);
                     foundTerms = true;
