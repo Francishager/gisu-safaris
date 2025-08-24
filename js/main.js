@@ -641,17 +641,6 @@
             return;
         }
 
-        try {
-            if (typeof ensureAnalyticsLoaded === 'function') ensureAnalyticsLoaded();
-            if (typeof initNavbarScroll === 'function') initNavbarScroll();
-            if (typeof initNavbarActiveForPackages === 'function') initNavbarActiveForPackages();
-            if (typeof initHeroSlider === 'function') initHeroSlider();
-            if (typeof initStorySlider === 'function') initStorySlider();
-            if (typeof initHeroTextRotator === 'function') initHeroTextRotator();
-            if (typeof initSmoothScroll === 'function') initSmoothScroll();
-            if (typeof initScrollAnimations === 'function') initScrollAnimations();
-            if (typeof initCardImageRotators === 'function') initCardImageRotators();
-            if (typeof initLazyLoading === 'function') initLazyLoading();
             if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
             if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
             if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
