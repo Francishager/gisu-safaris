@@ -1123,6 +1123,18 @@ footer a:hover {
     margin-right: 2px;
 }
 
+/* Ensure embedded POWR review widgets are visible in rating blocks */
+.rating .powr-product-reviews {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 20px; /* avoid collapse before POWR loads */
+}
+
+/* If wrapped in a span with text-warning, prevent inline span layout from collapsing */
+.rating .text-warning .powr-product-reviews {
+  display: block !important;
+}
+
 /* === RESPONSIVE BUTTONS === */
 #viewAllPackagesBtn {
     white-space: normal;
