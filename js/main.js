@@ -720,6 +720,7 @@
             if (typeof initBookingCtaTracking === 'function') initBookingCtaTracking();
             if (typeof initPolicyFooterLinks === 'function') initPolicyFooterLinks();
             if (typeof normalizeWhatsAppNumbers === 'function') normalizeWhatsAppNumbers();
+            if (typeof initIncludedVideoControls === 'function') initIncludedVideoControls();
             if (typeof optimizePerformance === 'function') optimizePerformance();
             console.log('Gisu Safaris website initialized successfully!');
         } catch (error) {
@@ -1377,6 +1378,7 @@
             initSafariFeatures && initSafariFeatures();
             initCardImageRotators && initCardImageRotators();
             initBookingCtaTracking && initBookingCtaTracking();
+            initIncludedVideoControls && initIncludedVideoControls();
             optimizePerformance && optimizePerformance();
         } catch (e) {
             console.error('Fallback init error:', e);
