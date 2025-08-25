@@ -1,0 +1,24 @@
+# Enable mod_rewrite
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Ensure directory URLs have a trailing slash (optional)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.+[^/])$ /$1/ [R=301,L]
+
+  # If the requested resource exists as a file or directory, serve it
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule . - [L]
+
+  # Map clean URLs like /about to /about.html if such file exists
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+
+  # Optionally, map paths like /packages/uganda/ to /packages/uganda/index.html if present
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+)/$ $1/index.html [L]
+</IfModule>
+
+# Fallback: serve 404 for anything else (let your custom 404.html handle it)
+ErrorDocument 404 /404.html

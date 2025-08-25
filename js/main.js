@@ -291,6 +291,108 @@
         }
     }
 
+    // === MULTI-COUNTRY PAGE: YOUTUBE VIDEO CONTROLS ===
+    function initIncludedVideoControls() {
+        try {
+            const iframe = document.getElementById('includedVideo');
+            const wrapper = document.getElementById('includedVideoWrapper');
+            if (!iframe || !wrapper) return; // Only on multi-country page
+
+            const playBtn = document.getElementById('includedVideoPlayBtn');
+            const pauseBtn = document.getElementById('includedVideoPauseBtn');
+            const stopBtn = document.getElementById('includedVideoStopBtn');
+            const muteBtn = document.getElementById('includedVideoMuteToggle');
+            const fsBtn = document.getElementById('includedVideoFullscreenBtn');
+
+            // Load YouTube Iframe API once
+            function loadYT() {
+                return new Promise((resolve) => {
+                    if (window.YT && window.YT.Player) return resolve(window.YT);
+                    const tag = document.createElement('script');
+                    tag.src = 'https://www.youtube.com/iframe_api';
+                    document.head.appendChild(tag);
+                    const prev = window.onYouTubeIframeAPIReady;
+                    window.onYouTubeIframeAPIReady = function() {
+                        if (typeof prev === 'function') { try { prev(); } catch(_) {} }
+                        resolve(window.YT);
+                    };
+                });
+            }
+
+            let player = null;
+            loadYT().then((YT) => {
+                player = new YT.Player('includedVideo', {
+                    events: {
+                        onReady: () => { try { player.mute(); } catch(_) {} }
+                    },
+                    playerVars: {
+                        start: 102,
+                        autoplay: 0,
+                        controls: 0,
+                        mute: 1,
+                        loop: 1,
+                        playlist: 'siqAfzwCVuw',
+                        modestbranding: 1,
+                        playsinline: 1,
+                        rel: 0,
+                        disablekb: 1
+                    }
+                });
+
+                function updateMuteButton() {
+                    if (!muteBtn) return;
+                    const span = muteBtn.querySelector('span');
+                    const icon = muteBtn.querySelector('i');
+                    const muted = (() => { try { return player.isMuted(); } catch(_) { return true; } })();
+                    if (muted) {
+                        muteBtn.setAttribute('aria-label', 'Unmute video');
+                        if (span) span.textContent = 'Unmute';
+                        if (icon) { icon.classList.remove('fa-volume-up'); icon.classList.add('fa-volume-mute'); }
+                    } else {
+                        muteBtn.setAttribute('aria-label', 'Mute video');
+                        if (span) span.textContent = 'Mute';
+                        if (icon) { icon.classList.remove('fa-volume-mute'); icon.classList.add('fa-volume-up'); }
+                    }
+                }
+
+                function playWithSound() {
+                    try { player.unMute(); } catch(_) {}
+                    try { player.playVideo(); } catch(_) {}
+                    updateMuteButton();
+                }
+                function pause() { try { player.pauseVideo(); } catch(_) {} }
+                function stop() { try { player.stopVideo(); } catch(_) {} }
+                function toggleMute() {
+                    try { if (player.isMuted()) player.unMute(); else player.mute(); } catch(_) {}
+                    updateMuteButton();
+                }
+                function fullscreen() {
+                    const el = iframe;
+                    if (el.requestFullscreen) el.requestFullscreen();
+                    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+                    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+                }
+
+                if (playBtn) playBtn.addEventListener('click', (e) => { e.preventDefault(); playWithSound(); });
+                if (pauseBtn) pauseBtn.addEventListener('click', (e) => { e.preventDefault(); pause(); });
+                if (stopBtn) stopBtn.addEventListener('click', (e) => { e.preventDefault(); stop(); });
+                if (muteBtn) muteBtn.addEventListener('click', (e) => { e.preventDefault(); toggleMute(); });
+                if (fsBtn) fsBtn.addEventListener('click', (e) => { e.preventDefault(); fullscreen(); });
+
+                wrapper.addEventListener('click', (e) => {
+                    const onCtrl = e.target && e.target.closest && e.target.closest('.video-controls');
+                    if (onCtrl) return;
+                    playWithSound();
+                });
+
+                // Initial sync of mute button UI
+                setTimeout(updateMuteButton, 400);
+            });
+        } catch (e) {
+            try { console.warn('initIncludedVideoControls failed:', e); } catch(_) {}
+        }
+    }
+
     // === ANALYTICS LOADER (GA4 / GTM) ===
     function ensureAnalyticsLoaded() {
         try {
@@ -523,6 +625,79 @@
         }
     }
 
+    // === PRETTY URLS (hide .html in address bar) ===
+    function initPrettyUrls() {
+        try {
+            const loc = window.location;
+            const path = (loc && loc.pathname) || '';
+
+            // Helper: is internal same-origin link
+            function isInternal(href) {
+                try {
+                    const u = new URL(href, loc.href);
+                    return u.origin === loc.origin;
+                } catch (_) { return false; }
+            }
+
+            // 1) If current URL ends with .html, hide it (visual only)
+            if (path && /\.html?$/i.test(path)) {
+                const clean = path.replace(/\.html?$/i, '');
+                try {
+                    const url = new URL(loc.href);
+                    url.pathname = clean;
+                    window.history.replaceState({}, document.title, url.toString());
+                } catch (_) {}
+            }
+
+            // 2) Rewrite internal anchors to pretty URLs
+            const anchors = document.querySelectorAll('a[href]');
+            anchors.forEach((a) => {
+                const href = a.getAttribute('href');
+                if (!href || href.startsWith('javascript:')) return;
+                if (!isInternal(href)) return;
+                // Skip hash-only and query-only links
+                if (href.startsWith('#') || href.startsWith('?')) return;
+                try {
+                    const u = new URL(href, loc.href);
+                    // Only rewrite if it ends with .html
+                    if (/\.html?$/i.test(u.pathname)) {
+                        u.pathname = u.pathname.replace(/\.html?$/i, '');
+                        a.setAttribute('href', u.pathname + u.search + u.hash);
+                    }
+                } catch (_) {}
+            });
+
+            // 3) Intercept clicks to ensure clean navigation (no .html)
+            document.addEventListener('click', (e) => {
+                try {
+                    const a = e.target && (e.target.closest ? e.target.closest('a[href]') : null);
+                    if (!a) return;
+                    // Respect modified clicks/new tabs
+                    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
+                    const href = a.getAttribute('href');
+                    if (!href) return;
+                    if (!isInternal(href)) return;
+                    if (href.startsWith('#') || href.startsWith('?')) return;
+                    const u = new URL(href, loc.href);
+                    // Only handle same-page or same-origin navigations
+                    let destPath = u.pathname;
+                    // Normalize to clean URL
+                    if (/\.html?$/i.test(destPath)) destPath = destPath.replace(/\.html?$/i, '');
+                    const pretty = destPath + u.search + u.hash;
+                    // If link already points to pretty path, allow default
+                    if (a.getAttribute('href') === pretty) return;
+                    // Perform clean navigation: push clean, then navigate to clean URL
+                    e.preventDefault();
+                    try { window.history.pushState({}, document.title, pretty); } catch (_) {}
+                    // Trigger actual navigation to clean URL (server/404 router will resolve)
+                    window.location.href = pretty;
+                } catch (_) { /* noop */ }
+            }, true);
+        } catch (e) {
+            try { console.warn('initPrettyUrls failed:', e); } catch (_) {}
+        }
+    }
+
     // === POLICY FOOTER LINKS NORMALIZER ===
     function initPolicyFooterLinks() {
         try {
@@ -720,6 +895,7 @@
             if (typeof initBookingCtaTracking === 'function') initBookingCtaTracking();
             if (typeof initPolicyFooterLinks === 'function') initPolicyFooterLinks();
             if (typeof normalizeWhatsAppNumbers === 'function') normalizeWhatsAppNumbers();
+            if (typeof initPrettyUrls === 'function') initPrettyUrls();
             if (typeof initIncludedVideoControls === 'function') initIncludedVideoControls();
             if (typeof optimizePerformance === 'function') optimizePerformance();
             console.log('Gisu Safaris website initialized successfully!');
