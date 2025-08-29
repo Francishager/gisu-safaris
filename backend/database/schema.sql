@@ -3,7 +3,7 @@
 -- User: gisusafaris_gisu_admin
 
 -- Set timezone to UTC
-SET TIME ZONE 'UTC';
+SET SESSION timezone TO 'UTC';
 
 -- Enable UUID extension if not already enabled
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -484,9 +484,11 @@ CREATE INDEX IF NOT EXISTS idx_chat_sessions_booking_intent ON chat_sessions(boo
 CREATE INDEX IF NOT EXISTS idx_chat_sessions_utm ON chat_sessions(utm_source, utm_medium, utm_campaign);
 CREATE INDEX IF NOT EXISTS idx_chat_messages_session_time ON chat_messages(session_id, occurred_at);
 
+-- ERROR:  42710: trigger "update_chat_sessions_updated_at" for relation "chat_sessions" already exists
 -- Trigger to auto-update updated_at
 CREATE TRIGGER update_chat_sessions_updated_at BEFORE UPDATE ON chat_sessions
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+-- ERROR:  42710: trigger "update_chat_sessions_updated_at" for relation "chat_sessions" already exists
 
 -- 9. Payments
 CREATE TABLE IF NOT EXISTS payments (
