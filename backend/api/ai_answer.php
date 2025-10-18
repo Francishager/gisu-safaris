@@ -32,6 +32,46 @@ try {
     $topK = isset($input['topK']) ? max(1, min(8, (int)$input['topK'])) : 4;
     $history = is_array($input['history'] ?? null) ? $input['history'] : [];
     $preferences = is_array($input['preferences'] ?? null) ? $input['preferences'] : [];
+    $visitor = is_array($input['visitor'] ?? null) ? $input['visitor'] : [];
+    $visitorEmail = strtolower(trim((string)($visitor['email'] ?? '')));
+
+    // Merge learned preferences from past sessions for the same email (if available)
+    if ($visitorEmail !== '') {
+        try {
+            $learned = getLearnedPreferences($visitorEmail);
+            if (is_array($learned) && !empty($learned)) {
+                $preferences = mergePreferences($preferences, $learned);
+            }
+        } catch (Exception $e) {
+            logEvent('warning', 'learned preferences fetch failed', [ 'error' => $e->getMessage(), 'email' => $visitorEmail ]);
+        }
+    }
+
+    // 0) Try forwarding to FastAPI FAQ Bot first if configured
+    $faqBotBase = getenv('FAQ_BOT_URL') ?: (defined('FAQ_BOT_URL') ? FAQ_BOT_URL : null);
+    if ($faqBotBase) {
+        try {
+            $faqUrl = rtrim($faqBotBase, '/').'/ask';
+            $payload = json_encode([
+                'question' => $question,
+                'history' => $history,
+                'preferences' => $preferences,
+            ], JSON_UNESCAPED_UNICODE);
+
+            $resp = httpPostJson($faqUrl, $payload, [ 'Content-Type: application/json' ]);
+            $data = json_decode($resp, true);
+            if (isset($data['answer'])) {
+                sendJsonResponse([
+                    'answer' => $data['answer'],
+                    'score' => $data['score'] ?? null,
+                    'provider' => 'faq_bot'
+                ], 200, 'OK');
+            }
+        } catch (Exception $e) {
+            // Log and continue to RAG fallback
+            logEvent('warning', 'faq_bot forward failed', [ 'error' => $e->getMessage() ]);
+        }
+    }
 
     $openaiKey = defined('OPENAI_API_KEY') ? OPENAI_API_KEY : getenv('OPENAI_API_KEY');
     if (!$openaiKey) {
@@ -181,4 +221,42 @@ function httpPostJson($url, $body, $headers = []) {
         throw new Exception('OpenAI returned HTTP ' . $code);
     }
     return $resp;
+}
+
+// Learn from previous sessions to personalize answers
+function getLearnedPreferences($email) {
+    $prefs = [];
+    $email = trim(strtolower((string)$email));
+    if ($email === '') return $prefs;
+    try {
+        $db = getDbConnection();
+        $stmt = $db->prepare("SELECT preferences FROM chat_sessions WHERE visitor_email = :email AND preferences IS NOT NULL ORDER BY updated_at DESC NULLS LAST, created_at DESC LIMIT 10");
+        $stmt->execute([':email' => $email]);
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $p = json_decode($row['preferences'] ?? '{}', true);
+            if (is_array($p) && !empty($p)) {
+                $prefs = mergePreferences($prefs, $p);
+            }
+        }
+    } catch (Exception $e) {
+        logEvent('warning', 'getLearnedPreferences failed', [ 'error' => $e->getMessage(), 'email' => $email ]);
+    }
+    return $prefs;
+}
+
+function mergePreferences($base, $add) {
+    if (!is_array($base)) $base = [];
+    if (!is_array($add)) return $base;
+    foreach ($add as $k => $v) {
+        if (!array_key_exists($k, $base) || $base[$k] === null || $base[$k] === '' || (is_array($base[$k]) && count($base[$k]) === 0)) {
+            $base[$k] = $v;
+            continue;
+        }
+        if (is_array($base[$k]) && is_array($v)) {
+            // merge arrays uniquely
+            $base[$k] = array_values(array_unique(array_merge($base[$k], $v), SORT_REGULAR));
+        }
+        // For scalars, keep current session's explicit preference
+    }
+    return $base;
 }

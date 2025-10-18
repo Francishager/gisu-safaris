@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,16 +15,48 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
     <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
-        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2" />
-        <span>Gisu Safaris</span>
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="/index.html">
+        <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav"></div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Safari Packages</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/packages/uganda.html">Uganda Safaris</a></li>
+              <li><a class="dropdown-item" href="/packages/kenya.html">Kenya Safaris</a></li>
+              <li><a class="dropdown-item" href="/packages/tanzania.html">Tanzania Safaris</a></li>
+              <li><a class="dropdown-item" href="/packages/rwanda.html">Rwanda Safaris</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/packages/multi-country.html">Multi-Country Tours</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/services/hotel-reservation.html">Hotel Reservation</a></li>
+              <li><a class="dropdown-item" href="/services/travel_insurance.html">Travel Insurance</a></li>
+              <li><a class="dropdown-item" href="/services/air_ticketing.html">Air Ticketing</a></li>
+              <li><a class="dropdown-item" href="/services/car_hire.html">Car Hire</a></li>
+              <li><a class="dropdown-item" href="/services/visa.html">Visa</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Travel Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="/volunteer.html">Volunteer</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+        </ul>
+        <div class="ms-3">
+          <a href="/booking/index.html" class="btn btn-primary btn-sm"><i class="fas fa-calendar-check me-1"></i>Book Now</a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -34,7 +66,7 @@
         <div class="col-lg-8 mx-auto">
           <h1 class="h3 mb-3">Complete Your Hotel Booking</h1>
           <div class="alert alert-info" id="hotelSummary" role="alert">
-            <div><strong>Hotel/Title:</strong> <span id="hotelTitle">—</span></div>
+            <div><strong>Hotel/Title:</strong> <span id="hotelTitle">â€”</span></div>
             <div><strong>Base Price (per room/night):</strong> $<span id="baseAmount">0</span></div>
           </div>
 
@@ -93,7 +125,7 @@
                     <label class="form-label">Phone</label>
                     <input type="tel" class="form-control" id="phone" required inputmode="tel" autocomplete="tel"
                            placeholder="e.g. +256701234567" pattern="^\+?[1-9]\d{7,14}$"
-                           title="Enter a valid phone in international format, e.g. +256701234567 (8–15 digits)." />
+                           title="Enter a valid phone in international format, e.g. +256701234567 (8â€“15 digits)." />
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Email</label>
@@ -109,8 +141,8 @@
                   <div class="col-md-6">
                     <label class="form-label">Passport</label>
                     <input type="text" class="form-control" id="passport" inputmode="text" maxlength="9" required
-                           placeholder="8–9 characters" pattern="^[A-Za-z0-9]{8,9}$"
-                           title="Passport should be 8–9 letters/numbers (no spaces)." />
+                           placeholder="8â€“9 characters" pattern="^[A-Za-z0-9]{8,9}$"
+                           title="Passport should be 8â€“9 letters/numbers (no spaces)." />
                   </div>
                   <div class="col-12">
                     <label class="form-label">Notes (optional)</label>
@@ -129,8 +161,8 @@
                 <div class="border rounded p-3 mb-3">
                   <div class="row">
                     <div class="col-md-6">
-                      <div><strong>Stay:</strong> <span id="reviewStay">—</span></div>
-                      <div><strong>Rooms:</strong> <span id="reviewRooms">1</span> • <strong>Guests:</strong> <span id="reviewGuests">1</span></div>
+                      <div><strong>Stay:</strong> <span id="reviewStay">â€”</span></div>
+                      <div><strong>Rooms:</strong> <span id="reviewRooms">1</span> â€¢ <strong>Guests:</strong> <span id="reviewGuests">1</span></div>
                     </div>
                     <div class="col-md-6">
                       <div><strong>Per Room/Night:</strong> $<span id="reviewPerNight">0</span></div>
@@ -144,13 +176,13 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="payChoice" id="payDeposit" checked />
                     <label class="form-check-label" for="payDeposit">
-                      Pay 70% Deposit now — $<span id="depositAmount">0</span>
+                      Pay 70% Deposit now â€” $<span id="depositAmount">0</span>
                     </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="payChoice" id="payFull" />
                     <label class="form-check-label" for="payFull">
-                      Pay Full Amount now — $<span id="fullAmount">0</span>
+                      Pay Full Amount now â€” $<span id="fullAmount">0</span>
                     </label>
                   </div>
                 </div>
@@ -313,10 +345,10 @@
         }
         const phoneVal = sanitizePhoneInput(phone.value.trim());
         phone.value = phoneVal;
-        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +256701234567 (8–15 digits).'; }
+        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +256701234567 (8â€“15 digits).'; }
         if (!westernPhoneLengthOk(phoneVal)) { phone.focus(); return 'Phone number length does not match the selected country code.'; }
         const passVal = passport.value.trim();
-        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8–9 letters/numbers only).'; }
+        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8â€“9 letters/numbers only).'; }
         const natVal = (nationality.value || '').trim();
         if (!/^[A-Za-z\s]{2,56}$/.test(natVal) || /(?:[^AEIOUaeiou\W]){4,}/.test(natVal)) {
           nationality.focus();
@@ -330,7 +362,7 @@
         if (err) { alert(err); return; }
         const nights = nightsBetween(checkIn.value, checkOut.value);
         const total = base * nights * Number(rooms.value || 1);
-        reviewStay.textContent = `${checkIn.value} to ${checkOut.value} • ${roomType.value}`;
+        reviewStay.textContent = `${checkIn.value} to ${checkOut.value} â€¢ ${roomType.value}`;
         reviewRooms.textContent = rooms.value;
         reviewGuests.textContent = guests.value;
         reviewTotal.textContent = total.toFixed(2);
@@ -403,5 +435,88 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
+            <h5 class="mb-0">Gisu Safaris</h5>
+          </div>
+          <p class="mb-3">East Africa's premier safari company specializing in wildlife adventures and meaningful community experiences.</p>
+          <div class="contact-info">
+            <p class="mb-2"><i class="fas fa-envelope me-2"></i><a href="mailto:info@gisusafaris.com" class="text-light text-decoration-none">info@gisusafaris.com</a></p>
+            <p class="mb-2"><i class="fas fa-phone me-2"></i>
+              <img src="https://flagcdn.com/ug.svg" alt="Uganda flag" class="flag-icon me-1" loading="lazy">
+              <a href="tel:+256703466516" class="text-light text-decoration-none">+256 703 466 516</a>
+            </p>
+            <p class="mb-2"><i class="fas fa-phone me-2"></i>
+              <img src="https://flagcdn.com/au.svg" alt="Australia flag" class="flag-icon me-1" loading="lazy">
+              <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+            </p>
+            <p class="mb-2"><i class="fas fa-phone me-2"></i>
+              <img src="https://flagcdn.com/gb.svg" alt="United Kingdom flag" class="flag-icon me-1" loading="lazy">
+              <a href="tel:+447350538108" class="text-light text-decoration-none">+44 7350 538 108</a>
+            </p>
+            <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Kampala, Uganda</p>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="mb-3">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/index.html" class="text-light text-decoration-none">Home</a></li>
+            <li class="mb-2"><a href="/about.html" class="text-light text-decoration-none">About Us</a></li>
+            <li class="mb-2"><a href="/packages/index.html" class="text-light text-decoration-none">Safari Packages</a></li>
+            <li class="mb-2"><a href="/destinations/index.html" class="text-light text-decoration-none">Destinations</a></li>
+            <li class="mb-2"><a href="/gallery.html" class="text-light text-decoration-none">Gallery</a></li>
+            <li class="mb-2"><a href="/contact.html" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h6 class="mb-3">Safari Destinations</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/packages/uganda.html" class="text-light text-decoration-none"><i class="fas fa-leaf me-2"></i>Uganda Safaris</a></li>
+            <li class="mb-2"><a href="/packages/kenya.html" class="text-light text-decoration-none"><i class="fas fa-paw me-2"></i>Kenya Safaris</a></li>
+            <li class="mb-2"><a href="/packages/tanzania.html" class="text-light text-decoration-none"><i class="fas fa-mountain me-2"></i>Tanzania Safaris</a></li>
+            <li class="mb-2"><a href="/packages/rwanda.html" class="text-light text-decoration-none"><i class="fas fa-users me-2"></i>Rwanda Safaris</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h6 class="mb-3">Connect With Us</h6>
+          <div class="social-icons mb-3">
+            <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x fa-lg"></i></a>
+            <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
+            <a href="https://wa.me/61478914106" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+          </div>
+          <div class="newsletter">
+            <h6>Newsletter</h6>
+            <form class="newsletter-form" id="footerNewsletterForm">
+              <div class="input-group mb-2">
+                <input type="email" class="form-control" name="email" placeholder="Your email" required>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+              </div>
+              <small class="text-muted">Get safari tips & exclusive offers</small>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row align-items-center">
+        <div class="row align-items-center">
+          <div class="col-md-8"><p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p></div>
+          <div class="col-md-4 text-md-end"><p class="mb-0">Designed by <strong>Kairos Technologies</strong></p></div>
+        </div>
+        <div class="col-md-7 text-md-end">
+          <a href="/privacy.html" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+          <a href="/terms.html" class="text-white-50 text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
+
+
+

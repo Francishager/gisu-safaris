@@ -887,6 +887,9 @@
             if (typeof ensureFontAwesome === 'function') ensureFontAwesome();
             if (typeof initWhatsAppButton === 'function') initWhatsAppButton();
             if (typeof ensureWhatsAppWidget === 'function') ensureWhatsAppWidget();
+            if (typeof initHeroSlider === 'function') initHeroSlider();
+            if (typeof initStorySlider === 'function') initStorySlider();
+            if (typeof initScrollAnimations === 'function') initScrollAnimations();
             if (typeof ensureAISafariBotLoaded === 'function') ensureAISafariBotLoaded();
             if (typeof initAccessibility === 'function') initAccessibility();
             if (typeof initSafariFeatures === 'function') initSafariFeatures();

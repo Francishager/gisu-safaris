@@ -1573,8 +1573,9 @@ html {
 /* === FADE-UP ON SCROLL ANIMATIONS === */
 .fade-element {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(90px) scale(0.98);
+    transition: transform 1.25s cubic-bezier(0.20, 0.80, 0.20, 1), opacity 0.95s ease-out;
+    will-change: transform, opacity;
 }
 
 /* Fallback for when JavaScript is disabled */
@@ -1602,16 +1603,33 @@ html {
 
 .fade-element.fade-in {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* Staggered animation delays for multiple elements */
-.fade-element:nth-child(1) { transition-delay: 0.1s; }
-.fade-element:nth-child(2) { transition-delay: 0.2s; }
-.fade-element:nth-child(3) { transition-delay: 0.3s; }
-.fade-element:nth-child(4) { transition-delay: 0.4s; }
-.fade-element:nth-child(5) { transition-delay: 0.5s; }
-.fade-element:nth-child(6) { transition-delay: 0.6s; }
+.fade-element:nth-child(1) { transition-delay: 0.10s; }
+.fade-element:nth-child(2) { transition-delay: 0.20s; }
+.fade-element:nth-child(3) { transition-delay: 0.30s; }
+.fade-element:nth-child(4) { transition-delay: 0.40s; }
+.fade-element:nth-child(5) { transition-delay: 0.50s; }
+.fade-element:nth-child(6) { transition-delay: 0.60s; }
+.fade-element:nth-child(7) { transition-delay: 0.70s; }
+.fade-element:nth-child(8) { transition-delay: 0.80s; }
+.fade-element:nth-child(9) { transition-delay: 0.90s; }
+.fade-element:nth-child(10) { transition-delay: 1.00s; }
+.fade-element:nth-child(11) { transition-delay: 1.10s; }
+.fade-element:nth-child(12) { transition-delay: 1.20s; }
+
+/* Anchor offset for fixed navbar */
+/* Adjust if navbar height changes */
+:root { --nav-offset: 90px; }
+section[id], h1[id], h2[id], h3[id] { scroll-margin-top: var(--nav-offset); }
+
+.flag-icon {
+    height: 1em;
+    width: auto;
+    vertical-align: -0.15em;
+}
 
 /* === ENHANCED HOVER EFFECTS === */
 .hover-card {

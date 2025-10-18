@@ -1,7 +1,7 @@
 <?php
 /**
  * Gisu Safaris Backend Configuration
- * Designed for cPanel hosting with PostgreSQL
+ * Provider-agnostic configuration for PostgreSQL
  */
 
 // Prevent direct access
@@ -38,29 +38,39 @@ function setSecurityHeaders() {
     header('Content-Security-Policy-Report-Only: ' . $csp);
 }
 
+// Load .env early so constants below can read $_ENV
+if (file_exists(__DIR__ . '/.env')) {
+    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos($line, '=') !== false && !strpos($line, '#') === 0) {
+            list($name, $value) = explode('=', $line, 2);
+            $_ENV[trim($name)] = trim($value);
+        }
+    }
+}
+
 // Environment configuration
 define('ENVIRONMENT', $_ENV['ENVIRONMENT'] ?? 'production');
 define('DEBUG', ENVIRONMENT === 'development');
 
-// Database Configuration (PostgreSQL)
-// cPanel PostgreSQL database credentials
+// Database Configuration (PostgreSQL) - set via backend/config/.env
 define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
 define('DB_PORT', $_ENV['DB_PORT'] ?? '5432');
-define('DB_NAME', $_ENV['DB_NAME'] ?? 'gisusafaris_gisu_safaris_db');
-define('DB_USER', $_ENV['DB_USER'] ?? 'gisusafaris_gisu_admin');
-define('DB_PASS', $_ENV['DB_PASS'] ?? 'x~}PqR+ZQu,r_)V5');
+define('DB_NAME', $_ENV['DB_NAME'] ?? '');
+define('DB_USER', $_ENV['DB_USER'] ?? '');
+define('DB_PASS', $_ENV['DB_PASS'] ?? '');
 
-// Email Configuration (for cPanel hosting)
+// Email Configuration
 define('SMTP_HOST', $_ENV['SMTP_HOST'] ?? 'localhost');
 define('SMTP_PORT', $_ENV['SMTP_PORT'] ?? 587);
-define('SMTP_USER', $_ENV['SMTP_USER'] ?? 'noreply@gisusafaris.com');
-define('SMTP_PASS', $_ENV['SMTP_PASS'] ?? 'your_email_password');
+define('SMTP_USER', $_ENV['SMTP_USER'] ?? '');
+define('SMTP_PASS', $_ENV['SMTP_PASS'] ?? '');
 define('SMTP_FROM_EMAIL', 'noreply@gisusafaris.com');
 define('SMTP_FROM_NAME', 'Gisu Safaris');
 
 // WhatsApp Integration Configuration
-define('WHATSAPP_PHONE', '+256780950555'); // Your WhatsApp Business number
-define('WHATSAPP_API_URL', 'https://api.whatsapp.com/send');
+define('WHATSAPP_PHONE', $_ENV['WHATSAPP_PHONE'] ?? '+256703466516'); // Your WhatsApp Business number
+define('WHATSAPP_API_URL', $_ENV['WHATSAPP_API_URL'] ?? 'https://api.whatsapp.com/send');
 
 // Security Configuration
 define('JWT_SECRET', $_ENV['JWT_SECRET'] ?? 'your-jwt-secret-key-here-change-in-production');
@@ -143,6 +153,14 @@ function getDbConnection() {
     if ($connection === null) {
         try {
             $dsn = "pgsql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME;
+            // Neon and many managed Postgres providers require SSL
+            if (!empty($_ENV['DB_SSLMODE'])) {
+                $dsn .= ";sslmode=" . $_ENV['DB_SSLMODE'];
+            }
+            if (!empty($_ENV['DB_SSLROOTCERT'])) {
+                // Optional: path to CA cert if provider requires verify-full
+                $dsn .= ";sslrootcert=" . $_ENV['DB_SSLROOTCERT'];
+            }
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

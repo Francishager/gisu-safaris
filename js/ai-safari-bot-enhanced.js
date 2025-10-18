@@ -2236,11 +2236,28 @@ class SafariAIBotEnhancedInternal {
             const emailInput = document.getElementById('aiVisitorEmail');
             const consentInput = document.getElementById('aiConsent');
 
+            const disposableDomains = new Set([
+                'mailinator.com','10minutemail.com','tempmail.com','tempmail.net','temp-mail.org','guerrillamail.com',
+                'yopmail.com','getnada.com','fakemail.net','trashmail.com','discard.email','sharklasers.com','maildrop.cc'
+            ]);
+            const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            const isValidEmail = (email) => {
+                const e = (email || '').trim().toLowerCase();
+                if (!emailPattern.test(e)) return false;
+                const parts = e.split('@');
+                if (parts.length !== 2) return false;
+                const domain = parts[1];
+                if (!domain || domain.startsWith('-') || domain.endsWith('-')) return false;
+                if (domain.includes('..')) return false;
+                if (disposableDomains.has(domain)) return false;
+                return true;
+            };
+
             const validatePrechat = () => {
                 const name = (nameInput?.value || '').trim();
                 const email = (emailInput?.value || '').trim();
                 const consent = !!consentInput?.checked;
-                const emailValid = /.+@.+\..+/.test(email);
+                const emailValid = isValidEmail(email);
                 if (nameInput) nameInput.classList.toggle('invalid', !name);
                 if (emailInput) emailInput.classList.toggle('invalid', !(email && emailValid));
                 const consentLabel = document.querySelector('label.prechat-consent');
@@ -2254,11 +2271,11 @@ class SafariAIBotEnhancedInternal {
             validatePrechat();
 
             if (startBtn) {
-                startBtn.addEventListener('click', () => {
+                startBtn.addEventListener('click', async () => {
                     const name = (nameInput?.value || '').trim();
                     const email = (emailInput?.value || '').trim();
                     const consent = !!consentInput?.checked;
-                    const emailValid = /.+@.+\..+/.test(email);
+                    const emailValid = isValidEmail(email);
 
                     const errors = [];
                     if (!name) errors.push('name');
@@ -2272,6 +2289,29 @@ class SafariAIBotEnhancedInternal {
                         return;
                     }
 
+                    // Server-side verification (MX + disposable + optional external)
+                    try {
+                        if (startBtn) startBtn.disabled = true;
+                        const res = await fetch('/backend/api/verify_email.php', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email })
+                        });
+                        const j = await res.json().catch(() => null);
+                        const ok = j && j.success && j.data && j.data.valid;
+                        if (!ok) {
+                            alert('Please provide a valid, deliverable email address to start the chat.');
+                            emailInput?.focus();
+                            if (startBtn) startBtn.disabled = false;
+                            return;
+                        }
+                    } catch (err) {
+                        console.warn('Email verification failed', err);
+                        alert('Unable to verify your email at the moment. Please try again shortly.');
+                        if (startBtn) startBtn.disabled = false;
+                        return;
+                    }
+
                     this.visitor = { name, email, consent, capturedAt: new Date().toISOString() };
                     this.saveVisitorToStorage();
                     const pre = document.getElementById('aiPrechatModal');
@@ -2279,6 +2319,7 @@ class SafariAIBotEnhancedInternal {
                     this.updateGatingUI();
                     this.addBotMessage(`👋 Hi ${name.split(' ')[0]}! Great to meet you.`);
                     this.startConversation();
+                    if (startBtn) startBtn.disabled = false;
                 });
             }
 
