@@ -1,0 +1,13 @@
+[18-Oct-2025 18:42:37 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:43:03 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:52:21 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:54:42 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:54:55 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:55:31 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:55:34 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 18:56:13 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 19:22:27 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 19:29:27 Africa/Kampala] Database Connection Error: could not find driver
+[18-Oct-2025 19:29:45 Africa/Kampala] PHP Fatal error:  Cannot redeclare generateWelcomeEmail() (previously declared in C:\Users\DELL\CascadeProjects\gisu-safaris\backend\api\newsletter.php:213) in C:\Users\DELL\CascadeProjects\gisu-safaris\backend\includes\email.php on line 525
+[18-Oct-2025 19:29:45 Africa/Kampala] PHP Stack trace:
+[18-Oct-2025 19:29:45 Africa/Kampala] PHP   1. {main}() C:\Users\DELL\CascadeProjects\gisu-safaris\backend\api\newsletter.php:0

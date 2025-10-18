@@ -8,37 +8,52 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { background:#f6f7fb; }
     .card { border:0; box-shadow:0 4px 14px rgba(0,0,0,.06); }
     @media (max-width: 576px) { .card { margin: 0 8px; } }
+    footer { overflow-x: hidden; }
+    /* Ensure flags match size on other pages */
+    footer .flag-icon { height: 16px; width: auto; vertical-align: -0.15em; }
   </style>
 </head>
 <body>
-  <div class="container py-5 min-vh-100 d-flex align-items-center">
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-9 col-xxl-8">
-        <div class="text-center mb-4">
-          <h1 class="h3 fw-bold">Gisu Safaris Admin</h1>
-          <p class="text-muted mb-0">Sign in to manage blog posts</p>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input id="email" type="email" class="form-control form-control-lg" placeholder="you@company.com" required />
+  <div class="container-fluid py-5 min-vh-100 d-flex align-items-center">
+    <div class="row justify-content-center w-100">
+      <div class="col-12 col-xxl-10">
+        <div class="row g-0 shadow-sm rounded-3 overflow-hidden">
+          <div class="col-lg-6 d-none d-lg-block bg-dark text-white p-5">
+            <div class="h-100 d-flex flex-column justify-content-center">
+              <div class="mb-4">
+                <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="56" class="me-2">
+              </div>
+              <h2 class="fw-bold mb-2">Gisu Safaris Admin</h2>
+              <p class="text-white-50 mb-0">Manage your content and operations securely.</p>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input id="password" type="password" class="form-control form-control-lg" placeholder="Enter your password" required />
+          </div>
+          <div class="col-12 col-lg-6 bg-white p-4 p-lg-5">
+            <div class="text-center mb-4 d-lg-none">
+              <h1 class="h3 fw-bold">Gisu Safaris Admin</h1>
+              <p class="text-muted mb-0">Sign in to manage blog posts</p>
             </div>
-            <div class="d-grid gap-2">
-              <button id="loginBtn" class="btn btn-primary btn-lg">Login</button>
-            </div>
-            <div class="mt-2 text-end">
-              <a href="/backend/admin/forgot-password.html" class="small">Forgot password?</a>
-            </div>
-            <div id="result" class="mt-3"></div>
+            <form id="loginForm" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input id="email" type="email" class="form-control form-control-lg" placeholder="you@company.com" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input id="password" type="password" class="form-control form-control-lg" placeholder="Enter your password" required />
+              </div>
+              <div class="d-grid gap-2">
+                <button id="loginBtn" type="submit" class="btn btn-primary btn-lg">Login</button>
+              </div>
+              <div class="mt-2 text-end">
+                <a href="/backend/admin/forgot-password.html" class="small">Forgot password?</a>
+              </div>
+              <div id="result" class="mt-3" aria-live="polite"></div>
+            </form>
           </div>
         </div>
         <p class="text-center small text-muted mt-3">This page is private. Unauthorized access is prohibited.</p>
@@ -50,20 +65,21 @@
     const AUTH = '/backend/api/auth.php';
     function $(s){ return document.querySelector(s); }
 
-    async function login(){
+    async function login(e){
+      if (e) e.preventDefault();
       const email = $('#email').value.trim();
       const password = $('#password').value;
       if (!email || !password) { $('#result').innerHTML = '<div class="alert alert-warning">Enter email and password.</div>'; return; }
       const res = await fetch(AUTH, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ action:'login', email, password }) });
       const json = await res.json().catch(()=>({}));
       if (!res.ok || !json?.success) { $('#result').innerHTML = '<div class="alert alert-danger">Login failed.</div>'; return; }
-      // Success: go to editor
       window.location.href = '/backend/admin/post-editor.html';
     }
 
     document.addEventListener('DOMContentLoaded', ()=>{
-      $('#loginBtn').addEventListener('click', login);
-      document.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') login(); });
+      $('#loginBtn')?.addEventListener('click', login);
+      $('#loginForm')?.addEventListener('submit', login);
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') login(e); });
     });
   </script>
 <footer class="bg-dark text-white py-5">
@@ -71,7 +87,7 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="d-flex align-items-center mb-3">
-            <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2">
+            <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" class="footer-logo me-2 img-fluid" height="40" style="height:40px;width:auto;max-width:100%;">
             <h5 class="mb-0">Gisu Safaris</h5>
           </div>
           <p class="mb-3">East Africa's premier safari company specializing in wildlife adventures and meaningful community experiences.</p>
@@ -135,11 +151,11 @@
       </div>
       <hr class="my-4">
       <div class="row align-items-center">
-        <div class="row align-items-center">
-          <div class="col-md-8"><p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p></div>
-          <div class="col-md-4 text-md-end"><p class="mb-0">Designed by <strong>Kairos Technologies</strong></p></div>
-        </div>
-        <div class="col-md-7 text-md-end">
+        <div class="col-md-8"><p class="mb-0">&copy; 2025 Gisu Safaris. All rights reserved.</p></div>
+        <div class="col-md-4 text-md-end"><p class="mb-0">Designed by <strong>Kairos Technologies</strong></p></div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 text-center">
           <a href="/privacy.html" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
           <a href="/terms.html" class="text-white-50 text-decoration-none">Terms of Service</a>
         </div>
