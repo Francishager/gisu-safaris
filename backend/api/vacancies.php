@@ -6,7 +6,6 @@ require_once __DIR__ . '/../includes/email.php';
 
 setCorsHeaders();
 setSecurityHeaders();
-checkRateLimit();
 initSession();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

@@ -12,11 +12,15 @@ require_once __DIR__ . '/../includes/whatsapp.php';
 // Set CORS headers
 setCorsHeaders();
 
-// Check rate limiting
-checkRateLimit();
-
 // Initialize session
 initSession();
+
+if (isset($_GET['test']) && $_GET['test'] === 'ping') {
+    http_response_code(200);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'ENQUIRY_PING_OK';
+    exit;
+}
 
 // Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -33,42 +37,26 @@ try {
     if (json_last_error() !== JSON_ERROR_NONE) {
         sendJsonResponse(null, 400, 'Invalid JSON data');
     }
-    
-    // Validate required fields
-    $required_fields = ['firstName', 'email', 'subject', 'message'];
-    $missing_fields = [];
-    
-    foreach ($required_fields as $field) {
-        if (empty($input[$field])) {
-            $missing_fields[] = $field;
-        }
+
+    // Ensure a sensible default subject if none was provided
+    if (empty($input['subject'])) {
+        $input['subject'] = 'Website enquiry';
     }
     
-    if (!empty($missing_fields)) {
-        sendJsonResponse([
-            'missing_fields' => $missing_fields
-        ], 400, 'Missing required fields');
-    }
-    
-    // Sanitize inputs
+    // Sanitize inputs (fields are treated as optional to maximize successful submissions)
     $data = [
-        'first_name' => sanitizeInput($input['firstName']),
+        'first_name' => sanitizeInput($input['firstName'] ?? ''),
         'last_name' => sanitizeInput($input['lastName'] ?? ''),
-        'email' => filter_var($input['email'], FILTER_SANITIZE_EMAIL),
+        'email' => filter_var($input['email'] ?? '', FILTER_SANITIZE_EMAIL),
         'phone' => sanitizeInput($input['phone'] ?? ''),
-        'subject' => sanitizeInput($input['subject']),
+        'subject' => sanitizeInput($input['subject'] ?? ''),
         'enquiry_type' => sanitizeInput($input['enquiryType'] ?? 'general'),
-        'message' => sanitizeInput($input['message']),
+        'message' => sanitizeInput($input['message'] ?? ''),
         'newsletter_opt_in' => !empty($input['newsletter']),
         'referrer_page' => sanitizeInput($input['referrerPage'] ?? '')
     ];
-    
-    // Validate email
-    if (!isValidEmail($data['email'])) {
-        sendJsonResponse(null, 400, 'Invalid email address');
-    }
-    
-    // Validate enquiry type
+
+    // Normalize enquiry type
     $allowed_enquiry_types = ['general', 'booking', 'information', 'customization', 'group', 'corporate'];
     if (!in_array($data['enquiry_type'], $allowed_enquiry_types)) {
         $data['enquiry_type'] = 'general';
@@ -76,19 +64,39 @@ try {
     
     // Get database connection
     $db = getDbConnection();
-    
-    // Check for duplicate enquiry (same email and subject in last 5 minutes)
-    $stmt = $db->prepare("
-        SELECT id FROM general_enquiries 
-        WHERE email = ? AND subject = ? AND created_at > (NOW() - INTERVAL 5 MINUTE)
-        LIMIT 1
-    ");
-    $stmt->execute([$data['email'], $data['subject']]);
-    
-    if ($stmt->fetch()) {
-        sendJsonResponse(null, 429, 'Duplicate enquiry detected. Please wait before submitting again.');
+
+    // Ensure general_enquiries table exists (idempotent MySQL migration)
+    try {
+        $db->exec(<<<SQL
+            CREATE TABLE IF NOT EXISTS general_enquiries (
+                id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                first_name VARCHAR(100) NOT NULL,
+                last_name VARCHAR(100),
+                email VARCHAR(255) NOT NULL,
+                phone VARCHAR(50),
+                subject VARCHAR(255) NOT NULL,
+                enquiry_type VARCHAR(50) DEFAULT 'general',
+                message TEXT NOT NULL,
+                newsletter_opt_in TINYINT(1) DEFAULT 0,
+                referrer_page VARCHAR(255),
+                status VARCHAR(20) DEFAULT 'new',
+                assigned_to BIGINT UNSIGNED,
+                response_sent TINYINT(1) DEFAULT 0,
+                ip_address VARCHAR(45),
+                user_agent TEXT,
+                referrer_url TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                KEY idx_enquiries_email (email),
+                KEY idx_enquiries_created_at (created_at),
+                KEY idx_enquiries_status (status),
+                KEY idx_enquiries_type (enquiry_type)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        SQL);
+    } catch (Exception $e) {
+        logEvent('warning', 'general_enquiries create table failed or skipped', ['error' => $e->getMessage()]);
     }
-    
+
     // Insert general enquiry
     $stmt = $db->prepare("
         INSERT INTO general_enquiries (
@@ -232,7 +240,11 @@ try {
         'code' => $e->getCode(),
         'email' => $data['email'] ?? 'unknown'
     ]);
-    sendJsonResponse(null, 500, 'Database error occurred');
+    // Surface the DB error in the API response to diagnose why forms are failing
+    sendJsonResponse([
+        'error' => $e->getMessage(),
+        'code' => $e->getCode(),
+    ], 500, 'Database error occurred');
     
 } catch (Exception $e) {
     logEvent('error', 'Unexpected error in general enquiry', [

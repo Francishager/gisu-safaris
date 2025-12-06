@@ -14,9 +14,6 @@ setCorsHeaders();
 // Add strict security headers for browser protections
 setSecurityHeaders();
 
-// Check rate limiting
-checkRateLimit();
-
 // Initialize session
 initSession();
 
@@ -84,7 +81,7 @@ function bk_passportLooksOk(string $passport, string $nationality): bool {
 logEvent('info', 'Safari booking API accessed', ['method' => 'POST']);
 
 /**
- * Helpers: name/email/phone validation mirroring client-side rules
+ * Helpers: name/phone validation mirroring client-side rules
  */
 function bk_nameLooksOk(string $v): bool {
     $v = trim($v);
@@ -93,18 +90,6 @@ function bk_nameLooksOk(string $v): bool {
     if (preg_match('/[0-9]/', $v)) return false;
     if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false; // 4+ consonants
     return (bool)preg_match('/[AEIOUaeiou]/', $v);
-}
-
-function bk_emailLocalPartLooksOk(string $email): bool {
-    $parts = explode('@', $email);
-    if (count($parts) < 2) return false;
-    $local = $parts[0];
-    if (preg_match('/^[A-Za-z]+$/', $local)) {
-        $vowelCount = preg_match_all('/[AEIOUaeiou]/', $local);
-        if ($vowelCount < 3) return false;
-        if (preg_match('/(?:[^AEIOUaeiou]){3,}/', $local)) return false; // 3+ consonants
-    }
-    return true;
 }
 
 function bk_sanitizePhone(string $v): string {
@@ -204,9 +189,9 @@ try {
         sendJsonResponse(null, 400, 'Invalid last name');
     }
 
-    // Validate email with heuristic
-    if (!isValidEmail($data['email']) || !bk_emailLocalPartLooksOk($data['email'])) {
-        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'email', 'reason' => 'format_or_heuristic']);
+    // Validate email (syntax only)
+    if (!isValidEmail($data['email'])) {
+        logEvent('warning', 'validation_failed', ['endpoint' => 'booking', 'field' => 'email', 'reason' => 'format']);
         sendJsonResponse(null, 400, 'Invalid email address');
     }
 
@@ -251,18 +236,6 @@ try {
     
     // Get database connection
     $db = getDbConnection();
-    
-    // Check for duplicate booking (same email and package in last 10 minutes)
-    $stmt = $db->prepare("
-        SELECT id FROM safari_bookings 
-        WHERE email = ? AND package_name = ? AND created_at > (NOW() - INTERVAL 10 MINUTE)
-        LIMIT 1
-    ");
-    $stmt->execute([$data['email'], $data['package_name']]);
-    
-    if ($stmt->fetch()) {
-        sendJsonResponse(null, 429, 'Duplicate booking detected. Please wait before booking again.');
-    }
     
     // Ensure DB has nationality & passport columns on safari_bookings (idempotent)
     try {

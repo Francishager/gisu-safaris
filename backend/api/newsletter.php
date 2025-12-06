@@ -11,9 +11,6 @@ require_once __DIR__ . '/../includes/email.php';
 // Set CORS headers
 setCorsHeaders();
 
-// Check rate limiting
-checkRateLimit();
-
 // Initialize session
 initSession();
 

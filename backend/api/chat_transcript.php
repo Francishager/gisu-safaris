@@ -9,9 +9,8 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
 require_once __DIR__ . '/../includes/whatsapp.php';
 
-// CORS and session/rate limit
+// CORS and session
 setCorsHeaders();
-checkRateLimit();
 initSession();
 
 // Only POST

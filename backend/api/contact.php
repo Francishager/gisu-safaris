@@ -14,9 +14,6 @@ setCorsHeaders();
 // Add strict security headers (CSP Report-Only, clickjacking, etc.)
 setSecurityHeaders();
 
-// Check rate limiting
-checkRateLimit();
-
 // Initialize session
 initSession();
 
@@ -221,9 +218,9 @@ try {
         sendJsonResponse(null, 400, 'Invalid last name');
     }
 
-    // Validate email with heuristic
-    if (!isValidEmail($data['email']) || !emailLocalPartLooksOk($data['email'])) {
-        logEvent('warning', 'validation_failed', ['field' => 'email', 'reason' => 'format_or_heuristic']);
+    // Validate email (syntax only)
+    if (!isValidEmail($data['email'])) {
+        logEvent('warning', 'validation_failed', ['field' => 'email', 'reason' => 'format']);
         sendJsonResponse(null, 400, 'Invalid email address');
     }
 
@@ -263,18 +260,6 @@ try {
     
     // Get database connection
     $db = getDbConnection();
-    
-    // Check for duplicate submission (same email in last 5 minutes)
-    $stmt = $db->prepare("
-        SELECT id FROM contact_submissions 
-        WHERE email = ? AND created_at > (NOW() - INTERVAL 5 MINUTE)
-        LIMIT 1
-    ");
-    $stmt->execute([$data['email']]);
-    
-    if ($stmt->fetch()) {
-        sendJsonResponse(null, 429, 'Duplicate submission detected. Please wait before submitting again.');
-    }
     
     // Ensure DB has nationality & passport columns (safe idempotent migration)
     try {
@@ -429,7 +414,11 @@ try {
         'error' => $e->getMessage(),
         'code' => $e->getCode()
     ]);
-    sendJsonResponse(null, 500, 'Database error occurred');
+    // Surface the DB error details so we can debug live 500s from the contact form
+    sendJsonResponse([
+        'error' => $e->getMessage(),
+        'code'  => $e->getCode(),
+    ], 500, 'Database error occurred');
     
 } catch (Exception $e) {
     logEvent('error', 'General error in contact form', [

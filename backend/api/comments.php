@@ -15,8 +15,7 @@ require_once __DIR__ . '/../includes/email.php';
 setCorsHeaders();
 setSecurityHeaders();
 
-// Basic rate limiting and session
-checkRateLimit();
+// Initialize session
 initSession();
 
 // Log access

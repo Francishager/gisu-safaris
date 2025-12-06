@@ -168,13 +168,12 @@ function getDbConnection() {
             $connection = new PDO($dsn, DB_USER, DB_PASS, $options);
 
         } catch (PDOException $e) {
-            if (DEBUG) {
-                die('Database Connection Failed: ' . $e->getMessage());
-            } else {
-                error_log('Database Connection Error: ' . $e->getMessage());
-                http_response_code(500);
-                die('Database connection error');
-            }
+            // Always log DB errors and surface them in JSON so API clients (and you) can see why 500s occur
+            error_log('Database Connection Error: ' . $e->getMessage());
+            sendJsonResponse([
+                'error' => $e->getMessage(),
+                'code'  => $e->getCode(),
+            ], 500, 'Database connection error');
         }
     }
     

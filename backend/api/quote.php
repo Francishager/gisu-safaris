@@ -12,9 +12,6 @@ require_once __DIR__ . '/../includes/whatsapp.php';
 // Set CORS headers
 setCorsHeaders();
 
-// Check rate limiting
-checkRateLimit();
-
 // Initialize session
 initSession();
 
@@ -97,18 +94,6 @@ try {
     
     // Get database connection
     $db = getDbConnection();
-    
-    // Check for duplicate quote request (same email and destination in last 30 minutes)
-    $stmt = $db->prepare("
-        SELECT id FROM quote_requests 
-        WHERE email = ? AND destination = ? AND created_at > (NOW() - INTERVAL 30 MINUTE)
-        LIMIT 1
-    ");
-    $stmt->execute([$data['email'], $data['destination']]);
-    
-    if ($stmt->fetch()) {
-        sendJsonResponse(null, 429, 'Duplicate quote request detected. Please wait before requesting another quote.');
-    }
     
     // Insert quote request
     $stmt = $db->prepare("

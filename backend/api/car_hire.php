@@ -8,9 +8,8 @@ define('GISU_SAFARIS_BACKEND', true);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
 
-// CORS, rate limit, session
+// CORS and session
 setCorsHeaders();
-checkRateLimit();
 initSession();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

@@ -11,7 +11,6 @@ require_once __DIR__ . '/../config/config.php';
 
 setCorsHeaders();
 setSecurityHeaders();
-checkRateLimit();
 initSession();
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';

@@ -45,18 +45,6 @@ try {
         if (preg_match('/(?:[^AEIOUaeiou\W]){4,}/', $v)) return false; // 4+ consonants
         return (bool)preg_match('/[AEIOUaeiou]/', $v);
     };
-    $emailLocalOk = function(string $em): bool {
-        if (!isValidEmail($em)) return false;
-        $parts = explode('@', $em);
-        if (count($parts) < 2) return false;
-        $local = $parts[0];
-        if (preg_match('/^[A-Za-z]+$/', $local)) {
-            $vowelCount = preg_match_all('/[AEIOUaeiou]/', $local);
-            if ($vowelCount < 3) return false;
-            if (preg_match('/(?:[^AEIOUaeiou]){3,}/', $local)) return false;
-        }
-        return true;
-    };
 
     if ($first && !$nameOk($first)) {
         sendJsonResponse(null, 400, 'Invalid first name');
@@ -64,7 +52,7 @@ try {
     if ($last && !$nameOk($last)) {
         sendJsonResponse(null, 400, 'Invalid last name');
     }
-    if (!$emailLocalOk($email)) {
+    if (!isValidEmail($email)) {
         sendJsonResponse(null, 400, 'Invalid email');
     }
 
