@@ -124,7 +124,7 @@ try {
         logEvent('warning', 'package_bookings alter table failed or skipped', ['error' => $e->getMessage()]);
     }
 
-    $stmt = $db->prepare("INSERT INTO package_bookings (package_type, first_name, last_name, email, group_size, accommodation_level, special_requests, add_ons, estimated_price, booking_status, payment_status, ip_address, user_agent, nationality, passport) VALUES (:ptype, :first, :last, :email, :gsize, NULL, NULL, NULL, :est, 'inquiry', 'pending', :ip, :ua, :nat, :pp) RETURNING id");
+    $stmt = $db->prepare("INSERT INTO package_bookings (package_type, first_name, last_name, email, group_size, accommodation_level, special_requests, add_ons, estimated_price, booking_status, payment_status, ip_address, user_agent, nationality, passport) VALUES (:ptype, :first, :last, :email, :gsize, NULL, NULL, NULL, :est, 'inquiry', 'pending', :ip, :ua, :nat, :pp)");
     $stmt->execute([
         ':ptype' => $packageType,
         ':first' => $first,
@@ -138,7 +138,7 @@ try {
         ':pp' => $passport,
     ]);
 
-    $bookingId = $stmt->fetchColumn();
+    $bookingId = $db->lastInsertId();
     if (!$bookingId) {
         sendJsonResponse(null, 500, 'Failed to create booking');
     }

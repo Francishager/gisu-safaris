@@ -7,6 +7,7 @@
 define('GISU_SAFARIS_BACKEND', true);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
+require_once __DIR__ . '/../includes/whatsapp.php';
 
 // Set CORS headers
 setCorsHeaders();
@@ -100,7 +101,7 @@ try {
     // Check for duplicate quote request (same email and destination in last 30 minutes)
     $stmt = $db->prepare("
         SELECT id FROM quote_requests 
-        WHERE email = ? AND destination = ? AND created_at > NOW() - INTERVAL '30 minutes'
+        WHERE email = ? AND destination = ? AND created_at > (NOW() - INTERVAL 30 MINUTE)
         LIMIT 1
     ");
     $stmt->execute([$data['email'], $data['destination']]);
@@ -118,10 +119,9 @@ try {
             additional_requirements, message, newsletter_opt_in, 
             ip_address, user_agent, referrer_url
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        RETURNING id
     ");
     
-    $result = $stmt->execute([
+    $stmt->execute([
         $data['first_name'],
         $data['last_name'],
         $data['email'],
@@ -145,7 +145,7 @@ try {
         $_SERVER['HTTP_REFERER'] ?? ''
     ]);
     
-    $quote_id = $stmt->fetch()['id'];
+    $quote_id = $db->lastInsertId();
     
     // Handle newsletter subscription if opted in
     if ($data['newsletter_opt_in']) {
@@ -153,7 +153,11 @@ try {
             $stmt = $db->prepare("
                 INSERT INTO newsletter_subscriptions (email, subscription_source, ip_address, user_agent)
                 VALUES (?, 'quote-form', ?, ?)
-                ON CONFLICT (email) DO NOTHING
+                ON DUPLICATE KEY UPDATE
+                    subscription_source = VALUES(subscription_source),
+                    ip_address = VALUES(ip_address),
+                    user_agent = VALUES(user_agent),
+                    updated_at = CURRENT_TIMESTAMP
             ");
             $stmt->execute([
                 $data['email'],
@@ -217,6 +221,20 @@ try {
             logEvent('warning', 'Failed to send admin quote notification emails', [
                 'quote_id' => $quote_id
             ]);
+        }
+
+        try {
+            $whInfo = [
+                'name' => $data['first_name'] . ' ' . $data['last_name'],
+                'email' => $data['email'],
+                'page' => $_SERVER['HTTP_REFERER'] ?? '',
+                'lead_score' => null,
+                'package_interest' => $data['destination'],
+                'summary' => substr(($data['message'] ?: ('Quote request for ' . $data['destination'] . ' (' . $data['country'] . ')')), 0, 200),
+            ];
+            notifyAdminsWhatsAppHotLead($admin_subject, $whInfo);
+        } catch (Exception $e) {
+            logEvent('warning', 'Failed to send WhatsApp notification for quote lead', [ 'quote_id' => $quote_id, 'error' => $e->getMessage() ]);
         }
         
     } catch (Exception $e) {

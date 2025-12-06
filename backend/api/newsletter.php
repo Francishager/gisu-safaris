@@ -102,7 +102,6 @@ try {
                 email, subscription_source, confirmed_at, 
                 ip_address, user_agent
             ) VALUES (?, ?, CURRENT_TIMESTAMP, ?, ?)
-            RETURNING id
         ");
         
         $stmt->execute([
@@ -112,8 +111,7 @@ try {
             $_SERVER['HTTP_USER_AGENT'] ?? ''
         ]);
         
-        $result = $stmt->fetch();
-        $subscription_id = $result['id'];
+        $subscription_id = $db->lastInsertId();
         $action = 'subscribed';
     }
     

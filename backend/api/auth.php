@@ -21,15 +21,29 @@ $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 try {
     $db = getDbConnection();
     $db->exec(<<<SQL
-        CREATE TABLE IF NOT EXISTS admins (
-            id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-            email CITEXT UNIQUE NOT NULL,
-            password_hash TEXT NOT NULL,
-            created_at TIMESTAMPTZ DEFAULT NOW(),
-            updated_at TIMESTAMPTZ DEFAULT NOW()
-        );
+		CREATE TABLE IF NOT EXISTS admins (
+			id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			email VARCHAR(255) NOT NULL UNIQUE,
+			password_hash TEXT NOT NULL,
+			created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+			updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 SQL);
-    $db->exec("CREATE INDEX IF NOT EXISTS idx_admins_email ON admins(email);");
+	$db->exec("CREATE INDEX IF NOT EXISTS idx_admins_email ON admins(email);");
+
+	// Auto-create initial admin if none exist yet
+	try {
+		$countStmt = $db->query('SELECT COUNT(*) FROM admins');
+		$count = (int)$countStmt->fetchColumn();
+		if ($count === 0) {
+			$email = 'wassakassentamu2@gmail.com';
+			$passwordHash = password_hash('Mundu@sera25', PASSWORD_DEFAULT);
+			$ins = $db->prepare('INSERT INTO admins (email, password_hash) VALUES (?, ?)');
+			$ins->execute([$email, $passwordHash]);
+		}
+	} catch (Exception $inner) {
+		logEvent('error', 'Initial admin bootstrap failed', ['error' => $inner->getMessage()]);
+	}
 } catch (Exception $e) {
     logEvent('error', 'Admin auth migration error', ['error' => $e->getMessage()]);
 }

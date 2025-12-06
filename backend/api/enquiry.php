@@ -7,6 +7,7 @@
 define('GISU_SAFARIS_BACKEND', true);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
+require_once __DIR__ . '/../includes/whatsapp.php';
 
 // Set CORS headers
 setCorsHeaders();
@@ -79,7 +80,7 @@ try {
     // Check for duplicate enquiry (same email and subject in last 5 minutes)
     $stmt = $db->prepare("
         SELECT id FROM general_enquiries 
-        WHERE email = ? AND subject = ? AND created_at > NOW() - INTERVAL '5 minutes'
+        WHERE email = ? AND subject = ? AND created_at > (NOW() - INTERVAL 5 MINUTE)
         LIMIT 1
     ");
     $stmt->execute([$data['email'], $data['subject']]);
@@ -94,10 +95,9 @@ try {
             first_name, last_name, email, phone, subject, enquiry_type, 
             message, newsletter_opt_in, referrer_page, ip_address, user_agent, referrer_url
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        RETURNING id
     ");
     
-    $result = $stmt->execute([
+    $stmt->execute([
         $data['first_name'],
         $data['last_name'],
         $data['email'],
@@ -112,7 +112,7 @@ try {
         $_SERVER['HTTP_REFERER'] ?? ''
     ]);
     
-    $enquiry_id = $stmt->fetch()['id'];
+    $enquiry_id = $db->lastInsertId();
     
     // Handle newsletter subscription if opted in
     if ($data['newsletter_opt_in']) {
@@ -120,7 +120,11 @@ try {
             $stmt = $db->prepare("
                 INSERT INTO newsletter_subscriptions (email, subscription_source, ip_address, user_agent)
                 VALUES (?, 'enquiry-form', ?, ?)
-                ON CONFLICT (email) DO NOTHING
+                ON DUPLICATE KEY UPDATE
+                    subscription_source = VALUES(subscription_source),
+                    ip_address = VALUES(ip_address),
+                    user_agent = VALUES(user_agent),
+                    updated_at = CURRENT_TIMESTAMP
             ");
             $stmt->execute([
                 $data['email'],
@@ -183,6 +187,20 @@ try {
             logEvent('warning', 'Failed to send admin enquiry notification emails', [
                 'enquiry_id' => $enquiry_id
             ]);
+        }
+
+        try {
+            $whInfo = [
+                'name' => $data['first_name'] . ' ' . $data['last_name'],
+                'email' => $data['email'],
+                'page' => $data['referrer_page'] ?: ($_SERVER['HTTP_REFERER'] ?? ''),
+                'lead_score' => null,
+                'package_interest' => $data['enquiry_type'],
+                'summary' => substr($data['message'], 0, 200),
+            ];
+            notifyAdminsWhatsAppHotLead($admin_subject, $whInfo);
+        } catch (Exception $e) {
+            logEvent('warning', 'Failed to send WhatsApp notification for general enquiry lead', [ 'enquiry_id' => $enquiry_id, 'error' => $e->getMessage() ]);
         }
         
     } catch (Exception $e) {

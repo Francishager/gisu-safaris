@@ -192,9 +192,8 @@ try {
         // Handle newsletter subscription if opted in
         if ($booking_data['newsletter_opt_in']) {
             try {
-                $newsletter_sql = "INSERT INTO newsletter_subscriptions (email, subscription_source, ip_address, user_agent) 
-                                 VALUES (:email, 'multi-country-booking', :ip_address, :user_agent) 
-                                 ON CONFLICT (email) DO NOTHING";
+                $newsletter_sql = "INSERT IGNORE INTO newsletter_subscriptions (email, subscription_source, ip_address, user_agent) 
+                                 VALUES (:email, 'multi-country-booking', :ip_address, :user_agent)";
                 $newsletter_stmt = $pdo->prepare($newsletter_sql);
                 $newsletter_stmt->execute([
                     ':email' => $booking_data['email'],

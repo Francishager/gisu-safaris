@@ -72,8 +72,8 @@ try {
         pickup_location, dropoff_location, license, notes, requirements,
         referrer_page, ip_address, user_agent
     ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, NULLIF(?, '')::date, NULLIF(?, '')::date, ?, ?, ?, ?, ?, ?, ?, ?, ?
-    ) RETURNING id");
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, NULLIF(?, ''), NULLIF(?, ''), ?, ?, ?, ?, ?, ?, ?, ?, ?
+    )");
 
     $stmt->execute([
         $data['first_name'],
@@ -98,8 +98,7 @@ try {
         $_SERVER['HTTP_USER_AGENT'] ?? ''
     ]);
 
-    $row = $stmt->fetch();
-    $enquiry_id = $row['id'] ?? null;
+    $enquiry_id = $db->lastInsertId();
 
     // Emails
     try {

@@ -17,7 +17,15 @@
   <nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#">Gisu Safaris Admin</a>
-      <span class="navbar-text">Comments Moderation</span>
+      <span class="navbar-text me-3">Comments Moderation</span>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/backend/admin/post-editor.html">Posts</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/backend/admin/comments.html">Comments</a></li>
+        <li class="nav-item"><a class="nav-link" href="/backend/admin/ai-faq.html">AI Q&amp;A</a></li>
+      </ul>
+      <div class="ms-auto">
+        <button id="logoutBtn" class="btn btn-sm btn-outline-danger">Logout</button>
+      </div>
     </div>
   </nav>
 
@@ -89,6 +97,7 @@
 
   <script>
     const API_LIST = '/backend/api/comments_moderate.php';
+    const AUTH = '/backend/api/auth.php';
 
     function $(sel){ return document.querySelector(sel); }
     function el(tag, attrs={}, children=[]) {
@@ -103,6 +112,18 @@
     function getKey(){ return localStorage.getItem('gisu_admin_api_key') || ''; }
     function setKey(k){ localStorage.setItem('gisu_admin_api_key', k); }
 
+    async function requireSession(){
+      try {
+        const r = await fetch(AUTH, { headers: { 'Accept': 'application/json' } });
+        const j = await r.json();
+        if (!j?.success || !j?.data?.me?.is_admin) {
+          window.location.href = '/backend/admin/login.html';
+        }
+      } catch {
+        window.location.href = '/backend/admin/login.html';
+      }
+    }
+
     async function loadComments() {
       const tbody = $('#tbl tbody');
       tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted py-4">Loading...</td></tr>';
@@ -113,8 +134,11 @@
       if (status) params.set('status', status);
       if (page) params.set('page', page);
       if (q) params.set('q', q);
+      const headers = {};
+      const key = getKey();
+      if (key) headers['X-API-Key'] = key;
 
-      const res = await fetch(API_LIST + '?' + params.toString(), { headers: { 'X-API-Key': getKey() } });
+      const res = await fetch(API_LIST + '?' + params.toString(), { headers });
       const json = await res.json().catch(()=>({}));
       if (!res.ok || !json?.success) {
         tbody.innerHTML = '<tr><td colspan="8" class="text-center text-danger py-4">Failed to load comments</td></tr>';
@@ -153,9 +177,13 @@
 
     async function moderate(id, action) {
       if (!confirm('Are you sure to ' + action + ' this comment?')) return;
+      const headers = { 'Content-Type': 'application/json' };
+      const key = getKey();
+      if (key) headers['X-API-Key'] = key;
+
       const res = await fetch(API_LIST, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-API-Key': getKey() },
+        headers,
         body: JSON.stringify({ id, action })
       });
       const json = await res.json().catch(()=>({}));
@@ -166,13 +194,23 @@
     }
 
     // Wire up
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      await requireSession();
       $('#apiKey').value = getKey();
       $('#saveKey').addEventListener('click', () => { setKey($('#apiKey').value.trim()); alert('API key saved locally.'); });
       $('#loadBtn').addEventListener('click', loadComments);
       $('#status').addEventListener('change', loadComments);
       $('#page').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); loadComments(); }});
       $('#q').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); loadComments(); }});
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+          try {
+            await fetch(AUTH, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'logout' }) });
+          } catch (e) {}
+          window.location.href = '/backend/admin/login.html';
+        });
+      }
       loadComments();
     });
   </script>
@@ -227,9 +265,9 @@
           <div class="social-icons mb-3">
             <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
             <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x fa-lg"></i></a>
+            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x-twitter fa-lg"></i></a>
             <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
-            <a href="https://wa.me/61478914106" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <a href="https://wa.me/61470133869" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
           </div>
           <div class="newsletter">
             <h6>Newsletter</h6>

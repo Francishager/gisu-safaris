@@ -677,7 +677,7 @@
                             <a href="../contact.html" class="btn btn-light btn-lg">
                                 <i class="fas fa-envelope me-2"></i>Get Quote
                             </a>
-                            <a href="tel:+256123456789" class="btn btn-outline-light btn-lg">
+                            <a href="tel:+61478914106" class="btn btn-outline-light btn-lg">
                                 <i class="fas fa-phone me-2"></i>Call Now
                             </a>
                             <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#whatsappModal">
@@ -698,7 +698,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="custom-request-form">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="modal-name" class="form-label">Full Name *</label>
@@ -731,7 +731,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" form="custom-request-form">
                             <i class="fas fa-paper-plane me-2"></i>Send Request
                         </button>
                     </div>
@@ -815,9 +815,9 @@
           <div class="social-icons mb-3">
             <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
             <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x fa-lg"></i></a>
+            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x-twitter fa-lg"></i></a>
             <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
-            <a href="https://wa.me/61478914106" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <a href="https://wa.me/61470133869" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
           </div>
           <div class="newsletter">
             <h6>Newsletter</h6>
@@ -891,6 +891,130 @@
                 });
             });
         });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('custom-request-form');
+        const modalEl = document.getElementById('customRequestModal');
+        if (!form || !modalEl) return;
+
+        const apiUrl = '/backend/api/enquiry.php';
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          if (!form.checkValidity()) {
+            if (typeof form.reportValidity === 'function') form.reportValidity();
+            return;
+          }
+
+          const fullName = (document.getElementById('modal-name')?.value || '').trim();
+          const email = (document.getElementById('modal-email')?.value || '').trim();
+          const phone = (document.getElementById('modal-phone')?.value || '').trim();
+          const budget = (document.getElementById('modal-budget')?.value || '').trim();
+          const requirements = (document.getElementById('modal-requirements')?.value || '').trim();
+
+          if (!fullName || !email) {
+            alert('Please provide your full name and email address.');
+            return;
+          }
+
+          const nameParts = fullName.split(' ').filter(Boolean);
+          const firstName = nameParts[0] || fullName;
+          const lastName = nameParts.slice(1).join(' ');
+
+          const destination = (document.getElementById('destination')?.value || '').trim();
+          const checkin = (document.getElementById('checkin')?.value || '').trim();
+          const checkout = (document.getElementById('checkout')?.value || '').trim();
+          const guests = (document.getElementById('guests')?.value || '').trim();
+          const accommodationType = (document.getElementById('accommodation-type')?.value || '').trim();
+
+          const lines = [];
+          lines.push('Custom accommodation enquiry');
+          lines.push('');
+          lines.push('Guest details:');
+          lines.push('Name: ' + fullName);
+          lines.push('Email: ' + email);
+          lines.push('Phone: ' + (phone || 'Not provided'));
+          lines.push('Budget range: ' + (budget || 'Not specified'));
+          lines.push('');
+          lines.push('Stay preferences (from quick search if provided):');
+          lines.push('Destination: ' + (destination || 'Not specified'));
+          lines.push('Check-in: ' + (checkin || 'Not specified'));
+          lines.push('Check-out: ' + (checkout || 'Not specified'));
+          lines.push('Guests: ' + (guests || 'Not specified'));
+          lines.push('Accommodation type: ' + (accommodationType || 'Any'));
+          lines.push('');
+          lines.push('Special requirements:');
+          lines.push(requirements || 'None specified');
+
+          const payload = {
+            firstName,
+            lastName,
+            email,
+            phone,
+            subject: 'Hotel custom accommodation request',
+            enquiryType: 'hotel_custom_request',
+            message: lines.join('\n'),
+            referrerPage: 'services/hotel-reservation.html'
+          };
+
+          const submitBtn = modalEl.querySelector('button[type="submit"]');
+          const originalHtml = submitBtn ? submitBtn.innerHTML : null;
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+          }
+
+          try {
+            const res = await fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+
+            let data = null;
+            try {
+              data = await res.json();
+            } catch (_) {}
+
+            const ok = res.ok && data && data.success !== false;
+            const msg = (data && (data.message || data.error)) ||
+                        (ok ? 'Thank you! Our team will get back to you shortly.' :
+                              'Unable to send your request. Please try again.');
+
+            if (window.GisuSafaris && typeof window.GisuSafaris.showNotification === 'function') {
+              window.GisuSafaris.showNotification(msg, ok ? 'success' : 'error');
+            } else {
+              alert(msg);
+            }
+
+            if (ok) {
+              form.reset();
+              try {
+                const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                modalInstance.hide();
+              } catch (_) {}
+            }
+          } catch (error) {
+            const msg = 'A network error occurred while sending your request. Please check your connection and try again.';
+            if (window.GisuSafaris && typeof window.GisuSafaris.showNotification === 'function') {
+              window.GisuSafaris.showNotification(msg, 'error');
+            } else {
+              alert(msg);
+            }
+          } finally {
+            if (submitBtn && originalHtml != null) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalHtml;
+            }
+          }
+        });
+      });
     </script>
 
     <script>

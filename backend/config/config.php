@@ -53,12 +53,12 @@ if (file_exists(__DIR__ . '/.env')) {
 define('ENVIRONMENT', $_ENV['ENVIRONMENT'] ?? 'production');
 define('DEBUG', ENVIRONMENT === 'development');
 
-// Database Configuration (PostgreSQL) - set via backend/config/.env
+// Database Configuration (MySQL) - set via backend/config/.env
 define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
-define('DB_PORT', $_ENV['DB_PORT'] ?? '5432');
-define('DB_NAME', $_ENV['DB_NAME'] ?? '');
-define('DB_USER', $_ENV['DB_USER'] ?? '');
-define('DB_PASS', $_ENV['DB_PASS'] ?? '');
+define('DB_PORT', $_ENV['DB_PORT'] ?? '3306');
+define('DB_NAME', $_ENV['DB_NAME'] ?? 'gisusafaris_fraco');
+define('DB_USER', $_ENV['DB_USER'] ?? 'gisusafaris_francis');
+define('DB_PASS', $_ENV['DB_PASS'] ?? 'Francis343435345NM');
 
 // Email Configuration
 define('SMTP_HOST', $_ENV['SMTP_HOST'] ?? 'localhost');
@@ -69,11 +69,18 @@ define('SMTP_FROM_EMAIL', 'noreply@gisusafaris.com');
 define('SMTP_FROM_NAME', 'Gisu Safaris');
 
 // WhatsApp Integration Configuration
-define('WHATSAPP_PHONE', $_ENV['WHATSAPP_PHONE'] ?? '+256703466516'); // Your WhatsApp Business number
+define('WHATSAPP_PHONE', $_ENV['WHATSAPP_PHONE'] ?? '+61470133869'); // Your WhatsApp Business number
 define('WHATSAPP_API_URL', $_ENV['WHATSAPP_API_URL'] ?? 'https://api.whatsapp.com/send');
+define('WHATSAPP_CLOUD_API_BASE', $_ENV['WHATSAPP_CLOUD_API_BASE'] ?? 'https://graph.facebook.com/v17.0');
+define('WHATSAPP_PHONE_ID', $_ENV['WHATSAPP_PHONE_ID'] ?? '');
+define('WHATSAPP_ACCESS_TOKEN', $_ENV['WHATSAPP_ACCESS_TOKEN'] ?? '');
+define('WHATSAPP_ADMIN_NUMBERS', [
+    '+61470133869',
+    '+256788216271',
+]);
 
 // Security Configuration
-define('JWT_SECRET', $_ENV['JWT_SECRET'] ?? 'your-jwt-secret-key-here-change-in-production');
+define('JWT_SECRET', $_ENV['JWT_SECRET'] ?? 'AUDcgMf50NssuNqO0VOMKeQhyaH0Ksx9N0NQqvUCYmvsGlbeJrWp3U/B8/XYgKc+Z/po5G20hFTDyGSoQ5nTeg==');
 define('API_KEY', $_ENV['API_KEY'] ?? 'gisu_safaris_api_key_2024');
 define('CSRF_TOKEN_NAME', 'gisu_csrf_token');
 
@@ -87,7 +94,7 @@ define('RATE_LIMIT_REQUESTS', 60); // Requests per hour per IP
 define('RATE_LIMIT_WINDOW', 3600); // 1 hour in seconds
 
 // Application Settings
-define('APP_NAME', 'Gisu Safaris Backend');
+define('APP_NAME', 'Gisu Safaris App');
 define('APP_VERSION', '1.0.0');
 define('DEFAULT_TIMEZONE', 'Africa/Kampala');
 define('DATE_FORMAT', 'Y-m-d H:i:s');
@@ -111,9 +118,7 @@ define('CONTACT_NOTIFICATION_EMAIL', 'info@gisusafaris.com');
 // Additional admin email addresses for all booking notifications
 define('ADMIN_EMAIL_LIST', [
     'gisusafaris@gmail.com',
-    'rmagomu@yahoo.com',
-    'admin@gisusafaris.com',
-    'bookings@gisusafaris.com'
+    'rogersmagomu@gmail.com',
 ]);
 
 // CORS Configuration
@@ -152,28 +157,16 @@ function getDbConnection() {
     
     if ($connection === null) {
         try {
-            $dsn = "pgsql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME;
-            // Neon and many managed Postgres providers require SSL
-            if (!empty($_ENV['DB_SSLMODE'])) {
-                $dsn .= ";sslmode=" . $_ENV['DB_SSLMODE'];
-            }
-            if (!empty($_ENV['DB_SSLROOTCERT'])) {
-                // Optional: path to CA cert if provider requires verify-full
-                $dsn .= ";sslrootcert=" . $_ENV['DB_SSLROOTCERT'];
-            }
+            $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
                 PDO::ATTR_PERSISTENT => false
             ];
-            
+
             $connection = new PDO($dsn, DB_USER, DB_PASS, $options);
-            
-            // Set PostgreSQL specific settings
-            $connection->exec("SET TIME ZONE 'UTC'");
-            $connection->exec("SET search_path TO public");
-            
+
         } catch (PDOException $e) {
             if (DEBUG) {
                 die('Database Connection Failed: ' . $e->getMessage());

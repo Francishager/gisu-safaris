@@ -7,6 +7,7 @@
 define('GISU_SAFARIS_BACKEND', true);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
+require_once __DIR__ . '/../includes/whatsapp.php';
 
 // Set CORS headers
 setCorsHeaders();
@@ -266,7 +267,7 @@ try {
     // Check for duplicate submission (same email in last 5 minutes)
     $stmt = $db->prepare("
         SELECT id FROM contact_submissions 
-        WHERE email = ? AND created_at > NOW() - INTERVAL '5 minutes'
+        WHERE email = ? AND created_at > (NOW() - INTERVAL 5 MINUTE)
         LIMIT 1
     ");
     $stmt->execute([$data['email']]);
@@ -292,10 +293,9 @@ try {
             message, newsletter_opt_in, ip_address, user_agent, referrer_url,
             nationality, passport
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        RETURNING id
     ");
     
-    $result = $stmt->execute([
+    $stmt->execute([
         $data['first_name'],
         $data['last_name'],
         $data['email'],
@@ -316,7 +316,7 @@ try {
         $data['passport']
     ]);
     
-    $contact_id = $stmt->fetch()['id'];
+    $contact_id = $db->lastInsertId();
     
     // Handle newsletter subscription if opted in
     if ($data['newsletter_opt_in']) {
@@ -324,7 +324,11 @@ try {
             $stmt = $db->prepare("
                 INSERT INTO newsletter_subscriptions (email, subscription_source, ip_address, user_agent)
                 VALUES (?, 'contact-form', ?, ?)
-                ON CONFLICT (email) DO NOTHING
+                ON DUPLICATE KEY UPDATE
+                    subscription_source = VALUES(subscription_source),
+                    ip_address = VALUES(ip_address),
+                    user_agent = VALUES(user_agent),
+                    updated_at = CURRENT_TIMESTAMP
             ");
             $stmt->execute([
                 $data['email'],
@@ -383,6 +387,20 @@ try {
             logEvent('warning', 'Failed to send admin notification emails for contact form', [
                 'contact_id' => $contact_id
             ]);
+        }
+
+        try {
+            $whInfo = [
+                'name' => $data['first_name'] . ' ' . $data['last_name'],
+                'email' => $data['email'],
+                'page' => $_SERVER['HTTP_REFERER'] ?? '',
+                'lead_score' => null,
+                'package_interest' => $data['destination'],
+                'summary' => substr(($data['message'] ?: ('Group size ' . $data['group_size'] . ' from ' . $data['country'])), 0, 200),
+            ];
+            notifyAdminsWhatsAppHotLead($admin_subject, $whInfo);
+        } catch (Exception $e) {
+            logEvent('warning', 'Failed to send WhatsApp notification for contact lead', [ 'contact_id' => $contact_id, 'error' => $e->getMessage() ]);
         }
         
     } catch (Exception $e) {

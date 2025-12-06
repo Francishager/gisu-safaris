@@ -27,32 +27,22 @@ $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 try {
     $db = getDbConnection();
 
-    // Safe idempotent migration: create comments table if missing
+    // Safe idempotent migration: create comments table if missing (MySQL-compatible)
     $db->exec(<<<SQL
         CREATE TABLE IF NOT EXISTS comments (
-            id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             page_path TEXT NOT NULL,
             name VARCHAR(100),
             email VARCHAR(255),
             comment TEXT NOT NULL,
-            consent BOOLEAN DEFAULT false,
-            status VARCHAR(20) DEFAULT 'pending', -- pending|approved|rejected
-            ip_address INET,
+            consent TINYINT(1) DEFAULT 0,
+            status VARCHAR(20) DEFAULT 'pending',
+            ip_address VARCHAR(45),
             user_agent TEXT,
             referrer_url TEXT,
-            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-SQL);
-
-    // Ensure indexes and trigger
-    $db->exec("CREATE INDEX IF NOT EXISTS idx_comments_page ON comments(page_path);");
-    $db->exec("CREATE INDEX IF NOT EXISTS idx_comments_status ON comments(status);");
-    $db->exec("CREATE INDEX IF NOT EXISTS idx_comments_created ON comments(created_at DESC);");
-    $db->exec(<<<SQL
-        CREATE TRIGGER IF NOT EXISTS update_comments_updated_at
-        BEFORE UPDATE ON comments
-        FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 SQL);
 
     if ($method === 'GET') {
@@ -135,14 +125,14 @@ SQL);
     }
 
     // Duplicate submission guard: same ip + page + body in last 2 minutes
-    $dupStmt = $db->prepare("SELECT 1 FROM comments WHERE page_path = ? AND comment = ? AND ip_address = ? AND created_at > NOW() - INTERVAL '2 minutes' LIMIT 1");
+    $dupStmt = $db->prepare("SELECT 1 FROM comments WHERE page_path = ? AND comment = ? AND ip_address = ? AND created_at > (NOW() - INTERVAL 2 MINUTE) LIMIT 1");
     $dupStmt->execute([$pagePath, $comment, getClientIp()]);
     if ($dupStmt->fetchColumn()) {
         sendJsonResponse(null, 429, 'Duplicate submission detected. Please wait before submitting again.');
     }
 
     // Insert comment (default status pending for moderation)
-    $stmt = $db->prepare("INSERT INTO comments (page_path, name, email, comment, consent, status, ip_address, user_agent, referrer_url) VALUES (?, ?, ?, ?, ?, 'pending', ?, ?, ?) RETURNING id");
+    $stmt = $db->prepare("INSERT INTO comments (page_path, name, email, comment, consent, status, ip_address, user_agent, referrer_url) VALUES (?, ?, ?, ?, ?, 'pending', ?, ?, ?)");
     $stmt->execute([
         $pagePath,
         $name !== '' ? $name : null,
@@ -153,7 +143,7 @@ SQL);
         $_SERVER['HTTP_USER_AGENT'] ?? '',
         $_SERVER['HTTP_REFERER'] ?? ''
     ]);
-    $comment_id = $stmt->fetch()['id'] ?? null;
+    $comment_id = $db->lastInsertId();
 
     // Notify admins
     try {

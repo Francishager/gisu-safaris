@@ -575,7 +575,7 @@
                             <a href="../contact.html" class="btn btn-light btn-lg">
                                 <i class="fas fa-shield-alt me-2"></i>Get Coverage
                             </a>
-                            <a href="tel:+256123456789" class="btn btn-outline-light btn-lg">
+                            <a href="tel:+61478914106" class="btn btn-outline-light btn-lg">
                                 <i class="fas fa-phone me-2"></i>Call Expert
                             </a>
                             <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#whatsappModal">
@@ -596,7 +596,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="purchase-form">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="purchase-name" class="form-label">Full Name *</label>
@@ -635,7 +635,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" form="purchase-form">
                             <i class="fas fa-credit-card me-2"></i>Proceed to Payment
                         </button>
                     </div>
@@ -780,6 +780,119 @@
             document.getElementById('quote-amount').textContent = '$' + Math.round(quote);
             document.getElementById('quote-result').classList.remove('d-none');
         }
+
+        // Wire purchase form to enquiry API
+        document.addEventListener('DOMContentLoaded', function() {
+            const purchaseForm = document.getElementById('purchase-form');
+            if (!purchaseForm) return;
+
+            const apiUrl = '../backend/api/enquiry.php';
+            const modalEl = document.getElementById('purchaseModal');
+
+            purchaseForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (!purchaseForm.checkValidity()) {
+                    if (typeof purchaseForm.reportValidity === 'function') {
+                        purchaseForm.reportValidity();
+                    }
+                    return;
+                }
+
+                const fullName = (document.getElementById('purchase-name')?.value || '').trim();
+                const email = (document.getElementById('purchase-email')?.value || '').trim();
+                const phone = (document.getElementById('purchase-phone')?.value || '').trim();
+                const dob = (document.getElementById('purchase-dob')?.value || '').trim();
+                const travelStart = (document.getElementById('travel-start')?.value || '').trim();
+                const travelEnd = (document.getElementById('travel-end')?.value || '').trim();
+
+                if (!fullName || !email) {
+                    alert('Please enter your full name and email address.');
+                    return;
+                }
+
+                const nameParts = fullName.split(' ').filter(Boolean);
+                const firstName = nameParts[0] || fullName;
+                const lastName = nameParts.slice(1).join(' ');
+
+                // Include quote context where available
+                const dest = document.getElementById('destination')?.value || '';
+                const duration = document.getElementById('trip-duration')?.value || '';
+                const ageGroup = document.getElementById('age-group')?.value || '';
+                const coverage = document.getElementById('coverage-level')?.value || '';
+                const adventure = document.getElementById('adventure-activities')?.checked ? 'Yes' : 'No';
+                const quotedAmount = document.getElementById('quote-amount')?.textContent || '';
+
+                const subject = 'Travel insurance purchase request';
+                const lines = [];
+                lines.push('Travel insurance purchase enquiry');
+                lines.push('');
+                lines.push('Customer details:');
+                lines.push('Name: ' + fullName);
+                lines.push('Email: ' + email);
+                lines.push('Phone: ' + (phone || 'Not provided'));
+                lines.push('Date of birth: ' + (dob || 'Not provided'));
+                lines.push('Travel dates: ' + (travelStart || 'N/A') + ' to ' + (travelEnd || 'N/A'));
+                lines.push('');
+                lines.push('Quote context:');
+                lines.push('Destination: ' + (dest || 'Not specified'));
+                lines.push('Trip duration: ' + (duration || 'Not specified'));
+                lines.push('Age group: ' + (ageGroup || 'Not specified'));
+                lines.push('Coverage level: ' + (coverage || 'Not specified'));
+                lines.push('Adventure activities: ' + adventure);
+                if (quotedAmount) {
+                    lines.push('Displayed quote amount: ' + quotedAmount);
+                }
+
+                const message = lines.join('\n');
+
+                const submitBtn = modalEl ? modalEl.querySelector('button[type="submit"]') : null;
+                const originalHtml = submitBtn ? submitBtn.innerHTML : null;
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+                }
+
+                try {
+                    const res = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            phone: phone,
+                            subject: subject,
+                            enquiryType: 'travel_insurance_purchase',
+                            message: message,
+                            referrerPage: 'services/travel_insurance.html'
+                        })
+                    });
+
+                    const json = await res.json().catch(() => ({}));
+                    if (!res.ok || !json || !json.success) {
+                        const errMsg = (json && json.message) || 'There was an error submitting your insurance request. Please try again.';
+                        throw new Error(errMsg);
+                    }
+
+                    alert(json.message || 'Thank you! Your travel insurance request has been submitted. Our team will contact you shortly.');
+                    purchaseForm.reset();
+
+                    if (modalEl && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                        const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                        modal.hide();
+                    }
+                } catch (err) {
+                    const msg = (err && err.message) ? err.message : 'Unable to submit your request right now. Please check your connection and try again.';
+                    alert(msg);
+                } finally {
+                    if (submitBtn && originalHtml != null) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalHtml;
+                    }
+                }
+            });
+        });
         </script>
     </main>
 
@@ -835,9 +948,9 @@
           <div class="social-icons mb-3">
             <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
             <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x fa-lg"></i></a>
+            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x-twitter fa-lg"></i></a>
             <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
-            <a href="https://wa.me/61478914106" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <a href="https://wa.me/61470133869" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
           </div>
           <div class="newsletter">
             <h6>Newsletter</h6>

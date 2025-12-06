@@ -3,7 +3,7 @@
  * Comments Moderation API
  * - Secure approve/reject of comments
  * - List comments by status (e.g., pending)
- * Auth: requires X-API-Key header or api_key query that matches API_KEY
+ * Auth: requires admin session or valid API key (X-API-Key header or api_key query that matches API_KEY)
  */
 
 define('GISU_SAFARIS_BACKEND', true);
@@ -14,8 +14,11 @@ setSecurityHeaders();
 initSession();
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+// Allow either logged-in admin session or a valid API key
+$isAdmin = !empty($_SESSION['is_admin']);
 $apiKey = $_SERVER['HTTP_X_API_KEY'] ?? ($_GET['api_key'] ?? '');
-if (!validateApiKey($apiKey)) {
+if (!$isAdmin && !validateApiKey($apiKey)) {
     sendJsonResponse(null, 401, 'Unauthorized: invalid API key');
 }
 
@@ -34,7 +37,7 @@ try {
         $params = [];
         if ($status !== '') { $where[] = 'status = ?'; $params[] = $status; }
         if ($page !== '')   { $where[] = 'page_path = ?'; $params[] = $page; }
-        if ($q !== '')      { $where[] = '(comment ILIKE ? OR name ILIKE ? OR email ILIKE ?)'; array_push($params, "%$q%", "%$q%", "%$q%"); }
+        if ($q !== '')      { $where[] = '(comment LIKE ? OR name LIKE ? OR email LIKE ?)'; array_push($params, "%$q%", "%$q%", "%$q%"); }
         $whereSql = $where ? ('WHERE ' . implode(' AND ', $where)) : '';
 
         $stmt = $db->prepare("SELECT id, page_path, name, email, comment, consent, status, created_at FROM comments $whereSql ORDER BY created_at DESC LIMIT $limit");
@@ -65,8 +68,12 @@ try {
 
     $newStatus = $action === 'approve' ? 'approved' : 'rejected';
 
-    $stmt = $db->prepare("UPDATE comments SET status = ?, updated_at = NOW() WHERE id = ? RETURNING id, page_path, name, email, comment, status");
+    // Update comment status, then fetch updated row (MySQL-compatible; no RETURNING)
+    $stmt = $db->prepare("UPDATE comments SET status = ?, updated_at = NOW() WHERE id = ?");
     $stmt->execute([$newStatus, $id]);
+
+    $stmt = $db->prepare("SELECT id, page_path, name, email, comment, status FROM comments WHERE id = ?");
+    $stmt->execute([$id]);
     $row = $stmt->fetch();
     if (!$row) {
         sendJsonResponse(null, 404, 'Comment not found');

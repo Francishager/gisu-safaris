@@ -7,6 +7,7 @@
 define('GISU_SAFARIS_BACKEND', true);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
+require_once __DIR__ . '/../includes/whatsapp.php';
 
 // CORS and session/rate limit
 setCorsHeaders();
@@ -166,7 +167,7 @@ try {
             }
         }
 
-        // Upsert session
+        // Upsert session (MySQL-compatible using ON DUPLICATE KEY)
         $stmt = $db->prepare("INSERT INTO chat_sessions (
             session_id, visitor_name, visitor_email, consent_transcript, marketing_consent,
             page, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content,
@@ -180,34 +181,34 @@ try {
             :started_at, :ended_at, :duration_seconds, :messages_total, :user_msgs, :bot_msgs,
             :lead_score, :booking_intent, :package_interest, :preferences, :meta
         )
-        ON CONFLICT (session_id) DO UPDATE SET
-            visitor_name=EXCLUDED.visitor_name,
-            visitor_email=EXCLUDED.visitor_email,
-            consent_transcript=EXCLUDED.consent_transcript,
-            marketing_consent=EXCLUDED.marketing_consent,
-            page=EXCLUDED.page,
-            referrer=EXCLUDED.referrer,
-            utm_source=EXCLUDED.utm_source,
-            utm_medium=EXCLUDED.utm_medium,
-            utm_campaign=EXCLUDED.utm_campaign,
-            utm_term=EXCLUDED.utm_term,
-            utm_content=EXCLUDED.utm_content,
-            device=EXCLUDED.device,
-            locale=EXCLUDED.locale,
-            tz_offset_minutes=EXCLUDED.tz_offset_minutes,
-            ip_address=EXCLUDED.ip_address,
-            user_agent=EXCLUDED.user_agent,
-            started_at=EXCLUDED.started_at,
-            ended_at=EXCLUDED.ended_at,
-            duration_seconds=EXCLUDED.duration_seconds,
-            messages_total=EXCLUDED.messages_total,
-            user_msgs=EXCLUDED.user_msgs,
-            bot_msgs=EXCLUDED.bot_msgs,
-            lead_score=EXCLUDED.lead_score,
-            booking_intent=EXCLUDED.booking_intent,
-            package_interest=EXCLUDED.package_interest,
-            preferences=EXCLUDED.preferences,
-            meta=EXCLUDED.meta;");
+        ON DUPLICATE KEY UPDATE
+            visitor_name=VALUES(visitor_name),
+            visitor_email=VALUES(visitor_email),
+            consent_transcript=VALUES(consent_transcript),
+            marketing_consent=VALUES(marketing_consent),
+            page=VALUES(page),
+            referrer=VALUES(referrer),
+            utm_source=VALUES(utm_source),
+            utm_medium=VALUES(utm_medium),
+            utm_campaign=VALUES(utm_campaign),
+            utm_term=VALUES(utm_term),
+            utm_content=VALUES(utm_content),
+            device=VALUES(device),
+            locale=VALUES(locale),
+            tz_offset_minutes=VALUES(tz_offset_minutes),
+            ip_address=VALUES(ip_address),
+            user_agent=VALUES(user_agent),
+            started_at=VALUES(started_at),
+            ended_at=VALUES(ended_at),
+            duration_seconds=VALUES(duration_seconds),
+            messages_total=VALUES(messages_total),
+            user_msgs=VALUES(user_msgs),
+            bot_msgs=VALUES(bot_msgs),
+            lead_score=VALUES(lead_score),
+            booking_intent=VALUES(booking_intent),
+            package_interest=VALUES(package_interest),
+            preferences=VALUES(preferences),
+            meta=VALUES(meta);");
 
         $stmt->execute([
             ':session_id' => $sessionId,
@@ -288,6 +289,21 @@ try {
             }
         } catch (Exception $e) {
             logEvent('warning', 'Failed to send hot lead email to booking notifications', [ 'error' => $e->getMessage() ]);
+        }
+
+        try {
+            $whSummary = $summary !== '' ? $summary : ($packageInterest !== '' ? $packageInterest : 'AI safari lead');
+            $whInfo = [
+                'name' => $name,
+                'email' => $email,
+                'page' => $page,
+                'lead_score' => $leadScore,
+                'package_interest' => $packageInterest,
+                'summary' => $whSummary,
+            ];
+            notifyAdminsWhatsAppHotLead($subject, $whInfo);
+        } catch (Exception $e) {
+            logEvent('warning', 'Failed to send WhatsApp hot lead notification', [ 'error' => $e->getMessage() ]);
         }
     }
 

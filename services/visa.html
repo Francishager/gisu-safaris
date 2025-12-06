@@ -436,7 +436,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" form="full-application-form">
                             <i class="fas fa-paper-plane me-2"></i>Submit Application
                         </button>
                     </div>
@@ -476,7 +476,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" form="consultation-form">
                             <i class="fas fa-paper-plane me-2"></i>Request Consultation
                         </button>
                     </div>
@@ -578,19 +578,184 @@
             document.getElementById('visa-requirements').scrollIntoView({ behavior: 'smooth' });
         }
         
-        // Set minimum date to today
+        // Set minimum date to today and wire modal forms
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('travel-date').min = today;
-            
-            // Set minimum passport expiry to 6 months from today
+            const travelDateInput = document.getElementById('travel-date');
+            if (travelDateInput) {
+                travelDateInput.min = today;
+            }
             const sixMonthsFromNow = new Date();
             sixMonthsFromNow.setMonth(sixMonthsFromNow.getMonth() + 6);
             const minPassportExpiry = sixMonthsFromNow.toISOString().split('T')[0];
-            
             const passportExpiryField = document.getElementById('app-passport-expiry');
             if (passportExpiryField) {
                 passportExpiryField.min = minPassportExpiry;
+            }
+
+            const apiUrl = '../backend/api/enquiry.php';
+
+            const fullAppForm = document.getElementById('full-application-form');
+            if (fullAppForm) {
+                fullAppForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    const firstName = (document.getElementById('app-first-name')?.value || '').trim();
+                    const lastName = (document.getElementById('app-last-name')?.value || '').trim();
+                    const email = (document.getElementById('app-email')?.value || '').trim();
+                    const phone = (document.getElementById('app-phone')?.value || '').trim();
+                    const passportNumber = (document.getElementById('app-passport')?.value || '').trim();
+                    const passportExpiry = (document.getElementById('app-passport-expiry')?.value || '').trim();
+                    const address = (document.getElementById('app-address')?.value || '').trim();
+
+                    if (!firstName || !lastName || !email) {
+                        alert('Please fill in your first name, last name and email address.');
+                        return;
+                    }
+
+                    const dest = (document.getElementById('destination-country')?.value || '').trim();
+                    const visaType = (document.getElementById('visa-type')?.value || '').trim();
+                    const entryType = (document.getElementById('entry-type')?.value || '').trim();
+                    const nationality = (document.getElementById('nationality')?.value || '').trim();
+                    const travelDate = (document.getElementById('travel-date')?.value || '').trim();
+                    const duration = (document.getElementById('duration')?.value || '').trim();
+
+                    const subject = 'Visa application - ' + (dest || 'East Africa');
+                    const lines = [];
+                    lines.push('Visa application details:');
+                    lines.push('Destination country: ' + (dest || 'Not specified'));
+                    lines.push('Visa type: ' + (visaType || 'Not specified'));
+                    lines.push('Entry type: ' + (entryType || 'Not specified'));
+                    lines.push('Nationality: ' + (nationality || 'Not specified'));
+                    lines.push('Intended travel date: ' + (travelDate || 'Not specified'));
+                    lines.push('Duration of stay: ' + (duration || 'Not specified'));
+                    lines.push('');
+                    lines.push('Applicant information:');
+                    lines.push('Name: ' + firstName + ' ' + lastName);
+                    lines.push('Email: ' + email);
+                    lines.push('Phone: ' + (phone || 'Not provided'));
+                    lines.push('Passport number: ' + (passportNumber || 'Not provided'));
+                    lines.push('Passport expiry: ' + (passportExpiry || 'Not provided'));
+                    lines.push('Home address: ' + (address || 'Not provided'));
+
+                    const message = lines.join('\n');
+
+                    const submitBtn = fullAppForm.querySelector('button[type="submit"]');
+                    const originalHtml = submitBtn ? submitBtn.innerHTML : null;
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
+                    }
+
+                    try {
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                            body: JSON.stringify({
+                                firstName: firstName,
+                                lastName: lastName,
+                                email: email,
+                                phone: phone,
+                                subject: subject,
+                                enquiryType: 'booking',
+                                message: message,
+                                referrerPage: 'services/visa.html'
+                            })
+                        });
+
+                        const json = await res.json().catch(() => ({}));
+                        if (!res.ok || !json || !json.success) {
+                            const errMsg = (json && json.message) || 'There was an error submitting your visa application. Please try again.';
+                            throw new Error(errMsg);
+                        }
+
+                        alert(json.message || 'Thank you! Your visa application request has been submitted. We will contact you shortly.');
+                        fullAppForm.reset();
+
+                        const modalEl = document.getElementById('applicationModal');
+                        if (modalEl && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                            const instance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            instance.hide();
+                        }
+                    } catch (err) {
+                        const msg = (err && err.message) ? err.message : 'Unable to submit your visa application right now. Please check your connection and try again.';
+                        alert(msg);
+                    } finally {
+                        if (submitBtn && originalHtml != null) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalHtml;
+                        }
+                    }
+                });
+            }
+
+            const consultationForm = document.getElementById('consultation-form');
+            if (consultationForm) {
+                consultationForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    const name = (document.getElementById('consult-name')?.value || '').trim();
+                    const email = (document.getElementById('consult-email')?.value || '').trim();
+                    const phone = (document.getElementById('consult-phone')?.value || '').trim();
+                    const questions = (document.getElementById('consult-questions')?.value || '').trim();
+
+                    if (!name || !email || !questions) {
+                        alert('Please provide your name, email and your questions.');
+                        return;
+                    }
+
+                    const subject = 'Visa consultation request';
+                    const message = 'Visa consultation request from: ' + name + '\n' +
+                        'Email: ' + email + '\n' +
+                        'Phone: ' + (phone || 'Not provided') + '\n\n' +
+                        'Questions:\n' + questions;
+
+                    const submitBtn = consultationForm.querySelector('button[type="submit"]');
+                    const originalHtml = submitBtn ? submitBtn.innerHTML : null;
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+                    }
+
+                    try {
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                            body: JSON.stringify({
+                                firstName: name,
+                                email: email,
+                                phone: phone,
+                                subject: subject,
+                                enquiryType: 'information',
+                                message: message,
+                                referrerPage: 'services/visa.html'
+                            })
+                        });
+
+                        const json = await res.json().catch(() => ({}));
+                        if (!res.ok || !json || !json.success) {
+                            const errMsg = (json && json.message) || 'There was an error submitting your consultation request. Please try again.';
+                            throw new Error(errMsg);
+                        }
+
+                        alert(json.message || 'Thank you! Your visa consultation request has been submitted. We will get back to you shortly.');
+                        consultationForm.reset();
+
+                        const modalEl = document.getElementById('consultationModal');
+                        if (modalEl && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                            const instance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            instance.hide();
+                        }
+                    } catch (err) {
+                        const msg = (err && err.message) ? err.message : 'Unable to submit your consultation request right now. Please check your connection and try again.';
+                        alert(msg);
+                    } finally {
+                        if (submitBtn && originalHtml != null) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalHtml;
+                        }
+                    }
+                });
             }
         });
         </script>
@@ -648,9 +813,9 @@
           <div class="social-icons mb-3">
             <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
             <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x fa-lg"></i></a>
+            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x-twitter fa-lg"></i></a>
             <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
-            <a href="https://wa.me/61478914106" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <a href="https://wa.me/61470133869" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
           </div>
           <div class="newsletter">
             <h6>Newsletter</h6>

@@ -7,6 +7,7 @@
 define('GISU_SAFARIS_BACKEND', true);
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/email.php';
+require_once __DIR__ . '/../includes/whatsapp.php';
 
 // Set CORS headers
 setCorsHeaders();
@@ -254,7 +255,7 @@ try {
     // Check for duplicate booking (same email and package in last 10 minutes)
     $stmt = $db->prepare("
         SELECT id FROM safari_bookings 
-        WHERE email = ? AND package_name = ? AND created_at > NOW() - INTERVAL '10 minutes'
+        WHERE email = ? AND package_name = ? AND created_at > (NOW() - INTERVAL 10 MINUTE)
         LIMIT 1
     ");
     $stmt->execute([$data['email'], $data['package_name']]);
@@ -280,10 +281,9 @@ try {
             newsletter_opt_in, ip_address, user_agent, referrer_url,
             nationality, passport
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        RETURNING id
     ");
     
-    $result = $stmt->execute([
+    $stmt->execute([
         $data['first_name'],
         $data['last_name'],
         $data['email'],
@@ -306,7 +306,7 @@ try {
         $data['passport']
     ]);
     
-    $booking_id = $stmt->fetch()['id'];
+    $booking_id = $db->lastInsertId();
     
     // Handle newsletter subscription if opted in
     if ($data['newsletter_opt_in']) {
@@ -314,7 +314,11 @@ try {
             $stmt = $db->prepare("
                 INSERT INTO newsletter_subscriptions (email, subscription_source, ip_address, user_agent)
                 VALUES (?, 'booking-form', ?, ?)
-                ON CONFLICT (email) DO NOTHING
+                ON DUPLICATE KEY UPDATE
+                    subscription_source = VALUES(subscription_source),
+                    ip_address = VALUES(ip_address),
+                    user_agent = VALUES(user_agent),
+                    updated_at = CURRENT_TIMESTAMP
             ");
             $stmt->execute([
                 $data['email'],
@@ -379,6 +383,20 @@ try {
             logEvent('warning', 'Failed to send admin booking notification emails', [
                 'booking_id' => $booking_id
             ]);
+        }
+
+        try {
+            $whInfo = [
+                'name' => $data['first_name'] . ' ' . $data['last_name'],
+                'email' => $data['email'],
+                'page' => $_SERVER['HTTP_REFERER'] ?? '',
+                'lead_score' => null,
+                'package_interest' => $data['package_name'],
+                'summary' => substr(($data['message'] ?: ('Booking for ' . $data['package_name'] . ' (' . $data['country'] . ')')), 0, 200),
+            ];
+            notifyAdminsWhatsAppHotLead($admin_subject, $whInfo);
+        } catch (Exception $e) {
+            logEvent('warning', 'Failed to send WhatsApp notification for booking lead', [ 'booking_id' => $booking_id, 'error' => $e->getMessage() ]);
         }
         
     } catch (Exception $e) {

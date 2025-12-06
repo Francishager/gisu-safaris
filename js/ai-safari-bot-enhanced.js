@@ -28,8 +28,8 @@ class SafariAIBotEnhancedInternal {
         
         // Human handoff configuration
         this.humanHandoff = {
-            whatsappNumber: '61478914106',
-            phoneNumber: '+256780950555',
+            whatsappNumber: '61470133869',
+            phoneNumber: '+256788216271',
             emailAddresses: ['rmagomu@yahoo.com', 'gisusafaris@gmail.com'],
             inactivityTimeout: 60000, // 1 minute
             lastActivityTime: Date.now()
@@ -393,7 +393,7 @@ class SafariAIBotEnhancedInternal {
                             </label>
                             <div class="prechat-actions">
                                 <button id="aiStartChatBtn" disabled>Start Chat</button>
-                                <button id="aiForgetMeBtn" class="link-btn">Forget me</button>
+                                <button id="aiForgetMeBtn" class="link-btn">Not you? Clear my details</button>
                             </div>
                             <small class="prechat-privacy">We respect your privacy. Data is used to assist your inquiry and stored locally on your device.</small>
                         </div>
@@ -1066,8 +1066,14 @@ class SafariAIBotEnhancedInternal {
     startConversation() {
         this.updateGatingUI();
         if (this.conversationState === 'greeting') {
-            this.addBotMessage("👋 Hi! I'm your AI Safari Assistant with live data from global APIs. I'll help you find the perfect East Africa safari package!");
-            
+            const v = this.visitor || {};
+            const firstName = (v.name || '').trim().split(' ')[0] || null;
+            if (firstName) {
+                this.addBotMessage(`👋 Welcome back, ${firstName}! I'm your AI Safari Assistant with live data from global APIs. I'll help you find the perfect East Africa safari package!`);
+            } else {
+                this.addBotMessage("👋 Hi! I'm your AI Safari Assistant with live data from global APIs. I'll help you find the perfect East Africa safari package!");
+            }
+
             setTimeout(() => {
                 this.addBotMessage("Let's start with a quick question: What's your approximate budget per person?");
                 this.showQuickActions(['Under $700', '$700-$1000', '$1000-$1500', 'Over $1500', 'Not sure yet']);
@@ -1133,7 +1139,7 @@ class SafariAIBotEnhancedInternal {
         
         // Handle human handoff quick actions
         if (['Talk to Human', 'Continue with AI', 'Get Phone Number', 'Send Email Summary', 
-             'Book Consultation Call', 'Contact WhatsApp', 'More Details', 'Start Over', 'Start Guided Booking'].includes(action)) {
+             'Book Consultation Call', 'Contact WhatsApp', 'More Details', 'Start Over', 'Start Guided Booking', 'Payment Methods'].includes(action)) {
             this.handleSpecialQuickActions(action);
             return;
         }
@@ -1162,6 +1168,43 @@ class SafariAIBotEnhancedInternal {
                 break;
             case 'final':
                 this.handleFinalResponse(action);
+                break;
+        }
+    }
+
+    handleSpecialQuickActions(action) {
+        switch(action) {
+            case 'Talk to Human':
+                this.addBotMessage("👨‍💼 I'll connect you with a human safari expert. How would you like to continue?");
+                this.showHandoffOptions();
+                this.trackEvent('human_handoff', 'talk_to_human_clicked');
+                break;
+            case 'Continue with AI':
+                this.continueWithAI();
+                break;
+            case 'Get Phone Number':
+                this.showPhoneNumber();
+                break;
+            case 'Send Email Summary':
+                this.sendEmailSummary();
+                break;
+            case 'Book Consultation Call':
+                this.bookConsultationCall();
+                break;
+            case 'Contact WhatsApp':
+                this.initiateWhatsAppHandoff();
+                break;
+            case 'More Details':
+                this.showMoreDetails();
+                break;
+            case 'Start Over':
+                this.resetConversation();
+                break;
+            case 'Start Guided Booking':
+                this.startGuidedBooking();
+                break;
+            case 'Payment Methods':
+                this.handlePaymentQuestions(action.toLowerCase());
                 break;
         }
     }
@@ -1477,6 +1520,13 @@ class SafariAIBotEnhancedInternal {
                 this.addBotMessage("Sorry, I couldn't fetch live capital city data right now. Let me provide the information I have...");
             }
 
+        } else if (lowerMessage.includes('currency') || lowerMessage.includes('currencies') || lowerMessage.includes('money in') || lowerMessage.includes('which currency')) {
+            this.handleCurrencyQuestions(lowerMessage);
+
+        } else if ((lowerMessage.includes('payment') || lowerMessage.includes('pay ') || lowerMessage.includes('paying') || lowerMessage.includes('card') || lowerMessage.includes('visa') || lowerMessage.includes('mastercard'))
+                   && (lowerMessage.includes('uganda') || lowerMessage.includes('kenya') || lowerMessage.includes('tanzania') || lowerMessage.includes('tz') || lowerMessage.includes('rwanda') || lowerMessage.includes('east africa') || lowerMessage.includes('east-africa'))) {
+            this.handlePaymentQuestions(lowerMessage);
+
         } else if (lowerMessage.includes('where') && (lowerMessage.includes('uganda') || lowerMessage.includes('kenya') || lowerMessage.includes('tanzania') || lowerMessage.includes('rwanda'))) {
             this.handleLocationQuery(lowerMessage);
             
@@ -1486,6 +1536,10 @@ class SafariAIBotEnhancedInternal {
         } else if (lowerMessage.includes('africa') && (lowerMessage.includes('countries') || lowerMessage.includes('nations'))) {
             this.showAfricanCountriesInfo();
             
+        } else if ((lowerMessage.includes('best time to visit') || lowerMessage.includes('best time') || (lowerMessage.includes('when') && lowerMessage.includes('visit')))
+                   && (lowerMessage.includes('uganda') || lowerMessage.includes('kenya') || lowerMessage.includes('tanzania') || lowerMessage.includes('tz') || lowerMessage.includes('rwanda'))) {
+            this.handleBestTimeToVisit(lowerMessage);
+
         } else if (lowerMessage.includes('safari') && (lowerMessage.includes('best') || lowerMessage.includes('when') || lowerMessage.includes('time'))) {
             this.handleSafariTimingQuestions();
             
@@ -1501,6 +1555,11 @@ class SafariAIBotEnhancedInternal {
         } else if (lowerMessage.includes('climate') || lowerMessage.includes('weather') || lowerMessage.includes('temperature')) {
             this.handleClimateQuestions();
             
+        } else if (lowerMessage.includes('talk to human') || lowerMessage.includes('talk with human') || lowerMessage.includes('human agent') || lowerMessage.includes('real person')) {
+            this.addBotMessage("👨‍💼 No problem — I can connect you with a human safari expert.");
+            this.showHandoffOptions();
+            this.trackEvent('human_handoff', 'talk_to_human_text');
+
         } else {
             // Fallback: call backend LLM with RAG
             const loadingText = "🤖 Thinking about that for you... <span class='loading-indicator'></span>";
@@ -1559,8 +1618,8 @@ class SafariAIBotEnhancedInternal {
                 this.showQuickActions(['Ask another question', 'Safari Planning', 'Contact WhatsApp']);
             } catch (err) {
                 console.error('AI answer error', err);
-                if (loadingEl) loadingEl.innerHTML = "⚠️ I had trouble getting an AI answer. Please try again or choose an option below.";
-                this.showQuickActions(['Live Exchange Rates', 'Country Info', 'Safari Planning', 'Contact WhatsApp']);
+                if (loadingEl) loadingEl.innerHTML = "⚠️ I had trouble getting a detailed AI answer just now.\n\nYou can ask another question, or I can connect you with a human safari expert via WhatsApp or phone using the options below.";
+                this.showQuickActions(['Ask another question', 'Safari Planning', 'Talk to Human', 'Contact WhatsApp', 'Get Phone Number']);
             }
         }
     }
@@ -1574,6 +1633,34 @@ class SafariAIBotEnhancedInternal {
         }
         
         console.log(`Enhanced AI Bot Event: ${action} - ${label}`);
+
+        try {
+            const highIntentActions = ['package_view', 'human_handoff', 'email_notification', 'user_inactivity'];
+            if (!highIntentActions.includes(action)) return;
+
+            const url = this.computeBackendUrl('/backend/api/ai_activity.php');
+            if (!url) return;
+
+            const payload = {
+                action,
+                label,
+                page: window.location.href,
+                sessionId: this.sessionId || null,
+                visitor: this.visitor || null,
+                lead_score: typeof this.calculateLeadScore === 'function' ? this.calculateLeadScore() : null,
+                booking_intent: typeof this.hasBookingIntent === 'function' ? this.hasBookingIntent() : null,
+                package_interest: typeof this.getTopPackageInterest === 'function' ? this.getTopPackageInterest() : null,
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                keepalive: true,
+            }).catch(() => {});
+        } catch (e) {
+            console.warn('Failed to send AI activity event', e);
+        }
     }
 
     // Human Handoff Functions
@@ -1623,6 +1710,12 @@ class SafariAIBotEnhancedInternal {
             default:
                 this.showHandoffOptions();
         }
+    }
+
+    showHandoffOptions() {
+        this.addBotMessage("👨‍💼 I can connect you with a human safari expert. How would you like to continue?");
+        this.showQuickActions(['Contact WhatsApp', 'Get Phone Number', 'Send Email Summary', 'Continue with AI']);
+        this.trackEvent('human_handoff', 'handoff_options_shown');
     }
 
     initiateWhatsAppHandoff() {
@@ -1939,25 +2032,6 @@ class SafariAIBotEnhancedInternal {
         }
     }
 
-    handleFreeTextMessage(message) {
-        const lowerMessage = message.toLowerCase();
-        if (this.conversationState === 'awaiting_email_for_lead') {
-            const email = message.trim();
-            if (/.+@.+\..+/.test(email)) {
-                this.visitor = { ...(this.visitor||{}), email, consent: true };
-                this.saveVisitorToStorage();
-                this.addBotMessage('👍 Thanks! Using that email to submit your lead.');
-                return this.submitGuidedLead();
-            } else {
-                this.addBotMessage('That does not look like a valid email. Please try again, or tap Contact WhatsApp.');
-                this.showQuickActions(['Contact WhatsApp', 'Get Phone Number']);
-                return;
-            }
-        }
-        // fall through to existing logic
-        // ... rest of the function remains the same ...
-    }
-
     // Operator dashboard stub showing summary + WhatsApp deep link
     showOperatorDashboardStub() {
         const wa = this.generateWhatsAppLink();
@@ -2032,6 +2106,74 @@ class SafariAIBotEnhancedInternal {
         }
     }
 
+    handleCurrencyQuestions(message) {
+        const m = (message || '').toLowerCase();
+        const wanted = [];
+        if (m.includes('uganda')) wanted.push('uganda');
+        if (m.includes('kenya')) wanted.push('kenya');
+        if (m.includes('tanzania') || m.includes('tz')) wanted.push('tanzania');
+        if (m.includes('rwanda')) wanted.push('rwanda');
+        const uniqueWanted = Array.from(new Set(wanted));
+
+        const all = {
+            uganda:  { flag: '🇺🇬', name: 'Uganda',   code: 'UGX', currency: 'Ugandan Shilling',  symbol: 'USh' },
+            kenya:   { flag: '🇰🇪', name: 'Kenya',    code: 'KES', currency: 'Kenyan Shilling',   symbol: 'KSh' },
+            tanzania:{ flag: '🇹🇿', name: 'Tanzania', code: 'TZS', currency: 'Tanzanian Shilling',symbol: 'TSh' },
+            rwanda:  { flag: '🇷🇼', name: 'Rwanda',   code: 'RWF', currency: 'Rwandan Franc',     symbol: 'FRw' }
+        };
+
+        const countries = uniqueWanted.length ? uniqueWanted : ['uganda','kenya','tanzania','rwanda'];
+
+        this.addBotMessage('💱 Here are the main safari currencies used in East Africa:');
+
+        let html = '<div class="api-data-highlight">';
+        countries.forEach(key => {
+            const c = all[key];
+            if (!c) return;
+            html += `${c.flag} <strong>${c.name}</strong>: ${c.currency} (${c.code}) – often written as ${c.symbol}<br>`;
+        });
+        html += '</div>';
+
+        this.addBotMessage(html);
+        this.addBotMessage('💳 You can usually pay safari balances in USD, but local currency is handy for tips, markets and small purchases. We can advise how much cash to carry for your itinerary.');
+        this.showQuickActions(['Live Exchange Rates', 'Payment Methods', 'Tipping Guide', 'ATM Locations']);
+    }
+
+    handlePaymentQuestions(message) {
+        const m = (message || '').toLowerCase();
+        const wantsUganda = m.includes('uganda');
+        const wantsKenya = m.includes('kenya');
+        const wantsTanzania = m.includes('tanzania') || m.includes('tz');
+        const wantsRwanda = m.includes('rwanda');
+
+        this.addBotMessage("💳 Let me explain how payments usually work for safaris in East Africa and with Gisu Safaris:");
+
+        setTimeout(() => {
+            let html = '<div class="api-data-highlight">';
+            html += '• Most guests pay safari deposits and balances in major currencies (usually USD) by secure card payment or international bank transfer, before they travel.<br><br>';
+
+            if (wantsUganda || (!wantsKenya && !wantsTanzania && !wantsRwanda)) {
+                html += '🇺🇬 <strong>Uganda:</strong> We commonly use USD for safari payments, with balances settled by card or bank transfer. On the ground you can also use Ugandan Shillings (UGX), ATMs in major towns, and mobile money such as MTN Mobile Money and Airtel Money for local spends.<br><br>';
+            }
+            if (wantsKenya) {
+                html += '🇰🇪 <strong>Kenya:</strong> Safaris are usually priced in USD, with payments made by card or bank transfer. Locally, M-Pesa mobile money and Kenyan Shillings (KES) are widely used for everyday purchases.<br><br>';
+            }
+            if (wantsTanzania) {
+                html += '🇹🇿 <strong>Tanzania:</strong> Safari packages are often paid in USD via card or transfer, while Tanzanian Shillings (TZS) and ATMs are available in major towns and cities for on-the-ground expenses.<br><br>';
+            }
+            if (wantsRwanda) {
+                html += '🇷🇼 <strong>Rwanda:</strong> High-end lodges and operators typically take USD by card or transfer, while the Rwandan Franc (RWF) and mobile money are common for day-to-day payments.<br><br>';
+            }
+
+            html += '• Many hotels and lodges accept Visa and Mastercard; smaller shops often prefer cash in local currency. We always send a clear invoice with the recommended payment option for your specific trip.<br>';
+            html += '</div>';
+
+            this.addBotMessage(html);
+            this.addBotMessage('🧾 When you\'re ready to book, our team will confirm the best payment method for your country and bank, and help you avoid unnecessary fees.');
+            this.showQuickActions(['Payment Methods', 'Live Exchange Rates', 'Contact WhatsApp', 'Get Phone Number']);
+        }, 1000);
+    }
+
     handleGeographyQuestions(message) {
         this.addBotMessage("🌍 East Africa is a fascinating region! Let me tell you about the safari destinations:");
         
@@ -2070,6 +2212,54 @@ class SafariAIBotEnhancedInternal {
             this.addBotMessage("🎯 We specialize in East African safaris - the most wildlife-rich region in Africa!");
             this.showQuickActions(['East Africa Focus', 'Why East Africa?', 'Safari Packages', 'Plan My Trip']);
         }, 2000);
+    }
+
+    handleBestTimeToVisit(message) {
+        const m = (message || '').toLowerCase();
+        const wantsUganda = m.includes('uganda');
+        const wantsKenya = m.includes('kenya');
+        const wantsTanzania = m.includes('tanzania') || m.includes('tz');
+        const wantsRwanda = m.includes('rwanda');
+
+        this.addBotMessage('📅 Let me break down the best times to visit these East African countries:');
+
+        setTimeout(() => {
+            let details = '<div class="api-data-highlight">';
+
+            if (wantsUganda || (!wantsKenya && !wantsTanzania && !wantsRwanda)) {
+                details += '🇺🇬 <strong>Uganda</strong><br>' +
+                    '• Good all year round for safaris and gorillas.\n' +
+                    '• Best overall: June–September & December–February (drier, easier game viewing).\n' +
+                    '• Gorilla trekking is possible year‑round; many guests prefer June–August & Dec–Feb for drier trails.<br><br>';
+            }
+
+            if (wantsKenya) {
+                details += '🇰🇪 <strong>Kenya</strong><br>' +
+                    '• Best for general safari: June–October (dry season).\n' +
+                    '• Great Migration in Masai Mara: roughly July–October.\n' +
+                    '• Short dry window: January–February is also very good.<br><br>';
+            }
+
+            if (wantsTanzania) {
+                details += '🇹🇿 <strong>Tanzania</strong><br>' +
+                    '• Classic safari (Serengeti/Ngorongoro): June–October.\n' +
+                    '• Wildebeest calving in southern Serengeti: January–March.\n' +
+                    '• Zanzibar beach stays are great most of the year, avoiding the heaviest rains (April–May).<br><br>';
+            }
+
+            if (wantsRwanda) {
+                details += '🇷🇼 <strong>Rwanda</strong><br>' +
+                    '• Gorilla trekking is possible year‑round.\n' +
+                    '• Many travellers prefer the drier periods: June–September & December–February.\n' +
+                    '• Lush scenery after the rains can be fantastic for photography.<br><br>';
+            }
+
+            details += '</div>';
+
+            this.addBotMessage(details);
+            this.addBotMessage('💡 We can fine‑tune dates around your holidays, budget and whether you prefer fewer crowds, the Great Migration or gorilla trekking.');
+            this.showQuickActions(['Plan Uganda Trip', 'Plan Kenya Trip', 'Plan Rwanda Trip', 'Plan Tanzania Trip']);
+        }, 1500);
     }
 
     handleSafariTimingQuestions() {
@@ -2306,10 +2496,10 @@ class SafariAIBotEnhancedInternal {
                             return;
                         }
                     } catch (err) {
-                        console.warn('Email verification failed', err);
-                        alert('Unable to verify your email at the moment. Please try again shortly.');
+                        console.warn('Email verification failed, falling back to client-side only', err);
+                        // If local validation already passed, allow chat to continue even if backend verifier is down
+                    } finally {
                         if (startBtn) startBtn.disabled = false;
-                        return;
                     }
 
                     this.visitor = { name, email, consent, capturedAt: new Date().toISOString() };

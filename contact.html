@@ -42,7 +42,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation">
     <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="/index.html">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
         <img src="https://gisusafaris.com/img/gisu_safaris.png" alt="Gisu Safaris Logo" height="40" class="me-2">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -50,7 +50,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Safari Packages</a>
@@ -76,6 +76,7 @@
           <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="/blog/index.html">Travel Tips</a></li>
           <li class="nav-item"><a class="nav-link" href="/volunteer.html">Volunteer</a></li>
+          <li class="nav-item"><a class="nav-link" href="/vacancies.html">Career</a></li>
           <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
         </ul>
         <div class="ms-3">
@@ -363,7 +364,7 @@
                 
                 <div class="row g-4 justify-content-center">
                     <div class="col-lg-4 col-md-6 fade-element">
-                        <a href="https://wa.me/61478914106?text=Hi! I'm interested in booking a safari with Gisu Safaris." target="_blank" class="text-decoration-none">
+                        <a href="https://wa.me/61470133869?text=Hi! I'm interested in booking a safari with Gisu Safaris." target="_blank" class="text-decoration-none">
                             <div class="card border-0 shadow-sm hover-card h-100">
                                 <div class="card-body text-center p-4">
                                     <div class="bg-success rounded-circle p-3 d-inline-block mb-3">
@@ -534,9 +535,9 @@
           <div class="social-icons mb-3">
             <a href="https://www.facebook.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
             <a href="https://www.instagram.com/gisu_safaris" class="text-light me-3" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x fa-lg"></i></a>
+            <a href="https://x.com/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-x-twitter fa-lg"></i></a>
             <a href="https://www.youtube.com/c/GisuSafaris" class="text-light me-3" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
-            <a href="https://wa.me/61478914106" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <a href="https://wa.me/61470133869" class="text-light" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
           </div>
           <div class="newsletter">
             <h6>Newsletter</h6>
@@ -814,78 +815,7 @@
             });
         });
     </script>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const newsletterForm = document.getElementById('footerNewsletterForm');
-        
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const emailInput = newsletterForm.querySelector('input[name="email"]');
-                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
-                const email = emailInput.value.trim();
-                
-                if (!email) {
-                    alert('Please enter your email address');
-                    return;
-                }
-                
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address');
-                    return;
-                }
-                
-                const originalContent = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                submitBtn.disabled = true;
-                
-                fetch('/backend/api/newsletter.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        source: 'footer'
-                    })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(result => {
-                    if (result.success) {
-                        alert(result.message || 'Thank you for subscribing to our newsletter!');
-                        newsletterForm.reset();
-                    } else {
-                        alert(result.message || 'Error subscribing to newsletter. Please try again.');
-                    }
-                    
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.disabled = false;
-                })
-                .catch(error => {
-                    console.error('Newsletter subscription error:', error);
-                    alert('Unable to subscribe. Please check your connection and try again.');
-                    
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.disabled = false;
-                });
-            });
-        }
-    });
-    </script>
 
     </body>
     </html>
-
-
-
-
 

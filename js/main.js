@@ -771,6 +771,322 @@
         try { console.log(`[Notify:${type}]`, message); } catch (_) {}
     }
 
+    // === FOOTER NEWSLETTER FORM HANDLER ===
+    function initFooterNewsletterForm() {
+        try {
+            const forms = document.querySelectorAll('form#footerNewsletterForm');
+            if (!forms.length) return;
+
+            forms.forEach((form) => {
+                if (form.__newsletterBound) return;
+                form.__newsletterBound = true;
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const emailInput = form.querySelector('input[name="email"]');
+                    const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+                    const email = (emailInput && emailInput.value || '').trim();
+
+                    if (!email) {
+                        alert('Please enter your email address');
+                        if (emailInput) emailInput.focus();
+                        return;
+                    }
+
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address');
+                        if (emailInput) emailInput.focus();
+                        return;
+                    }
+
+                    const originalContent = submitBtn ? submitBtn.innerHTML : null;
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                        submitBtn.disabled = true;
+                    }
+
+                    fetch('/backend/api/newsletter.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({ email: email, source: 'footer' })
+                    })
+                    .then((response) => {
+                        if (!response.ok) throw new Error('HTTP ' + response.status);
+                        return response.json();
+                    })
+                    .then((result) => {
+                        const success = !!(result && result.success);
+                        const msg = result && result.message
+                            ? result.message
+                            : (success
+                                ? 'Thank you for subscribing to our newsletter!'
+                                : 'Error subscribing to newsletter. Please try again.');
+
+                        if (window.GisuSafaris && typeof window.GisuSafaris.showNotification === 'function') {
+                            window.GisuSafaris.showNotification(msg, success ? 'success' : 'error');
+                        } else {
+                            alert(msg);
+                        }
+
+                        if (success && typeof form.reset === 'function') {
+                            form.reset();
+                        }
+                    })
+                    .catch((error) => {
+                        try { console.error('Newsletter subscription error:', error); } catch (_) {}
+                        const msg = 'Unable to subscribe. Please check your connection and try again.';
+                        if (window.GisuSafaris && typeof window.GisuSafaris.showNotification === 'function') {
+                            window.GisuSafaris.showNotification(msg, 'error');
+                        } else {
+                            alert(msg);
+                        }
+                    })
+                    .finally(() => {
+                        if (submitBtn && originalContent != null) {
+                            submitBtn.innerHTML = originalContent;
+                            submitBtn.disabled = false;
+                        }
+                    });
+                });
+            });
+        } catch (e) {
+            try { console.warn('initFooterNewsletterForm failed:', e); } catch (_) {}
+        }
+    }
+
+    // === PACKAGE DETAIL PAGE BOOKING FORMS ===
+    function initPackageBookingForms() {
+        try {
+            const forms = document.querySelectorAll('form.booking-form');
+            if (!forms.length) return;
+
+            // Lightweight debug hook to verify wiring in dev tools
+            try {
+                if (typeof console !== 'undefined' && console.log) {
+                    console.log('[Booking] initPackageBookingForms: found', forms.length, 'form(s).');
+                }
+            } catch (_) { /* noop */ }
+
+            forms.forEach((form) => {
+                if (form.__bookingBound) return;
+                form.__bookingBound = true;
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    if (!form.checkValidity || !form.checkValidity()) {
+                        if (form.reportValidity) form.reportValidity();
+                        return;
+                    }
+
+                    const emailInput = form.querySelector('input[type="email"], input[name*="email" i]');
+                    const phoneInput = form.querySelector('input[type="tel"], input[name*="phone" i]');
+                    const textInputs = Array.from(form.querySelectorAll('input[type="text"]'));
+
+                    function getLabelText(input) {
+                        if (!input) return '';
+                        let labelText = '';
+                        if (input.id) {
+                            const lbl = form.querySelector('label[for="' + input.id + '"]');
+                            if (lbl) labelText = lbl.textContent || '';
+                        }
+                        if (!labelText && input.closest('label')) {
+                            labelText = input.closest('label').textContent || '';
+                        }
+                        return (labelText || '').trim();
+                    }
+
+                    function matchField(inputs, keywords) {
+                        const re = new RegExp(keywords.join('|'), 'i');
+                        return inputs.find((inp) => {
+                            const label = getLabelText(inp);
+                            const ph = (inp.placeholder || '');
+                            return re.test(label) || re.test(ph);
+                        }) || null;
+                    }
+
+                    let fullName = '';
+                    const fullNameInput = matchField(textInputs, ['full name']);
+                    if (fullNameInput) {
+                        fullName = (fullNameInput.value || '').trim();
+                    }
+
+                    const brideInput = matchField(textInputs, ['bride']);
+                    const groomInput = matchField(textInputs, ['groom']);
+                    if (!fullName && (brideInput || groomInput)) {
+                        const bride = brideInput ? (brideInput.value || '').trim() : '';
+                        const groom = groomInput ? (groomInput.value || '').trim() : '';
+                        fullName = [bride, groom].filter(Boolean).join(' & ');
+                    }
+
+                    if (!fullName && textInputs.length) {
+                        fullName = (textInputs[0].value || '').trim();
+                    }
+
+                    const email = emailInput ? (emailInput.value || '').trim() : '';
+                    const phone = phoneInput ? (phoneInput.value || '').trim() : '';
+
+                    if (!fullName || !email) {
+                        alert('Please provide your name and email address so we can respond to your enquiry.');
+                        if (!fullName && textInputs.length && textInputs[0].focus) {
+                            textInputs[0].focus();
+                        } else if (emailInput && emailInput.focus) {
+                            emailInput.focus();
+                        }
+                        return;
+                    }
+
+                    const nameParts = fullName.split(' ').filter(Boolean);
+                    const firstName = nameParts[0] || fullName;
+                    const lastName = nameParts.slice(1).join(' ');
+
+                    let heading = '';
+                    try {
+                        const section = form.closest('section');
+                        const headingEl = section
+                            ? section.querySelector('h1, h2, h3')
+                            : document.querySelector('#booking h1, #booking h2, #booking h3');
+                        heading = headingEl && headingEl.textContent
+                            ? headingEl.textContent.trim()
+                            : document.title || 'Safari package enquiry';
+                    } catch (_) {
+                        heading = document.title || 'Safari package enquiry';
+                    }
+
+                    const lines = [];
+                    lines.push('Safari package enquiry from website booking form');
+                    lines.push('');
+                    lines.push('Package / CTA: ' + heading);
+                    lines.push('Page URL: ' + window.location.href);
+                    lines.push('');
+                    lines.push('Contact details:');
+                    lines.push('Name: ' + fullName);
+                    lines.push('Email: ' + email);
+                    lines.push('Phone: ' + (phone || 'Not provided'));
+                    lines.push('');
+                    lines.push('Form details:');
+
+                    Array.from(form.elements).forEach((el) => {
+                        if (!el || el === emailInput || el === phoneInput) return;
+                        const tag = el.tagName;
+                        const type = (el.type || '').toLowerCase();
+
+                        if (tag === 'BUTTON' || type === 'submit' || type === 'button' || type === 'hidden') return;
+
+                        let rawVal = (el.value || '').trim();
+                        if (!rawVal) return;
+
+                        let label = '';
+                        if (el.id) {
+                            const lbl = form.querySelector('label[for="' + el.id + '"]');
+                            if (lbl) label = (lbl.textContent || '').trim();
+                        }
+                        if (!label && el.closest && el.closest('label')) {
+                            label = (el.closest('label').textContent || '').trim();
+                        }
+                        if (!label && el.placeholder) label = el.placeholder.trim();
+                        if (!label && el.name) label = el.name.trim();
+                        if (!label) label = 'Field';
+
+                        let displayVal = rawVal;
+                        if (tag === 'SELECT') {
+                            const sel = el;
+                            if (sel && sel.options && sel.selectedIndex >= 0) {
+                                displayVal = sel.options[sel.selectedIndex].text || rawVal;
+                            }
+                        }
+
+                        lines.push(label + ': ' + displayVal);
+                    });
+
+                    const path = (window.location && window.location.pathname) || '';
+                    let packageSlug = '';
+                    if (path) {
+                        const last = path.split('/').filter(Boolean).pop() || '';
+                        packageSlug = last.replace(/\.html?$/i, '');
+                    }
+
+                    const enquiryType = packageSlug
+                        ? 'package_booking_' + packageSlug.replace(/[^a-z0-9_-]/gi, '').toLowerCase()
+                        : 'package_booking_request';
+
+                    const subject = packageSlug
+                        ? `[Package Enquiry] ${heading} (${packageSlug})`
+                        : 'Package enquiry: ' + heading;
+
+                    const payload = {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        phone: phone,
+                        subject: subject,
+                        enquiryType: enquiryType,
+                        message: lines.join('\n'),
+                        referrerPage: path || window.location.pathname
+                    };
+
+                    const submitBtn = form.querySelector('button[type="submit"], button:not([type])');
+                    const originalHtml = submitBtn ? submitBtn.innerHTML : null;
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+                    }
+
+                    try {
+                        const response = await fetch('/backend/api/enquiry.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(payload)
+                        });
+
+                        let data = null;
+                        try {
+                            data = await response.json();
+                        } catch (_) {}
+
+                        const ok = response.ok && data && data.success !== false;
+                        const msg = (data && (data.message || data.error)) ||
+                            (ok
+                                ? 'Thank you! Our safari specialists will contact you shortly to finalize your booking.'
+                                : 'Unable to send your enquiry. Please try again or contact us directly.');
+
+                        if (window.GisuSafaris && typeof window.GisuSafaris.showNotification === 'function') {
+                            window.GisuSafaris.showNotification(msg, ok ? 'success' : 'error');
+                        } else {
+                            alert(msg);
+                        }
+
+                        if (ok && typeof form.reset === 'function') {
+                            form.reset();
+                        }
+                    } catch (error) {
+                        const msg = 'A network error occurred while sending your enquiry. Please check your connection and try again.';
+                        if (window.GisuSafaris && typeof window.GisuSafaris.showNotification === 'function') {
+                            window.GisuSafaris.showNotification(msg, 'error');
+                        } else {
+                            alert(msg);
+                        }
+                    } finally {
+                        if (submitBtn && originalHtml != null) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalHtml;
+                        }
+                    }
+                });
+            });
+        } catch (e) {
+            try { console.warn('initPackageBookingForms failed:', e); } catch (_) {}
+        }
+    }
+
     // === HERO TEXT ROTATOR ===
     function initHeroTextRotator() {
         try {
@@ -897,6 +1213,8 @@
             if (typeof initViewAllPackagesButton === 'function') initViewAllPackagesButton();
             if (typeof initBookingCtaTracking === 'function') initBookingCtaTracking();
             if (typeof initPolicyFooterLinks === 'function') initPolicyFooterLinks();
+            if (typeof initFooterNewsletterForm === 'function') initFooterNewsletterForm();
+            if (typeof initPackageBookingForms === 'function') initPackageBookingForms();
             if (typeof normalizeWhatsAppNumbers === 'function') normalizeWhatsAppNumbers();
             if (typeof initPrettyUrls === 'function') initPrettyUrls();
             if (typeof initIncludedVideoControls === 'function') initIncludedVideoControls();
@@ -1557,6 +1875,7 @@
             initSafariFeatures && initSafariFeatures();
             initCardImageRotators && initCardImageRotators();
             initBookingCtaTracking && initBookingCtaTracking();
+            initPackageBookingForms && initPackageBookingForms();
             initIncludedVideoControls && initIncludedVideoControls();
             optimizePerformance && optimizePerformance();
         } catch (e) {

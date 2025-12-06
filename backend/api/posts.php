@@ -19,39 +19,33 @@ $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 try {
     $db = getDbConnection();
 
-    // Auto-migrate posts table
+    // Auto-migrate posts table (MySQL-compatible)
     $db->exec(<<<SQL
         CREATE TABLE IF NOT EXISTS posts (
-            id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-            slug TEXT UNIQUE NOT NULL,
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            slug VARCHAR(255) NOT NULL UNIQUE,
             title TEXT NOT NULL,
             summary TEXT,
-            content_html TEXT NOT NULL,
+            content_html LONGTEXT NOT NULL,
             hero_image TEXT,
-            status VARCHAR(20) DEFAULT 'published', -- draft|published
-            published_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-SQL);
-    $db->exec("CREATE INDEX IF NOT EXISTS idx_posts_status_pub ON posts(status, published_at DESC);");
-    $db->exec(<<<SQL
-        CREATE TRIGGER IF NOT EXISTS update_posts_updated_at
-        BEFORE UPDATE ON posts
-        FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            status VARCHAR(20) DEFAULT 'published',
+            published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 SQL);
 
-    // Audit table for post changes
+    // Audit table for post changes (MySQL-compatible)
     $db->exec(<<<SQL
         CREATE TABLE IF NOT EXISTS posts_audit (
-            id BIGSERIAL PRIMARY KEY,
-            slug TEXT NOT NULL,
-            action TEXT NOT NULL, -- create|update
-            actor TEXT,           -- session_user or 'api_key'
-            ip INET,
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            slug VARCHAR(255) NOT NULL,
+            action VARCHAR(50) NOT NULL,
+            actor VARCHAR(100),
+            ip VARCHAR(45),
             user_agent TEXT,
-            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 SQL);
 
     if ($method === 'GET') {
@@ -114,21 +108,30 @@ SQL);
     $status = in_array(($input['status'] ?? 'published'), ['draft','published'], true) ? $input['status'] : 'published';
     $published_at = trim((string)($input['published_at'] ?? ''));
 
+    // Normalize published_at into MySQL DATETIME string or null
+    $publishedAtValue = null;
+    if ($published_at !== '') {
+        $dt = DateTime::createFromFormat('Y-m-d\TH:i:s', $published_at);
+        if ($dt !== false) {
+            $publishedAtValue = $dt->format('Y-m-d H:i:s');
+        }
+    }
+
     if ($slug === '' || $title === '' || $content_html === '') {
         sendJsonResponse(['missing' => ['slug' => (bool)$slug, 'title' => (bool)$title, 'content_html' => (bool)$content_html]], 400, 'Missing required fields');
     }
 
-    // Upsert by slug
+    // Upsert by slug (MySQL-compatible)
     $existsStmt = $db->prepare("SELECT id FROM posts WHERE slug = ? LIMIT 1");
     $existsStmt->execute([$slug]);
     $exists = $existsStmt->fetchColumn();
 
     if ($exists) {
-        $stmt = $db->prepare("UPDATE posts SET title = ?, summary = ?, content_html = ?, hero_image = ?, status = ?, published_at = COALESCE(TO_TIMESTAMP(NULLIF(?, ''), 'YYYY-MM-DD\"T\"HH24:MI:SS')::timestamptz, published_at), updated_at = NOW() WHERE slug = ? RETURNING slug");
-        $stmt->execute([$title, $summary, $content_html, $hero_image, $status, $published_at, $slug]);
+        $stmt = $db->prepare("UPDATE posts SET title = ?, summary = ?, content_html = ?, hero_image = ?, status = ?, published_at = COALESCE(?, published_at), updated_at = NOW() WHERE slug = ?");
+        $stmt->execute([$title, $summary, $content_html, $hero_image, $status, $publishedAtValue, $slug]);
     } else {
-        $stmt = $db->prepare("INSERT INTO posts (slug, title, summary, content_html, hero_image, status, published_at) VALUES (?, ?, ?, ?, ?, ?, COALESCE(TO_TIMESTAMP(NULLIF(?, ''), 'YYYY-MM-DD\"T\"HH24:MI:SS')::timestamptz, NOW())) RETURNING slug");
-        $stmt->execute([$slug, $title, $summary, $content_html, $hero_image, $status, $published_at]);
+        $stmt = $db->prepare("INSERT INTO posts (slug, title, summary, content_html, hero_image, status, published_at) VALUES (?, ?, ?, ?, ?, ?, COALESCE(?, NOW()))");
+        $stmt->execute([$slug, $title, $summary, $content_html, $hero_image, $status, $publishedAtValue]);
     }
 
     // Audit log
