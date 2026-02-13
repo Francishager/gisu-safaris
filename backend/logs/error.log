@@ -11,3 +11,13 @@
 [18-Oct-2025 19:29:45 Africa/Kampala] PHP Fatal error:  Cannot redeclare generateWelcomeEmail() (previously declared in C:\Users\DELL\CascadeProjects\gisu-safaris\backend\api\newsletter.php:213) in C:\Users\DELL\CascadeProjects\gisu-safaris\backend\includes\email.php on line 525
 [18-Oct-2025 19:29:45 Africa/Kampala] PHP Stack trace:
 [18-Oct-2025 19:29:45 Africa/Kampala] PHP   1. {main}() C:\Users\DELL\CascadeProjects\gisu-safaris\backend\api\newsletter.php:0
+[04-Jan-2026 19:37:06 Africa/Kampala] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+[04-Jan-2026 19:39:10 Africa/Kampala] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+[04-Jan-2026 19:39:39 Africa/Kampala] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+[04-Jan-2026 19:40:21 Africa/Kampala] Database Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+[04-Jan-2026 19:52:19 Africa/Kampala] Database Connection Error: SQLSTATE[HY000] [1045] Access denied for user 'gisusafaris_francis'@'localhost' (using password: YES)
+[04-Jan-2026 20:42:55 Africa/Kampala] Database Connection Error: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: No such host is known. 

@@ -14,11 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     sendJsonResponse(null, 405, 'Method not allowed');
 }
 
-if (empty(STRIPE_SECRET_KEY)) {
-    logEvent('error', 'Stripe secret key missing');
-    sendJsonResponse(null, 500, 'Stripe not configured');
-}
-
 try {
     $raw = file_get_contents('php://input');
     $input = json_decode($raw, true);
@@ -114,67 +109,89 @@ try {
         sendJsonResponse(null, 400, 'Invalid passport number');
     }
 
-    // Convert amount to cents (Stripe requires integer amount in the smallest currency unit)
-    $amountCents = (int)round($amount * 100);
-
-    $successUrl = PAYMENTS_SUCCESS_URL . '?bookingId=' . urlencode($bookingId);
-    $cancelUrl = PAYMENTS_CANCEL_URL . '?bookingId=' . urlencode($bookingId);
-
-    // Prepare Stripe Checkout Session payload (x-www-form-urlencoded)
-    $postFields = [
-        'mode' => 'payment',
-        'success_url' => $successUrl,
-        'cancel_url' => $cancelUrl,
-        'client_reference_id' => (string)$bookingId,
-        'customer_email' => $custEmail,
-        'line_items[0][price_data][currency]' => $currency,
-        'line_items[0][price_data][product_data][name]' => $title,
-        'line_items[0][price_data][unit_amount]' => $amountCents,
-        'line_items[0][quantity]' => 1,
-        'metadata[booking_id]' => (string)$bookingId,
-        'metadata[booking_type]' => (string)$bookingType,
-        'metadata[deposit]' => $deposit ? 'true' : 'false',
-        'metadata[customer_name]' => $custName,
-    ];
-
-    // Include any additional metadata keys
-    foreach ($metadata as $k => $v) {
-        $postFields['metadata[' . $k . ']'] = (string)$v;
+    if (empty(PESAPAL_CONSUMER_KEY) || empty(PESAPAL_CONSUMER_SECRET)) {
+        logEvent('error', 'PesaPal consumer key/secret missing');
+        sendJsonResponse(null, 500, 'PesaPal not configured');
     }
 
-    // Call Stripe API
-    $ch = curl_init('https://api.stripe.com/v1/checkout/sessions');
+    // PesaPal uses decimal amounts; keep original amount
+    $successUrl = PESAPAL_CALLBACK_URL . '?bookingId=' . urlencode($bookingId);
+
+    // Obtain PesaPal access token
+    $token = getPesapalAccessToken();
+
+    // Basic split of customer name for billing details
+    $firstName = '';
+    $lastName = '';
+    if ($custName !== '') {
+        $parts = preg_split('/\s+/', $custName);
+        $firstName = $parts[0] ?? '';
+        if (count($parts) > 1) {
+            array_shift($parts);
+            $lastName = trim(implode(' ', $parts));
+        }
+    }
+
+    $billingPhone = '';
+    if (!empty($metadata['phone'])) {
+        $billingPhone = (string)$metadata['phone'];
+    }
+
+    $order = [
+        'id' => (string)$bookingId,
+        'currency' => $currency,
+        'amount' => $amount,
+        'description' => $title,
+        'callback_url' => $successUrl,
+        'notification_id' => PESAPAL_NOTIFICATION_ID,
+        'billing_address' => [
+            'email_address' => $custEmail,
+            'phone_number' => $billingPhone,
+            'country_code' => 'UG',
+            'first_name' => $firstName,
+            'middle_name' => '',
+            'last_name' => $lastName,
+            'line_1' => '',
+            'line_2' => '',
+            'city' => '',
+            'state' => '',
+            'postal_code' => '',
+        ],
+    ];
+
+    $ch = curl_init(rtrim(PESAPAL_API_BASE, '/') . '/Transactions/SubmitOrderRequest');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Authorization: Bearer ' . STRIPE_SECRET_KEY,
-        'Content-Type: application/x-www-form-urlencoded'
+        'Content-Type: application/json',
+        'Accept: application/json',
+        'Authorization: Bearer ' . $token,
     ]);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postFields));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($order));
 
     $resp = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     if ($resp === false) {
         $err = curl_error($ch);
         curl_close($ch);
-        logEvent('error', 'Stripe API curl error', ['error' => $err]);
-        sendJsonResponse(null, 502, 'Stripe request failed');
+        logEvent('error', 'PesaPal API curl error', ['error' => $err]);
+        sendJsonResponse(null, 502, 'PesaPal request failed');
     }
     curl_close($ch);
 
-    $stripe = json_decode($resp, true);
-    if ($httpCode >= 400 || empty($stripe['id']) || empty($stripe['url'])) {
-        logEvent('error', 'Stripe API error', ['status' => $httpCode, 'body' => $stripe]);
+    $pesapal = json_decode($resp, true);
+    if ($httpCode >= 400 || empty($pesapal['order_tracking_id']) || empty($pesapal['redirect_url'])) {
+        logEvent('error', 'PesaPal API error', ['status' => $httpCode, 'body' => $pesapal]);
         sendJsonResponse(null, 502, 'Failed to create checkout session');
     }
 
-    $sessionId = $stripe['id'];
-    $checkoutUrl = $stripe['url'];
+    $sessionId = $pesapal['order_tracking_id'];
+    $checkoutUrl = $pesapal['redirect_url'];
 
     // Persist pending payment record
     try {
         $db = getDbConnection();
-        // Payments table (generic)
+        // Payments table (generic) - reuse stripe_session_id to store PesaPal order tracking ID
         $pstmt = $db->prepare("INSERT INTO payments (booking_id, booking_type, amount, currency, status, stripe_session_id, customer_email, metadata) VALUES (:bid, :btype, :amount, :currency, :status, :sid, :email, :meta)");
         $pstmt->execute([
             ':bid' => $bookingId,
@@ -188,7 +205,7 @@ try {
         ]);
 
         // If this relates to a package booking, store refs for convenience
-        // Best-effort update (bookingId assumed to be UUID of package_bookings)
+        // Best-effort update (bookingId assumed to be ID of package_bookings)
         try {
             $bstmt = $db->prepare("UPDATE package_bookings SET stripe_session_id = :sid, payment_status = 'pending' WHERE id = :bid");
             $bstmt->execute([':sid' => $sessionId, ':bid' => $bookingId]);

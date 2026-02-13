@@ -10,6 +10,23 @@ if (!defined('GISU_SAFARIS_BACKEND')) {
     exit('Access denied');
 }
 
+// Load environment variables from .env file
+$envFile = __DIR__ . '/.env';
+if (file_exists($envFile)) {
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') === false) continue;
+        list($key, $value) = explode('=', $line, 2);
+        $key = trim($key);
+        $value = trim($value);
+        // Remove surrounding quotes if present
+        $value = trim($value, '"\'');
+        $_ENV[$key] = $value;
+        putenv("$key=$value");
+    }
+}
+
 // Security headers (CSP in Report-Only to prevent breakage while observing violations)
 function setSecurityHeaders() {
     // Mitigate MIME sniffing and clickjacking
@@ -109,6 +126,11 @@ define('STRIPE_WEBHOOK_SECRET', $_ENV['STRIPE_WEBHOOK_SECRET'] ?? '');
 define('PAYMENTS_CURRENCY', $_ENV['PAYMENTS_CURRENCY'] ?? 'USD');
 define('PAYMENTS_SUCCESS_URL', $_ENV['PAYMENTS_SUCCESS_URL'] ?? (FRONTEND_URL . '/payments/success.html'));
 define('PAYMENTS_CANCEL_URL', $_ENV['PAYMENTS_CANCEL_URL'] ?? (FRONTEND_URL . '/payments/cancel.html'));
+define('PESAPAL_CONSUMER_KEY', $_ENV['PESAPAL_CONSUMER_KEY'] ?? '');
+define('PESAPAL_CONSUMER_SECRET', $_ENV['PESAPAL_CONSUMER_SECRET'] ?? '');
+define('PESAPAL_API_BASE', $_ENV['PESAPAL_API_BASE'] ?? 'https://pay.pesapal.com/v3/api');
+define('PESAPAL_CALLBACK_URL', $_ENV['PESAPAL_CALLBACK_URL'] ?? (FRONTEND_URL . '/payments/success.html'));
+define('PESAPAL_NOTIFICATION_ID', $_ENV['PESAPAL_NOTIFICATION_ID'] ?? '');
 
 // Notification Settings
 define('ADMIN_EMAIL', 'admin@gisusafaris.com');
@@ -360,6 +382,57 @@ if (!defined('OPENAI_MODEL')) {
     $oaimodel = $_ENV['OPENAI_MODEL'] ?? getenv('OPENAI_MODEL') ?? 'gpt-4o-mini';
     define('OPENAI_MODEL', $oaimodel);
     if (!getenv('OPENAI_MODEL')) { @putenv('OPENAI_MODEL=' . $oaimodel); }
+}
+
+function getPesapalAccessToken() {
+    static $token = null;
+    static $expiry = 0;
+
+    if ($token !== null && $expiry > (time() + 60)) {
+        return $token;
+    }
+
+    if (empty(PESAPAL_CONSUMER_KEY) || empty(PESAPAL_CONSUMER_SECRET)) {
+        throw new Exception('PesaPal not configured');
+    }
+
+    $payload = json_encode([
+        'consumer_key' => PESAPAL_CONSUMER_KEY,
+        'consumer_secret' => PESAPAL_CONSUMER_SECRET,
+    ]);
+
+    $ch = curl_init(rtrim(PESAPAL_API_BASE, '/') . '/Auth/RequestToken');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Accept: application/json',
+    ]);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+    $resp = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    if ($resp === false) {
+        $err = curl_error($ch);
+        curl_close($ch);
+        throw new Exception('PesaPal token request failed: ' . $err);
+    }
+    curl_close($ch);
+
+    $data = json_decode($resp, true);
+    if ($httpCode >= 400 || !is_array($data) || empty($data['token'])) {
+        throw new Exception('PesaPal token error: ' . json_encode($data));
+    }
+
+    $token = $data['token'];
+    if (!empty($data['expiryDate'])) {
+        $ts = strtotime($data['expiryDate']);
+        $expiry = $ts !== false ? $ts : (time() + 300);
+    } else {
+        $expiry = time() + 300;
+    }
+
+    return $token;
 }
 
 // Ensure upload directory exists
