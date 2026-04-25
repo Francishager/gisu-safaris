@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -72,7 +72,7 @@
         <div class="col-lg-8 mx-auto">
           <h1 class="h3 mb-3">Complete Your Booking</h1>
           <div class="alert alert-info" id="pkgSummary" role="alert">
-            <div><strong>Selection:</strong> <span id="pkgTitle">â€”</span> <span class="small-muted" id="summaryType"></span></div>
+            <div><strong>Selection:</strong> <span id="pkgTitle">—</span> <span class="small-muted" id="summaryType"></span></div>
             <div><strong>Base Price (per person):</strong> $<span id="pkgAmount">0</span></div>
           </div>
 
@@ -101,14 +101,14 @@
                       <div class="col-md-6">
                         <label class="form-label">Country</label>
                         <select class="form-select" id="safariCountry">
-                          <option value="" selected>Choose a countryâ€¦</option>
+                          <option value="" selected>Choose a country…</option>
                           <!-- options will be populated dynamically from catalog (plus 'All') -->
                         </select>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label">Safari Package</label>
                         <select class="form-select" id="safariPackage">
-                          <option value="" selected>Choose a packageâ€¦</option>
+                          <option value="" selected>Choose a package…</option>
                         </select>
                         <div class="form-text">You can also enter a custom title and amount below.</div>
                       </div>
@@ -118,7 +118,7 @@
                   <div class="col-md-6 d-none" id="serviceSelectWrap">
                     <label class="form-label">Service</label>
                     <select class="form-select" id="serviceSelect">
-                      <option value="" selected>Choose a serviceâ€¦</option>
+                      <option value="" selected>Choose a service…</option>
                       <option value="hotel-reservation">Hotel Reservation</option>
                       <option value="air-ticketing">Air Ticketing</option>
                       <option value="car-hire">Car Hire</option>
@@ -180,7 +180,7 @@
                     <label class="form-label">Phone</label>
                     <input type="tel" class="form-control" id="phone" required inputmode="tel" autocomplete="tel"
                            placeholder="e.g. +14155552671" pattern="^\+?[1-9]\d{7,14}$"
-                           title="Enter a valid phone in international format, e.g. +14155552671 (8â€“15 digits)." />
+                           title="Enter a valid phone in international format, e.g. +14155552671 (8–15 digits)." />
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Email</label>
@@ -196,8 +196,8 @@
                   <div class="col-md-6">
                     <label class="form-label">Passport</label>
                     <input type="text" class="form-control" id="passport" inputmode="text" maxlength="9" required
-                           placeholder="8â€“9 characters" pattern="^[A-Za-z0-9]{8,9}$"
-                           title="Passport should be 8â€“9 letters/numbers (no spaces)." />
+                           placeholder="8–9 characters" pattern="^[A-Za-z0-9]{8,9}$"
+                           title="Passport should be 8–9 letters/numbers (no spaces)." />
                   </div>
                   <div class="col-12">
                     <label class="form-label">Notes (optional)</label>
@@ -216,7 +216,7 @@
                 <div class="border rounded p-3 mb-3">
                   <div class="row">
                     <div class="col-md-6">
-                      <div><strong>Dates:</strong> <span id="reviewDates">â€”</span></div>
+                      <div><strong>Dates:</strong> <span id="reviewDates">—</span></div>
                       <div><strong>Travelers:</strong> <span id="reviewTravelers">1</span></div>
                     </div>
                     <div class="col-md-6">
@@ -231,13 +231,13 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="payChoice" id="payDeposit" checked />
                     <label class="form-check-label" for="payDeposit">
-                      Pay 70% Deposit now — $<span id="depositAmount">0</span>
+                      Pay 70% Deposit now � $<span id="depositAmount">0</span>
                     </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="payChoice" id="payFull" />
                     <label class="form-check-label" for="payFull">
-                      Pay Full Amount now — $<span id="fullAmount">0</span>
+                      Pay Full Amount now � $<span id="fullAmount">0</span>
                     </label>
                   </div>
                 </div>
@@ -327,7 +327,7 @@
           const opt = document.createElement('option');
           opt.value = '';
           opt.selected = true;
-          opt.textContent = 'Choose a countryâ€¦';
+          opt.textContent = 'Choose a country…';
           return opt;
         })();
         safariCountry.innerHTML = '';
@@ -348,7 +348,7 @@
 
       function populateSafariPackages(country){
         // Clear
-        safariPackage.innerHTML = '<option value="" selected>Choose a packageâ€¦</option>';
+        safariPackage.innerHTML = '<option value="" selected>Choose a package…</option>';
         let list = [];
         if (!country) return;
         if (country === 'all') {
@@ -359,7 +359,7 @@
         list.forEach(p => {
           const opt = document.createElement('option');
           opt.value = p.id;
-          opt.textContent = `${p.title} â€” $${p.amount}`;
+          opt.textContent = `${p.title} — $${p.amount}`;
           opt.setAttribute('data-amount', String(p.amount));
           safariPackage.appendChild(opt);
         });
@@ -492,7 +492,7 @@
             const opt = safariPackage.options[idx];
             const amt = parseFloat(opt.getAttribute('data-amount') || '0') || 0;
             amount = amt;
-            title = opt.textContent.replace(/\sâ€”\s\$.*$/, '');
+            title = opt.textContent.replace(/\s—\s\$.*$/, '');
             refreshSummary();
           }
         }
@@ -530,7 +530,7 @@
           packageId = opt.value;
           const amt = parseFloat(opt.getAttribute('data-amount') || '0') || 0;
           amount = amt;
-          title = opt.textContent.replace(/\sâ€”\s\$.*$/, '');
+          title = opt.textContent.replace(/\s—\s\$.*$/, '');
           refreshSummary();
         }
       });
@@ -571,7 +571,7 @@
             packageId = pkgVal;
             const amt = parseFloat(opt.getAttribute('data-amount') || '0') || 0;
             amount = amt; // enforce auto-pricing
-            title = opt.textContent.replace(/\sâ€”\s\$.*$/, '');
+            title = opt.textContent.replace(/\s—\s\$.*$/, '');
           }
         } else {
           // Service: require a selection or custom title
@@ -691,11 +691,11 @@
         // Phone
         const phoneVal = sanitizePhoneInput(phone.value.trim());
         phone.value = phoneVal;
-        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +14155552671 (8â€“15 digits).'; }
+        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +14155552671 (8–15 digits).'; }
         if (!westernPhoneLengthOk(phoneVal)) { phone.focus(); return 'Phone number length does not match the selected country code.'; }
-        // Passport: required 8â€“9 alphanumeric
+        // Passport: required 8–9 alphanumeric
         const passVal = passport.value.trim();
-        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8â€“9 letters/numbers only).'; }
+        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8–9 letters/numbers only).'; }
         // Nationality: required letters/spaces and no long consonant runs
         const natVal = (nationality.value || '').trim();
         if (!/^[A-Za-z\s]{2,56}$/.test(natVal) || /(?:[^AEIOUaeiou\W]){4,}/.test(natVal)) {
@@ -803,7 +803,7 @@
             </p>
             <p class="mb-2"><i class="fas fa-phone me-2"></i>
               <img src="https://flagcdn.com/au.svg" alt="Australia flag" class="flag-icon me-1" loading="lazy">
-              <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+              <a href="tel:+16470133869" class="text-light text-decoration-none">+16 470 133 869</a>
             </p>
             <p class="mb-2"><i class="fas fa-phone me-2"></i>
               <img src="https://flagcdn.com/gb.svg" alt="United Kingdom flag" class="flag-icon me-1" loading="lazy">

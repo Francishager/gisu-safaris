@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -128,7 +128,7 @@
                                 <h4 class="card-title fw-bold">Call Us</h4>
                                 <p class="card-text mb-3">Speak directly with our safari experts</p>
                                 <div class="contact-details">
-                                    <p class="mb-2"><strong>Australia:</strong> <a href="tel:+61478914106" class="text-primary">+614 7891 4106</a></p>
+                                    <p class="mb-2"><strong>Australia:</strong> <a href="tel:+16470133869" class="text-primary">+16 470 133 869</a></p>
                                     <p class="mb-2"><strong>Uganda:</strong> <a href="tel:+256780950555" class="text-primary">+256 780 950 555</a></p>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                                             <label for="phone" class="form-label">Phone Number</label>
                                             <input type="tel" class="form-control" id="phone" name="phone" inputmode="tel" autocomplete="tel"
                                                    placeholder="e.g. +14155552671" pattern="^\+?[1-9]\d{7,14}$"
-                                                   title="Enter phone in international format, e.g. +14155552671 (8â€“15 digits).">
+                                                   title="Enter phone in international format, e.g. +14155552671 (8–15 digits).">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="country" class="form-label">Country *</label>
@@ -232,9 +232,9 @@
                                         <div class="col-md-6">
                                             <label for="passport" class="form-label">Passport Number *</label>
                                             <input type="text" class="form-control" id="passport" name="passport" required maxlength="9"
-                                                   pattern="^[A-Za-z0-9]{8,9}$" placeholder="8â€“9 characters"
-                                                   title="Passport should be 8â€“9 letters/numbers (no spaces).">
-                                            <div class="invalid-feedback">Please provide a valid passport (8â€“9 letters/numbers).</div>
+                                                   pattern="^[A-Za-z0-9]{8,9}$" placeholder="8–9 characters"
+                                                   title="Passport should be 8–9 letters/numbers (no spaces).">
+                                            <div class="invalid-feedback">Please provide a valid passport (8–9 letters/numbers).</div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="groupSize" class="form-label">Group Size *</label>
@@ -501,7 +501,7 @@
             </p>
             <p class="mb-2"><i class="fas fa-phone me-2"></i>
               <img src="https://flagcdn.com/au.svg" alt="Australia flag" class="flag-icon me-1" loading="lazy">
-              <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+              <a href="tel:+16470133869" class="text-light text-decoration-none">+16 470 133 869</a>
             </p>
             <p class="mb-2"><i class="fas fa-phone me-2"></i>
               <img src="https://flagcdn.com/gb.svg" alt="United Kingdom flag" class="flag-icon me-1" loading="lazy">
@@ -699,7 +699,7 @@
                     const sanitized = sanitizePhoneInput(phoneInput.value.trim());
                     phoneInput.value = sanitized;
                     if (!E164.test(sanitized)) {
-                        alert('Enter phone in international format, e.g. +14155552671 (8â€“15 digits).');
+                        alert('Enter phone in international format, e.g. +14155552671 (8–15 digits).');
                         phoneInput.focus();
                         return;
                     }
@@ -717,7 +717,7 @@
                 }
                 const passVal = (passportInput?.value || '').trim().toUpperCase();
                 if (!/^[A-Z0-9]{8,9}$/.test(passVal)) {
-                    alert('Passport is required (8â€“9 letters/numbers only).');
+                    alert('Passport is required (8–9 letters/numbers only).');
                     passportInput?.focus();
                     return;
                 }

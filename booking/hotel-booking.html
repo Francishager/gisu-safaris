@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -66,7 +66,7 @@
         <div class="col-lg-8 mx-auto">
           <h1 class="h3 mb-3">Complete Your Hotel Booking</h1>
           <div class="alert alert-info" id="hotelSummary" role="alert">
-            <div><strong>Hotel/Title:</strong> <span id="hotelTitle">â€”</span></div>
+            <div><strong>Hotel/Title:</strong> <span id="hotelTitle">—</span></div>
             <div><strong>Base Price (per room/night):</strong> $<span id="baseAmount">0</span></div>
           </div>
 
@@ -125,7 +125,7 @@
                     <label class="form-label">Phone</label>
                     <input type="tel" class="form-control" id="phone" required inputmode="tel" autocomplete="tel"
                            placeholder="e.g. +256701234567" pattern="^\+?[1-9]\d{7,14}$"
-                           title="Enter a valid phone in international format, e.g. +256701234567 (8â€“15 digits)." />
+                           title="Enter a valid phone in international format, e.g. +256701234567 (8–15 digits)." />
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Email</label>
@@ -141,8 +141,8 @@
                   <div class="col-md-6">
                     <label class="form-label">Passport</label>
                     <input type="text" class="form-control" id="passport" inputmode="text" maxlength="9" required
-                           placeholder="8â€“9 characters" pattern="^[A-Za-z0-9]{8,9}$"
-                           title="Passport should be 8â€“9 letters/numbers (no spaces)." />
+                           placeholder="8–9 characters" pattern="^[A-Za-z0-9]{8,9}$"
+                           title="Passport should be 8–9 letters/numbers (no spaces)." />
                   </div>
                   <div class="col-12">
                     <label class="form-label">Notes (optional)</label>
@@ -161,8 +161,8 @@
                 <div class="border rounded p-3 mb-3">
                   <div class="row">
                     <div class="col-md-6">
-                      <div><strong>Stay:</strong> <span id="reviewStay">â€”</span></div>
-                      <div><strong>Rooms:</strong> <span id="reviewRooms">1</span> â€¢ <strong>Guests:</strong> <span id="reviewGuests">1</span></div>
+                      <div><strong>Stay:</strong> <span id="reviewStay">—</span></div>
+                      <div><strong>Rooms:</strong> <span id="reviewRooms">1</span> • <strong>Guests:</strong> <span id="reviewGuests">1</span></div>
                     </div>
                     <div class="col-md-6">
                       <div><strong>Per Room/Night:</strong> $<span id="reviewPerNight">0</span></div>
@@ -176,13 +176,13 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="payChoice" id="payDeposit" checked />
                     <label class="form-check-label" for="payDeposit">
-                      Pay 70% Deposit now — $<span id="depositAmount">0</span>
+                      Pay 70% Deposit now � $<span id="depositAmount">0</span>
                     </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="payChoice" id="payFull" />
                     <label class="form-check-label" for="payFull">
-                      Pay Full Amount now — $<span id="fullAmount">0</span>
+                      Pay Full Amount now � $<span id="fullAmount">0</span>
                     </label>
                   </div>
                 </div>
@@ -345,10 +345,10 @@
         }
         const phoneVal = sanitizePhoneInput(phone.value.trim());
         phone.value = phoneVal;
-        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +256701234567 (8â€“15 digits).'; }
+        if (!E164.test(phoneVal)) { phone.focus(); return 'Enter phone in international format, e.g. +256701234567 (8–15 digits).'; }
         if (!westernPhoneLengthOk(phoneVal)) { phone.focus(); return 'Phone number length does not match the selected country code.'; }
         const passVal = passport.value.trim();
-        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8â€“9 letters/numbers only).'; }
+        if (!/^[A-Z0-9]{8,9}$/.test(passVal)) { passport.focus(); return 'Passport is required (8–9 letters/numbers only).'; }
         const natVal = (nationality.value || '').trim();
         if (!/^[A-Za-z\s]{2,56}$/.test(natVal) || /(?:[^AEIOUaeiou\W]){4,}/.test(natVal)) {
           nationality.focus();
@@ -362,7 +362,7 @@
         if (err) { alert(err); return; }
         const nights = nightsBetween(checkIn.value, checkOut.value);
         const total = base * nights * Number(rooms.value || 1);
-        reviewStay.textContent = `${checkIn.value} to ${checkOut.value} â€¢ ${roomType.value}`;
+        reviewStay.textContent = `${checkIn.value} to ${checkOut.value} • ${roomType.value}`;
         reviewRooms.textContent = rooms.value;
         reviewGuests.textContent = guests.value;
         reviewTotal.textContent = total.toFixed(2);
@@ -452,7 +452,7 @@
             </p>
             <p class="mb-2"><i class="fas fa-phone me-2"></i>
               <img src="https://flagcdn.com/au.svg" alt="Australia flag" class="flag-icon me-1" loading="lazy">
-              <a href="tel:+61478914106" class="text-light text-decoration-none">+614 7891 4106</a>
+              <a href="tel:+16470133869" class="text-light text-decoration-none">+16 470 133 869</a>
             </p>
             <p class="mb-2"><i class="fas fa-phone me-2"></i>
               <img src="https://flagcdn.com/gb.svg" alt="United Kingdom flag" class="flag-icon me-1" loading="lazy">
