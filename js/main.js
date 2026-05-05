@@ -216,8 +216,8 @@
     // === NORMALIZE WHATSAPP NUMBERS SITE-WIDE ===
     function normalizeWhatsAppNumbers() {
         try {
-            const preferred = '+16470133869';
-            const preferredRaw = '16470133869';
+            const preferred = '+61470133869';
+            const preferredRaw = '61470133869';
             const legacyNumbers = [
                 '+61470133869', '61470133869',
                 // add any other known legacy variants here if discovered later
@@ -263,7 +263,7 @@
                         if (!old) return;
                         if (t.includes(old)) t = t.replaceAll(old, preferred);
                     });
-                    // also cover spaced or formatted variants (basic): 6147 013 3869 -> 16470133869
+                    // also cover spaced or formatted variants (basic): 6147 013 3869 -> 61470133869
                     t = t.replace(/6\s*1\s*4\s*7\s*0\s*1\s*3\s*3\s*8\s*6\s*9/g, preferred);
                     if (t !== node.nodeValue) node.nodeValue = t;
                 });
@@ -1226,7 +1226,7 @@
     }
 
     // === WHATSAPP WIDGET HELPERS & GLOBALS ===
-    const phoneNumber = '16470133869';
+    const phoneNumber = '61470133869';
     const chatWidget = () => document.getElementById('whatsappChat');
     const messageInput = () => document.getElementById('whatsappMessage');
 
